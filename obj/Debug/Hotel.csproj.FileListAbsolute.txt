@@ -1,0 +1,10 @@
+C:\Users\negro\source\repos\Hotel\bin\Debug\Hotel.exe.config
+C:\Users\negro\source\repos\Hotel\bin\Debug\Hotel.exe
+C:\Users\negro\source\repos\Hotel\bin\Debug\Hotel.pdb
+C:\Users\negro\source\repos\Hotel\obj\Debug\Hotel.csprojAssemblyReference.cache
+C:\Users\negro\source\repos\Hotel\obj\Debug\Hotel.Form1.resources
+C:\Users\negro\source\repos\Hotel\obj\Debug\Hotel.Properties.Resources.resources
+C:\Users\negro\source\repos\Hotel\obj\Debug\Hotel.csproj.GenerateResource.cache
+C:\Users\negro\source\repos\Hotel\obj\Debug\Hotel.csproj.CoreCompileInputs.cache
+C:\Users\negro\source\repos\Hotel\obj\Debug\Hotel.exe
+C:\Users\negro\source\repos\Hotel\obj\Debug\Hotel.pdb
