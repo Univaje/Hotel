@@ -1,7 +1,7 @@
 ﻿
 namespace Hotel
 {
-    partial class Form1
+    partial class HotelManhattan
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,12 @@ namespace Hotel
             this.tpAsiakas = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.tpMokki = new System.Windows.Forms.TabPage();
+            this.btnMuokkaa = new System.Windows.Forms.Button();
+            this.btnPoista = new System.Windows.Forms.Button();
+            this.btnLisaa = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.mokkiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Hotel.DataSet1();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -52,10 +57,14 @@ namespace Hotel
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tpLaskut = new System.Windows.Forms.TabPage();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.mokkiTableAdapter = new Hotel.DataSet1TableAdapters.mokkiTableAdapter();
             this.tpAsiakas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tpMokki.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mokkiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tcHotelli.SuspendLayout();
             this.tpToimialue.SuspendLayout();
@@ -76,7 +85,7 @@ namespace Hotel
             this.tpAsiakas.Location = new System.Drawing.Point(4, 25);
             this.tpAsiakas.Name = "tpAsiakas";
             this.tpAsiakas.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAsiakas.Size = new System.Drawing.Size(858, 405);
+            this.tpAsiakas.Size = new System.Drawing.Size(1051, 431);
             this.tpAsiakas.TabIndex = 1;
             this.tpAsiakas.Text = "Asiakas";
             this.tpAsiakas.UseVisualStyleBackColor = true;
@@ -84,36 +93,81 @@ namespace Hotel
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.Location = new System.Drawing.Point(3, 3);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(852, 399);
+            this.dataGridView3.Size = new System.Drawing.Size(852, 358);
             this.dataGridView3.TabIndex = 0;
             // 
             // tpMokki
             // 
+            this.tpMokki.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tpMokki.Controls.Add(this.btnMuokkaa);
+            this.tpMokki.Controls.Add(this.btnPoista);
+            this.tpMokki.Controls.Add(this.btnLisaa);
             this.tpMokki.Controls.Add(this.dataGridView1);
             this.tpMokki.Controls.Add(this.tabControl2);
             this.tpMokki.Location = new System.Drawing.Point(4, 25);
             this.tpMokki.Name = "tpMokki";
             this.tpMokki.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMokki.Size = new System.Drawing.Size(858, 405);
+            this.tpMokki.Size = new System.Drawing.Size(1051, 431);
             this.tpMokki.TabIndex = 0;
             this.tpMokki.Text = "Mökki";
             this.tpMokki.UseVisualStyleBackColor = true;
             // 
+            // btnMuokkaa
+            // 
+            this.btnMuokkaa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnMuokkaa.Location = new System.Drawing.Point(423, 370);
+            this.btnMuokkaa.Name = "btnMuokkaa";
+            this.btnMuokkaa.Size = new System.Drawing.Size(234, 57);
+            this.btnMuokkaa.TabIndex = 4;
+            this.btnMuokkaa.Text = "Muokkaa";
+            this.btnMuokkaa.UseVisualStyleBackColor = true;
+            // 
+            // btnPoista
+            // 
+            this.btnPoista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPoista.Location = new System.Drawing.Point(831, 372);
+            this.btnPoista.Name = "btnPoista";
+            this.btnPoista.Size = new System.Drawing.Size(217, 59);
+            this.btnPoista.TabIndex = 3;
+            this.btnPoista.Text = "Poista";
+            this.btnPoista.UseVisualStyleBackColor = true;
+            // 
+            // btnLisaa
+            // 
+            this.btnLisaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLisaa.Location = new System.Drawing.Point(2, 370);
+            this.btnLisaa.Name = "btnLisaa";
+            this.btnLisaa.Size = new System.Drawing.Size(208, 58);
+            this.btnLisaa.TabIndex = 2;
+            this.btnLisaa.Text = "Lisaa";
+            this.btnLisaa.UseVisualStyleBackColor = true;
+            // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(6, -4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(852, 399);
+            this.dataGridView1.Size = new System.Drawing.Size(1053, 370);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // mokkiBindingSource
+            // 
+            this.mokkiBindingSource.DataMember = "mokki";
+            this.mokkiBindingSource.DataSource = this.dataSet1;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tabControl2
             // 
@@ -147,16 +201,19 @@ namespace Hotel
             // 
             // tcHotelli
             // 
+            this.tcHotelli.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tcHotelli.Controls.Add(this.tpToimialue);
             this.tcHotelli.Controls.Add(this.tpMokki);
             this.tcHotelli.Controls.Add(this.tpPalvelut);
             this.tcHotelli.Controls.Add(this.tpAsiakas);
             this.tcHotelli.Controls.Add(this.tpLaskut);
-            this.tcHotelli.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcHotelli.Controls.Add(this.tabPage1);
             this.tcHotelli.Location = new System.Drawing.Point(0, 0);
             this.tcHotelli.Name = "tcHotelli";
             this.tcHotelli.SelectedIndex = 0;
-            this.tcHotelli.Size = new System.Drawing.Size(866, 434);
+            this.tcHotelli.Size = new System.Drawing.Size(1059, 460);
             this.tcHotelli.TabIndex = 0;
             // 
             // tpToimialue
@@ -171,7 +228,7 @@ namespace Hotel
             this.tpToimialue.Controls.Add(this.btnToimialue1);
             this.tpToimialue.Location = new System.Drawing.Point(4, 25);
             this.tpToimialue.Name = "tpToimialue";
-            this.tpToimialue.Size = new System.Drawing.Size(858, 405);
+            this.tpToimialue.Size = new System.Drawing.Size(1051, 431);
             this.tpToimialue.TabIndex = 4;
             this.tpToimialue.Text = "Toimialue";
             this.tpToimialue.UseVisualStyleBackColor = true;
@@ -184,6 +241,7 @@ namespace Hotel
             this.btnToimialue8.TabIndex = 0;
             this.btnToimialue8.Text = "Saariselkä";
             this.btnToimialue8.UseVisualStyleBackColor = true;
+            this.btnToimialue8.Click += new System.EventHandler(this.ToimialueValinta);
             // 
             // btnToimialue7
             // 
@@ -193,6 +251,7 @@ namespace Hotel
             this.btnToimialue7.TabIndex = 0;
             this.btnToimialue7.Text = "Pyhä";
             this.btnToimialue7.UseVisualStyleBackColor = true;
+            this.btnToimialue7.Click += new System.EventHandler(this.ToimialueValinta);
             // 
             // btnToimialue6
             // 
@@ -202,6 +261,7 @@ namespace Hotel
             this.btnToimialue6.TabIndex = 0;
             this.btnToimialue6.Text = "Tahko";
             this.btnToimialue6.UseVisualStyleBackColor = true;
+            this.btnToimialue6.Click += new System.EventHandler(this.ToimialueValinta);
             // 
             // btnToimialue5
             // 
@@ -211,6 +271,7 @@ namespace Hotel
             this.btnToimialue5.TabIndex = 0;
             this.btnToimialue5.Text = "Vuokatti";
             this.btnToimialue5.UseVisualStyleBackColor = true;
+            this.btnToimialue5.Click += new System.EventHandler(this.ToimialueValinta);
             // 
             // btnToimialue4
             // 
@@ -220,6 +281,7 @@ namespace Hotel
             this.btnToimialue4.TabIndex = 0;
             this.btnToimialue4.Text = "Salla";
             this.btnToimialue4.UseVisualStyleBackColor = true;
+            this.btnToimialue4.Click += new System.EventHandler(this.ToimialueValinta);
             // 
             // btnToimialue3
             // 
@@ -229,6 +291,7 @@ namespace Hotel
             this.btnToimialue3.TabIndex = 0;
             this.btnToimialue3.Text = "Ruka";
             this.btnToimialue3.UseVisualStyleBackColor = true;
+            this.btnToimialue3.Click += new System.EventHandler(this.ToimialueValinta);
             // 
             // btnToimialue2
             // 
@@ -238,6 +301,7 @@ namespace Hotel
             this.btnToimialue2.TabIndex = 0;
             this.btnToimialue2.Text = "Levi";
             this.btnToimialue2.UseVisualStyleBackColor = true;
+            this.btnToimialue2.Click += new System.EventHandler(this.ToimialueValinta);
             // 
             // btnToimialue1
             // 
@@ -247,26 +311,29 @@ namespace Hotel
             this.btnToimialue1.TabIndex = 0;
             this.btnToimialue1.Text = "Ylläs";
             this.btnToimialue1.UseVisualStyleBackColor = true;
+            this.btnToimialue1.Click += new System.EventHandler(this.ToimialueValinta);
             // 
             // tpPalvelut
             // 
             this.tpPalvelut.Controls.Add(this.dataGridView2);
             this.tpPalvelut.Location = new System.Drawing.Point(4, 25);
             this.tpPalvelut.Name = "tpPalvelut";
-            this.tpPalvelut.Size = new System.Drawing.Size(858, 405);
+            this.tpPalvelut.Size = new System.Drawing.Size(1051, 431);
             this.tpPalvelut.TabIndex = 3;
             this.tpPalvelut.Text = "Palvelut";
             this.tpPalvelut.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(858, 405);
+            this.dataGridView2.Size = new System.Drawing.Size(992, 358);
             this.dataGridView2.TabIndex = 0;
             // 
             // tpLaskut
@@ -274,7 +341,7 @@ namespace Hotel
             this.tpLaskut.Controls.Add(this.dataGridView4);
             this.tpLaskut.Location = new System.Drawing.Point(4, 25);
             this.tpLaskut.Name = "tpLaskut";
-            this.tpLaskut.Size = new System.Drawing.Size(858, 405);
+            this.tpLaskut.Size = new System.Drawing.Size(1051, 431);
             this.tpLaskut.TabIndex = 2;
             this.tpLaskut.Text = "Laskut";
             this.tpLaskut.UseVisualStyleBackColor = true;
@@ -282,26 +349,42 @@ namespace Hotel
             // dataGridView4
             // 
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView4.Location = new System.Drawing.Point(0, 0);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowHeadersWidth = 51;
             this.dataGridView4.RowTemplate.Height = 24;
-            this.dataGridView4.Size = new System.Drawing.Size(858, 405);
+            this.dataGridView4.Size = new System.Drawing.Size(858, 361);
             this.dataGridView4.TabIndex = 0;
             // 
-            // Form1
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1051, 431);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "Varaukset";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // mokkiTableAdapter
+            // 
+            this.mokkiTableAdapter.ClearBeforeFill = true;
+            // 
+            // HotelManhattan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 434);
+            this.ClientSize = new System.Drawing.Size(1062, 467);
             this.Controls.Add(this.tcHotelli);
-            this.Name = "Form1";
+            this.Name = "HotelManhattan";
             this.Text = "Hotel Manhanttan";
+            this.Load += new System.EventHandler(this.HotelManhattan_Load);
             this.tpAsiakas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tpMokki.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mokkiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tcHotelli.ResumeLayout(false);
             this.tpToimialue.ResumeLayout(false);
@@ -337,6 +420,13 @@ namespace Hotel
         private System.Windows.Forms.Button btnToimialue1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button btnMuokkaa;
+        private System.Windows.Forms.Button btnPoista;
+        private System.Windows.Forms.Button btnLisaa;
+        private DataSet1 dataSet1;
+        private System.Windows.Forms.BindingSource mokkiBindingSource;
+        private DataSet1TableAdapters.mokkiTableAdapter mokkiTableAdapter;
     }
 }
 

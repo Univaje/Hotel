@@ -10,11 +10,23 @@ using System.Windows.Forms;
 
 namespace Hotel
 {
-    public partial class Form1 : Form
+    public partial class HotelManhattan : Form
     {
-        public Form1()
+        public HotelManhattan()
         {
             InitializeComponent();
+        }
+
+        private void HotelManhattan_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dataSet1.mokki' table. You can move, or remove it, as needed.
+            this.mokkiTableAdapter.Fill(this.dataSet1.mokki);
+
+        }
+
+        private void ToimialueValinta(object sender, EventArgs e)
+        {
+
         }
     }
 }
