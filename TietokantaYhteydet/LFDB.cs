@@ -20,7 +20,7 @@ namespace Hotel
         public static List<Varaus> Varaukset = new List<Varaus>();
 
         static string myConnectionString = "server=127.0.0.1;uid=root;" +
-                "pwd=root;database=vn;port=3307";
+                "pwd=hexed696;database=vn;port=3307";
         public static List<mokki> getMokit() {
 
                 try
