@@ -42,7 +42,6 @@ namespace Hotel
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tcHotelli = new System.Windows.Forms.TabControl();
             this.tpToimialue = new System.Windows.Forms.TabPage();
-            this.dgv11 = new System.Windows.Forms.DataGridView();
             this.tpPalvelut = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tpLaskut = new System.Windows.Forms.TabPage();
@@ -53,22 +52,12 @@ namespace Hotel
             this.manhattanProject = new Hotel.ManhattanProject();
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
-            this.btnToimialue1 = new System.Windows.Forms.Button();
-            this.btnToimialue2 = new System.Windows.Forms.Button();
-            this.btnToimialue3 = new System.Windows.Forms.Button();
-            this.btnToimialue4 = new System.Windows.Forms.Button();
-            this.btnToimialue5 = new System.Windows.Forms.Button();
-            this.btnToimialue6 = new System.Windows.Forms.Button();
-            this.btnToimialue7 = new System.Windows.Forms.Button();
-            this.btnToimialue8 = new System.Windows.Forms.Button();
             this.tpAsiakas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tpMokki.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMokit)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tcHotelli.SuspendLayout();
-            this.tpToimialue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv11)).BeginInit();
             this.tpPalvelut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tpLaskut.SuspendLayout();
@@ -210,31 +199,12 @@ namespace Hotel
             // 
             // tpToimialue
             // 
-            this.tpToimialue.Controls.Add(this.dgv11);
-            this.tpToimialue.Controls.Add(this.btnToimialue8);
-            this.tpToimialue.Controls.Add(this.btnToimialue7);
-            this.tpToimialue.Controls.Add(this.btnToimialue6);
-            this.tpToimialue.Controls.Add(this.btnToimialue5);
-            this.tpToimialue.Controls.Add(this.btnToimialue4);
-            this.tpToimialue.Controls.Add(this.btnToimialue3);
-            this.tpToimialue.Controls.Add(this.btnToimialue2);
-            this.tpToimialue.Controls.Add(this.btnToimialue1);
             this.tpToimialue.Location = new System.Drawing.Point(4, 25);
             this.tpToimialue.Name = "tpToimialue";
             this.tpToimialue.Size = new System.Drawing.Size(1507, 654);
             this.tpToimialue.TabIndex = 4;
             this.tpToimialue.Text = "Toimialue";
             this.tpToimialue.UseVisualStyleBackColor = true;
-            // 
-            // dgv11
-            // 
-            this.dgv11.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv11.Location = new System.Drawing.Point(927, 55);
-            this.dgv11.Name = "dgv11";
-            this.dgv11.RowHeadersWidth = 51;
-            this.dgv11.RowTemplate.Height = 24;
-            this.dgv11.Size = new System.Drawing.Size(399, 222);
-            this.dgv11.TabIndex = 1;
             // 
             // tpPalvelut
             // 
@@ -293,7 +263,7 @@ namespace Hotel
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(665, 44);
+            this.checkedListBox1.Location = new System.Drawing.Point(941, 358);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(294, 276);
             this.checkedListBox1.TabIndex = 0;
@@ -316,94 +286,6 @@ namespace Hotel
             // 
             this.mokkiTableAdapter1.ClearBeforeFill = true;
             // 
-            // btnToimialue1
-            // 
-            this.btnToimialue1.Location = new System.Drawing.Point(486, 347);
-            this.btnToimialue1.Name = "btnToimialue1";
-            this.btnToimialue1.Size = new System.Drawing.Size(206, 190);
-            this.btnToimialue1.TabIndex = 0;
-            this.btnToimialue1.Tag = "1";
-            this.btnToimialue1.Text = "Ylläs";
-            this.btnToimialue1.UseVisualStyleBackColor = true;
-            this.btnToimialue1.Click += new System.EventHandler(this.ToimialueValinta);
-            // 
-            // btnToimialue2
-            // 
-            this.btnToimialue2.Location = new System.Drawing.Point(698, 347);
-            this.btnToimialue2.Name = "btnToimialue2";
-            this.btnToimialue2.Size = new System.Drawing.Size(206, 190);
-            this.btnToimialue2.TabIndex = 0;
-            this.btnToimialue2.Tag = "2";
-            this.btnToimialue2.Text = "Levi";
-            this.btnToimialue2.UseVisualStyleBackColor = true;
-            this.btnToimialue2.Click += new System.EventHandler(this.ToimialueValinta);
-            // 
-            // btnToimialue3
-            // 
-            this.btnToimialue3.Location = new System.Drawing.Point(910, 347);
-            this.btnToimialue3.Name = "btnToimialue3";
-            this.btnToimialue3.Size = new System.Drawing.Size(206, 190);
-            this.btnToimialue3.TabIndex = 0;
-            this.btnToimialue3.Tag = "3";
-            this.btnToimialue3.Text = "Ruka";
-            this.btnToimialue3.UseVisualStyleBackColor = true;
-            this.btnToimialue3.Click += new System.EventHandler(this.ToimialueValinta);
-            // 
-            // btnToimialue4
-            // 
-            this.btnToimialue4.Location = new System.Drawing.Point(1122, 347);
-            this.btnToimialue4.Name = "btnToimialue4";
-            this.btnToimialue4.Size = new System.Drawing.Size(206, 190);
-            this.btnToimialue4.TabIndex = 0;
-            this.btnToimialue4.Tag = "4";
-            this.btnToimialue4.Text = "Salla";
-            this.btnToimialue4.UseVisualStyleBackColor = true;
-            this.btnToimialue4.Click += new System.EventHandler(this.ToimialueValinta);
-            // 
-            // btnToimialue5
-            // 
-            this.btnToimialue5.Location = new System.Drawing.Point(486, 553);
-            this.btnToimialue5.Name = "btnToimialue5";
-            this.btnToimialue5.Size = new System.Drawing.Size(206, 190);
-            this.btnToimialue5.TabIndex = 0;
-            this.btnToimialue5.Tag = "5";
-            this.btnToimialue5.Text = "Vuokatti";
-            this.btnToimialue5.UseVisualStyleBackColor = true;
-            this.btnToimialue5.Click += new System.EventHandler(this.ToimialueValinta);
-            // 
-            // btnToimialue6
-            // 
-            this.btnToimialue6.Location = new System.Drawing.Point(698, 553);
-            this.btnToimialue6.Name = "btnToimialue6";
-            this.btnToimialue6.Size = new System.Drawing.Size(206, 190);
-            this.btnToimialue6.TabIndex = 0;
-            this.btnToimialue6.Tag = "6";
-            this.btnToimialue6.Text = "Tahko";
-            this.btnToimialue6.UseVisualStyleBackColor = true;
-            this.btnToimialue6.Click += new System.EventHandler(this.ToimialueValinta);
-            // 
-            // btnToimialue7
-            // 
-            this.btnToimialue7.Location = new System.Drawing.Point(910, 553);
-            this.btnToimialue7.Name = "btnToimialue7";
-            this.btnToimialue7.Size = new System.Drawing.Size(206, 190);
-            this.btnToimialue7.TabIndex = 0;
-            this.btnToimialue7.Tag = "7";
-            this.btnToimialue7.Text = "Pyhä";
-            this.btnToimialue7.UseVisualStyleBackColor = true;
-            this.btnToimialue7.Click += new System.EventHandler(this.ToimialueValinta);
-            // 
-            // btnToimialue8
-            // 
-            this.btnToimialue8.Location = new System.Drawing.Point(1122, 553);
-            this.btnToimialue8.Name = "btnToimialue8";
-            this.btnToimialue8.Size = new System.Drawing.Size(206, 190);
-            this.btnToimialue8.TabIndex = 0;
-            this.btnToimialue8.Tag = "8";
-            this.btnToimialue8.Text = "Saariselkä";
-            this.btnToimialue8.UseVisualStyleBackColor = true;
-            this.btnToimialue8.Click += new System.EventHandler(this.ToimialueValinta);
-            // 
             // HotelManhattan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -419,8 +301,6 @@ namespace Hotel
             ((System.ComponentModel.ISupportInitialize)(this.dgvMokit)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tcHotelli.ResumeLayout(false);
-            this.tpToimialue.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv11)).EndInit();
             this.tpPalvelut.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tpLaskut.ResumeLayout(false);
@@ -454,16 +334,7 @@ namespace Hotel
         private ManhattanProject manhattanProject;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private ManhattanProjectTableAdapters.toimintaalueTableAdapter toimintaalueTableAdapter;
-        private System.Windows.Forms.DataGridView dgv11;
         private ManhattanProjectTableAdapters.mokkiTableAdapter mokkiTableAdapter1;
-        private System.Windows.Forms.Button btnToimialue8;
-        private System.Windows.Forms.Button btnToimialue7;
-        private System.Windows.Forms.Button btnToimialue6;
-        private System.Windows.Forms.Button btnToimialue5;
-        private System.Windows.Forms.Button btnToimialue4;
-        private System.Windows.Forms.Button btnToimialue3;
-        private System.Windows.Forms.Button btnToimialue2;
-        private System.Windows.Forms.Button btnToimialue1;
     }
 }
 
