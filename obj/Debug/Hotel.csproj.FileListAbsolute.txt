@@ -43,3 +43,6 @@ C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanPr
 C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\obj\Debug\Hotel.csproj.CopyComplete
+C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\obj\Debug\Hotel.AsiakasNakyma.resources
+C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\obj\Debug\Hotel.PalveluNakyma.resources
+C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\obj\Debug\Hotel.VarausNakyma.resources

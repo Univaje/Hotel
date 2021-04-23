@@ -237,7 +237,6 @@ namespace Hotel
             }
             return mokit;
         }
-
         public static List<mokki> deleteMokki(int i)
         {
             mokit = new List<mokki>();

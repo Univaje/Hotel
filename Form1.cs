@@ -14,6 +14,7 @@ namespace Hotel
     {
         private List<mokki> mokit = new List<mokki>();
         private List<Toimialue> toimialueet = new List<Toimialue>();
+        private Toimialue t;
         public HotelManhattan()
         {
             InitializeComponent();
@@ -33,12 +34,19 @@ namespace Hotel
                 mokki m = new mokki();
                 if (i % 4 == 0 &&  i != 0)
                 j++;
-                Toimialue t = new Toimialue();
+                t = new Toimialue();
                 Button nappi = t.LuoNapit(toimialueet, i,j);
                 tpToimialue.Controls.Add(nappi);
                 nappi.Click += new EventHandler(ToimialueValinta);
                 
             }
+           
+            cbPoistaToimi.DataSource = toimialueet;
+            cbPoistaToimi.ValueMember = "toimintaAlueNimi";
+            cbPoistaToimi.Text = "Valitse...";
+            tbToimialueMuokkaa.Visible = false;
+            
+
         }
             private void ToimialueValinta(object sender, EventArgs e)
             {
@@ -52,24 +60,35 @@ namespace Hotel
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cbPoistaToimi_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnToimialueMuokkaa.Enabled = true;
+            btnToimialuePoista.Enabled = true;
+            tbToimialueMuokkaa.Visible = true;
+            tbToimialueMuokkaa.Text = cbPoistaToimi.Text;
+        }
 
+        private void btnLisaaToimialue_Click(object sender, EventArgs e)
+        {
+            int index = toimialueet.Count() + 1;
+            string uusiToimialue = tbLisaaToimi.Text;
+            t.LisaaToimialue(index,uusiToimialue);
+            tbLisaaToimi.Text = "";
         }
         /*
-                   ***********************
-                   Ylijäämä ja testikoodit         
-                   ***********************
+***********************
+Ylijäämä ja testikoodit         
+***********************
 
- private void ToimialueValinta(object sender, EventArgs e)
+private void ToimialueValinta(object sender, EventArgs e)
 
- string s = (sender as Button).Text;
- ManhattanProject.toimintaalueDataTable ToimialueenHaku = new ManhattanProject.toimintaalueDataTable();
- ManhattanProject.mokkiDataTable MokkiHakuToimiAlueittain = new ManhattanProject.mokkiDataTable();
- toimintaalueTableAdapter.ToimiAlue(ToimialueenHaku,number);
- mokkiTableAdapter1.ToimiAlue(MokkiHakuToimiAlueittain, number);
- dgv11.DataSource = ToimialueenHaku;
- dgvMokit.DataSource = MokkiHakuToimiAlueittain;
+string s = (sender as Button).Text;
+ManhattanProject.toimintaalueDataTable ToimialueenHaku = new ManhattanProject.toimintaalueDataTable();
+ManhattanProject.mokkiDataTable MokkiHakuToimiAlueittain = new ManhattanProject.mokkiDataTable();
+toimintaalueTableAdapter.ToimiAlue(ToimialueenHaku,number);
+mokkiTableAdapter1.ToimiAlue(MokkiHakuToimiAlueittain, number);
+dgv11.DataSource = ToimialueenHaku;
+dgvMokit.DataSource = MokkiHakuToimiAlueittain;
 
 
 private void HotelManhattan_Load(object sender, EventArgs e)

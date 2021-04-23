@@ -32,10 +32,10 @@ namespace Hotel
             if (i >= 1)
             {
                 x = x + 212*i;
-                if (x >= 212*5)
+                if (x >= 212*4)
                 {
                     y = y+206*j;
-                    x = 8 + 212 * (i - (5*j));
+                    x = 8 + 212 * (i - (4*j));
                 }
             }
             Button ToimiAlueNappi = new Button();
@@ -50,5 +50,9 @@ namespace Hotel
             return ToimiAlueNappi;
         }
 
+        public void LisaaToimialue(int i, string t)
+        {
+
+        }
     }
 }
