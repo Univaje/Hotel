@@ -23,7 +23,7 @@ namespace Hotel
         {
         }
 
-        public mokki(int mokkiID, int toimintaalueID, string postinumero, string mokkinimi, string katuosoite, 
+        public mokki(int mokkiID, int toimintaalueID, string postinumero, string mokkinimi, string katuosoite,
             string kuvaus, int henkilomaara, string varustelu, double hinta)
         {
             this.mokkiID = mokkiID;
@@ -34,7 +34,7 @@ namespace Hotel
             Kuvaus = kuvaus;
             this.henkilomaara = henkilomaara;
             Varustelu = varustelu;
-            Hinta = hinta; 
+            Hinta = hinta;
         }
 
         public int MokkiID { get => mokkiID; set => mokkiID = value; }
@@ -46,7 +46,7 @@ namespace Hotel
         public int Henkilomaara { get => henkilomaara; set => henkilomaara = value; }
         public string Varustelu1 { get => Varustelu; set => Varustelu = value; }
         public double Hinta { get => hinta; set => hinta = value; }
-    }
-
     
+    
+   } 
 }

@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="Oliot\Asiakas.cs" />
     <Compile Include="Oliot\Lasku.cs" />
+    <Compile Include="Oliot\MokkiRaportti.cs" />
     <Compile Include="Oliot\Palvelu.cs" />
     <Compile Include="Oliot\Varaus.cs" />
     <Compile Include="PalveluNakyma.cs">

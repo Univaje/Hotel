@@ -49,10 +49,26 @@ namespace Hotel
             
             return ToimiAlueNappi;
         }
+        public List<mokki> Toimialueet(int number)
+        {
+            List<mokki> ToimialueenMokit = new List<mokki>();
+            ToimialueenMokit = LFDB.getMokitToiauleittain(number);
+            return ToimialueenMokit;
+        }
 
         public void LisaaToimialue(int i, string t)
         {
-
+            LFDB.SetToimialue(i,t);
         }
+        public void MuokkaaToimialue(int i, string t)
+        {
+            LFDB.UpdateToimialue(i, t);
+        }
+
+        public void PoistaToimialue(int i)
+        {
+            LFDB.RemoveToimialue(i);
+        }
+        
     }
 }
