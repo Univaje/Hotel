@@ -14,7 +14,9 @@ namespace Hotel
     {
         private List<mokki> mokit = new List<mokki>();
         private List<Toimialue> toimialueet = new List<Toimialue>();
+        private List<Asiakas> asiakkaat = new List<Asiakas>();
         private Toimialue t;
+           
         public HotelManhattan()
         {
             InitializeComponent();
@@ -25,6 +27,10 @@ namespace Hotel
 
         private void HotelManhattan_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'manhattanProject.asiakas' table. You can move, or remove it, as needed.
+            // this.asiakasTableAdapter.Fill(this.manhattanProject.asiakas);
+
+            // Toimialueet ja mökit
             mokit = LFDB.getMokit();
             toimialueet = LFDB.GetToimialue();
             int j = 0;
@@ -45,7 +51,10 @@ namespace Hotel
             cbPoistaToimi.ValueMember = "toimintaAlueNimi";
             cbPoistaToimi.Text = "Valitse...";
             tbToimialueMuokkaa.Visible = false;
-            
+
+            // Asiakashallinta
+            asiakkaat = LFDB.getAsiakas();
+            dgvAsiakas.DataSource = asiakkaat;
 
         }
             private void ToimialueValinta(object sender, EventArgs e)
