@@ -8,21 +8,21 @@ namespace Hotel
 {
     class Asiakas
     {
-        private int asiakasID;
+        private int asiakas_ID;
         private string etunimi;
         private string sukunimi;
-        private string osoite;
+        private string lahiosoite;
         private string email;
         private string puhelinNro;
         private string postinumero;
 
-        public int AsiakasID { get => asiakasID; set => asiakasID = value; }
+        public int Asiakas_ID { get => asiakas_ID; set => asiakas_ID = value; }
         public string Etunimi { get => etunimi; set => etunimi = value; }
         public string Sukunimi { get => sukunimi; set => sukunimi = value; }
-        public string Osoite { get => osoite; set => osoite = value; }
+        public string Lahiosoite { get => lahiosoite; set => lahiosoite = value; }
         public string Email { get => email; set => email = value; }
         public string PuhelinNro { get => puhelinNro; set => puhelinNro = value; }
-        public string Postinumero { get => postinumero; set => postinumero = value; }
+        public string Postinro { get => postinumero; set => postinumero = value; }
 
         public Asiakas()
         {
@@ -30,13 +30,13 @@ namespace Hotel
 
         public Asiakas(int asiakasID, string postinumero, string etunimi, string sukunimi, string osoite, string email, string puhelinNro )
         {
-            AsiakasID = asiakasID;
+            Asiakas_ID = asiakasID;
             Etunimi = etunimi;
             Sukunimi = sukunimi;
-            Osoite = osoite;
+            Lahiosoite = osoite;
             Email = email;
             PuhelinNro = puhelinNro;
-            Postinumero = postinumero;
+            Postinro = postinumero;
         }
     }
 
