@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.Oliot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,23 +15,16 @@ namespace Hotel
     {
         private List<mokki> mokit = new List<mokki>();
         private List<Toimialue> toimialueet = new List<Toimialue>();
-        private List<Asiakas> asiakkaat = new List<Asiakas>();
         private Toimialue t;
-           
+        private mokki m;
+        private MokkiRaportti mr;
         public HotelManhattan()
         {
             InitializeComponent();
-
-
-
         }
 
         private void HotelManhattan_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'manhattanProject.asiakas' table. You can move, or remove it, as needed.
-            // this.asiakasTableAdapter.Fill(this.manhattanProject.asiakas);
-
-            // Toimialueet ja mökit
             mokit = LFDB.getMokit();
             toimialueet = LFDB.GetToimialue();
             int j = 0;
@@ -51,10 +45,7 @@ namespace Hotel
             cbPoistaToimi.ValueMember = "toimintaAlueNimi";
             cbPoistaToimi.Text = "Valitse...";
             tbToimialueMuokkaa.Visible = false;
-
-            // Asiakashallinta
-            asiakkaat = LFDB.getAsiakas();
-            dgvAsiakas.DataSource = asiakkaat;
+            
 
         }
             private void ToimialueValinta(object sender, EventArgs e)
@@ -62,10 +53,12 @@ namespace Hotel
             dgvMokit.DataSource = null;
             int number = int.Parse((sender as Button).Tag.ToString());
             List<mokki> ToimialueenMokit = new List<mokki>();
-            ToimialueenMokit = LFDB.getMokitToiauleittain(number);
+            ToimialueenMokit = t.Toimialueet(number);
             dgvMokit.DataSource = ToimialueenMokit;
             tcHotelli.SelectedTab = tpMokki;
-
+            cbMRM.DataSource = ToimialueenMokit;
+            cbMRM.ValueMember = "mokkinimi";
+            
 
         }
 
@@ -83,46 +76,46 @@ namespace Hotel
             string uusiToimialue = tbLisaaToimi.Text;
             t.LisaaToimialue(index,uusiToimialue);
             tbLisaaToimi.Text = "";
+            
         }
-        /*
-***********************
-Ylijäämä ja testikoodit         
-***********************
 
-private void ToimialueValinta(object sender, EventArgs e)
+        private void btnToimialueMuokkaa_Click(object sender, EventArgs e)
+        {
+            int index = cbPoistaToimi.SelectedIndex+1;
+            string muokattuToimialue = tbToimialueMuokkaa.Text;
+            t.MuokkaaToimialue(index, muokattuToimialue);
+            tbToimialueMuokkaa.Text = "";
+            tpToimialue.Update();
+        }
 
-string s = (sender as Button).Text;
-ManhattanProject.toimintaalueDataTable ToimialueenHaku = new ManhattanProject.toimintaalueDataTable();
-ManhattanProject.mokkiDataTable MokkiHakuToimiAlueittain = new ManhattanProject.mokkiDataTable();
-toimintaalueTableAdapter.ToimiAlue(ToimialueenHaku,number);
-mokkiTableAdapter1.ToimiAlue(MokkiHakuToimiAlueittain, number);
-dgv11.DataSource = ToimialueenHaku;
-dgvMokit.DataSource = MokkiHakuToimiAlueittain;
+        private void btnToimialuePoista_Click(object sender, EventArgs e)
+        {
+            int index = cbPoistaToimi.SelectedIndex + 1;
+            t.PoistaToimialue(index);
+            tbToimialueMuokkaa.Text = "";
+            tpToimialue.Update();
+        }
 
+        private void btnMRaportti_Click(object sender, EventArgs e)
+        {
+            mr = new MokkiRaportti();
+            string nimi = cbMRM.Text;
+            DateTime alku = dtbMRalku.Value.Date;
+            DateTime loppu = dtbMRloppu.Value.Date;
+            mr.Raporting(nimi,alku,loppu);
+        }
 
-private void HotelManhattan_Load(object sender, EventArgs e)
+        private void cbMRM_SelectedValueChanged(object sender, EventArgs e)
+        {
+            btnMRaportti.Enabled = true;
+        }
 
-TODO: This line of code loads data into the 'manhattanProject.toimintaalue' table. You can move, or remove it, as needed.
-this.toimintaalueTableAdapter.Fill(this.manhattanProject.toimintaalue);
-int x = 8 , y = 3;
-ManhattanProject.toimintaalueDataTable ToimialueenHaku = new ManhattanProject.toimintaalueDataTable();
-for (int i = 1; i < manhattanProject.toimintaalue.Count+1; i++)
-{
-toimintaalueTableAdapter.ToimiAlue(ToimialueenHaku,i);
-string Toimialue = "1";// ToimialueenHaku[i].nimi.ToString();
-Button ToimiAlueNappi= new Button(); 
-ToimiAlueNappi.Location = new System.Drawing.Point(x, y);
-ToimiAlueNappi.Name = "ToimiAlue"+i;
-ToimiAlueNappi.Size = new System.Drawing.Size(206,190);
-ToimiAlueNappi.TabIndex = i;
-ToimiAlueNappi.Text = Toimialue;
-ToimiAlueNappi.UseVisualStyleBackColor = true;
-ToimiAlueNappi.Tag = i;
-tpToimialue.Controls.Add(ToimiAlueNappi);
-ToimiAlueNappi.Click += new EventHandler(ToimialueValinta);
-}
+        private void dtbMRalku_ValueChanged(object sender, EventArgs e)
+        {
+            dtbMRloppu.Visible = true;
+            dtbMRloppu.MinDate = dtbMRalku.Value;
+            dtbMRloppu.MaxDate = DateTime.Now;
 
-*/
-
+        }
     }
 }
