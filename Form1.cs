@@ -146,6 +146,16 @@ namespace Hotel
 
         }
 
+        private void btnAsiakasLisaa_Click(object sender, EventArgs e)
+        {
+            AsiakasNakyma an = new AsiakasNakyma();
+            an.ShowDialog();
+        }
 
+        private void btnAsiakasMuokkaa_Click(object sender, EventArgs e)
+        {
+            AsiakasNakyma an = new AsiakasNakyma();
+            an.ShowDialog();
+        }
     }
 }
