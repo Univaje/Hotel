@@ -16,9 +16,9 @@ namespace Hotel
         private List<mokki> mokit = new List<mokki>();
         private List<Toimialue> toimialueet = new List<Toimialue>();
         private List<Asiakas> asiakkaat = new List<Asiakas>();
+        private List<mokki> ToimialueenMokit = new List<mokki>();
         private Toimialue t;
-        private mokki m;
-        private MokkiRaportti mr;
+        private mokki m = new mokki();
 
         public HotelManhattan()
         {
@@ -49,7 +49,7 @@ namespace Hotel
 
         }
 
-
+        /* Toimialueen toiminnot*/
         public void luoNappi()
         {
             gbToimialueet.Controls.Clear();
@@ -89,7 +89,7 @@ namespace Hotel
         {
             dgvMokit.DataSource = null;
             int number = int.Parse((sender as Button).Tag.ToString());
-            List<mokki> ToimialueenMokit = new List<mokki>();
+            ToimialueenMokit = new List<mokki>();
             ToimialueenMokit = t.Toimialueet(number);
             dgvMokit.DataSource = ToimialueenMokit;
             tcHotelli.SelectedTab = tpMokki;
@@ -98,7 +98,6 @@ namespace Hotel
 
 
         }
-
         private void cbPoistaToimi_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -107,7 +106,6 @@ namespace Hotel
             tbToimialueMuokkaa.Visible = true;
             tbToimialueMuokkaa.Text = cbPoistaToimi.Text;
         }
-
         private void btnLisaaToimialue_Click(object sender, EventArgs e)
         {
             int index = toimialueet.Count() + 1;
@@ -120,7 +118,6 @@ namespace Hotel
             luoNappi();
 
         }
-
         private void btnToimialueMuokkaa_Click(object sender, EventArgs e)
         {
             int index = cbPoistaToimi.SelectedIndex + 1;
@@ -130,9 +127,12 @@ namespace Hotel
             gbToimialueet.Controls.Clear();
             toimialueet.Clear();
             toimialueet = LFDB.GetToimialue();
+            cbPoistaToimi.DataSource = null;
+            cbPoistaToimi.DataSource = toimialueet;
+            cbPoistaToimi.ValueMember = "toimintaAlueNimi";
+            cbPoistaToimi.Refresh();
             luoNappi();
         }
-
         private void btnToimialuePoista_Click(object sender, EventArgs e)
         {
             int index = cbPoistaToimi.SelectedIndex + 1;
@@ -141,11 +141,39 @@ namespace Hotel
             gbToimialueet.Controls.Clear();
             toimialueet.Clear();
             toimialueet = LFDB.GetToimialue();
-
             luoNappi();
 
         }
 
+        /* Mokkien toiminnot*/
+        private void btnMokkiLisaa_Click(object sender, EventArgs e)
+        {
+            MokkiNakyma LisaaMokki = new MokkiNakyma(ToimialueenMokit.Count);
+            LisaaMokki.Text = "Lisaa mokki";
+            LisaaMokki.Show();
+        }
+        private void btnMokkiMuokkaa_Click(object sender, EventArgs e)
+        {
+            mokki m = new mokki();
+            m = (mokki)dgvMokit.CurrentRow.DataBoundItem;
+            MokkiNakyma LisaaMokki = new MokkiNakyma(m, m.MokkiID, m.ToimintaalueID);
+
+            LisaaMokki.Text = "Muokkaa mokkia";
+            LisaaMokki.ShowDialog();
+        }
+        private void btnMokkiPoista_Click(object sender, EventArgs e)
+        {
+            mokki poista = new mokki();
+            poista = (mokki)dgvMokit.CurrentRow.DataBoundItem;
+            int mokinpoisto = poista.MokkiID;
+
+            ToimialueenMokit.Remove(poista);
+        }
+
+
+
+
+        /* Asiakkaan toiminnot*/
         private void btnAsiakasLisaa_Click(object sender, EventArgs e)
         {
             AsiakasNakyma an = new AsiakasNakyma();
@@ -157,5 +185,14 @@ namespace Hotel
             AsiakasNakyma an = new AsiakasNakyma();
             an.ShowDialog();
         }
+        /* Palvelun toiminnot*/
+
+
+        /* Laskun toiminnot*/
+
+
+        /* Varausten toiminnot*/
+
+       
     }
 }

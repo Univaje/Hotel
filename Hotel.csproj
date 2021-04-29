@@ -104,10 +104,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MokkiNakyma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MokkiNakyma.Designer.cs">
+      <DependentUpon>MokkiNakyma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Oliot\Asiakas.cs" />
     <Compile Include="Oliot\Lasku.cs" />
     <Compile Include="Oliot\MokkiRaportti.cs" />
     <Compile Include="Oliot\Palvelu.cs" />
+    <Compile Include="Oliot\Posti.cs" />
     <Compile Include="Oliot\Varaus.cs" />
     <Compile Include="PalveluNakyma.cs">
       <SubType>Form</SubType>
@@ -139,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MokkiNakyma.resx">
+      <DependentUpon>MokkiNakyma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PalveluNakyma.resx">
       <DependentUpon>PalveluNakyma.cs</DependentUpon>
