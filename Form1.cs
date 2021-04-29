@@ -18,6 +18,7 @@ namespace Hotel
         private List<Asiakas> asiakkaat = new List<Asiakas>();
         private List<mokki> ToimialueenMokit = new List<mokki>();
         private List<Varaus> Varaukset = new List<Varaus>();
+        private List<Varaustiedot> VarauksienTiedot = new List<Varaustiedot>();
         private int currToimAlue;
         private Toimialue t;
         private mokki m = new mokki();
@@ -48,6 +49,8 @@ namespace Hotel
             //Varaukset
             Varaukset = LFDB.getVaraus();
             dgvVaraus.DataSource = Varaukset;
+            cbVaraukset.DataSource = toimialueet;
+            cbVaraukset.ValueMember = "toimintaAlueNimi";
 
             // Asiakashallinta
             asiakkaat = LFDB.getAsiakas();
@@ -205,6 +208,10 @@ namespace Hotel
             LisaaVaraus.Show();
         }
 
-
+        private void cbVaraukset_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VarauksienTiedot = LFDB.getVarausAsiakkaan();
+            dgvVaraus.DataSource = VarauksienTiedot;
+        }
     }
 }

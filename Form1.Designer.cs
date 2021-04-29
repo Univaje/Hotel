@@ -98,6 +98,8 @@ namespace Hotel
             this.btnPoistaVaraus = new System.Windows.Forms.Button();
             this.btnMuokkaaVarausta = new System.Windows.Forms.Button();
             this.btnUusiVaraus = new System.Windows.Forms.Button();
+            this.cbVaraukset = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tpAsiakas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
@@ -249,14 +251,14 @@ namespace Hotel
             this.groupBox2.Controls.Add(this.btnMokkiPoista);
             this.groupBox2.Location = new System.Drawing.Point(9, 581);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1171, 104);
+            this.groupBox2.Size = new System.Drawing.Size(1171, 88);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
             // btnMokkiMuokkaa
             // 
             this.btnMokkiMuokkaa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnMokkiMuokkaa.Location = new System.Drawing.Point(463, 31);
+            this.btnMokkiMuokkaa.Location = new System.Drawing.Point(463, 15);
             this.btnMokkiMuokkaa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMokkiMuokkaa.Name = "btnMokkiMuokkaa";
             this.btnMokkiMuokkaa.Size = new System.Drawing.Size(235, 57);
@@ -268,7 +270,7 @@ namespace Hotel
             // btnMokkiLisaa
             // 
             this.btnMokkiLisaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnMokkiLisaa.Location = new System.Drawing.Point(6, 31);
+            this.btnMokkiLisaa.Location = new System.Drawing.Point(6, 15);
             this.btnMokkiLisaa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMokkiLisaa.Name = "btnMokkiLisaa";
             this.btnMokkiLisaa.Size = new System.Drawing.Size(208, 58);
@@ -280,7 +282,7 @@ namespace Hotel
             // btnMokkiPoista
             // 
             this.btnMokkiPoista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMokkiPoista.Location = new System.Drawing.Point(948, 31);
+            this.btnMokkiPoista.Location = new System.Drawing.Point(948, 15);
             this.btnMokkiPoista.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMokkiPoista.Name = "btnMokkiPoista";
             this.btnMokkiPoista.Size = new System.Drawing.Size(217, 59);
@@ -297,7 +299,7 @@ namespace Hotel
             this.gbMokkiRaportti.Controls.Add(this.dtbMRloppu);
             this.gbMokkiRaportti.Controls.Add(this.dtbMRalku);
             this.gbMokkiRaportti.Controls.Add(this.cbMRM);
-            this.gbMokkiRaportti.Location = new System.Drawing.Point(1199, 25);
+            this.gbMokkiRaportti.Location = new System.Drawing.Point(1186, 163);
             this.gbMokkiRaportti.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMokkiRaportti.Name = "gbMokkiRaportti";
             this.gbMokkiRaportti.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -462,7 +464,7 @@ namespace Hotel
             this.groupBox3.Controls.Add(this.cbPoistaToimi);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(1179, 14);
+            this.groupBox3.Location = new System.Drawing.Point(1176, 5);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -765,6 +767,8 @@ namespace Hotel
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.cbVaraukset);
             this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.dgvVaraus);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -784,7 +788,7 @@ namespace Hotel
             this.dgvVaraus.Name = "dgvVaraus";
             this.dgvVaraus.RowHeadersWidth = 51;
             this.dgvVaraus.RowTemplate.Height = 24;
-            this.dgvVaraus.Size = new System.Drawing.Size(1045, 559);
+            this.dgvVaraus.Size = new System.Drawing.Size(1390, 559);
             this.dgvVaraus.TabIndex = 0;
             // 
             // toimintaalueTableAdapter
@@ -806,13 +810,15 @@ namespace Hotel
             this.groupBox4.Controls.Add(this.btnUusiVaraus);
             this.groupBox4.Location = new System.Drawing.Point(6, 570);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1041, 104);
+            this.groupBox4.Size = new System.Drawing.Size(1389, 104);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             // 
             // btnPoistaVaraus
             // 
-            this.btnPoistaVaraus.Location = new System.Drawing.Point(826, 21);
+            this.btnPoistaVaraus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPoistaVaraus.Location = new System.Drawing.Point(1163, 21);
             this.btnPoistaVaraus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPoistaVaraus.Name = "btnPoistaVaraus";
             this.btnPoistaVaraus.Size = new System.Drawing.Size(209, 65);
@@ -822,7 +828,8 @@ namespace Hotel
             // 
             // btnMuokkaaVarausta
             // 
-            this.btnMuokkaaVarausta.Location = new System.Drawing.Point(412, 19);
+            this.btnMuokkaaVarausta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnMuokkaaVarausta.Location = new System.Drawing.Point(531, 21);
             this.btnMuokkaaVarausta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMuokkaaVarausta.Name = "btnMuokkaaVarausta";
             this.btnMuokkaaVarausta.Size = new System.Drawing.Size(209, 66);
@@ -832,6 +839,7 @@ namespace Hotel
             // 
             // btnUusiVaraus
             // 
+            this.btnUusiVaraus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUusiVaraus.Location = new System.Drawing.Point(6, 20);
             this.btnUusiVaraus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUusiVaraus.Name = "btnUusiVaraus";
@@ -839,6 +847,24 @@ namespace Hotel
             this.btnUusiVaraus.TabIndex = 1;
             this.btnUusiVaraus.Text = "Uusi varaus";
             this.btnUusiVaraus.UseVisualStyleBackColor = true;
+            // 
+            // cbVaraukset
+            // 
+            this.cbVaraukset.FormattingEnabled = true;
+            this.cbVaraukset.Location = new System.Drawing.Point(1416, 47);
+            this.cbVaraukset.Name = "cbVaraukset";
+            this.cbVaraukset.Size = new System.Drawing.Size(238, 24);
+            this.cbVaraukset.TabIndex = 6;
+            this.cbVaraukset.SelectedIndexChanged += new System.EventHandler(this.cbVaraukset_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1416, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 21);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Valitse toimialue";
             // 
             // HotelManhattan
             // 
@@ -874,6 +900,7 @@ namespace Hotel
             this.tpLaskut.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -949,6 +976,8 @@ namespace Hotel
         private System.Windows.Forms.Button btnPoistaVaraus;
         private System.Windows.Forms.Button btnMuokkaaVarausta;
         private System.Windows.Forms.Button btnUusiVaraus;
+        private System.Windows.Forms.ComboBox cbVaraukset;
+        private System.Windows.Forms.Label label1;
     }
 }
 

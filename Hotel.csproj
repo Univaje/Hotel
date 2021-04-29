@@ -116,6 +116,7 @@
     <Compile Include="Oliot\Palvelu.cs" />
     <Compile Include="Oliot\Posti.cs" />
     <Compile Include="Oliot\Varaus.cs" />
+    <Compile Include="Oliot\Varaustiedot.cs" />
     <Compile Include="PalveluNakyma.cs">
       <SubType>Form</SubType>
     </Compile>

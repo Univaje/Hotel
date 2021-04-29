@@ -19,6 +19,7 @@ namespace Hotel
         public static List<Lasku> Laskut = new List<Lasku>();
         public static List<Toimialue> toimintaalueet = new List<Toimialue>();
         public static List<Varaus> Varaukset = new List<Varaus>();
+        public static List<Varaustiedot> VarausienTiedot = new List<Varaustiedot>();
         public static List<MokkiRaportti> MokkiRaportit = new List<MokkiRaportti>();
         public static List<Posti> Postinumerot = new List<Posti>();
 
@@ -461,7 +462,7 @@ namespace Hotel
             return Laskut;
         }
         /* Varausten Tietokanta haut*/
-        public static List<Varaus> getVaraus()// Toimiva?  
+        public static List<Varaus> getVaraus()// Toimiva 
         {
 
             try
@@ -470,7 +471,7 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "SELECT * FROM  varaus ";
+                string sql = "SELECT * FROM  varaukset ";
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 while (Reader.Read())
@@ -491,6 +492,37 @@ namespace Hotel
                 connect = null;
             }
             return Varaukset;
+        }
+        public static List<Varaustiedot> getVarausAsiakkaan()// Toimiva 
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  varaustiedot WHERE asiakas_id = ";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    Varaustiedot haeVaraukset = new Varaustiedot(int.Parse(Reader[0].ToString()), Reader[1].ToString(), Reader[2].ToString(), Reader[3].ToString(),DateTime.Parse(Reader[4].ToString()), DateTime.Parse(Reader[5].ToString()), double.Parse(Reader[6].ToString()));
+                    VarausienTiedot.Add(haeVaraukset);
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return VarausienTiedot;
         }
     }
 }

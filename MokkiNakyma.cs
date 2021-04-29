@@ -16,14 +16,12 @@ namespace Hotel
         private List<Posti> Lista = new List<Posti>();
         private Posti p = new Posti();
         private mokki m = new mokki();
-        private int index =0;
         private int Mokkiid;
         private int Toimiid;
         public MokkiNakyma(int count)
         {
             InitializeComponent();
             Lista = p.HaetPostinrot();
-            index = 2;
             Mokkiid = count + 1;
         }
         internal MokkiNakyma(mokki Uusimokki, int mokkiid, int toimiid)
@@ -39,7 +37,6 @@ namespace Hotel
             tbMHinta.Text = Uusimokki.Hinta.ToString();
             Lista = p.HaetPostinrot();
 
-            index = 1;
             Mokkiid = mokkiid;
             Toimiid = toimiid;
 
