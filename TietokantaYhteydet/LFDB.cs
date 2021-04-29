@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,7 +59,7 @@ namespace Hotel
         }
         public static void SetMokki(mokki m)  //  toimiiko?
         {
-
+            //DOUBLEN KANSSA ONGELMA!
             try
             {
                 if (connect == null)
@@ -66,8 +67,8 @@ namespace Hotel
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
                 string sql = "INSERT INTO mokki(mokki_id,toimintaalue_id,postinro,mokkinimi,katuosoite,kuvaus,henkilomaara,varustelu,hinta) VALUES " +
-                    "(" + m.MokkiID + "," + m.ToimintaalueID + "," + m.Postinumero + "," + m.Mokkinimi + "," + m.Katuosoite + "," + m.Kuvaus +
-                    "," + m.Henkilomaara + "," + m.Varustelu + "," + m.Hinta + ")";
+                    "(" + m.MokkiID + "," + m.ToimintaalueID + "," + m.Postinumero + ",'" + m.Mokkinimi + "','" + m.Katuosoite + "','" + m.Kuvaus +
+                    "'," + m.Henkilomaara + ",'" + m.Varustelu + "'," + m.Hinta + ")";
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 cmd.ExecuteNonQuery();
             }
@@ -165,7 +166,7 @@ namespace Hotel
 
         }
         /* Postinumeroiden Tietokanta haut*/
-        public static List<Posti> getPostinro() // toimiiko?
+        public static List<Posti> getPostinro() // toimiiva
         {
 
             try
@@ -206,7 +207,7 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "INSERT INTO Posti(postinro,toimipaikka) VALUES (" + p.Postinro + "," + p.Toimipaikka + ")";
+                string sql = "INSERT INTO Posti(postinro,toimipaikka) VALUES ('" + p.Postinro + "','" + p.Toimipaikka + "')";
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 cmd.ExecuteNonQuery();
             }
@@ -362,8 +363,9 @@ namespace Hotel
             }
 
         }
+
         /* Palveluiden Tietokanta haut*/
-        public static List<Palvelu> getPalvelut()// Toimiiko?  
+        public static List<Palvelu> getPalvelut()// Toimiva  
         {
 
             try
@@ -459,7 +461,7 @@ namespace Hotel
             return Laskut;
         }
         /* Varausten Tietokanta haut*/
-        public static List<Varaus> getVaraus()// Toimiiko?  
+        public static List<Varaus> getVaraus()// Toimiva?  
         {
 
             try

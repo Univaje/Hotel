@@ -1,4 +1,5 @@
 ﻿using System;
+using Hotel.Oliot;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,29 @@ namespace Hotel
 {
     public partial class VarausNakyma : Form
     {
-        public VarausNakyma()
+        private List<Palvelu> Palvelut = new List<Palvelu>();
+        public VarausNakyma(int count)
         {
             InitializeComponent();
+
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void VarausNakyma_Load(object sender, EventArgs e)
         {
-
+            Palvelut = LFDB.getPalvelut();
+            ((ListBox)clbPalvelutVarauksessa).DataSource = Palvelut;
+            ((ListBox)clbPalvelutVarauksessa).DisplayMember = "nimi";
+            ((ListBox)clbPalvelutVarauksessa).ValueMember = "nimi";
         }
+
+        private void UusiAsiakasVarauksessa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (gbUuVaAs.Visible)
+                gbUuVaAs.Visible = false;
+            else
+                gbUuVaAs.Visible = true;
+        }
+
+
     }
 }

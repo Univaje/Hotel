@@ -42,6 +42,10 @@ namespace Hotel
             this.manhattanProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.manhattanProject = new Hotel.ManhattanProject();
             this.tpMokki = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnMokkiMuokkaa = new System.Windows.Forms.Button();
+            this.btnMokkiLisaa = new System.Windows.Forms.Button();
+            this.btnMokkiPoista = new System.Windows.Forms.Button();
             this.gbMokkiRaportti = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.lblMRM = new System.Windows.Forms.Label();
@@ -86,23 +90,21 @@ namespace Hotel
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvVaraus = new System.Windows.Forms.DataGridView();
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
             this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnMokkiMuokkaa = new System.Windows.Forms.Button();
-            this.btnMokkiLisaa = new System.Windows.Forms.Button();
-            this.btnMokkiPoista = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnPoistaVaraus = new System.Windows.Forms.Button();
+            this.btnMuokkaaVarausta = new System.Windows.Forms.Button();
+            this.btnUusiVaraus = new System.Windows.Forms.Button();
             this.tpAsiakas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProjectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProject)).BeginInit();
             this.tpMokki.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.gbMokkiRaportti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMokit)).BeginInit();
             this.tabControl2.SuspendLayout();
@@ -115,8 +117,8 @@ namespace Hotel
             this.tpLaskut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tpAsiakas
@@ -239,6 +241,53 @@ namespace Hotel
             this.tpMokki.TabIndex = 0;
             this.tpMokki.Text = "Mökki";
             this.tpMokki.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnMokkiMuokkaa);
+            this.groupBox2.Controls.Add(this.btnMokkiLisaa);
+            this.groupBox2.Controls.Add(this.btnMokkiPoista);
+            this.groupBox2.Location = new System.Drawing.Point(9, 581);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1171, 104);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            // 
+            // btnMokkiMuokkaa
+            // 
+            this.btnMokkiMuokkaa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnMokkiMuokkaa.Location = new System.Drawing.Point(463, 31);
+            this.btnMokkiMuokkaa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMokkiMuokkaa.Name = "btnMokkiMuokkaa";
+            this.btnMokkiMuokkaa.Size = new System.Drawing.Size(235, 57);
+            this.btnMokkiMuokkaa.TabIndex = 4;
+            this.btnMokkiMuokkaa.Text = "Muokkaa";
+            this.btnMokkiMuokkaa.UseVisualStyleBackColor = true;
+            this.btnMokkiMuokkaa.Click += new System.EventHandler(this.btnMokkiMuokkaa_Click);
+            // 
+            // btnMokkiLisaa
+            // 
+            this.btnMokkiLisaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnMokkiLisaa.Location = new System.Drawing.Point(6, 31);
+            this.btnMokkiLisaa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMokkiLisaa.Name = "btnMokkiLisaa";
+            this.btnMokkiLisaa.Size = new System.Drawing.Size(208, 58);
+            this.btnMokkiLisaa.TabIndex = 2;
+            this.btnMokkiLisaa.Text = "Lisaa";
+            this.btnMokkiLisaa.UseVisualStyleBackColor = true;
+            this.btnMokkiLisaa.Click += new System.EventHandler(this.btnMokkiLisaa_Click);
+            // 
+            // btnMokkiPoista
+            // 
+            this.btnMokkiPoista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMokkiPoista.Location = new System.Drawing.Point(948, 31);
+            this.btnMokkiPoista.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMokkiPoista.Name = "btnMokkiPoista";
+            this.btnMokkiPoista.Size = new System.Drawing.Size(217, 59);
+            this.btnMokkiPoista.TabIndex = 3;
+            this.btnMokkiPoista.Text = "Poista";
+            this.btnMokkiPoista.UseVisualStyleBackColor = true;
+            this.btnMokkiPoista.Click += new System.EventHandler(this.btnMokkiPoista_Click);
             // 
             // gbMokkiRaportti
             // 
@@ -716,10 +765,8 @@ namespace Hotel
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button13);
-            this.tabPage1.Controls.Add(this.button12);
-            this.tabPage1.Controls.Add(this.button11);
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Controls.Add(this.dgvVaraus);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
@@ -729,46 +776,16 @@ namespace Hotel
             this.tabPage1.Text = "Varaukset";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button13
+            // dgvVaraus
             // 
-            this.button13.Location = new System.Drawing.Point(836, 591);
-            this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(203, 65);
-            this.button13.TabIndex = 3;
-            this.button13.Text = "Poista Varaus";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(367, 601);
-            this.button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(209, 57);
-            this.button12.TabIndex = 2;
-            this.button12.Text = "Muokkaa Varausta";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(11, 587);
-            this.button11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(185, 66);
-            this.button11.TabIndex = 1;
-            this.button11.Text = "Uusi varaus";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 6);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1045, 559);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvVaraus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVaraus.Location = new System.Drawing.Point(5, 6);
+            this.dgvVaraus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvVaraus.Name = "dgvVaraus";
+            this.dgvVaraus.RowHeadersWidth = 51;
+            this.dgvVaraus.RowTemplate.Height = 24;
+            this.dgvVaraus.Size = new System.Drawing.Size(1045, 559);
+            this.dgvVaraus.TabIndex = 0;
             // 
             // toimintaalueTableAdapter
             // 
@@ -782,52 +799,46 @@ namespace Hotel
             // 
             this.asiakasTableAdapter.ClearBeforeFill = true;
             // 
-            // groupBox2
+            // groupBox4
             // 
-            this.groupBox2.Controls.Add(this.btnMokkiMuokkaa);
-            this.groupBox2.Controls.Add(this.btnMokkiLisaa);
-            this.groupBox2.Controls.Add(this.btnMokkiPoista);
-            this.groupBox2.Location = new System.Drawing.Point(9, 581);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1171, 104);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
+            this.groupBox4.Controls.Add(this.btnPoistaVaraus);
+            this.groupBox4.Controls.Add(this.btnMuokkaaVarausta);
+            this.groupBox4.Controls.Add(this.btnUusiVaraus);
+            this.groupBox4.Location = new System.Drawing.Point(6, 570);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1041, 104);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
             // 
-            // btnMokkiMuokkaa
+            // btnPoistaVaraus
             // 
-            this.btnMokkiMuokkaa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnMokkiMuokkaa.Location = new System.Drawing.Point(463, 31);
-            this.btnMokkiMuokkaa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMokkiMuokkaa.Name = "btnMokkiMuokkaa";
-            this.btnMokkiMuokkaa.Size = new System.Drawing.Size(235, 57);
-            this.btnMokkiMuokkaa.TabIndex = 4;
-            this.btnMokkiMuokkaa.Text = "Muokkaa";
-            this.btnMokkiMuokkaa.UseVisualStyleBackColor = true;
-            this.btnMokkiMuokkaa.Click += new System.EventHandler(this.btnMokkiMuokkaa_Click);
+            this.btnPoistaVaraus.Location = new System.Drawing.Point(826, 21);
+            this.btnPoistaVaraus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPoistaVaraus.Name = "btnPoistaVaraus";
+            this.btnPoistaVaraus.Size = new System.Drawing.Size(209, 65);
+            this.btnPoistaVaraus.TabIndex = 3;
+            this.btnPoistaVaraus.Text = "Poista Varaus";
+            this.btnPoistaVaraus.UseVisualStyleBackColor = true;
             // 
-            // btnMokkiLisaa
+            // btnMuokkaaVarausta
             // 
-            this.btnMokkiLisaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnMokkiLisaa.Location = new System.Drawing.Point(6, 31);
-            this.btnMokkiLisaa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMokkiLisaa.Name = "btnMokkiLisaa";
-            this.btnMokkiLisaa.Size = new System.Drawing.Size(208, 58);
-            this.btnMokkiLisaa.TabIndex = 2;
-            this.btnMokkiLisaa.Text = "Lisaa";
-            this.btnMokkiLisaa.UseVisualStyleBackColor = true;
-            this.btnMokkiLisaa.Click += new System.EventHandler(this.btnMokkiLisaa_Click);
+            this.btnMuokkaaVarausta.Location = new System.Drawing.Point(412, 19);
+            this.btnMuokkaaVarausta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMuokkaaVarausta.Name = "btnMuokkaaVarausta";
+            this.btnMuokkaaVarausta.Size = new System.Drawing.Size(209, 66);
+            this.btnMuokkaaVarausta.TabIndex = 2;
+            this.btnMuokkaaVarausta.Text = "Muokkaa Varausta";
+            this.btnMuokkaaVarausta.UseVisualStyleBackColor = true;
             // 
-            // btnMokkiPoista
+            // btnUusiVaraus
             // 
-            this.btnMokkiPoista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMokkiPoista.Location = new System.Drawing.Point(948, 31);
-            this.btnMokkiPoista.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMokkiPoista.Name = "btnMokkiPoista";
-            this.btnMokkiPoista.Size = new System.Drawing.Size(217, 59);
-            this.btnMokkiPoista.TabIndex = 3;
-            this.btnMokkiPoista.Text = "Poista";
-            this.btnMokkiPoista.UseVisualStyleBackColor = true;
-            this.btnMokkiPoista.Click += new System.EventHandler(this.btnMokkiPoista_Click);
+            this.btnUusiVaraus.Location = new System.Drawing.Point(6, 20);
+            this.btnUusiVaraus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUusiVaraus.Name = "btnUusiVaraus";
+            this.btnUusiVaraus.Size = new System.Drawing.Size(209, 66);
+            this.btnUusiVaraus.TabIndex = 1;
+            this.btnUusiVaraus.Text = "Uusi varaus";
+            this.btnUusiVaraus.UseVisualStyleBackColor = true;
             // 
             // HotelManhattan
             // 
@@ -846,6 +857,7 @@ namespace Hotel
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProjectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProject)).EndInit();
             this.tpMokki.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.gbMokkiRaportti.ResumeLayout(false);
             this.gbMokkiRaportti.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMokit)).EndInit();
@@ -862,8 +874,8 @@ namespace Hotel
             this.tpLaskut.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -886,7 +898,7 @@ namespace Hotel
         private System.Windows.Forms.BindingSource manhattanProjectBindingSource;
         private ManhattanProject manhattanProject;
         private ManhattanProjectTableAdapters.toimintaalueTableAdapter toimintaalueTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvVaraus;
         private System.Windows.Forms.Button btnAsiakasLisaa;
         private System.Windows.Forms.Button btnAsiakasMuokkaa;
         private System.Windows.Forms.Button btnAsiakasPoista;
@@ -909,9 +921,6 @@ namespace Hotel
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
         private ManhattanProjectTableAdapters.mokkiTableAdapter mokkiTableAdapter1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label5;
@@ -936,6 +945,10 @@ namespace Hotel
         private System.Windows.Forms.Button btnMokkiMuokkaa;
         private System.Windows.Forms.Button btnMokkiLisaa;
         private System.Windows.Forms.Button btnMokkiPoista;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnPoistaVaraus;
+        private System.Windows.Forms.Button btnMuokkaaVarausta;
+        private System.Windows.Forms.Button btnUusiVaraus;
     }
 }
 

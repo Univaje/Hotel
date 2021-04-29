@@ -17,6 +17,8 @@ namespace Hotel
         private List<Toimialue> toimialueet = new List<Toimialue>();
         private List<Asiakas> asiakkaat = new List<Asiakas>();
         private List<mokki> ToimialueenMokit = new List<mokki>();
+        private List<Varaus> Varaukset = new List<Varaus>();
+        private int currToimAlue;
         private Toimialue t;
         private mokki m = new mokki();
 
@@ -42,6 +44,10 @@ namespace Hotel
             cbPoistaToimi.ValueMember = "toimintaAlueNimi";
             cbPoistaToimi.Text = "Valitse...";
             tbToimialueMuokkaa.Visible = false;
+
+            //Varaukset
+            Varaukset = LFDB.getVaraus();
+            dgvVaraus.DataSource = Varaukset;
 
             // Asiakashallinta
             asiakkaat = LFDB.getAsiakas();
@@ -88,9 +94,9 @@ namespace Hotel
         private void ToimialueValinta(object sender, EventArgs e)
         {
             dgvMokit.DataSource = null;
-            int number = int.Parse((sender as Button).Tag.ToString());
+            currToimAlue = int.Parse((sender as Button).Tag.ToString());
             ToimialueenMokit = new List<mokki>();
-            ToimialueenMokit = t.Toimialueet(number);
+            ToimialueenMokit = t.Toimialueet(currToimAlue);
             dgvMokit.DataSource = ToimialueenMokit;
             tcHotelli.SelectedTab = tpMokki;
             cbMRM.DataSource = ToimialueenMokit;
@@ -192,7 +198,13 @@ namespace Hotel
 
 
         /* Varausten toiminnot*/
+        private void btnUusiVaraus_Click(object sender, EventArgs e)
+        {
+            VarausNakyma LisaaVaraus = new VarausNakyma(Varaukset.Count);
+            LisaaVaraus.Text = "Lisaa Varaus";
+            LisaaVaraus.Show();
+        }
 
-       
+
     }
 }
