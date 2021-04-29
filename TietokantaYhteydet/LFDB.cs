@@ -19,10 +19,13 @@ namespace Hotel
         public static List<Toimialue> toimintaalueet = new List<Toimialue>();
         public static List<Varaus> Varaukset = new List<Varaus>();
         public static List<MokkiRaportti> MokkiRaportit = new List<MokkiRaportti>();
+        public static List<Posti> Postinumerot = new List<Posti>();
 
         static string myConnectionString = "server=127.0.0.1;uid=root;" +
                 "pwd=Ruutti;database=vn;port=3307";
-        public static List<mokki> getMokit()
+
+        /* Mokkien Tietokanta haut*/
+        public static List<mokki> getMokit() // toimiva
         {
 
             try
@@ -53,7 +56,173 @@ namespace Hotel
             }
             return mokit;
         }
-        public static List<MokkiRaportti> getMokkiRaportti(string s, DateTime a, DateTime l)
+        public static void SetMokki(mokki m)  //  toimiiko?
+        {
+            
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "INSERT INTO mokki(mokki_id,toimintaalue_id,postinro,mokkinimi,katuosoite,kuvaus,henkilomaara,varustelu,hinta) VALUES " +
+                    "("+m.MokkiID+","+m.ToimintaalueID+","+m.Postinumero+","+m.Mokkinimi+","+m.Katuosoite+","+m.Kuvaus+
+                    ","+m.Henkilomaara+","+m.Varustelu+","+m.Hinta+")";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+        public static List<mokki> getMokitToiauleittain(int i)  // toimiva
+        {
+            mokit = new List<mokki>();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  mokki WHERE toimintaalue_id = " + i;
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    mokki haeMokit = new mokki(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), Reader[2].ToString(), Reader[3].ToString(), Reader[4].ToString(), Reader[5].ToString(), int.Parse(Reader[6].ToString()), Reader[7].ToString(), double.Parse(Reader[8].ToString()));
+                    mokit.Add(haeMokit);
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return mokit;
+        }
+        public static List<mokki> deleteMokki(int i)  // toimiiko?
+        {
+            mokit = new List<mokki>();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "DELETE FROM  mokki WHERE mokki_id = " + i;
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return mokit;
+        }
+        public static void UpdateMokki(int i, string s)  // Toimiva
+        {
+            
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "UPDATE toimintaalue SET nimi='" + s + "' WHERE toimintaalue_id=" + i;
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+        /* Postinumeroiden Tietokanta haut*/
+        public static List<Posti> getPostinro() // toimiiko?
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  posti ";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    Posti haeNumerot = new Posti(Reader[0].ToString(), Reader[1].ToString());
+                    Postinumerot.Add(haeNumerot);
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+            return Postinumerot;
+        }
+        public static void setPostinro(Posti p) // toimiiko?
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "INSERT INTO Posti(postinro,toimipaikka) VALUES ("+ p.Postinro + "," +p.Toimipaikka + ")";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+        }
+
+        /* Mokkiraporttien Tietokanta haut*/
+        public static List<MokkiRaportti> getMokkiRaportti(string s, DateTime a, DateTime l) // Ei toimi
         {
             ///////////// ONGELMA PÄIVÄN KANSSA!
             try
@@ -84,7 +253,9 @@ namespace Hotel
             }
             return MokkiRaportit;
         }
-        public static List<Toimialue> GetToimialue()
+
+        /* Toimialueiden Tietokanta haut*/
+        public static List<Toimialue> GetToimialue() // TOimiva
         {
 
             try
@@ -115,9 +286,9 @@ namespace Hotel
             }
             return toimintaalueet;
         }
-        public static void SetToimialue(int i, string s)
+        public static void SetToimialue(int i, string s)//Toimiva 
         {
-            int affect = 0;
+           
             try
             {
                 if (connect == null)
@@ -129,7 +300,7 @@ namespace Hotel
 
                 cmd.Parameters.Add(i.ToString(), MySqlDbType.Int64).Value = i;
                 cmd.Parameters.Add(s, MySqlDbType.VarChar).Value = s;
-                affect = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
             {
@@ -142,9 +313,8 @@ namespace Hotel
             }
 
         }
-        public static void RemoveToimialue(int i)
+        public static void RemoveToimialue(int i)//Toimiva 
         {
-            int affect = 0;
             try
             {
                 if (connect == null)
@@ -153,7 +323,7 @@ namespace Hotel
                 connect.Open();
                 string sql = "DELETE FROM toimintaalue WHERE toimintaalue_id=" + i;
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
-                affect = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
             {
@@ -166,9 +336,9 @@ namespace Hotel
             }
 
         }
-        public static void UpdateToimialue(int i, string s)
+        public static void UpdateToimialue(int i, string s) // Toimiva 
         {
-            int affect = 0;
+           
             try
             {
                 if (connect == null)
@@ -178,7 +348,7 @@ namespace Hotel
                 string sql = "UPDATE toimintaalue SET nimi='" + s + "' WHERE toimintaalue_id=" + i;
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
 
-                affect = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
             }
             catch (MySqlException ex)
@@ -192,7 +362,8 @@ namespace Hotel
             }
 
         }
-        public static List<Palvelu> getPalvelut()
+        /* Palveluiden Tietokanta haut*/
+        public static List<Palvelu> getPalvelut()// Toimiiko?  
         {
 
             try
@@ -223,7 +394,8 @@ namespace Hotel
             }
             return palvelut;
         }
-        public static List<Asiakas> getAsiakas()
+        /* Asiakkaiden Tietokanta haut*/
+        public static List<Asiakas> getAsiakas()// Toimiiko?  
         {
 
             try
@@ -254,7 +426,8 @@ namespace Hotel
             }
             return asiakkaat;
         }
-        public static List<Lasku> getLasku()
+        /* Laskujen Tietokanta haut*/
+        public static List<Lasku> getLasku()// Toimiiko?  
         {
 
             try
@@ -285,7 +458,8 @@ namespace Hotel
             }
             return Laskut;
         }
-        public static List<Varaus> getVaraus()
+        /* Varausten Tietokanta haut*/
+        public static List<Varaus> getVaraus()// Toimiiko?  
         {
 
             try
@@ -315,67 +489,6 @@ namespace Hotel
                 connect = null;
             }
             return Varaukset;
-        }
-        public static List<mokki> getMokitToiauleittain(int i)
-        {
-            mokit = new List<mokki>();
-            try
-            {
-                if (connect == null)
-                    connect = new MySqlConnection();
-                connect.ConnectionString = myConnectionString;
-                connect.Open();
-                string sql = "SELECT * FROM  mokki WHERE toimintaalue_id = " +i;
-                MySqlCommand cmd = new MySqlCommand(sql, connect);
-                MySqlDataReader Reader = cmd.ExecuteReader();
-                while (Reader.Read())
-                {
-                    mokki haeMokit = new mokki(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), Reader[2].ToString(), Reader[3].ToString(), Reader[4].ToString(), Reader[5].ToString(), int.Parse(Reader[6].ToString()), Reader[7].ToString(), double.Parse(Reader[8].ToString()));
-                    mokit.Add(haeMokit);
-                }
-                Reader.Close();
-
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connect.Close();
-                connect = null;
-            }
-            return mokit;
-        }
-        public static List<mokki> deleteMokki(int i)
-        {
-            mokit = new List<mokki>();
-            try
-            {
-                if (connect == null)
-                    connect = new MySqlConnection();
-                connect.ConnectionString = myConnectionString;
-                connect.Open();
-                string sql = "SELECT * FROM  mokki WHERE toimintaalue_id = " + i;
-                MySqlCommand cmd = new MySqlCommand(sql, connect);
-                MySqlDataReader Reader = cmd.ExecuteReader();
-                
-                while (Reader.Read())
-                {
-                }
-                Reader.Close();
-
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connect.Close();
-                connect = null;
-            }
-            return mokit;
-        }
+        }     
     }
 }

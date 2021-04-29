@@ -7,46 +7,55 @@ using System.Windows.Forms;
 
 namespace Hotel
 {
-    class mokki
+    internal class mokki
     {
         private int mokkiID;
-        private int ToimintaalueID;
+        private int toimintaalueID;
         private string postinumero;
         private string mokkinimi;
-        private string Katuosoite;
-        private string Kuvaus;
+        private string katuosoite;
+        private string kuvaus;
         private int henkilomaara;
-        private string Varustelu;
+        private string varustelu;
         private double hinta;
 
         public mokki()
         {
         }
 
-        public mokki(int mokkiID, int toimintaalueID, string postinumero, string mokkinimi, string katuosoite, 
-            string kuvaus, int henkilomaara, string varustelu, double hinta)
+        public mokki(int mokkiID, int toimintaalueID, string postinumero, string mokkinimi, string katuosoite, string kuvaus, int henkilomaara, string varustelu, double hinta)
         {
-            this.mokkiID = mokkiID;
+            MokkiID = mokkiID;
             ToimintaalueID = toimintaalueID;
-            this.postinumero = postinumero;
-            this.mokkinimi = mokkinimi;
+            Postinumero = postinumero;
+            Mokkinimi = mokkinimi;
             Katuosoite = katuosoite;
             Kuvaus = kuvaus;
-            this.henkilomaara = henkilomaara;
+            Henkilomaara = henkilomaara;
             Varustelu = varustelu;
-            Hinta = hinta; 
+            Hinta = hinta;
         }
 
         public int MokkiID { get => mokkiID; set => mokkiID = value; }
-        public int ToimintaalueID1 { get => ToimintaalueID; set => ToimintaalueID = value; }
+        public int ToimintaalueID { get => toimintaalueID; set => toimintaalueID = value; }
         public string Postinumero { get => postinumero; set => postinumero = value; }
         public string Mokkinimi { get => mokkinimi; set => mokkinimi = value; }
-        public string Katuosoite1 { get => Katuosoite; set => Katuosoite = value; }
-        public string Kuvaus1 { get => Kuvaus; set => Kuvaus = value; }
+        public string Katuosoite { get => katuosoite; set => katuosoite = value; }
+        public string Kuvaus { get => kuvaus; set => kuvaus = value; }
         public int Henkilomaara { get => henkilomaara; set => henkilomaara = value; }
-        public string Varustelu1 { get => Varustelu; set => Varustelu = value; }
+        public string Varustelu { get => varustelu; set => varustelu = value; }
         public double Hinta { get => hinta; set => hinta = value; }
-    }
 
-    
+        public void poistaMokki(int i)
+    {
+            LFDB.deleteMokki(i);
+    }
+        public void lisaaMokki(mokki m)
+        {
+            LFDB.SetMokki(m);
+        }
+
+
+
+    }
 }

@@ -84,3 +84,4 @@ C:\Users\artoi\Source\Repos\Hotel\obj\Debug\Hotel.csproj.CoreCompileInputs.cache
 C:\Users\artoi\Source\Repos\Hotel\obj\Debug\Hotel.csproj.CopyComplete
 C:\Users\artoi\Source\Repos\Hotel\obj\Debug\Hotel.exe
 C:\Users\artoi\Source\Repos\Hotel\obj\Debug\Hotel.pdb
+C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\obj\Debug\Hotel.MokkiNakyma.resources

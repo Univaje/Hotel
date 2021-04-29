@@ -49,15 +49,24 @@ namespace Hotel
             this.manhattanProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.manhattanProject = new Hotel.ManhattanProject();
             this.tpMokki = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnMokkiMuokkaa = new System.Windows.Forms.Button();
-            this.btnMokkiPoista = new System.Windows.Forms.Button();
             this.btnMokkiLisaa = new System.Windows.Forms.Button();
+            this.btnMokkiPoista = new System.Windows.Forms.Button();
+            this.gbMokkiRaportti = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblMRM = new System.Windows.Forms.Label();
+            this.btnMRaportti = new System.Windows.Forms.Button();
+            this.dtbMRloppu = new System.Windows.Forms.DateTimePicker();
+            this.dtbMRalku = new System.Windows.Forms.DateTimePicker();
+            this.cbMRM = new System.Windows.Forms.ComboBox();
             this.dgvMokit = new System.Windows.Forms.DataGridView();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tcHotelli = new System.Windows.Forms.TabControl();
             this.tpToimialue = new System.Windows.Forms.TabPage();
+            this.gbToimialueet = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnToimialueMuokkaa = new System.Windows.Forms.Button();
             this.btnLisaaToimialue = new System.Windows.Forms.Button();
@@ -78,7 +87,7 @@ namespace Hotel
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgPalvelut = new System.Windows.Forms.DataGridView();
             this.tpLaskut = new System.Windows.Forms.TabPage();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -95,20 +104,14 @@ namespace Hotel
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
             this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
-            this.gbToimialueet = new System.Windows.Forms.GroupBox();
-            this.gbMokkiRaportti = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblMRM = new System.Windows.Forms.Label();
-            this.btnMRaportti = new System.Windows.Forms.Button();
-            this.dtbMRloppu = new System.Windows.Forms.DateTimePicker();
-            this.dtbMRalku = new System.Windows.Forms.DateTimePicker();
-            this.cbMRM = new System.Windows.Forms.ComboBox();
             this.tpAsiakas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProjectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProject)).BeginInit();
             this.tpMokki.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.gbMokkiRaportti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMokit)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tcHotelli.SuspendLayout();
@@ -116,12 +119,11 @@ namespace Hotel
             this.groupBox3.SuspendLayout();
             this.tpPalvelut.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPalvelut)).BeginInit();
             this.tpLaskut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.gbMokkiRaportti.SuspendLayout();
             this.SuspendLayout();
             // 
             // tpAsiakas
@@ -295,10 +297,8 @@ namespace Hotel
             // tpMokki
             // 
             this.tpMokki.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tpMokki.Controls.Add(this.groupBox2);
             this.tpMokki.Controls.Add(this.gbMokkiRaportti);
-            this.tpMokki.Controls.Add(this.btnMokkiMuokkaa);
-            this.tpMokki.Controls.Add(this.btnMokkiPoista);
-            this.tpMokki.Controls.Add(this.btnMokkiLisaa);
             this.tpMokki.Controls.Add(this.dgvMokit);
             this.tpMokki.Controls.Add(this.tabControl2);
             this.tpMokki.Location = new System.Drawing.Point(4, 25);
@@ -310,38 +310,120 @@ namespace Hotel
             this.tpMokki.Text = "Mökki";
             this.tpMokki.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnMokkiMuokkaa);
+            this.groupBox2.Controls.Add(this.btnMokkiLisaa);
+            this.groupBox2.Controls.Add(this.btnMokkiPoista);
+            this.groupBox2.Location = new System.Drawing.Point(7, 761);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1171, 104);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            // 
             // btnMokkiMuokkaa
             // 
             this.btnMokkiMuokkaa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnMokkiMuokkaa.Location = new System.Drawing.Point(644, 580);
+            this.btnMokkiMuokkaa.Location = new System.Drawing.Point(463, 31);
             this.btnMokkiMuokkaa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMokkiMuokkaa.Name = "btnMokkiMuokkaa";
             this.btnMokkiMuokkaa.Size = new System.Drawing.Size(235, 57);
             this.btnMokkiMuokkaa.TabIndex = 4;
             this.btnMokkiMuokkaa.Text = "Muokkaa";
             this.btnMokkiMuokkaa.UseVisualStyleBackColor = true;
-            // 
-            // btnMokkiPoista
-            // 
-            this.btnMokkiPoista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMokkiPoista.Location = new System.Drawing.Point(1275, 582);
-            this.btnMokkiPoista.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMokkiPoista.Name = "btnMokkiPoista";
-            this.btnMokkiPoista.Size = new System.Drawing.Size(217, 59);
-            this.btnMokkiPoista.TabIndex = 3;
-            this.btnMokkiPoista.Text = "Poista";
-            this.btnMokkiPoista.UseVisualStyleBackColor = true;
+            this.btnMokkiMuokkaa.Click += new System.EventHandler(this.btnMokkiMuokkaa_Click);
             // 
             // btnMokkiLisaa
             // 
             this.btnMokkiLisaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnMokkiLisaa.Location = new System.Drawing.Point(3, 580);
+            this.btnMokkiLisaa.Location = new System.Drawing.Point(6, 31);
             this.btnMokkiLisaa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMokkiLisaa.Name = "btnMokkiLisaa";
             this.btnMokkiLisaa.Size = new System.Drawing.Size(208, 58);
             this.btnMokkiLisaa.TabIndex = 2;
             this.btnMokkiLisaa.Text = "Lisaa";
             this.btnMokkiLisaa.UseVisualStyleBackColor = true;
+            this.btnMokkiLisaa.Click += new System.EventHandler(this.btnMokkiLisaa_Click);
+            // 
+            // btnMokkiPoista
+            // 
+            this.btnMokkiPoista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMokkiPoista.Location = new System.Drawing.Point(948, 31);
+            this.btnMokkiPoista.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMokkiPoista.Name = "btnMokkiPoista";
+            this.btnMokkiPoista.Size = new System.Drawing.Size(217, 59);
+            this.btnMokkiPoista.TabIndex = 3;
+            this.btnMokkiPoista.Text = "Poista";
+            this.btnMokkiPoista.UseVisualStyleBackColor = true;
+            this.btnMokkiPoista.Click += new System.EventHandler(this.btnMokkiPoista_Click);
+            // 
+            // gbMokkiRaportti
+            // 
+            this.gbMokkiRaportti.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbMokkiRaportti.Controls.Add(this.label9);
+            this.gbMokkiRaportti.Controls.Add(this.lblMRM);
+            this.gbMokkiRaportti.Controls.Add(this.btnMRaportti);
+            this.gbMokkiRaportti.Controls.Add(this.dtbMRloppu);
+            this.gbMokkiRaportti.Controls.Add(this.dtbMRalku);
+            this.gbMokkiRaportti.Controls.Add(this.cbMRM);
+            this.gbMokkiRaportti.Location = new System.Drawing.Point(1208, 242);
+            this.gbMokkiRaportti.Name = "gbMokkiRaportti";
+            this.gbMokkiRaportti.Size = new System.Drawing.Size(438, 319);
+            this.gbMokkiRaportti.TabIndex = 6;
+            this.gbMokkiRaportti.TabStop = false;
+            this.gbMokkiRaportti.Text = "Raportti";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(5, 101);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 17);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Aikaväli";
+            this.label9.Visible = false;
+            // 
+            // lblMRM
+            // 
+            this.lblMRM.AutoSize = true;
+            this.lblMRM.Location = new System.Drawing.Point(6, 35);
+            this.lblMRM.Name = "lblMRM";
+            this.lblMRM.Size = new System.Drawing.Size(44, 17);
+            this.lblMRM.TabIndex = 3;
+            this.lblMRM.Text = "Mökki";
+            // 
+            // btnMRaportti
+            // 
+            this.btnMRaportti.Enabled = false;
+            this.btnMRaportti.Location = new System.Drawing.Point(9, 225);
+            this.btnMRaportti.Name = "btnMRaportti";
+            this.btnMRaportti.Size = new System.Drawing.Size(400, 55);
+            this.btnMRaportti.TabIndex = 2;
+            this.btnMRaportti.Text = "Tulosta Raportti";
+            this.btnMRaportti.UseVisualStyleBackColor = true;
+            // 
+            // dtbMRloppu
+            // 
+            this.dtbMRloppu.Location = new System.Drawing.Point(8, 173);
+            this.dtbMRloppu.Name = "dtbMRloppu";
+            this.dtbMRloppu.Size = new System.Drawing.Size(399, 22);
+            this.dtbMRloppu.TabIndex = 1;
+            this.dtbMRloppu.Visible = false;
+            // 
+            // dtbMRalku
+            // 
+            this.dtbMRalku.Location = new System.Drawing.Point(9, 130);
+            this.dtbMRalku.Name = "dtbMRalku";
+            this.dtbMRalku.Size = new System.Drawing.Size(399, 22);
+            this.dtbMRalku.TabIndex = 1;
+            // 
+            // cbMRM
+            // 
+            this.cbMRM.FormattingEnabled = true;
+            this.cbMRM.Location = new System.Drawing.Point(6, 65);
+            this.cbMRM.Name = "cbMRM";
+            this.cbMRM.Size = new System.Drawing.Size(401, 24);
+            this.cbMRM.TabIndex = 0;
             // 
             // dgvMokit
             // 
@@ -357,7 +439,7 @@ namespace Hotel
             this.dgvMokit.ReadOnly = true;
             this.dgvMokit.RowHeadersWidth = 51;
             this.dgvMokit.RowTemplate.Height = 24;
-            this.dgvMokit.Size = new System.Drawing.Size(1170, 580);
+            this.dgvMokit.Size = new System.Drawing.Size(1170, 757);
             this.dgvMokit.TabIndex = 1;
             // 
             // tabControl2
@@ -423,6 +505,14 @@ namespace Hotel
             this.tpToimialue.Text = "Toimialue";
             this.tpToimialue.UseVisualStyleBackColor = true;
             // 
+            // gbToimialueet
+            // 
+            this.gbToimialueet.Location = new System.Drawing.Point(2, 5);
+            this.gbToimialueet.Name = "gbToimialueet";
+            this.gbToimialueet.Size = new System.Drawing.Size(1167, 988);
+            this.gbToimialueet.TabIndex = 1;
+            this.gbToimialueet.TabStop = false;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnToimialueMuokkaa);
@@ -433,7 +523,7 @@ namespace Hotel
             this.groupBox3.Controls.Add(this.cbPoistaToimi);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(1179, 14);
+            this.groupBox3.Location = new System.Drawing.Point(1183, 5);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -528,7 +618,7 @@ namespace Hotel
             this.tpPalvelut.Controls.Add(this.button7);
             this.tpPalvelut.Controls.Add(this.button6);
             this.tpPalvelut.Controls.Add(this.button5);
-            this.tpPalvelut.Controls.Add(this.dataGridView2);
+            this.tpPalvelut.Controls.Add(this.dgPalvelut);
             this.tpPalvelut.Location = new System.Drawing.Point(4, 25);
             this.tpPalvelut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpPalvelut.Name = "tpPalvelut";
@@ -548,6 +638,7 @@ namespace Hotel
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.dateTimePicker2);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
@@ -582,10 +673,10 @@ namespace Hotel
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(16, 146);
+            this.dateTimePicker1.Location = new System.Drawing.Point(13, 146);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(277, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(275, 22);
             this.dateTimePicker1.TabIndex = 2;
             // 
             // label2
@@ -635,20 +726,21 @@ namespace Hotel
             this.button5.TabIndex = 1;
             this.button5.Text = "Lisää";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // dataGridView2
+            // dgPalvelut
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgPalvelut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1185, 567);
-            this.dataGridView2.TabIndex = 0;
+            this.dgPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPalvelut.Location = new System.Drawing.Point(0, 0);
+            this.dgPalvelut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgPalvelut.Name = "dgPalvelut";
+            this.dgPalvelut.RowHeadersWidth = 51;
+            this.dgPalvelut.RowTemplate.Height = 24;
+            this.dgPalvelut.Size = new System.Drawing.Size(1185, 567);
+            this.dgPalvelut.TabIndex = 0;
             // 
             // tpLaskut
             // 
@@ -802,81 +894,6 @@ namespace Hotel
             // 
             this.asiakasTableAdapter.ClearBeforeFill = true;
             // 
-            // gbToimialueet
-            // 
-            this.gbToimialueet.Location = new System.Drawing.Point(2, 5);
-            this.gbToimialueet.Name = "gbToimialueet";
-            this.gbToimialueet.Size = new System.Drawing.Size(1167, 988);
-            this.gbToimialueet.TabIndex = 1;
-            this.gbToimialueet.TabStop = false;
-            // 
-            // gbMokkiRaportti
-            // 
-            this.gbMokkiRaportti.Controls.Add(this.label9);
-            this.gbMokkiRaportti.Controls.Add(this.lblMRM);
-            this.gbMokkiRaportti.Controls.Add(this.btnMRaportti);
-            this.gbMokkiRaportti.Controls.Add(this.dtbMRloppu);
-            this.gbMokkiRaportti.Controls.Add(this.dtbMRalku);
-            this.gbMokkiRaportti.Controls.Add(this.cbMRM);
-            this.gbMokkiRaportti.Location = new System.Drawing.Point(1199, 25);
-            this.gbMokkiRaportti.Name = "gbMokkiRaportti";
-            this.gbMokkiRaportti.Size = new System.Drawing.Size(438, 319);
-            this.gbMokkiRaportti.TabIndex = 6;
-            this.gbMokkiRaportti.TabStop = false;
-            this.gbMokkiRaportti.Text = "Raportti";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 101);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 17);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Aikaväli";
-            this.label9.Visible = false;
-            // 
-            // lblMRM
-            // 
-            this.lblMRM.AutoSize = true;
-            this.lblMRM.Location = new System.Drawing.Point(6, 35);
-            this.lblMRM.Name = "lblMRM";
-            this.lblMRM.Size = new System.Drawing.Size(44, 17);
-            this.lblMRM.TabIndex = 3;
-            this.lblMRM.Text = "Mökki";
-            // 
-            // btnMRaportti
-            // 
-            this.btnMRaportti.Enabled = false;
-            this.btnMRaportti.Location = new System.Drawing.Point(9, 225);
-            this.btnMRaportti.Name = "btnMRaportti";
-            this.btnMRaportti.Size = new System.Drawing.Size(400, 55);
-            this.btnMRaportti.TabIndex = 2;
-            this.btnMRaportti.Text = "Tulosta Raportti";
-            this.btnMRaportti.UseVisualStyleBackColor = true;
-            // 
-            // dtbMRloppu
-            // 
-            this.dtbMRloppu.Location = new System.Drawing.Point(8, 173);
-            this.dtbMRloppu.Name = "dtbMRloppu";
-            this.dtbMRloppu.Size = new System.Drawing.Size(399, 22);
-            this.dtbMRloppu.TabIndex = 1;
-            this.dtbMRloppu.Visible = false;
-            // 
-            // dtbMRalku
-            // 
-            this.dtbMRalku.Location = new System.Drawing.Point(9, 130);
-            this.dtbMRalku.Name = "dtbMRalku";
-            this.dtbMRalku.Size = new System.Drawing.Size(399, 22);
-            this.dtbMRalku.TabIndex = 1;
-            // 
-            // cbMRM
-            // 
-            this.cbMRM.FormattingEnabled = true;
-            this.cbMRM.Location = new System.Drawing.Point(6, 65);
-            this.cbMRM.Name = "cbMRM";
-            this.cbMRM.Size = new System.Drawing.Size(401, 24);
-            this.cbMRM.TabIndex = 0;
-            // 
             // HotelManhattan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -894,6 +911,9 @@ namespace Hotel
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProjectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProject)).EndInit();
             this.tpMokki.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.gbMokkiRaportti.ResumeLayout(false);
+            this.gbMokkiRaportti.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMokit)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tcHotelli.ResumeLayout(false);
@@ -903,14 +923,12 @@ namespace Hotel
             this.tpPalvelut.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPalvelut)).EndInit();
             this.tpLaskut.ResumeLayout(false);
             this.tpLaskut.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.gbMokkiRaportti.ResumeLayout(false);
-            this.gbMokkiRaportti.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -927,7 +945,7 @@ namespace Hotel
         private System.Windows.Forms.TabPage tpToimialue;
         private System.Windows.Forms.DataGridView dgvAsiakas;
         private System.Windows.Forms.DataGridView dgvMokit;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgPalvelut;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btnMokkiMuokkaa;
@@ -989,6 +1007,7 @@ namespace Hotel
         private System.Windows.Forms.DateTimePicker dtbMRloppu;
         private System.Windows.Forms.DateTimePicker dtbMRalku;
         private System.Windows.Forms.ComboBox cbMRM;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 
