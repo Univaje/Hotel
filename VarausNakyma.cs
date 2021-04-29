@@ -36,6 +36,6 @@ namespace Hotel
                 gbUuVaAs.Visible = true;
         }
 
-
+        
     }
 }

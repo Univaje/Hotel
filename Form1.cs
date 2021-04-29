@@ -46,14 +46,13 @@ namespace Hotel
             cbPoistaToimi.Text = "Valitse...";
             tbToimialueMuokkaa.Visible = false;
 
-            //Varaukset
+            //Varaukset ja asiakashallinta
             Varaukset = LFDB.getVaraus();
-            dgvVaraus.DataSource = Varaukset;
-            cbVaraukset.DataSource = toimialueet;
-            cbVaraukset.ValueMember = "toimintaAlueNimi";
-
-            // Asiakashallinta
             asiakkaat = LFDB.getAsiakas();
+            dgvVaraus.DataSource = Varaukset;
+            cbVaraukset.DataSource = asiakkaat;
+            cbVaraukset.DisplayMember = "AsiakasID";
+            cbVaraukset.ValueMember = "AsiakasID";
             dgvAsiakas.DataSource = asiakkaat;
 
         }
@@ -210,7 +209,8 @@ namespace Hotel
 
         private void cbVaraukset_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VarauksienTiedot = LFDB.getVarausAsiakkaan();
+            Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
+            VarauksienTiedot = LFDB.getVarausAsiakkaan(A.AsiakasID);
             dgvVaraus.DataSource = VarauksienTiedot;
         }
     }

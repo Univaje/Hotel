@@ -471,12 +471,16 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "SELECT * FROM  varaukset ";
+                string sql = "SELECT * FROM  varaus ";
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 while (Reader.Read())
                 {
-                    Varaus haeVaraukset = new Varaus(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), int.Parse(Reader[2].ToString()), DateTime.Parse(Reader[3].ToString()), DateTime.Parse(Reader[4].ToString()), DateTime.Parse(Reader[5].ToString()), DateTime.Parse(Reader[6].ToString()));
+                    Varaus haeVaraukset = new Varaus(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), int.Parse(Reader[2].ToString()), Convert.ToDateTime(Reader[3].ToString()), Convert.ToDateTime(Reader[4].ToString()), Convert.ToDateTime(Reader[5].ToString()), Convert.ToDateTime(Reader[6].ToString()));
+                    
+
+
+
                     Varaukset.Add(haeVaraukset);
                 }
                 Reader.Close();
@@ -493,21 +497,21 @@ namespace Hotel
             }
             return Varaukset;
         }
-        public static List<Varaustiedot> getVarausAsiakkaan()// Toimiva 
+        public static List<Varaustiedot> getVarausAsiakkaan(int i)// Toimiva 
         {
-
+            VarausienTiedot = new List<Varaustiedot>();
             try
             {
                 if (connect == null)
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "SELECT * FROM  varaustiedot WHERE asiakas_id = ";
+                string sql = "SELECT * FROM  varaukset WHERE asiakas_id = "+i;
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 while (Reader.Read())
                 {
-                    Varaustiedot haeVaraukset = new Varaustiedot(int.Parse(Reader[0].ToString()), Reader[1].ToString(), Reader[2].ToString(), Reader[3].ToString(),DateTime.Parse(Reader[4].ToString()), DateTime.Parse(Reader[5].ToString()), double.Parse(Reader[6].ToString()));
+                    Varaustiedot haeVaraukset = new Varaustiedot(int.Parse(Reader[1].ToString()), Reader[2].ToString(), Reader[3].ToString(), Reader[4].ToString(),DateTime.Parse(Reader[5].ToString()), DateTime.Parse(Reader[6].ToString()), double.Parse(Reader[7].ToString()));
                     VarausienTiedot.Add(haeVaraukset);
                 }
                 Reader.Close();
