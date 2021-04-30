@@ -124,6 +124,7 @@ namespace Hotel
             toimialueet.Clear();
             toimialueet = LFDB.GetToimialue();
             luoNappi();
+            FormatDisplay();
 
         }
         private void btnToimialueMuokkaa_Click(object sender, EventArgs e)
@@ -135,11 +136,8 @@ namespace Hotel
             gbToimialueet.Controls.Clear();
             toimialueet.Clear();
             toimialueet = LFDB.GetToimialue();
-            cbPoistaToimi.DataSource = null;
-            cbPoistaToimi.DataSource = toimialueet;
-            cbPoistaToimi.ValueMember = "toimintaAlueNimi";
-            cbPoistaToimi.Refresh();
             luoNappi();
+            FormatDisplay();
         }
         private void btnToimialuePoista_Click(object sender, EventArgs e)
         {
@@ -150,7 +148,19 @@ namespace Hotel
             toimialueet.Clear();
             toimialueet = LFDB.GetToimialue();
             luoNappi();
+            FormatDisplay();
 
+        }
+
+        private void FormatDisplay()
+        {
+            cbPoistaToimi.DataSource = null;
+            cbPoistaToimi.Items.Clear();
+            cbPoistaToimi.DataSource = toimialueet;
+            cbPoistaToimi.DisplayMember = "toimintaAlueNimi";
+            cbPoistaToimi.ValueMember = "toimintaAlueNimi";
+            cbPoistaToimi.Text = "Valitse...";
+            tbToimialueMuokkaa.Visible = false;
         }
 
         /* Mokkien toiminnot*/

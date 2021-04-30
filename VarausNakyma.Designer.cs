@@ -56,9 +56,9 @@ namespace Hotel
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.clbPalvelutVarauksessa = new System.Windows.Forms.CheckedListBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbVMokki = new System.Windows.Forms.ComboBox();
+            this.cbVAsiakas = new System.Windows.Forms.ComboBox();
+            this.cbVtoimialue = new System.Windows.Forms.ComboBox();
             this.gbUuVaAs.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -302,29 +302,29 @@ namespace Hotel
             this.clbPalvelutVarauksessa.Size = new System.Drawing.Size(307, 395);
             this.clbPalvelutVarauksessa.TabIndex = 11;
             // 
-            // comboBox3
+            // cbVMokki
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(22, 172);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(496, 24);
-            this.comboBox3.TabIndex = 8;
+            this.cbVMokki.FormattingEnabled = true;
+            this.cbVMokki.Location = new System.Drawing.Point(22, 172);
+            this.cbVMokki.Name = "cbVMokki";
+            this.cbVMokki.Size = new System.Drawing.Size(496, 24);
+            this.cbVMokki.TabIndex = 8;
             // 
-            // comboBox2
+            // cbVAsiakas
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(22, 104);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(496, 24);
-            this.comboBox2.TabIndex = 9;
+            this.cbVAsiakas.FormattingEnabled = true;
+            this.cbVAsiakas.Location = new System.Drawing.Point(22, 104);
+            this.cbVAsiakas.Name = "cbVAsiakas";
+            this.cbVAsiakas.Size = new System.Drawing.Size(496, 24);
+            this.cbVAsiakas.TabIndex = 9;
             // 
-            // comboBox1
+            // cbVtoimialue
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(22, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(496, 24);
-            this.comboBox1.TabIndex = 10;
+            this.cbVtoimialue.FormattingEnabled = true;
+            this.cbVtoimialue.Location = new System.Drawing.Point(22, 42);
+            this.cbVtoimialue.Name = "cbVtoimialue";
+            this.cbVtoimialue.Size = new System.Drawing.Size(496, 24);
+            this.cbVtoimialue.TabIndex = 10;
             // 
             // VarausNakyma
             // 
@@ -344,9 +344,9 @@ namespace Hotel
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clbPalvelutVarauksessa);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbVMokki);
+            this.Controls.Add(this.cbVAsiakas);
+            this.Controls.Add(this.cbVtoimialue);
             this.Name = "VarausNakyma";
             this.Text = "VarausNakyma";
             this.gbUuVaAs.ResumeLayout(false);
@@ -385,8 +385,8 @@ namespace Hotel
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox clbPalvelutVarauksessa;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbVMokki;
+        private System.Windows.Forms.ComboBox cbVAsiakas;
+        private System.Windows.Forms.ComboBox cbVtoimialue;
     }
 }
