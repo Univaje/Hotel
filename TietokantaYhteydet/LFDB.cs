@@ -2,10 +2,6 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel
 {
@@ -29,7 +25,7 @@ namespace Hotel
         /* Mokkien Tietokanta haut*/
         public static List<mokki> getMokit() // toimiva
         {
-
+            mokit.Clear();
             try
             {
                 if (connect == null)
@@ -86,7 +82,7 @@ namespace Hotel
         }
         public static List<mokki> getMokitToiauleittain(int i)  // toimiva
         {
-            mokit = new List<mokki>();
+            mokit.Clear();
             try
             {
                 if (connect == null)
@@ -166,10 +162,11 @@ namespace Hotel
             }
 
         }
+
         /* Postinumeroiden Tietokanta haut*/
         public static List<Posti> getPostinro() // toimiiva
         {
-
+            Postinumerot.Clear();
             try
             {
                 if (connect == null)
@@ -259,7 +256,7 @@ namespace Hotel
         /* Toimialueiden Tietokanta haut*/
         public static List<Toimialue> GetToimialue() // TOimiva
         {
-
+            toimintaalueet.Clear();
             try
             {
                 if (connect == null)
@@ -368,7 +365,7 @@ namespace Hotel
         /* Palveluiden Tietokanta haut*/
         public static List<Palvelu> getPalvelut()// Toimiva  
         {
-
+            palvelut.Clear();
             try
             {
                 if (connect == null)
@@ -397,10 +394,41 @@ namespace Hotel
             }
             return palvelut;
         }
+        public static List<Palvelu> getPalvelutToimiAlueella(int i)// Toimiva  
+        {
+            palvelut.Clear();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  palvelu WHERE toimintaalue_id = " + i;
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    Palvelu haePalvelut = new Palvelu(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), Reader[2].ToString(), int.Parse(Reader[3].ToString()), Reader[4].ToString(), double.Parse(Reader[5].ToString()), double.Parse(Reader[6].ToString()));
+                    palvelut.Add(haePalvelut);
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return palvelut;
+        }
         /* Asiakkaiden Tietokanta haut*/
         public static List<Asiakas> getAsiakas()// Toimiiko?  
         {
-
+            asiakkaat.Clear();
             try
             {
                 if (connect == null)
@@ -428,6 +456,33 @@ namespace Hotel
                 connect = null;
             }
             return asiakkaat;
+        }
+
+        public static void SetAsiakas(Asiakas a)  //  toimiiko?
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,email,email,puhelinnro) VALUES " +
+                    "(" + a.AsiakasID + "," + a.Etunimi + "," + a.Sukunimi + ",'" + a.Lahiosoite + "','" + a.Sahkopostiosoite + "','" + a.Puhelinnumero +
+                    "'," + a.Postinumero + ")";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
         }
         /* Laskujen Tietokanta haut*/
         public static List<Lasku> getLasku()// Toimiiko?  
@@ -464,7 +519,7 @@ namespace Hotel
         /* Varausten Tietokanta haut*/
         public static List<Varaus> getVaraus()// Toimiva 
         {
-
+            Varaukset.Clear();
             try
             {
                 if (connect == null)
@@ -476,8 +531,8 @@ namespace Hotel
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 while (Reader.Read())
                 {
-                    Varaus haeVaraukset = new Varaus(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), int.Parse(Reader[2].ToString()), Convert.ToDateTime(Reader[3].ToString()), Convert.ToDateTime(Reader[4].ToString()), Convert.ToDateTime(Reader[5].ToString()), Convert.ToDateTime(Reader[6].ToString()));
-                    
+                    Varaus haeVaraukset = new Varaus(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), int.Parse(Reader[2].ToString()), int.Parse(Reader[3].ToString()), Convert.ToDateTime(Reader[4].ToString()), Convert.ToDateTime(Reader[5].ToString()), Convert.ToDateTime(Reader[6].ToString()));
+
 
 
 
@@ -497,21 +552,47 @@ namespace Hotel
             }
             return Varaukset;
         }
-        public static List<Varaustiedot> getVarausAsiakkaan(int i)// Toimiva 
+        public static void SetVaraus(Varaus v)  //  toimiiko?
         {
-            VarausienTiedot = new List<Varaustiedot>();
+
             try
             {
                 if (connect == null)
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "SELECT * FROM  varaukset WHERE asiakas_id = "+i;
+                string sql = "INSERT INTO varaus(varaus_id,asiakas_id,mokki_mokki_id,varattu_pvm,vahvistus_pvm,varattu_alkupvm,varattu_loppupvm) VALUES " +
+                    "(" + v.VarausID + "," + v.AsiakasID1 + "," + v.MokkiID + ",'" + v.VarattuPvm + "','" + v.VahvistettuPvm + "','" + v.VarattuAlku +
+                    "'," + v.VarattuLoppu + ")";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+        public static List<Varaustiedot> getVarausAsiakkaan(int i)// Toimiva 
+        {
+            VarausienTiedot.Clear();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  varaukset WHERE asiakas_id = " + i;
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 while (Reader.Read())
                 {
-                    Varaustiedot haeVaraukset = new Varaustiedot(int.Parse(Reader[1].ToString()), Reader[2].ToString(), Reader[3].ToString(), Reader[4].ToString(),DateTime.Parse(Reader[5].ToString()), DateTime.Parse(Reader[6].ToString()), double.Parse(Reader[7].ToString()));
+                    Varaustiedot haeVaraukset = new Varaustiedot(int.Parse(Reader[1].ToString()), Reader[2].ToString(), Reader[3].ToString(), Reader[4].ToString(), DateTime.Parse(Reader[5].ToString()), DateTime.Parse(Reader[6].ToString()), double.Parse(Reader[7].ToString()));
                     VarausienTiedot.Add(haeVaraukset);
                 }
                 Reader.Close();
@@ -527,6 +608,32 @@ namespace Hotel
                 connect = null;
             }
             return VarausienTiedot;
+        }
+
+        public static void SetVarauksenPalvelut(PalvelutVaraukseen pv)  //  toimiiko?
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "INSERT INTO varauksen_palvelut(varaus_id,asiakas_id,lkm) VALUES " +
+                    "(" + pv.VarausID + "," + pv.PalveluID + "," + pv.Lkm + ")";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
         }
     }
 }

@@ -90,16 +90,16 @@ namespace Hotel
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgvVaraus = new System.Windows.Forms.DataGridView();
-            this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
-            this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
-            this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbVaraukset = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnPoistaVaraus = new System.Windows.Forms.Button();
             this.btnMuokkaaVarausta = new System.Windows.Forms.Button();
             this.btnUusiVaraus = new System.Windows.Forms.Button();
-            this.cbVaraukset = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dgvVaraus = new System.Windows.Forms.DataGridView();
+            this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
+            this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
+            this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
             this.tpAsiakas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
@@ -119,8 +119,8 @@ namespace Hotel
             this.tpLaskut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
             this.SuspendLayout();
             // 
             // tpAsiakas
@@ -368,9 +368,6 @@ namespace Hotel
             // 
             this.dgvMokit.AllowUserToAddRows = false;
             this.dgvMokit.AllowUserToDeleteRows = false;
-            this.dgvMokit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMokit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMokit.Location = new System.Drawing.Point(9, -4);
             this.dgvMokit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -780,28 +777,23 @@ namespace Hotel
             this.tabPage1.Text = "Varaukset";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dgvVaraus
+            // label1
             // 
-            this.dgvVaraus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVaraus.Location = new System.Drawing.Point(5, 6);
-            this.dgvVaraus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvVaraus.Name = "dgvVaraus";
-            this.dgvVaraus.RowHeadersWidth = 51;
-            this.dgvVaraus.RowTemplate.Height = 24;
-            this.dgvVaraus.Size = new System.Drawing.Size(1390, 559);
-            this.dgvVaraus.TabIndex = 0;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1416, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(150, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Valitse asiakasnumero";
             // 
-            // toimintaalueTableAdapter
+            // cbVaraukset
             // 
-            this.toimintaalueTableAdapter.ClearBeforeFill = true;
-            // 
-            // mokkiTableAdapter1
-            // 
-            this.mokkiTableAdapter1.ClearBeforeFill = true;
-            // 
-            // asiakasTableAdapter
-            // 
-            this.asiakasTableAdapter.ClearBeforeFill = true;
+            this.cbVaraukset.FormattingEnabled = true;
+            this.cbVaraukset.Location = new System.Drawing.Point(1416, 47);
+            this.cbVaraukset.Name = "cbVaraukset";
+            this.cbVaraukset.Size = new System.Drawing.Size(238, 24);
+            this.cbVaraukset.TabIndex = 6;
+            this.cbVaraukset.SelectedIndexChanged += new System.EventHandler(this.cbVaraukset_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -848,23 +840,28 @@ namespace Hotel
             this.btnUusiVaraus.Text = "Uusi varaus";
             this.btnUusiVaraus.UseVisualStyleBackColor = true;
             // 
-            // cbVaraukset
+            // dgvVaraus
             // 
-            this.cbVaraukset.FormattingEnabled = true;
-            this.cbVaraukset.Location = new System.Drawing.Point(1416, 47);
-            this.cbVaraukset.Name = "cbVaraukset";
-            this.cbVaraukset.Size = new System.Drawing.Size(238, 24);
-            this.cbVaraukset.TabIndex = 6;
-            this.cbVaraukset.SelectedIndexChanged += new System.EventHandler(this.cbVaraukset_SelectedIndexChanged);
+            this.dgvVaraus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVaraus.Location = new System.Drawing.Point(5, 6);
+            this.dgvVaraus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvVaraus.Name = "dgvVaraus";
+            this.dgvVaraus.RowHeadersWidth = 51;
+            this.dgvVaraus.RowTemplate.Height = 24;
+            this.dgvVaraus.Size = new System.Drawing.Size(1390, 559);
+            this.dgvVaraus.TabIndex = 0;
             // 
-            // label1
+            // toimintaalueTableAdapter
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1416, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 21);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Valitse asiakasnumero";
+            this.toimintaalueTableAdapter.ClearBeforeFill = true;
+            // 
+            // mokkiTableAdapter1
+            // 
+            this.mokkiTableAdapter1.ClearBeforeFill = true;
+            // 
+            // asiakasTableAdapter
+            // 
+            this.asiakasTableAdapter.ClearBeforeFill = true;
             // 
             // HotelManhattan
             // 
@@ -901,8 +898,8 @@ namespace Hotel
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
             this.ResumeLayout(false);
 
         }

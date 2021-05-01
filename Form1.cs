@@ -151,7 +151,6 @@ namespace Hotel
             FormatDisplay();
 
         }
-
         private void FormatDisplay()
         {
             cbPoistaToimi.DataSource = null;
@@ -162,7 +161,6 @@ namespace Hotel
             cbPoistaToimi.Text = "Valitse...";
             tbToimialueMuokkaa.Visible = false;
         }
-
         /* Mokkien toiminnot*/
         private void btnMokkiLisaa_Click(object sender, EventArgs e)
         {
@@ -197,7 +195,6 @@ namespace Hotel
             AsiakasNakyma an = new AsiakasNakyma();
             an.ShowDialog();
         }
-
         private void btnAsiakasMuokkaa_Click(object sender, EventArgs e)
         {
             AsiakasNakyma an = new AsiakasNakyma();
@@ -216,12 +213,13 @@ namespace Hotel
             LisaaVaraus.Text = "Lisaa Varaus";
             LisaaVaraus.Show();
         }
-
         private void cbVaraukset_SelectedIndexChanged(object sender, EventArgs e)
         {
             Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
             VarauksienTiedot = LFDB.getVarausAsiakkaan(A.AsiakasID);
             dgvVaraus.DataSource = VarauksienTiedot;
         }
+
+
     }
 }

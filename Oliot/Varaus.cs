@@ -11,7 +11,7 @@ namespace Hotel.Oliot
         private int varausID;
         private int AsiakasID;
         private int mokkiID;
-        private DateTime varattuPvm;
+        private int varattuPvm; //<------INTIKSI!!!
         private DateTime vahvistettuPvm;
         private DateTime varattuAlku;
         private DateTime varattuLoppu;
@@ -19,7 +19,7 @@ namespace Hotel.Oliot
         public int VarausID { get => varausID; set => varausID = value; }
         public int AsiakasID1 { get => AsiakasID; set => AsiakasID = value; }
         public int MokkiID { get => mokkiID; set => mokkiID = value; }
-        public DateTime VarattuPvm { get => varattuPvm; set => varattuPvm = value; }
+        public int VarattuPvm { get => varattuPvm; set => varattuPvm = value; }
         public DateTime VahvistettuPvm { get => vahvistettuPvm; set => vahvistettuPvm = value; }
         public DateTime VarattuAlku { get => varattuAlku; set => varattuAlku = value; }
         public DateTime VarattuLoppu { get => varattuLoppu; set => varattuLoppu = value; }
@@ -28,7 +28,7 @@ namespace Hotel.Oliot
         {
         }
 
-        public Varaus(int varausID, int asiakasID1, int mokkiID, DateTime varattuPvm, DateTime vahvistettuPvm, DateTime varattuAlku, DateTime varattuLoppu)
+        public Varaus(int varausID, int asiakasID1, int mokkiID, int varattuPvm, DateTime vahvistettuPvm, DateTime varattuAlku, DateTime varattuLoppu)
         {
             VarausID = varausID;
             AsiakasID1 = asiakasID1;

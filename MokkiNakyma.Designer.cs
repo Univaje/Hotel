@@ -31,7 +31,6 @@ namespace Hotel
         {
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbMhlmaara = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnPeruutaLisaus = new System.Windows.Forms.Button();
             this.btnTallennaMokki = new System.Windows.Forms.Button();
@@ -47,6 +46,7 @@ namespace Hotel
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbMhlomaara = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label8
@@ -66,27 +66,6 @@ namespace Hotel
             this.label6.Size = new System.Drawing.Size(99, 17);
             this.label6.TabIndex = 21;
             this.label6.Text = "Henkilo määrä";
-            // 
-            // cbMhlmaara
-            // 
-            this.cbMhlmaara.FormattingEnabled = true;
-            this.cbMhlmaara.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.cbMhlmaara.Location = new System.Drawing.Point(417, 328);
-            this.cbMhlmaara.Name = "cbMhlmaara";
-            this.cbMhlmaara.Size = new System.Drawing.Size(72, 24);
-            this.cbMhlmaara.TabIndex = 25;
             // 
             // label5
             // 
@@ -114,7 +93,6 @@ namespace Hotel
             this.btnTallennaMokki.TabIndex = 28;
             this.btnTallennaMokki.Text = "Tallenna";
             this.btnTallennaMokki.UseVisualStyleBackColor = true;
-
             // 
             // tbMkuvaus
             // 
@@ -211,14 +189,21 @@ namespace Hotel
             this.label1.TabIndex = 12;
             this.label1.Text = "Mökin nimi";
             // 
+            // tbMhlomaara
+            // 
+            this.tbMhlomaara.Location = new System.Drawing.Point(417, 330);
+            this.tbMhlomaara.Name = "tbMhlomaara";
+            this.tbMhlomaara.Size = new System.Drawing.Size(100, 22);
+            this.tbMhlomaara.TabIndex = 31;
+            // 
             // MokkiNakyma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 580);
+            this.Controls.Add(this.tbMhlomaara);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.cbMhlmaara);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnPeruutaLisaus);
             this.Controls.Add(this.btnTallennaMokki);
@@ -245,7 +230,6 @@ namespace Hotel
 
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbMhlmaara;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnPeruutaLisaus;
         private System.Windows.Forms.Button btnTallennaMokki;
@@ -261,5 +245,6 @@ namespace Hotel
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbMhlomaara;
     }
 }

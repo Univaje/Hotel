@@ -33,7 +33,7 @@ namespace Hotel
             tbMposti.Text = Uusimokki.Postinumero;
             tbMkuvaus.Text = Uusimokki.Kuvaus;
             tbMvarustelu.Text = Uusimokki.Varustelu;
-            cbMhlmaara.SelectedIndex = Uusimokki.Henkilomaara - 1;
+            tbMhlomaara.Text = Uusimokki.Henkilomaara.ToString();
             tbMHinta.Text = Uusimokki.Hinta.ToString();
             Lista = p.HaetPostinrot();
 
@@ -52,7 +52,7 @@ namespace Hotel
                 p.Toimipaikka = tbToimipaikka.Text;
                 p.ViePostinumerot(p);
             }
-            m = new mokki(Toimiid, Mokkiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(cbMhlmaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
+            m = new mokki(Toimiid, Mokkiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(tbMhlomaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
             m.lisaaMokki(m);
             MokkiNakyma.ActiveForm.Close();
 

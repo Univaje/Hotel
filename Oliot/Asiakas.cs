@@ -19,8 +19,8 @@ namespace Hotel
         public int AsiakasID { get => asiakas_ID; set => asiakas_ID = value; }
         public string Etunimi { get => etunimi; set => etunimi = value; }
         public string Sukunimi { get => sukunimi; set => sukunimi = value; }
-        public string Lähiosoite { get => lahiosoite; set => lahiosoite = value; }
-        public string Sähköpostiosoite { get => email; set => email = value; }
+        public string Lahiosoite { get => lahiosoite; set => lahiosoite = value; }
+        public string Sahkopostiosoite { get => email; set => email = value; }
         public string Puhelinnumero { get => puhelinNro; set => puhelinNro = value; }
         public string Postinumero { get => postinumero; set => postinumero = value; }
 
@@ -33,8 +33,8 @@ namespace Hotel
             AsiakasID = asiakasID;
             Etunimi = etunimi;
             Sukunimi = sukunimi;
-            Lähiosoite = osoite;
-            Sähköpostiosoite = email;
+            Lahiosoite = osoite;
+            Sahkopostiosoite = email;
             Puhelinnumero = puhelinNro;
             Postinumero = postinumero;
         }

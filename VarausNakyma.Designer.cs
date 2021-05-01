@@ -29,19 +29,36 @@ namespace Hotel
         /// </summary>
         private void InitializeComponent()
         {
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbUusiAsiakasVarauksessa = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbVMokki = new System.Windows.Forms.ComboBox();
+            this.cbVAsiakas = new System.Windows.Forms.ComboBox();
+            this.cbVtoimialue = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.cbUusiAsiakasVarauksessa = new System.Windows.Forms.CheckBox();
+            this.dtpVarausLoppuu = new System.Windows.Forms.DateTimePicker();
+            this.dtpVarausAlkaa = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbHenkilomaara = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnvPoistaPalvelu = new System.Windows.Forms.Button();
+            this.btnvPalvelunLisaus = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.clbPalvelutVarauksessa = new System.Windows.Forms.CheckedListBox();
+            this.cbvPalvelunlisäys = new System.Windows.Forms.ComboBox();
             this.gbUuVaAs = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbvToimipaikka = new System.Windows.Forms.TextBox();
+            this.tbvPostinumero = new System.Windows.Forms.TextBox();
+            this.tbvPuhnum = new System.Windows.Forms.TextBox();
+            this.tbvSposti = new System.Windows.Forms.TextBox();
+            this.tbvOsoite = new System.Windows.Forms.TextBox();
+            this.tbvSukunimi = new System.Windows.Forms.TextBox();
+            this.tbvEtunimi = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -50,22 +67,108 @@ namespace Hotel
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.clbPalvelutVarauksessa = new System.Windows.Forms.CheckedListBox();
-            this.cbVMokki = new System.Windows.Forms.ComboBox();
-            this.cbVAsiakas = new System.Windows.Forms.ComboBox();
-            this.cbVtoimialue = new System.Windows.Forms.ComboBox();
+            this.btnvTallenna = new System.Windows.Forms.Button();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.gbUuVaAs.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cbUusiAsiakasVarauksessa);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.cbVMokki);
+            this.groupBox3.Controls.Add(this.cbVAsiakas);
+            this.groupBox3.Controls.Add(this.cbVtoimialue);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(517, 208);
+            this.groupBox3.TabIndex = 32;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "groupBox3";
+            // 
+            // cbUusiAsiakasVarauksessa
+            // 
+            this.cbUusiAsiakasVarauksessa.AutoSize = true;
+            this.cbUusiAsiakasVarauksessa.Location = new System.Drawing.Point(6, 181);
+            this.cbUusiAsiakasVarauksessa.Name = "cbUusiAsiakasVarauksessa";
+            this.cbUusiAsiakasVarauksessa.Size = new System.Drawing.Size(111, 21);
+            this.cbUusiAsiakasVarauksessa.TabIndex = 19;
+            this.cbUusiAsiakasVarauksessa.Text = "Uusi Asiakas";
+            this.cbUusiAsiakasVarauksessa.UseVisualStyleBackColor = true;
+            this.cbUusiAsiakasVarauksessa.CheckedChanged += new System.EventHandler(this.UusiAsiakasVarauksessa_CheckedChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 127);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 17);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Mökki";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Asiakas";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Toimialue";
+            // 
+            // cbVMokki
+            // 
+            this.cbVMokki.FormattingEnabled = true;
+            this.cbVMokki.Location = new System.Drawing.Point(6, 151);
+            this.cbVMokki.Name = "cbVMokki";
+            this.cbVMokki.Size = new System.Drawing.Size(496, 24);
+            this.cbVMokki.TabIndex = 8;
+            // 
+            // cbVAsiakas
+            // 
+            this.cbVAsiakas.FormattingEnabled = true;
+            this.cbVAsiakas.Location = new System.Drawing.Point(6, 83);
+            this.cbVAsiakas.Name = "cbVAsiakas";
+            this.cbVAsiakas.Size = new System.Drawing.Size(496, 24);
+            this.cbVAsiakas.TabIndex = 9;
+            // 
+            // cbVtoimialue
+            // 
+            this.cbVtoimialue.FormattingEnabled = true;
+            this.cbVtoimialue.Location = new System.Drawing.Point(6, 21);
+            this.cbVtoimialue.Name = "cbVtoimialue";
+            this.cbVtoimialue.Size = new System.Drawing.Size(496, 24);
+            this.cbVtoimialue.TabIndex = 10;
+            this.cbVtoimialue.SelectedIndexChanged += new System.EventHandler(this.cbVtoimialue_SelectedIndexChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.dtpVarausLoppuu);
+            this.groupBox2.Controls.Add(this.dtpVarausAlkaa);
+            this.groupBox2.Location = new System.Drawing.Point(12, 543);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(518, 133);
+            this.groupBox2.TabIndex = 31;
+            this.groupBox2.TabStop = false;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(753, 576);
+            this.label11.Location = new System.Drawing.Point(35, 72);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(126, 17);
             this.label11.TabIndex = 22;
@@ -74,46 +177,123 @@ namespace Hotel
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(754, 517);
+            this.label10.Location = new System.Drawing.Point(36, 13);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(113, 17);
             this.label10.TabIndex = 23;
             this.label10.Text = "Alku päivämäärä";
             // 
-            // dateTimePicker2
+            // dtpVarausLoppuu
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(746, 596);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(317, 22);
-            this.dateTimePicker2.TabIndex = 20;
+            this.dtpVarausLoppuu.Location = new System.Drawing.Point(28, 92);
+            this.dtpVarausLoppuu.Name = "dtpVarausLoppuu";
+            this.dtpVarausLoppuu.Size = new System.Drawing.Size(465, 22);
+            this.dtpVarausLoppuu.TabIndex = 20;
             // 
-            // dateTimePicker1
+            // dtpVarausAlkaa
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(746, 537);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(317, 22);
-            this.dateTimePicker1.TabIndex = 21;
+            this.dtpVarausAlkaa.Location = new System.Drawing.Point(28, 33);
+            this.dtpVarausAlkaa.Name = "dtpVarausAlkaa";
+            this.dtpVarausAlkaa.Size = new System.Drawing.Size(465, 22);
+            this.dtpVarausAlkaa.TabIndex = 21;
+            this.dtpVarausAlkaa.ValueChanged += new System.EventHandler(this.ctpVarausAlkaa_ValueChanged);
             // 
-            // cbUusiAsiakasVarauksessa
+            // groupBox1
             // 
-            this.cbUusiAsiakasVarauksessa.AutoSize = true;
-            this.cbUusiAsiakasVarauksessa.Location = new System.Drawing.Point(22, 219);
-            this.cbUusiAsiakasVarauksessa.Name = "cbUusiAsiakasVarauksessa";
-            this.cbUusiAsiakasVarauksessa.Size = new System.Drawing.Size(111, 21);
-            this.cbUusiAsiakasVarauksessa.TabIndex = 19;
-            this.cbUusiAsiakasVarauksessa.Text = "Uusi Asiakas";
-            this.cbUusiAsiakasVarauksessa.UseVisualStyleBackColor = true;
-            this.cbUusiAsiakasVarauksessa.Click += new System.EventHandler(this.UusiAsiakasVarauksessa_CheckedChanged);
+            this.groupBox1.Controls.Add(this.tbHenkilomaara);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.btnvPoistaPalvelu);
+            this.groupBox1.Controls.Add(this.btnvPalvelunLisaus);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.clbPalvelutVarauksessa);
+            this.groupBox1.Controls.Add(this.cbvPalvelunlisäys);
+            this.groupBox1.Location = new System.Drawing.Point(536, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(365, 586);
+            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabStop = false;
+            // 
+            // tbHenkilomaara
+            // 
+            this.tbHenkilomaara.Location = new System.Drawing.Point(120, 101);
+            this.tbHenkilomaara.Name = "tbHenkilomaara";
+            this.tbHenkilomaara.Size = new System.Drawing.Size(100, 22);
+            this.tbHenkilomaara.TabIndex = 15;
+            this.tbHenkilomaara.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbHenkilomaara_KeyPress);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(19, 101);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(95, 17);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "Henkilömäärä";
+            // 
+            // btnvPoistaPalvelu
+            // 
+            this.btnvPoistaPalvelu.Location = new System.Drawing.Point(18, 466);
+            this.btnvPoistaPalvelu.Name = "btnvPoistaPalvelu";
+            this.btnvPoistaPalvelu.Size = new System.Drawing.Size(325, 50);
+            this.btnvPoistaPalvelu.TabIndex = 13;
+            this.btnvPoistaPalvelu.Text = "Poista palvelu";
+            this.btnvPoistaPalvelu.UseVisualStyleBackColor = true;
+            this.btnvPoistaPalvelu.Click += new System.EventHandler(this.btnvPoistaPalvelu_Click);
+            // 
+            // btnvPalvelunLisaus
+            // 
+            this.btnvPalvelunLisaus.Location = new System.Drawing.Point(16, 173);
+            this.btnvPalvelunLisaus.Name = "btnvPalvelunLisaus";
+            this.btnvPalvelunLisaus.Size = new System.Drawing.Size(325, 50);
+            this.btnvPalvelunLisaus.TabIndex = 13;
+            this.btnvPalvelunLisaus.Text = "Lisää palvelu";
+            this.btnvPalvelunLisaus.UseVisualStyleBackColor = true;
+            this.btnvPalvelunLisaus.Click += new System.EventHandler(this.btnvPalvelunLisaus_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(23, 26);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(91, 17);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Lisää palvelu";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 153);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 17);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Palvelut";
+            // 
+            // clbPalvelutVarauksessa
+            // 
+            this.clbPalvelutVarauksessa.FormattingEnabled = true;
+            this.clbPalvelutVarauksessa.Location = new System.Drawing.Point(19, 267);
+            this.clbPalvelutVarauksessa.Name = "clbPalvelutVarauksessa";
+            this.clbPalvelutVarauksessa.Size = new System.Drawing.Size(324, 174);
+            this.clbPalvelutVarauksessa.TabIndex = 11;
+            // 
+            // cbvPalvelunlisäys
+            // 
+            this.cbvPalvelunlisäys.FormattingEnabled = true;
+            this.cbvPalvelunlisäys.Location = new System.Drawing.Point(18, 46);
+            this.cbvPalvelunlisäys.Name = "cbvPalvelunlisäys";
+            this.cbvPalvelunlisäys.Size = new System.Drawing.Size(324, 24);
+            this.cbvPalvelunlisäys.TabIndex = 9;
             // 
             // gbUuVaAs
             // 
-            this.gbUuVaAs.Controls.Add(this.textBox7);
-            this.gbUuVaAs.Controls.Add(this.textBox6);
-            this.gbUuVaAs.Controls.Add(this.textBox5);
-            this.gbUuVaAs.Controls.Add(this.textBox4);
-            this.gbUuVaAs.Controls.Add(this.textBox3);
-            this.gbUuVaAs.Controls.Add(this.textBox2);
-            this.gbUuVaAs.Controls.Add(this.textBox1);
+            this.gbUuVaAs.Controls.Add(this.tbvToimipaikka);
+            this.gbUuVaAs.Controls.Add(this.tbvPostinumero);
+            this.gbUuVaAs.Controls.Add(this.tbvPuhnum);
+            this.gbUuVaAs.Controls.Add(this.tbvSposti);
+            this.gbUuVaAs.Controls.Add(this.tbvOsoite);
+            this.gbUuVaAs.Controls.Add(this.tbvSukunimi);
+            this.gbUuVaAs.Controls.Add(this.tbvEtunimi);
             this.gbUuVaAs.Controls.Add(this.label13);
             this.gbUuVaAs.Controls.Add(this.label9);
             this.gbUuVaAs.Controls.Add(this.label8);
@@ -121,61 +301,61 @@ namespace Hotel
             this.gbUuVaAs.Controls.Add(this.label6);
             this.gbUuVaAs.Controls.Add(this.label5);
             this.gbUuVaAs.Controls.Add(this.label4);
-            this.gbUuVaAs.Location = new System.Drawing.Point(22, 255);
+            this.gbUuVaAs.Location = new System.Drawing.Point(12, 220);
             this.gbUuVaAs.Name = "gbUuVaAs";
-            this.gbUuVaAs.Size = new System.Drawing.Size(405, 317);
-            this.gbUuVaAs.TabIndex = 18;
+            this.gbUuVaAs.Size = new System.Drawing.Size(518, 317);
+            this.gbUuVaAs.TabIndex = 29;
             this.gbUuVaAs.TabStop = false;
             this.gbUuVaAs.Visible = false;
             // 
-            // textBox7
+            // tbvToimipaikka
             // 
-            this.textBox7.Location = new System.Drawing.Point(151, 196);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(218, 22);
-            this.textBox7.TabIndex = 1;
+            this.tbvToimipaikka.Location = new System.Drawing.Point(151, 196);
+            this.tbvToimipaikka.Name = "tbvToimipaikka";
+            this.tbvToimipaikka.Size = new System.Drawing.Size(345, 22);
+            this.tbvToimipaikka.TabIndex = 1;
             // 
-            // textBox6
+            // tbvPostinumero
             // 
-            this.textBox6.Location = new System.Drawing.Point(151, 157);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(218, 22);
-            this.textBox6.TabIndex = 1;
+            this.tbvPostinumero.Location = new System.Drawing.Point(151, 157);
+            this.tbvPostinumero.Name = "tbvPostinumero";
+            this.tbvPostinumero.Size = new System.Drawing.Size(345, 22);
+            this.tbvPostinumero.TabIndex = 1;
             // 
-            // textBox5
+            // tbvPuhnum
             // 
-            this.textBox5.Location = new System.Drawing.Point(151, 271);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(218, 22);
-            this.textBox5.TabIndex = 1;
+            this.tbvPuhnum.Location = new System.Drawing.Point(151, 271);
+            this.tbvPuhnum.Name = "tbvPuhnum";
+            this.tbvPuhnum.Size = new System.Drawing.Size(345, 22);
+            this.tbvPuhnum.TabIndex = 1;
             // 
-            // textBox4
+            // tbvSposti
             // 
-            this.textBox4.Location = new System.Drawing.Point(151, 238);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(218, 22);
-            this.textBox4.TabIndex = 1;
+            this.tbvSposti.Location = new System.Drawing.Point(151, 238);
+            this.tbvSposti.Name = "tbvSposti";
+            this.tbvSposti.Size = new System.Drawing.Size(345, 22);
+            this.tbvSposti.TabIndex = 1;
             // 
-            // textBox3
+            // tbvOsoite
             // 
-            this.textBox3.Location = new System.Drawing.Point(151, 117);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(218, 22);
-            this.textBox3.TabIndex = 1;
+            this.tbvOsoite.Location = new System.Drawing.Point(151, 117);
+            this.tbvOsoite.Name = "tbvOsoite";
+            this.tbvOsoite.Size = new System.Drawing.Size(345, 22);
+            this.tbvOsoite.TabIndex = 1;
             // 
-            // textBox2
+            // tbvSukunimi
             // 
-            this.textBox2.Location = new System.Drawing.Point(151, 73);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 22);
-            this.textBox2.TabIndex = 1;
+            this.tbvSukunimi.Location = new System.Drawing.Point(151, 73);
+            this.tbvSukunimi.Name = "tbvSukunimi";
+            this.tbvSukunimi.Size = new System.Drawing.Size(345, 22);
+            this.tbvSukunimi.TabIndex = 1;
             // 
-            // textBox1
+            // tbvEtunimi
             // 
-            this.textBox1.Location = new System.Drawing.Point(151, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(218, 22);
-            this.textBox1.TabIndex = 1;
+            this.tbvEtunimi.Location = new System.Drawing.Point(151, 25);
+            this.tbvEtunimi.Name = "tbvEtunimi";
+            this.tbvEtunimi.Size = new System.Drawing.Size(345, 22);
+            this.tbvEtunimi.TabIndex = 1;
             // 
             // label13
             // 
@@ -242,117 +422,46 @@ namespace Hotel
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(969, 628);
+            this.button2.Location = new System.Drawing.Point(727, 619);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(152, 48);
-            this.button2.TabIndex = 16;
+            this.button2.TabIndex = 27;
             this.button2.Text = "Peruuta";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btvCancel_Click);
             // 
-            // button1
+            // btnvTallenna
             // 
-            this.button1.Location = new System.Drawing.Point(22, 628);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 48);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Lisää varaus";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(753, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 17);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Palvelut";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(19, 148);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 17);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Mökki";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 17);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Asiakas";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Toimialue";
-            // 
-            // clbPalvelutVarauksessa
-            // 
-            this.clbPalvelutVarauksessa.FormattingEnabled = true;
-            this.clbPalvelutVarauksessa.Location = new System.Drawing.Point(756, 94);
-            this.clbPalvelutVarauksessa.Name = "clbPalvelutVarauksessa";
-            this.clbPalvelutVarauksessa.Size = new System.Drawing.Size(307, 395);
-            this.clbPalvelutVarauksessa.TabIndex = 11;
-            // 
-            // cbVMokki
-            // 
-            this.cbVMokki.FormattingEnabled = true;
-            this.cbVMokki.Location = new System.Drawing.Point(22, 172);
-            this.cbVMokki.Name = "cbVMokki";
-            this.cbVMokki.Size = new System.Drawing.Size(496, 24);
-            this.cbVMokki.TabIndex = 8;
-            // 
-            // cbVAsiakas
-            // 
-            this.cbVAsiakas.FormattingEnabled = true;
-            this.cbVAsiakas.Location = new System.Drawing.Point(22, 104);
-            this.cbVAsiakas.Name = "cbVAsiakas";
-            this.cbVAsiakas.Size = new System.Drawing.Size(496, 24);
-            this.cbVAsiakas.TabIndex = 9;
-            // 
-            // cbVtoimialue
-            // 
-            this.cbVtoimialue.FormattingEnabled = true;
-            this.cbVtoimialue.Location = new System.Drawing.Point(22, 42);
-            this.cbVtoimialue.Name = "cbVtoimialue";
-            this.cbVtoimialue.Size = new System.Drawing.Size(496, 24);
-            this.cbVtoimialue.TabIndex = 10;
+            this.btnvTallenna.Location = new System.Drawing.Point(553, 619);
+            this.btnvTallenna.Name = "btnvTallenna";
+            this.btnvTallenna.Size = new System.Drawing.Size(152, 48);
+            this.btnvTallenna.TabIndex = 28;
+            this.btnvTallenna.Text = "Lisää varaus";
+            this.btnvTallenna.UseVisualStyleBackColor = true;
+            this.btnvTallenna.Click += new System.EventHandler(this.btnvTallenna_Click);
             // 
             // VarausNakyma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 699);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.cbUusiAsiakasVarauksessa);
+            this.ClientSize = new System.Drawing.Size(914, 699);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbUuVaAs);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.clbPalvelutVarauksessa);
-            this.Controls.Add(this.cbVMokki);
-            this.Controls.Add(this.cbVAsiakas);
-            this.Controls.Add(this.cbVtoimialue);
+            this.Controls.Add(this.btnvTallenna);
             this.Name = "VarausNakyma";
             this.Text = "VarausNakyma";
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.gbUuVaAs.ResumeLayout(false);
             this.gbUuVaAs.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -388,5 +497,24 @@ namespace Hotel
         private System.Windows.Forms.ComboBox cbVMokki;
         private System.Windows.Forms.ComboBox cbVAsiakas;
         private System.Windows.Forms.ComboBox cbVtoimialue;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DateTimePicker dtpVarausLoppuu;
+        private System.Windows.Forms.DateTimePicker dtpVarausAlkaa;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox tbHenkilomaara;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnvPoistaPalvelu;
+        private System.Windows.Forms.Button btnvPalvelunLisaus;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cbvPalvelunlisäys;
+        private System.Windows.Forms.TextBox tbvToimipaikka;
+        private System.Windows.Forms.TextBox tbvPostinumero;
+        private System.Windows.Forms.TextBox tbvPuhnum;
+        private System.Windows.Forms.TextBox tbvSposti;
+        private System.Windows.Forms.TextBox tbvOsoite;
+        private System.Windows.Forms.TextBox tbvSukunimi;
+        private System.Windows.Forms.TextBox tbvEtunimi;
+        private System.Windows.Forms.Button btnvTallenna;
     }
 }
