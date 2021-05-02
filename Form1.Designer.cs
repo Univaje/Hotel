@@ -828,6 +828,7 @@ namespace Hotel
             this.btnMuokkaaVarausta.TabIndex = 2;
             this.btnMuokkaaVarausta.Text = "Muokkaa Varausta";
             this.btnMuokkaaVarausta.UseVisualStyleBackColor = true;
+            this.btnMuokkaaVarausta.Click += new System.EventHandler(this.btnMuokkaaVarausta_Click);
             // 
             // btnUusiVaraus
             // 
@@ -839,6 +840,7 @@ namespace Hotel
             this.btnUusiVaraus.TabIndex = 1;
             this.btnUusiVaraus.Text = "Uusi varaus";
             this.btnUusiVaraus.UseVisualStyleBackColor = true;
+            this.btnUusiVaraus.Click += new System.EventHandler(this.btnUusiVaraus_Click);
             // 
             // dgvVaraus
             // 

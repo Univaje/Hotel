@@ -11,7 +11,7 @@ namespace Hotel.Oliot
         private int varausID;
         private int AsiakasID;
         private int mokkiID;
-        private int varattuPvm; //<------INTIKSI!!!
+        private int varattuPvm;
         private DateTime vahvistettuPvm;
         private DateTime varattuAlku;
         private DateTime varattuLoppu;

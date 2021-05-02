@@ -43,7 +43,7 @@ namespace Hotel
             this.dtpVarausLoppuu = new System.Windows.Forms.DateTimePicker();
             this.dtpVarausAlkaa = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbHenkilomaara = new System.Windows.Forms.TextBox();
+            this.tbvHenkilomaara = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnvPoistaPalvelu = new System.Windows.Forms.Button();
             this.btnvPalvelunLisaus = new System.Windows.Forms.Button();
@@ -200,7 +200,7 @@ namespace Hotel
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tbHenkilomaara);
+            this.groupBox1.Controls.Add(this.tbvHenkilomaara);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.btnvPoistaPalvelu);
             this.groupBox1.Controls.Add(this.btnvPalvelunLisaus);
@@ -214,13 +214,13 @@ namespace Hotel
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             // 
-            // tbHenkilomaara
+            // tbvHenkilomaara
             // 
-            this.tbHenkilomaara.Location = new System.Drawing.Point(120, 101);
-            this.tbHenkilomaara.Name = "tbHenkilomaara";
-            this.tbHenkilomaara.Size = new System.Drawing.Size(100, 22);
-            this.tbHenkilomaara.TabIndex = 15;
-            this.tbHenkilomaara.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbHenkilomaara_KeyPress);
+            this.tbvHenkilomaara.Location = new System.Drawing.Point(120, 101);
+            this.tbvHenkilomaara.Name = "tbvHenkilomaara";
+            this.tbvHenkilomaara.Size = new System.Drawing.Size(100, 22);
+            this.tbvHenkilomaara.TabIndex = 15;
+            this.tbvHenkilomaara.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbHenkilomaara_KeyPress);
             // 
             // label15
             // 
@@ -469,17 +469,8 @@ namespace Hotel
 
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.CheckBox cbUusiAsiakasVarauksessa;
         private System.Windows.Forms.GroupBox gbUuVaAs;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -488,7 +479,6 @@ namespace Hotel
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label3;
@@ -502,7 +492,7 @@ namespace Hotel
         private System.Windows.Forms.DateTimePicker dtpVarausLoppuu;
         private System.Windows.Forms.DateTimePicker dtpVarausAlkaa;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox tbHenkilomaara;
+        private System.Windows.Forms.TextBox tbvHenkilomaara;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnvPoistaPalvelu;
         private System.Windows.Forms.Button btnvPalvelunLisaus;

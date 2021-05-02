@@ -84,6 +84,7 @@ namespace Hotel
             this.btnPeruutaLisaus.TabIndex = 29;
             this.btnPeruutaLisaus.Text = "Peruuta";
             this.btnPeruutaLisaus.UseVisualStyleBackColor = true;
+            this.btnPeruutaLisaus.Click += new System.EventHandler(this.btnPeruutaLisaus_Click);
             // 
             // btnTallennaMokki
             // 
@@ -93,6 +94,7 @@ namespace Hotel
             this.btnTallennaMokki.TabIndex = 28;
             this.btnTallennaMokki.Text = "Tallenna";
             this.btnTallennaMokki.UseVisualStyleBackColor = true;
+            this.btnTallennaMokki.Click += new System.EventHandler(this.TallennaMokki_Click);
             // 
             // tbMkuvaus
             // 
@@ -115,6 +117,8 @@ namespace Hotel
             this.tbMposti.Name = "tbMposti";
             this.tbMposti.Size = new System.Drawing.Size(206, 22);
             this.tbMposti.TabIndex = 20;
+            this.tbMposti.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMposti_KeyPress);
+            this.tbMposti.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbMposti_KeyUp);
             // 
             // tbMHinta
             // 
@@ -122,6 +126,7 @@ namespace Hotel
             this.tbMHinta.Name = "tbMHinta";
             this.tbMHinta.Size = new System.Drawing.Size(206, 22);
             this.tbMHinta.TabIndex = 27;
+            this.tbMHinta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMHinta_KeyPress);
             // 
             // tbMvarustelu
             // 
@@ -195,6 +200,8 @@ namespace Hotel
             this.tbMhlomaara.Name = "tbMhlomaara";
             this.tbMhlomaara.Size = new System.Drawing.Size(100, 22);
             this.tbMhlomaara.TabIndex = 31;
+            this.tbMhlomaara.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMhlomaara_KeyPress);
+            this.tbMhlomaara.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbMhlomaara_KeyUp);
             // 
             // MokkiNakyma
             // 

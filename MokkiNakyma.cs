@@ -23,6 +23,7 @@ namespace Hotel
             InitializeComponent();
             Lista = p.HaetPostinrot();
             Mokkiid = count + 1;
+            tbMhlomaara.Text = "1";
         }
         internal MokkiNakyma(mokki Uusimokki, int mokkiid, int toimiid)
         {
@@ -45,15 +46,15 @@ namespace Hotel
         private void TallennaMokki_Click(object sender, EventArgs e)
         {
 
-            int i = Lista.FindIndex(item => p.Postinro == tbMposti.Text);
-            if (i <= 0)
+            int i = Lista.FindIndex(item => item.Postinro == tbMposti.Text);
+            if (i < 0)
             {
                 p.Postinro = tbMposti.Text;
                 p.Toimipaikka = tbToimipaikka.Text;
                 p.ViePostinumerot(p);
             }
             m = new mokki(Toimiid, Mokkiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(tbMhlomaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
-            m.lisaaMokki(m);
+            LFDB.SetMokki(m);
             MokkiNakyma.ActiveForm.Close();
 
         }
@@ -64,7 +65,9 @@ namespace Hotel
         }
         private void tbMposti_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && tbMposti.TextLength > 5)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && tbMposti.TextLength < 5)
+                e.Handled = true;
+            else if (tbMposti.TextLength >= 5)
                 e.Handled = true;
         }
         private void tbMHinta_KeyPress(object sender, KeyPressEventArgs e)
@@ -75,28 +78,22 @@ namespace Hotel
                 else if (e.KeyChar != ',' && !char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
                     e.Handled = true;
         }
-
         private void tbMposti_KeyUp(object sender, KeyEventArgs e)
         {
 
-            for (int i = 0; i < 5; i++)
-            {
+        }
+        private void tbMhlomaara_KeyPress(object sender, KeyPressEventArgs e)
+        {
 
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+                e.Handled = true;
 
-                if (Lista != null && tbMposti.TextLength == i)
-                {
-                    string vertaa = tbMposti.Text;
-                    foreach (Posti postinumero in Lista)
-                    {
-
-                        if (vertaa == postinumero.Postinro.Substring(0, i))
-                        {
-                            tbToimipaikka.Text = postinumero.Toimipaikka;
-                        }
-
-                    }
-                }
-            }
+        }
+        private void tbMhlomaara_KeyUp(object sender, KeyEventArgs e)
+        {
+            int maara = int.Parse(tbMhlomaara.Text);
+            if (maara > 12)
+                tbMhlomaara.Text = "12";
         }
     }
 }

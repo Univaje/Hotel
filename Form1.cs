@@ -161,7 +161,9 @@ namespace Hotel
             cbPoistaToimi.Text = "Valitse...";
             tbToimialueMuokkaa.Visible = false;
         }
+
         /* Mokkien toiminnot*/
+
         private void btnMokkiLisaa_Click(object sender, EventArgs e)
         {
             MokkiNakyma LisaaMokki = new MokkiNakyma(ToimialueenMokit.Count);
@@ -182,12 +184,11 @@ namespace Hotel
             mokki poista = new mokki();
             poista = (mokki)dgvMokit.CurrentRow.DataBoundItem;
             int mokinpoisto = poista.MokkiID;
-
+            LFDB.RemoveMokki(mokinpoisto);
             ToimialueenMokit.Remove(poista);
+            dgvMokit.DataSource = null;
+            dgvMokit.DataSource = ToimialueenMokit;
         }
-
-
-
 
         /* Asiakkaan toiminnot*/
         private void btnAsiakasLisaa_Click(object sender, EventArgs e)
@@ -215,11 +216,18 @@ namespace Hotel
         }
         private void cbVaraukset_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvVaraus.DataSource = null;
             Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
             VarauksienTiedot = LFDB.getVarausAsiakkaan(A.AsiakasID);
             dgvVaraus.DataSource = VarauksienTiedot;
+
         }
-
-
+        private void btnMuokkaaVarausta_Click(object sender, EventArgs e)
+        {
+            Varaustiedot VarausM = (Varaustiedot)dgvVaraus.CurrentRow.DataBoundItem;
+            VarausNakyma MuokkaaVarausta = new VarausNakyma(VarausM);
+            MuokkaaVarausta.Text = "Muokkaa Varausta";
+            MuokkaaVarausta.Show();
+        }
     }
 }

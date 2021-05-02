@@ -46,16 +46,5 @@ namespace Hotel
         public string Varustelu { get => varustelu; set => varustelu = value; }
         public double Hinta { get => hinta; set => hinta = value; }
 
-        public void poistaMokki(int i)
-        {
-            LFDB.deleteMokki(i);
-        }
-        public void lisaaMokki(mokki m)
-        {
-            LFDB.SetMokki(m);
-        }
-
-
-
     }
 }
