@@ -54,6 +54,7 @@ namespace Hotel
             cbVaraukset.DisplayMember = "AsiakasID";
             cbVaraukset.ValueMember = "AsiakasID";
             dgvAsiakas.DataSource = asiakkaat;
+            cmbAsiakasToimialue.DataSource = toimialueet;
 
         }
 
@@ -201,6 +202,15 @@ namespace Hotel
             AsiakasNakyma an = new AsiakasNakyma();
             an.ShowDialog();
         }
+        private void btnAsiakasPoista_Click(object sender, EventArgs e)
+        {
+            Asiakas poista = new Asiakas();
+            poista = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;            
+            LFDB.RemoveAsiakas(poista.AsiakasID);
+            asiakkaat.Remove(poista);
+            dgvAsiakas.DataSource = null;
+            dgvAsiakas.DataSource = asiakkaat;
+        }
         /* Palvelun toiminnot*/
 
 
@@ -229,5 +239,7 @@ namespace Hotel
             MuokkaaVarausta.Text = "Muokkaa Varausta";
             MuokkaaVarausta.Show();
         }
+
+        
     }
 }

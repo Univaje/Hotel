@@ -484,6 +484,32 @@ namespace Hotel
             }
 
         }
+
+        public static List<Asiakas> RemoveAsiakas(int i)
+        {
+            asiakkaat = new List<Asiakas>();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "DELETE FROM asiakas WHERE asiakas_id = " + i;
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return asiakkaat;
+        }
         /* Laskujen Tietokanta haut*/
         public static List<Lasku> getLasku()// Toimiiko?  
         {
