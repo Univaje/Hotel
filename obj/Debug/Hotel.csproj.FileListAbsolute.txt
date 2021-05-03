@@ -123,3 +123,4 @@ C:\Users\artoi\OneDrive\Documents\GitHub\Hotel\obj\Debug\Hotel.csproj.CopyComple
 C:\Users\artoi\OneDrive\Documents\GitHub\Hotel\obj\Debug\Hotel.exe
 C:\Users\artoi\OneDrive\Documents\GitHub\Hotel\obj\Debug\Hotel.pdb
 C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\obj\Debug\Hotel.MokkiNakyma.resources
+C:\Users\artoi\OneDrive\Documents\GitHub\Hotel\obj\Debug\Hotel.MokkiNakyma.resources

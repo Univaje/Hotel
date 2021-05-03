@@ -29,8 +29,8 @@ namespace Hotel
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAsiakasMuokTallenna = new System.Windows.Forms.Button();
+            this.btnAsiakasMuokPeruuta = new System.Windows.Forms.Button();
             this.lblAsiakasMuokEnimi = new System.Windows.Forms.Label();
             this.lblAsiakasMuokSNimi = new System.Windows.Forms.Label();
             this.lblAsiakasMuokPuh = new System.Windows.Forms.Label();
@@ -45,25 +45,26 @@ namespace Hotel
             this.tbAsiakasMuokPosti = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAsiakasMuokTallenna
             // 
-            this.button1.Location = new System.Drawing.Point(21, 259);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 46);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Tallenna";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAsiakasMuokTallenna.Location = new System.Drawing.Point(21, 259);
+            this.btnAsiakasMuokTallenna.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAsiakasMuokTallenna.Name = "btnAsiakasMuokTallenna";
+            this.btnAsiakasMuokTallenna.Size = new System.Drawing.Size(142, 46);
+            this.btnAsiakasMuokTallenna.TabIndex = 0;
+            this.btnAsiakasMuokTallenna.Text = "Tallenna";
+            this.btnAsiakasMuokTallenna.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAsiakasMuokPeruuta
             // 
-            this.button2.Location = new System.Drawing.Point(178, 259);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 46);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Peruuta";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAsiakasMuokPeruuta.Location = new System.Drawing.Point(178, 259);
+            this.btnAsiakasMuokPeruuta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAsiakasMuokPeruuta.Name = "btnAsiakasMuokPeruuta";
+            this.btnAsiakasMuokPeruuta.Size = new System.Drawing.Size(138, 46);
+            this.btnAsiakasMuokPeruuta.TabIndex = 1;
+            this.btnAsiakasMuokPeruuta.Text = "Peruuta";
+            this.btnAsiakasMuokPeruuta.UseVisualStyleBackColor = true;
+            this.btnAsiakasMuokPeruuta.Click += new System.EventHandler(this.btnAsiakasMuokPeruuta_Click);
             // 
             // lblAsiakasMuokEnimi
             // 
@@ -128,7 +129,7 @@ namespace Hotel
             // tbAsiakasMuokENimi
             // 
             this.tbAsiakasMuokENimi.Location = new System.Drawing.Point(138, 30);
-            this.tbAsiakasMuokENimi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbAsiakasMuokENimi.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokENimi.Name = "tbAsiakasMuokENimi";
             this.tbAsiakasMuokENimi.Size = new System.Drawing.Size(156, 20);
             this.tbAsiakasMuokENimi.TabIndex = 3;
@@ -136,7 +137,7 @@ namespace Hotel
             // tbAsiakasMuokSNimi
             // 
             this.tbAsiakasMuokSNimi.Location = new System.Drawing.Point(138, 60);
-            this.tbAsiakasMuokSNimi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbAsiakasMuokSNimi.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokSNimi.Name = "tbAsiakasMuokSNimi";
             this.tbAsiakasMuokSNimi.Size = new System.Drawing.Size(156, 20);
             this.tbAsiakasMuokSNimi.TabIndex = 3;
@@ -144,7 +145,7 @@ namespace Hotel
             // tbAsiakasMuokPuh
             // 
             this.tbAsiakasMuokPuh.Location = new System.Drawing.Point(138, 91);
-            this.tbAsiakasMuokPuh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbAsiakasMuokPuh.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokPuh.Name = "tbAsiakasMuokPuh";
             this.tbAsiakasMuokPuh.Size = new System.Drawing.Size(156, 20);
             this.tbAsiakasMuokPuh.TabIndex = 3;
@@ -152,7 +153,7 @@ namespace Hotel
             // tbAsiakasMuokEmail
             // 
             this.tbAsiakasMuokEmail.Location = new System.Drawing.Point(138, 124);
-            this.tbAsiakasMuokEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbAsiakasMuokEmail.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokEmail.Name = "tbAsiakasMuokEmail";
             this.tbAsiakasMuokEmail.Size = new System.Drawing.Size(156, 20);
             this.tbAsiakasMuokEmail.TabIndex = 3;
@@ -160,7 +161,7 @@ namespace Hotel
             // tbAsiakasMuokOsoite
             // 
             this.tbAsiakasMuokOsoite.Location = new System.Drawing.Point(138, 157);
-            this.tbAsiakasMuokOsoite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbAsiakasMuokOsoite.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokOsoite.Name = "tbAsiakasMuokOsoite";
             this.tbAsiakasMuokOsoite.Size = new System.Drawing.Size(156, 20);
             this.tbAsiakasMuokOsoite.TabIndex = 3;
@@ -168,7 +169,7 @@ namespace Hotel
             // tbAsiakasMuokPosti
             // 
             this.tbAsiakasMuokPosti.Location = new System.Drawing.Point(138, 190);
-            this.tbAsiakasMuokPosti.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbAsiakasMuokPosti.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokPosti.Name = "tbAsiakasMuokPosti";
             this.tbAsiakasMuokPosti.Size = new System.Drawing.Size(156, 20);
             this.tbAsiakasMuokPosti.TabIndex = 3;
@@ -190,9 +191,9 @@ namespace Hotel
             this.Controls.Add(this.lblAsiakasMuokPuh);
             this.Controls.Add(this.lblAsiakasMuokSNimi);
             this.Controls.Add(this.lblAsiakasMuokEnimi);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.btnAsiakasMuokPeruuta);
+            this.Controls.Add(this.btnAsiakasMuokTallenna);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AsiakasNakyma";
             this.Text = "Asiakkaan Tiedot";
             this.ResumeLayout(false);
@@ -202,8 +203,8 @@ namespace Hotel
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAsiakasMuokTallenna;
+        private System.Windows.Forms.Button btnAsiakasMuokPeruuta;
         private System.Windows.Forms.Label lblAsiakasMuokEnimi;
         private System.Windows.Forms.Label lblAsiakasMuokSNimi;
         private System.Windows.Forms.Label lblAsiakasMuokPuh;

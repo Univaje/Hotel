@@ -16,5 +16,10 @@ namespace Hotel
         {
             InitializeComponent();
         }
+
+        private void btnAsiakasMuokPeruuta_Click(object sender, EventArgs e)
+        {
+            AsiakasNakyma.ActiveForm.Close();
+        }
     }
 }
