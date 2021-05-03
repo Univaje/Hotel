@@ -215,7 +215,10 @@ namespace Hotel
 
 
         /* Laskun toiminnot*/
+        private void HaelaskutNappi_Click(object sender, EventArgs e)
+        {
 
+        }
 
         /* Varausten toiminnot*/
         private void btnUusiVaraus_Click(object sender, EventArgs e)
@@ -240,6 +243,6 @@ namespace Hotel
             MuokkaaVarausta.Show();
         }
 
-        
+       
     }
 }
