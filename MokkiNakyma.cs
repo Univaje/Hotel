@@ -55,7 +55,7 @@ namespace Hotel
             }
             m = new mokki(Toimiid, Mokkiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(tbMhlomaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
             LFDB.SetMokki(m);
-            MokkiNakyma.ActiveForm.Close();
+           // MokkiNakyma.ActiveForm.Close();
 
         }
         private void btnPeruutaLisaus_Click(object sender, EventArgs e)

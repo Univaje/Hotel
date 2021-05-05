@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Hotel
 {
@@ -59,15 +60,29 @@ namespace Hotel
             //DOUBLEN KANSSA ONGELMA!
             try
             {
+                NumberFormatInfo provider = new NumberFormatInfo();                    
+                provider.NumberDecimalSeparator = ".";                                
+                provider.NumberGroupSeparator = ",";                                  
+                double temp = Convert.ToDouble(m.Hinta, provider);                
+
                 if (connect == null)
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
                 string sql = "INSERT INTO mokki(mokki_id,toimintaalue_id,postinro,mokkinimi,katuosoite,kuvaus,henkilomaara,varustelu,hinta) VALUES " +
-                    "(" + m.MokkiID + "," + m.ToimintaalueID + "," + m.Postinumero + ",'" + m.Mokkinimi + "','" + m.Katuosoite + "','" + m.Kuvaus +
-                    "'," + m.Henkilomaara + ",'" + m.Varustelu + "'," + m.Hinta + ")";
-                MySqlCommand cmd = new MySqlCommand(sql, connect);
-                cmd.ExecuteNonQuery();
+                    "(@mokki_id , @toimi,  @postinro,@mokkinimi,@katuosoite,@kuvaus,@henkilomaara,@varustelu,'@hinta' )";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+                Parametreille.Parameters.Add("@mokki_id", MySqlDbType.Int32).Value = default;
+                Parametreille.Parameters.Add("@toimi", MySqlDbType.Int32).Value = m.ToimintaalueID;
+                Parametreille.Parameters.Add("@postinro", MySqlDbType.VarChar).Value = m.Postinumero;
+                Parametreille.Parameters.Add("@mokkinimi", MySqlDbType.VarChar).Value = m.Mokkinimi;
+                Parametreille.Parameters.Add("@katuosoite", MySqlDbType.VarChar).Value = m.Katuosoite;
+                Parametreille.Parameters.Add("@kuvaus", MySqlDbType.VarChar).Value = m.Kuvaus;
+                Parametreille.Parameters.Add("@henkilomaara", MySqlDbType.Int32).Value = m.Henkilomaara;
+                Parametreille.Parameters.Add("@varustelu", MySqlDbType.VarChar).Value = m.Varustelu;
+                Parametreille.Parameters.Add("@hinta", MySqlDbType.Double).Value = m.Hinta;
+
+                Parametreille.ExecuteNonQuery();
             }
             catch (MySqlException ex)
             {
