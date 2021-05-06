@@ -22,7 +22,7 @@ namespace Hotel
         {
             InitializeComponent();
             Lista = p.HaetPostinrot();
-            Mokkiid = count + 1;
+            Toimiid = count;
             tbMhlomaara.Text = "1";
         }
         internal MokkiNakyma(mokki Uusimokki, int mokkiid, int toimiid)
@@ -51,9 +51,9 @@ namespace Hotel
             {
                 p.Postinro = tbMposti.Text;
                 p.Toimipaikka = tbToimipaikka.Text;
-                p.ViePostinumerot(p);
+                LFDB.setPostinro(p);
             }
-            m = new mokki(Toimiid, Mokkiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(tbMhlomaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
+            m = new mokki(Mokkiid, Toimiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(tbMhlomaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
             LFDB.SetMokki(m);
            // MokkiNakyma.ActiveForm.Close();
 
@@ -65,22 +65,46 @@ namespace Hotel
         }
         private void tbMposti_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && tbMposti.TextLength < 5)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
                 e.Handled = true;
-            else if (tbMposti.TextLength >= 5)
+            else if (tbMposti.TextLength >= 5 && e.KeyChar != '\b')
                 e.Handled = true;
         }
         private void tbMHinta_KeyPress(object sender, KeyPressEventArgs e)
         {
+            string luku = tbMHinta.Text;
+
             if (tbMHinta.Text.Contains(','))
+            {
+                luku = luku.Substring(0, luku.IndexOf(","));
                 if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
                     e.Handled = true;
-                else if (e.KeyChar != ',' && !char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+                else if (tbMHinta.TextLength >= luku.Length + 3 && e.KeyChar != '\b')
                     e.Handled = true;
+            }
+            else if (e.KeyChar != ',' && !char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+                e.Handled = true;
         }
         private void tbMposti_KeyUp(object sender, KeyEventArgs e)
         {
+            for (int i = 0; i < 5; i++)
+            {
 
+
+                if (Lista != null && tbMposti.TextLength == i)
+                {
+                    string vertaa = tbMposti.Text;
+                    foreach (Posti p in Lista)
+                    {
+
+                        if (vertaa == p.Postinro.Substring(0, i))
+                        {
+                            tbToimipaikka.Text = p.Toimipaikka;
+                        }
+
+                    }
+                }
+            }
         }
         private void tbMhlomaara_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -91,9 +115,12 @@ namespace Hotel
         }
         private void tbMhlomaara_KeyUp(object sender, KeyEventArgs e)
         {
-            int maara = int.Parse(tbMhlomaara.Text);
-            if (maara > 12)
+            if (tbMhlomaara.Text != "") 
+            {
+                int maara = int.Parse(tbMhlomaara.Text);
+                if (maara > 12)
                 tbMhlomaara.Text = "12";
+            }
         }
     }
 }

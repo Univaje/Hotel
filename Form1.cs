@@ -171,7 +171,7 @@ namespace Hotel
 
         private void btnMokkiLisaa_Click(object sender, EventArgs e)
         {
-            MokkiNakyma LisaaMokki = new MokkiNakyma(ToimialueenMokit.Count);
+            MokkiNakyma LisaaMokki = new MokkiNakyma(currToimAlue);
             LisaaMokki.Text = "Lisaa mokki";
             LisaaMokki.Show();
         }

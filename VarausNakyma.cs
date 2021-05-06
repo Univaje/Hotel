@@ -143,7 +143,7 @@ namespace Hotel
             {
                 p.Postinro = tbvPostinumero.Text;
                 p.Toimipaikka = tbvToimipaikka.Text;
-                p.ViePostinumerot(p);
+                LFDB.setPostinro(p);
             }
 
             a.Sahkopostiosoite = tbvSposti.Text;

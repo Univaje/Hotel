@@ -30,9 +30,5 @@ namespace Hotel.Oliot
             Postinumerot = LFDB.getPostinro();
             return Postinumerot;
         }
-        public void ViePostinumerot(Posti p)
-        {
-
-        }
     }
 }
