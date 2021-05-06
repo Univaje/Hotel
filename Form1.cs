@@ -56,6 +56,10 @@ namespace Hotel
             dgvAsiakas.DataSource = asiakkaat;
             cmbAsiakasToimialue.DataSource = toimialueet;
 
+            //Laskut
+            asiakkaat = LFDB.getAsiakas();
+            dgvLaskut.DataSource = Varaukset;
+
         }
 
         /* Toimialueen toiminnot*/
