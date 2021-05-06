@@ -144,17 +144,11 @@ namespace Hotel
                 LFDB.SetMuokattuVaraus(uusiVaraus);
                 PaivitaPalvelutVarauseen();
             }
-            // Miksi ei löydä varaus idtä
-
-
-
-
-
         }
         private void asiakkaanlisausVarauksenYhteydessa(Asiakas a)
         {
             a = new Asiakas();
-            a.AsiakasID = asiakkaat.Count + 1;
+            a.AsiakasID = 0;
             a.Etunimi = tbvEtunimi.Text;
             a.Sukunimi = tbvSukunimi.Text;
             a.Lahiosoite = tbvOsoite.Text;
@@ -172,7 +166,7 @@ namespace Hotel
 
             a.Sahkopostiosoite = tbvSposti.Text;
             a.Puhelinnumero = tbvPuhnum.Text;
-            LFDB.SetAsiakas(a);
+            LFDB.SetAsiakasAlt(a);
         }
         private void TallennaPalvelutVarauseen(int ID)
         {

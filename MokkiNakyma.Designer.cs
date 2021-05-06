@@ -81,7 +81,7 @@ namespace Hotel
             this.btnPeruutaLisaus.Location = new System.Drawing.Point(315, 443);
             this.btnPeruutaLisaus.Name = "btnPeruutaLisaus";
             this.btnPeruutaLisaus.Size = new System.Drawing.Size(181, 57);
-            this.btnPeruutaLisaus.TabIndex = 29;
+            this.btnPeruutaLisaus.TabIndex = 59;
             this.btnPeruutaLisaus.Text = "Peruuta";
             this.btnPeruutaLisaus.UseVisualStyleBackColor = true;
             this.btnPeruutaLisaus.Click += new System.EventHandler(this.btnPeruutaLisaus_Click);
@@ -91,7 +91,7 @@ namespace Hotel
             this.btnTallennaMokki.Location = new System.Drawing.Point(26, 443);
             this.btnTallennaMokki.Name = "btnTallennaMokki";
             this.btnTallennaMokki.Size = new System.Drawing.Size(181, 57);
-            this.btnTallennaMokki.TabIndex = 28;
+            this.btnTallennaMokki.TabIndex = 58;
             this.btnTallennaMokki.Text = "Tallenna";
             this.btnTallennaMokki.UseVisualStyleBackColor = true;
             this.btnTallennaMokki.Click += new System.EventHandler(this.TallennaMokki_Click);
@@ -102,21 +102,21 @@ namespace Hotel
             this.tbMkuvaus.Multiline = true;
             this.tbMkuvaus.Name = "tbMkuvaus";
             this.tbMkuvaus.Size = new System.Drawing.Size(421, 114);
-            this.tbMkuvaus.TabIndex = 23;
+            this.tbMkuvaus.TabIndex = 54;
             // 
             // tbToimipaikka
             // 
             this.tbToimipaikka.Location = new System.Drawing.Point(259, 135);
             this.tbToimipaikka.Name = "tbToimipaikka";
             this.tbToimipaikka.Size = new System.Drawing.Size(206, 22);
-            this.tbToimipaikka.TabIndex = 22;
+            this.tbToimipaikka.TabIndex = 53;
             // 
             // tbMposti
             // 
             this.tbMposti.Location = new System.Drawing.Point(44, 135);
             this.tbMposti.Name = "tbMposti";
             this.tbMposti.Size = new System.Drawing.Size(206, 22);
-            this.tbMposti.TabIndex = 20;
+            this.tbMposti.TabIndex = 52;
             this.tbMposti.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMposti_KeyPress);
             this.tbMposti.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbMposti_KeyUp);
             // 
@@ -125,7 +125,7 @@ namespace Hotel
             this.tbMHinta.Location = new System.Drawing.Point(171, 381);
             this.tbMHinta.Name = "tbMHinta";
             this.tbMHinta.Size = new System.Drawing.Size(206, 22);
-            this.tbMHinta.TabIndex = 27;
+            this.tbMHinta.TabIndex = 57;
             this.tbMHinta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMHinta_KeyPress);
             // 
             // tbMvarustelu
@@ -133,21 +133,21 @@ namespace Hotel
             this.tbMvarustelu.Location = new System.Drawing.Point(115, 328);
             this.tbMvarustelu.Name = "tbMvarustelu";
             this.tbMvarustelu.Size = new System.Drawing.Size(191, 22);
-            this.tbMvarustelu.TabIndex = 24;
+            this.tbMvarustelu.TabIndex = 55;
             // 
             // tbMosoite
             // 
             this.tbMosoite.Location = new System.Drawing.Point(44, 90);
             this.tbMosoite.Name = "tbMosoite";
             this.tbMosoite.Size = new System.Drawing.Size(421, 22);
-            this.tbMosoite.TabIndex = 19;
+            this.tbMosoite.TabIndex = 51;
             // 
             // tbMnimi
             // 
             this.tbMnimi.Location = new System.Drawing.Point(44, 45);
             this.tbMnimi.Name = "tbMnimi";
             this.tbMnimi.Size = new System.Drawing.Size(421, 22);
-            this.tbMnimi.TabIndex = 17;
+            this.tbMnimi.TabIndex = 50;
             // 
             // label4
             // 
@@ -199,7 +199,7 @@ namespace Hotel
             this.tbMhlomaara.Location = new System.Drawing.Point(417, 330);
             this.tbMhlomaara.Name = "tbMhlomaara";
             this.tbMhlomaara.Size = new System.Drawing.Size(100, 22);
-            this.tbMhlomaara.TabIndex = 31;
+            this.tbMhlomaara.TabIndex = 56;
             this.tbMhlomaara.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMhlomaara_KeyPress);
             this.tbMhlomaara.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbMhlomaara_KeyUp);
             // 

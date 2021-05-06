@@ -134,7 +134,7 @@ namespace Hotel
             this.cbVMokki.Location = new System.Drawing.Point(6, 151);
             this.cbVMokki.Name = "cbVMokki";
             this.cbVMokki.Size = new System.Drawing.Size(496, 24);
-            this.cbVMokki.TabIndex = 8;
+            this.cbVMokki.TabIndex = 3;
             // 
             // cbVAsiakas
             // 
@@ -142,7 +142,7 @@ namespace Hotel
             this.cbVAsiakas.Location = new System.Drawing.Point(6, 83);
             this.cbVAsiakas.Name = "cbVAsiakas";
             this.cbVAsiakas.Size = new System.Drawing.Size(496, 24);
-            this.cbVAsiakas.TabIndex = 9;
+            this.cbVAsiakas.TabIndex = 2;
             // 
             // cbVtoimialue
             // 
@@ -150,7 +150,7 @@ namespace Hotel
             this.cbVtoimialue.Location = new System.Drawing.Point(6, 21);
             this.cbVtoimialue.Name = "cbVtoimialue";
             this.cbVtoimialue.Size = new System.Drawing.Size(496, 24);
-            this.cbVtoimialue.TabIndex = 10;
+            this.cbVtoimialue.TabIndex = 1;
             this.cbVtoimialue.SelectedIndexChanged += new System.EventHandler(this.cbVtoimialue_SelectedIndexChanged);
             // 
             // groupBox2
@@ -188,14 +188,14 @@ namespace Hotel
             this.dtpVarausLoppuu.Location = new System.Drawing.Point(28, 92);
             this.dtpVarausLoppuu.Name = "dtpVarausLoppuu";
             this.dtpVarausLoppuu.Size = new System.Drawing.Size(465, 22);
-            this.dtpVarausLoppuu.TabIndex = 20;
+            this.dtpVarausLoppuu.TabIndex = 12;
             // 
             // dtpVarausAlkaa
             // 
             this.dtpVarausAlkaa.Location = new System.Drawing.Point(28, 33);
             this.dtpVarausAlkaa.Name = "dtpVarausAlkaa";
             this.dtpVarausAlkaa.Size = new System.Drawing.Size(465, 22);
-            this.dtpVarausAlkaa.TabIndex = 21;
+            this.dtpVarausAlkaa.TabIndex = 11;
             this.dtpVarausAlkaa.ValueChanged += new System.EventHandler(this.ctpVarausAlkaa_ValueChanged);
             // 
             // groupBox1
@@ -236,7 +236,7 @@ namespace Hotel
             this.btnvPoistaPalvelu.Location = new System.Drawing.Point(18, 466);
             this.btnvPoistaPalvelu.Name = "btnvPoistaPalvelu";
             this.btnvPoistaPalvelu.Size = new System.Drawing.Size(325, 50);
-            this.btnvPoistaPalvelu.TabIndex = 13;
+            this.btnvPoistaPalvelu.TabIndex = 18;
             this.btnvPoistaPalvelu.Text = "Poista palvelu";
             this.btnvPoistaPalvelu.UseVisualStyleBackColor = true;
             this.btnvPoistaPalvelu.Click += new System.EventHandler(this.btnvPoistaPalvelu_Click);
@@ -246,7 +246,7 @@ namespace Hotel
             this.btnvPalvelunLisaus.Location = new System.Drawing.Point(16, 173);
             this.btnvPalvelunLisaus.Name = "btnvPalvelunLisaus";
             this.btnvPalvelunLisaus.Size = new System.Drawing.Size(325, 50);
-            this.btnvPalvelunLisaus.TabIndex = 13;
+            this.btnvPalvelunLisaus.TabIndex = 16;
             this.btnvPalvelunLisaus.Text = "Lisää palvelu";
             this.btnvPalvelunLisaus.UseVisualStyleBackColor = true;
             this.btnvPalvelunLisaus.Click += new System.EventHandler(this.btnvPalvelunLisaus_Click);
@@ -257,7 +257,7 @@ namespace Hotel
             this.label14.Location = new System.Drawing.Point(23, 26);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(91, 17);
-            this.label14.TabIndex = 12;
+            this.label14.TabIndex = 99;
             this.label14.Text = "Lisää palvelu";
             // 
             // label2
@@ -275,15 +275,16 @@ namespace Hotel
             this.clbPalvelutVarauksessa.Location = new System.Drawing.Point(19, 267);
             this.clbPalvelutVarauksessa.Name = "clbPalvelutVarauksessa";
             this.clbPalvelutVarauksessa.Size = new System.Drawing.Size(324, 174);
-            this.clbPalvelutVarauksessa.TabIndex = 11;
+            this.clbPalvelutVarauksessa.TabIndex = 17;
             // 
             // cbvPalvelunlisäys
             // 
             this.cbvPalvelunlisäys.FormattingEnabled = true;
+            this.cbvPalvelunlisäys.ItemHeight = 16;
             this.cbvPalvelunlisäys.Location = new System.Drawing.Point(18, 46);
             this.cbvPalvelunlisäys.Name = "cbvPalvelunlisäys";
             this.cbvPalvelunlisäys.Size = new System.Drawing.Size(324, 24);
-            this.cbvPalvelunlisäys.TabIndex = 9;
+            this.cbvPalvelunlisäys.TabIndex = 14;
             // 
             // gbUuVaAs
             // 
@@ -313,49 +314,49 @@ namespace Hotel
             this.tbvToimipaikka.Location = new System.Drawing.Point(151, 196);
             this.tbvToimipaikka.Name = "tbvToimipaikka";
             this.tbvToimipaikka.Size = new System.Drawing.Size(345, 22);
-            this.tbvToimipaikka.TabIndex = 1;
+            this.tbvToimipaikka.TabIndex = 8;
             // 
             // tbvPostinumero
             // 
             this.tbvPostinumero.Location = new System.Drawing.Point(151, 157);
             this.tbvPostinumero.Name = "tbvPostinumero";
             this.tbvPostinumero.Size = new System.Drawing.Size(345, 22);
-            this.tbvPostinumero.TabIndex = 1;
+            this.tbvPostinumero.TabIndex = 7;
             // 
             // tbvPuhnum
             // 
             this.tbvPuhnum.Location = new System.Drawing.Point(151, 271);
             this.tbvPuhnum.Name = "tbvPuhnum";
             this.tbvPuhnum.Size = new System.Drawing.Size(345, 22);
-            this.tbvPuhnum.TabIndex = 1;
+            this.tbvPuhnum.TabIndex = 10;
             // 
             // tbvSposti
             // 
             this.tbvSposti.Location = new System.Drawing.Point(151, 238);
             this.tbvSposti.Name = "tbvSposti";
             this.tbvSposti.Size = new System.Drawing.Size(345, 22);
-            this.tbvSposti.TabIndex = 1;
+            this.tbvSposti.TabIndex = 9;
             // 
             // tbvOsoite
             // 
             this.tbvOsoite.Location = new System.Drawing.Point(151, 117);
             this.tbvOsoite.Name = "tbvOsoite";
             this.tbvOsoite.Size = new System.Drawing.Size(345, 22);
-            this.tbvOsoite.TabIndex = 1;
+            this.tbvOsoite.TabIndex = 6;
             // 
             // tbvSukunimi
             // 
             this.tbvSukunimi.Location = new System.Drawing.Point(151, 73);
             this.tbvSukunimi.Name = "tbvSukunimi";
             this.tbvSukunimi.Size = new System.Drawing.Size(345, 22);
-            this.tbvSukunimi.TabIndex = 1;
+            this.tbvSukunimi.TabIndex = 5;
             // 
             // tbvEtunimi
             // 
             this.tbvEtunimi.Location = new System.Drawing.Point(151, 25);
             this.tbvEtunimi.Name = "tbvEtunimi";
             this.tbvEtunimi.Size = new System.Drawing.Size(345, 22);
-            this.tbvEtunimi.TabIndex = 1;
+            this.tbvEtunimi.TabIndex = 4;
             // 
             // label13
             // 
@@ -425,7 +426,7 @@ namespace Hotel
             this.button2.Location = new System.Drawing.Point(727, 619);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(152, 48);
-            this.button2.TabIndex = 27;
+            this.button2.TabIndex = 20;
             this.button2.Text = "Peruuta";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btvCancel_Click);
@@ -435,7 +436,7 @@ namespace Hotel
             this.btnvTallenna.Location = new System.Drawing.Point(553, 619);
             this.btnvTallenna.Name = "btnvTallenna";
             this.btnvTallenna.Size = new System.Drawing.Size(152, 48);
-            this.btnvTallenna.TabIndex = 28;
+            this.btnvTallenna.TabIndex = 19;
             this.btnvTallenna.Text = "Lisää varaus";
             this.btnvTallenna.UseVisualStyleBackColor = true;
             this.btnvTallenna.Click += new System.EventHandler(this.btnvTallenna_Click);
