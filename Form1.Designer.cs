@@ -82,6 +82,7 @@ namespace Hotel
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tpLaskut = new System.Windows.Forms.TabPage();
+            this.HaelaskutNappi = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
@@ -100,7 +101,6 @@ namespace Hotel
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
             this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
-            this.HaelaskutNappi = new System.Windows.Forms.Button();
             this.tpAsiakas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
@@ -706,6 +706,17 @@ namespace Hotel
             this.tpLaskut.Text = "Laskut";
             this.tpLaskut.UseVisualStyleBackColor = true;
             // 
+            // HaelaskutNappi
+            // 
+            this.HaelaskutNappi.Location = new System.Drawing.Point(396, 132);
+            this.HaelaskutNappi.Name = "HaelaskutNappi";
+            this.HaelaskutNappi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.HaelaskutNappi.Size = new System.Drawing.Size(100, 38);
+            this.HaelaskutNappi.TabIndex = 8;
+            this.HaelaskutNappi.Text = "Hae laskut";
+            this.HaelaskutNappi.UseVisualStyleBackColor = true;
+            this.HaelaskutNappi.Click += new System.EventHandler(this.HaelaskutNappi_Click);
+            // 
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(541, 236);
@@ -882,17 +893,6 @@ namespace Hotel
             // 
             this.asiakasTableAdapter.ClearBeforeFill = true;
             // 
-            // HaelaskutNappi
-            // 
-            this.HaelaskutNappi.Location = new System.Drawing.Point(396, 132);
-            this.HaelaskutNappi.Name = "HaelaskutNappi";
-            this.HaelaskutNappi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.HaelaskutNappi.Size = new System.Drawing.Size(100, 38);
-            this.HaelaskutNappi.TabIndex = 8;
-            this.HaelaskutNappi.Text = "Hae laskut";
-            this.HaelaskutNappi.UseVisualStyleBackColor = true;
-            this.HaelaskutNappi.Click += new System.EventHandler(this.HaelaskutNappi_Click);
-            // 
             // HotelManhattan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -902,6 +902,7 @@ namespace Hotel
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HotelManhattan";
             this.Text = "Hotel Manhanttan";
+            this.Activated += new System.EventHandler(this.HotelManhattan_Activated);
             this.Load += new System.EventHandler(this.HotelManhattan_Load);
             this.tpAsiakas.ResumeLayout(false);
             this.tpAsiakas.PerformLayout();
