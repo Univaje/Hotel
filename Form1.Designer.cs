@@ -82,6 +82,8 @@ namespace Hotel
             this.lisää_btn = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tpLaskut = new System.Windows.Forms.TabPage();
+            this.LaskuPVM2 = new System.Windows.Forms.DateTimePicker();
+            this.LaskuPVM1 = new System.Windows.Forms.DateTimePicker();
             this.HaelaskutNappi = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -99,8 +101,6 @@ namespace Hotel
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
             this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
-            this.LaskuPVM1 = new System.Windows.Forms.DateTimePicker();
-            this.LaskuPVM2 = new System.Windows.Forms.DateTimePicker();
             this.tpAsiakas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
@@ -137,7 +137,7 @@ namespace Hotel
             this.tpAsiakas.Margin = new System.Windows.Forms.Padding(2);
             this.tpAsiakas.Name = "tpAsiakas";
             this.tpAsiakas.Padding = new System.Windows.Forms.Padding(2);
-            this.tpAsiakas.Size = new System.Drawing.Size(947, 436);
+            this.tpAsiakas.Size = new System.Drawing.Size(1092, 470);
             this.tpAsiakas.TabIndex = 1;
             this.tpAsiakas.Text = "Asiakas";
             this.tpAsiakas.UseVisualStyleBackColor = true;
@@ -242,7 +242,7 @@ namespace Hotel
             this.tpMokki.Margin = new System.Windows.Forms.Padding(2);
             this.tpMokki.Name = "tpMokki";
             this.tpMokki.Padding = new System.Windows.Forms.Padding(2);
-            this.tpMokki.Size = new System.Drawing.Size(947, 436);
+            this.tpMokki.Size = new System.Drawing.Size(1092, 470);
             this.tpMokki.TabIndex = 0;
             this.tpMokki.Text = "Mökki";
             this.tpMokki.UseVisualStyleBackColor = true;
@@ -433,7 +433,7 @@ namespace Hotel
             this.tcHotelli.Margin = new System.Windows.Forms.Padding(2);
             this.tcHotelli.Name = "tcHotelli";
             this.tcHotelli.SelectedIndex = 0;
-            this.tcHotelli.Size = new System.Drawing.Size(1100, 496);
+            this.tcHotelli.Size = new System.Drawing.Size(938, 489);
             this.tcHotelli.TabIndex = 0;
             // 
             // tpToimialue
@@ -443,7 +443,7 @@ namespace Hotel
             this.tpToimialue.Location = new System.Drawing.Point(4, 22);
             this.tpToimialue.Margin = new System.Windows.Forms.Padding(2);
             this.tpToimialue.Name = "tpToimialue";
-            this.tpToimialue.Size = new System.Drawing.Size(947, 436);
+            this.tpToimialue.Size = new System.Drawing.Size(1092, 470);
             this.tpToimialue.TabIndex = 4;
             this.tpToimialue.Text = "Toimialue";
             this.tpToimialue.UseVisualStyleBackColor = true;
@@ -569,7 +569,7 @@ namespace Hotel
             this.tpPalvelut.Location = new System.Drawing.Point(4, 22);
             this.tpPalvelut.Margin = new System.Windows.Forms.Padding(2);
             this.tpPalvelut.Name = "tpPalvelut";
-            this.tpPalvelut.Size = new System.Drawing.Size(947, 436);
+            this.tpPalvelut.Size = new System.Drawing.Size(1092, 470);
             this.tpPalvelut.TabIndex = 3;
             this.tpPalvelut.Text = "Palvelut";
             this.tpPalvelut.UseVisualStyleBackColor = true;
@@ -703,14 +703,28 @@ namespace Hotel
             this.tpLaskut.Location = new System.Drawing.Point(4, 22);
             this.tpLaskut.Margin = new System.Windows.Forms.Padding(2);
             this.tpLaskut.Name = "tpLaskut";
-            this.tpLaskut.Size = new System.Drawing.Size(1092, 470);
+            this.tpLaskut.Size = new System.Drawing.Size(930, 463);
             this.tpLaskut.TabIndex = 2;
             this.tpLaskut.Text = "Laskut";
             this.tpLaskut.UseVisualStyleBackColor = true;
             // 
+            // LaskuPVM2
+            // 
+            this.LaskuPVM2.Location = new System.Drawing.Point(537, 126);
+            this.LaskuPVM2.Name = "LaskuPVM2";
+            this.LaskuPVM2.Size = new System.Drawing.Size(200, 20);
+            this.LaskuPVM2.TabIndex = 10;
+            // 
+            // LaskuPVM1
+            // 
+            this.LaskuPVM1.Location = new System.Drawing.Point(537, 52);
+            this.LaskuPVM1.Name = "LaskuPVM1";
+            this.LaskuPVM1.Size = new System.Drawing.Size(200, 20);
+            this.LaskuPVM1.TabIndex = 9;
+            // 
             // HaelaskutNappi
             // 
-            this.HaelaskutNappi.Location = new System.Drawing.Point(771, 176);
+            this.HaelaskutNappi.Location = new System.Drawing.Point(537, 165);
             this.HaelaskutNappi.Name = "HaelaskutNappi";
             this.HaelaskutNappi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.HaelaskutNappi.Size = new System.Drawing.Size(100, 38);
@@ -721,7 +735,7 @@ namespace Hotel
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(939, 239);
+            this.button10.Location = new System.Drawing.Point(713, 238);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(151, 45);
@@ -731,7 +745,7 @@ namespace Hotel
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(771, 238);
+            this.button9.Location = new System.Drawing.Point(537, 238);
             this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(130, 46);
@@ -742,7 +756,7 @@ namespace Hotel
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(768, 104);
+            this.label4.Location = new System.Drawing.Point(534, 95);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
@@ -752,7 +766,7 @@ namespace Hotel
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(768, 25);
+            this.label3.Location = new System.Drawing.Point(534, 23);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
@@ -767,7 +781,7 @@ namespace Hotel
             this.dgvLaskut.Name = "dgvLaskut";
             this.dgvLaskut.RowHeadersWidth = 51;
             this.dgvLaskut.RowTemplate.Height = 24;
-            this.dgvLaskut.Size = new System.Drawing.Size(743, 284);
+            this.dgvLaskut.Size = new System.Drawing.Size(517, 284);
             this.dgvLaskut.TabIndex = 0;
             // 
             // tabPage1
@@ -780,7 +794,7 @@ namespace Hotel
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(947, 436);
+            this.tabPage1.Size = new System.Drawing.Size(1092, 470);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "Varaukset";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -877,25 +891,11 @@ namespace Hotel
             // 
             this.asiakasTableAdapter.ClearBeforeFill = true;
             // 
-            // LaskuPVM1
-            // 
-            this.LaskuPVM1.Location = new System.Drawing.Point(771, 52);
-            this.LaskuPVM1.Name = "LaskuPVM1";
-            this.LaskuPVM1.Size = new System.Drawing.Size(200, 20);
-            this.LaskuPVM1.TabIndex = 9;
-            // 
-            // LaskuPVM2
-            // 
-            this.LaskuPVM2.Location = new System.Drawing.Point(771, 129);
-            this.LaskuPVM2.Name = "LaskuPVM2";
-            this.LaskuPVM2.Size = new System.Drawing.Size(200, 20);
-            this.LaskuPVM2.TabIndex = 10;
-            // 
             // HotelManhattan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1111, 503);
+            this.ClientSize = new System.Drawing.Size(949, 496);
             this.Controls.Add(this.tcHotelli);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HotelManhattan";

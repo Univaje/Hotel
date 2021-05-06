@@ -57,8 +57,8 @@ namespace Hotel
             cmbAsiakasToimialue.DataSource = toimialueet;
 
             //Laskut
-            asiakkaat = LFDB.getAsiakas();
-            dgvLaskut.DataSource = Varaukset;
+            
+            dgvLaskut.DataSource = LFDB.getLasku();
 
         }
 
