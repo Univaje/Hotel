@@ -54,6 +54,7 @@ namespace Hotel
             this.btnAsiakasMuokTallenna.TabIndex = 0;
             this.btnAsiakasMuokTallenna.Text = "Tallenna";
             this.btnAsiakasMuokTallenna.UseVisualStyleBackColor = true;
+            this.btnAsiakasMuokTallenna.Click += new System.EventHandler(this.btnAsiakasMuokTallenna_Click);
             // 
             // btnAsiakasMuokPeruuta
             // 

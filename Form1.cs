@@ -243,6 +243,11 @@ namespace Hotel
             MuokkaaVarausta.Show();
         }
 
-       
+        private void HotelManhattan_Activated(object sender, EventArgs e)
+        {
+            asiakkaat = LFDB.getAsiakas();
+            dgvAsiakas.DataSource = null;
+            dgvAsiakas.DataSource = asiakkaat;
+        }
     }
 }

@@ -57,7 +57,7 @@ namespace Hotel
         }
         public static void SetMokki(mokki m)  //  toimiiko?
         {
-            //DOUBLEN KANSSA ONGELMA!
+            //DOUBLEN KANSSA (ei pitäisi enää olla) ONGELMA!
             try
             {
                 NumberFormatInfo provider = new NumberFormatInfo();                    
@@ -70,7 +70,7 @@ namespace Hotel
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
                 string sql = "INSERT INTO mokki(mokki_id,toimintaalue_id,postinro,mokkinimi,katuosoite,kuvaus,henkilomaara,varustelu,hinta) VALUES " +
-                    "(@mokki_id , @toimi,  @postinro,@mokkinimi,@katuosoite,@kuvaus,@henkilomaara,@varustelu,'@hinta' )";
+                    "(@mokki_id , @toimi,  @postinro,@mokkinimi,@katuosoite,@kuvaus,@henkilomaara,@varustelu,@hinta )";
                 MySqlCommand Parametreille = new MySqlCommand(sql, connect);
                 Parametreille.Parameters.Add("@mokki_id", MySqlDbType.Int32).Value = default;
                 Parametreille.Parameters.Add("@toimi", MySqlDbType.Int32).Value = m.ToimintaalueID;
@@ -482,9 +482,9 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,email,email,puhelinnro) VALUES " +
-                    "(" + a.AsiakasID + "," + a.Etunimi + "," + a.Sukunimi + ",'" + a.Lahiosoite + "','" + a.Sahkopostiosoite + "','" + a.Puhelinnumero +
-                    "'," + a.Postinumero + ")";
+                string sql = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,email,puhelinnro,postinro) VALUES " +
+                    "(" + a.AsiakasID + ",'" + a.Etunimi + "','" + a.Sukunimi + "','" + a.Lahiosoite + "','" + a.Sahkopostiosoite + "','" + a.Puhelinnumero +
+                    "','" + a.Postinumero + "')";
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 cmd.ExecuteNonQuery();
             }
@@ -500,9 +500,36 @@ namespace Hotel
 
         }
 
-        public static List<Asiakas> RemoveAsiakas(int i)
+        public static void SetAsiakasAlt(Asiakas a)  //  Annetaan ID:ksi tietokannalle NULL, auto increment hoitaa ID määrittämisen
         {
-            asiakkaat = new List<Asiakas>();
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,email,puhelinnro,postinro) VALUES " +
+                    "(NULL,'" + a.Etunimi + "','" + a.Sukunimi + "','" + a.Lahiosoite + "','" + a.Sahkopostiosoite + "','" + a.Puhelinnumero +
+                    "','" + a.Postinumero + "')";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+
+        public static void RemoveAsiakas(int i)
+        {
+            //asiakkaat = new List<Asiakas>();
             try
             {
                 if (connect == null)
@@ -523,7 +550,7 @@ namespace Hotel
                 connect.Close();
                 connect = null;
             }
-            return asiakkaat;
+            //return asiakkaat;
         }
         /* Laskujen Tietokanta haut*/
         public static List<Lasku> getLasku()// Toimiiko?  
