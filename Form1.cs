@@ -249,5 +249,17 @@ namespace Hotel
             dgvAsiakas.DataSource = null;
             dgvAsiakas.DataSource = asiakkaat;
         }
+
+
+        //palvelut
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
