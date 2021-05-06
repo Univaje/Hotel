@@ -17,6 +17,7 @@ namespace Hotel
         public static List<Toimialue> toimintaalueet = new List<Toimialue>();
         public static List<Varaus> Varaukset = new List<Varaus>();
         public static List<Varaustiedot> VarausienTiedot = new List<Varaustiedot>();
+        public static List<PalvelutVaraukseen> PalveluidenlisVar = new List<PalvelutVaraukseen>();
         public static List<MokkiRaportti> MokkiRaportit = new List<MokkiRaportti>();
         public static List<Posti> Postinumerot = new List<Posti>();
 
@@ -55,9 +56,9 @@ namespace Hotel
             }
             return mokit;
         }
-        public static void SetMokki(mokki m)  //  toimiiko?
+        public static void SetMokki(mokki m)  
         {
-            //DOUBLEN KANSSA (ei pitäisi enää olla) ONGELMA!
+            
             try
             {
                 NumberFormatInfo provider = new NumberFormatInfo();                    
@@ -238,7 +239,7 @@ namespace Hotel
         /* Mokkiraporttien Tietokanta haut*/
         public static List<MokkiRaportti> getMokkiRaportti(string s, DateTime a, DateTime l) // Ei toimi
         {
-            ///////////// ONGELMA PÄIVÄN KANSSA!
+            
             try
             {
                 if (connect == null)
@@ -472,7 +473,6 @@ namespace Hotel
             }
             return asiakkaat;
         }
-
         public static void SetAsiakas(Asiakas a)  //  toimiiko?
         {
 
@@ -499,7 +499,6 @@ namespace Hotel
             }
 
         }
-
         public static void SetAsiakasAlt(Asiakas a)  //  Annetaan ID:ksi tietokannalle NULL, auto increment hoitaa ID määrittämisen
         {
 
@@ -526,7 +525,6 @@ namespace Hotel
             }
 
         }
-
         public static void RemoveAsiakas(int i)
         {
             //asiakkaat = new List<Asiakas>();
@@ -552,6 +550,7 @@ namespace Hotel
             }
             //return asiakkaat;
         }
+
         /* Laskujen Tietokanta haut*/
         public static List<Lasku> getLasku()// Toimiiko?  
         {
@@ -659,10 +658,50 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "INSERT INTO varaus(varaus_id,asiakas_id,mokki_mokki_id,varattu_pvm,vahvistus_pvm,varattu_alkupvm,varattu_loppupvm) VALUES " +
-                    "(" + v.VarausID + "," + v.AsiakasID1 + "," + v.MokkiID + ",'" + v.VarattuPvm + "','" + v.VahvistettuPvm + "','" + v.VarattuAlku +
-                    "'," + v.VarattuLoppu + ")";
+                string sql = "INSERT INTO varaus (varaus_id,asiakas_id,mokki_mokki_id,varattu_pvm,vahvistus_pvm,varattu_alkupvm,varattu_loppupvm) VALUES " +
+                    "(@varaus_id,@asiakas_id,@mokkiid,@varattu_pvm,@vahvistus_pvm,@varattu_alkupvm,@varattu_loppupvm)";
+
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@varaus_id", MySqlDbType.Int32).Value = default;
+                cmd.Parameters.Add("@asiakas_id", MySqlDbType.Int32).Value = v.AsiakasID1;
+                cmd.Parameters.Add("@mokkiid", MySqlDbType.Int32).Value = v.MokkiID;
+                cmd.Parameters.Add("@varattu_pvm", MySqlDbType.Int32).Value = v.VarattuPvm;
+                cmd.Parameters.Add("@vahvistus_pvm", MySqlDbType.DateTime).Value = v.VahvistettuPvm;
+                cmd.Parameters.Add("@varattu_alkupvm", MySqlDbType.DateTime).Value = v.VarattuAlku;
+                cmd.Parameters.Add("@varattu_loppupvm", MySqlDbType.DateTime).Value = v.VarattuLoppu;
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+        public static void SetMuokattuVaraus(Varaus v)  //  toimiiko?
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+
+                string sql = "UPDATE varaus SET varaus_id = @varaus_id, asiakas_id = @asiakas_id, mokki_mokki_id = @mokkiid, varattu_pvm = @varattu_pvm, vahvistus_pvm = @vahvistus_pvm, varattu_alkupvm = @varattu_alkupvm, varattu_loppupvm = @varattu_loppupvm WHERE varaus_id = @varaus_id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@varaus_id", MySqlDbType.Int32).Value = v.VarausID;
+                cmd.Parameters.Add("@asiakas_id", MySqlDbType.Int32).Value = v.AsiakasID1;
+                cmd.Parameters.Add("@mokkiid", MySqlDbType.Int32).Value = v.MokkiID;
+                cmd.Parameters.Add("@varattu_pvm", MySqlDbType.Int32).Value = v.VarattuPvm;
+                cmd.Parameters.Add("@vahvistus_pvm", MySqlDbType.DateTime).Value = v.VahvistettuPvm;
+                cmd.Parameters.Add("@varattu_alkupvm", MySqlDbType.DateTime).Value = v.VarattuAlku;
+                cmd.Parameters.Add("@varattu_loppupvm", MySqlDbType.DateTime).Value = v.VarattuLoppu;
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -716,7 +755,7 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "INSERT INTO varauksen_palvelut(varaus_id,asiakas_id,lkm) VALUES " +
+                string sql = "INSERT INTO varauksen_palvelut(varaus_id,palvelu_id,lkm) VALUES " +
                     "(" + pv.VarausID + "," + pv.PalveluID + "," + pv.Lkm + ")";
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 cmd.ExecuteNonQuery();
@@ -731,6 +770,146 @@ namespace Hotel
                 connect = null;
             }
 
+        }
+        public static void UpdateVarauksenPalvelut(PalvelutVaraukseen pv)  //  toimiiko?
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "UPDATE varauksen_palvelut SET varaus_id = @Varaus ,palvelu_id = @Palvelu,lkm = @lkm WHERE varaus_id = @Varaus AND palvelu_id = @Palvelu";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@Varaus", MySqlDbType.Int32).Value = pv.VarausID;
+                cmd.Parameters.Add("@Palvelu", MySqlDbType.Int32).Value = pv.PalveluID;
+                cmd.Parameters.Add("@lkm", MySqlDbType.Int32).Value = pv.Lkm;
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+        public static void RemoveVarauksenPalvelut(PalvelutVaraukseen pv)  //  toimiiko?
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "DELETE FROM varauksen_palvelut WHERE varaus_id = @Varaus AND palvelu_id = @Palvelu";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@Varaus", MySqlDbType.Int32).Value = pv.VarausID;
+                cmd.Parameters.Add("@Palvelu", MySqlDbType.Int32).Value = pv.PalveluID;
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+        public static List<PalvelutVaraukseen> GetVarauksenPalvelut(int i)  //  toimiiko?
+        {
+            PalveluidenlisVar.Clear();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  palvelutvaraukseen WHERE varaus_id = " + i;
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    PalvelutVaraukseen palvelu = new PalvelutVaraukseen(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), int.Parse(Reader[2].ToString()), (Reader[3].ToString()));
+                    PalveluidenlisVar.Add(palvelu);
+                }
+                Reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return PalveluidenlisVar;
+        }
+        public static void RemoveVaraus(int i)
+        {
+            asiakkaat = new List<Asiakas>();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "DELETE FROM varaus WHERE varaus_id = " + i;
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            
+        }
+        public static int GetLastVarausID()
+        {
+            int ID = 0;
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT MAX(varaus_id) FROM  varaus ";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    ID = int.Parse(Reader[0].ToString());
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+
+            return ID;
         }
     }
 }

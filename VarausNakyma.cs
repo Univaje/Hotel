@@ -23,6 +23,7 @@ namespace Hotel
 
         public VarausNakyma(int count)
         {
+
             InitializeComponent();
             Palvelut = LFDB.getPalvelut();
             Toimialueet = LFDB.GetToimialue();
@@ -35,10 +36,11 @@ namespace Hotel
             cbVAsiakas.DataSource = asiakkaat;
             cbVAsiakas.DisplayMember = "asiakasID";
             cbVMokki.DataSource = null;
-            VarausIDsi = count + 1;
+            //VarausIDsi = count;
             dtpVarausAlkaa.MinDate = DateTime.Now;
             dtpVarausLoppuu.MinDate = DateTime.Now;
             tbvHenkilomaara.Text = "1";
+            btnvTallenna.Text = "Lisää varaus";
             // TOIMIALUE VALINTAAN TEKSTIKSI VALITSE!
         }
         internal VarausNakyma(Varaustiedot v)
@@ -47,8 +49,6 @@ namespace Hotel
             Palvelut = LFDB.getPalvelut();
             Toimialueet = LFDB.GetToimialue();
             asiakkaat = LFDB.getAsiakas();
-
-
 
             cbVtoimialue.DataSource = Toimialueet;
             cbVtoimialue.DisplayMember = "toimintaAlueNimi";
@@ -62,10 +62,19 @@ namespace Hotel
 
             VarausIDsi = v.Varaus_id;
             dtpVarausAlkaa.MinDate = v.Varattu_alkupvm;
+            dtpVarausAlkaa.Value = v.Varattu_alkupvm;
             dtpVarausLoppuu.MinDate = v.Varattu_loppupvm;
+            dtpVarausLoppuu.Value = v.Varattu_loppupvm;
             tbvHenkilomaara.Text = "1";
 
             getInfoVar();
+            cbVMokki.SelectedValue = v.Mokkinimi;
+            PalveluidenlisVar = LFDB.GetVarauksenPalvelut(v.Varaus_id);
+            ((ListBox)clbPalvelutVarauksessa).DataSource = null;
+            clbPalvelutVarauksessa.Items.Clear();
+            Refressing();
+            btnvTallenna.Text = "Muokkaa Varausta";
+
         }
         private void VarausNakyma_Load(object sender, EventArgs e)
         {
@@ -100,7 +109,7 @@ namespace Hotel
         }
         private void btvCancel_Click(object sender, EventArgs e)
         {
-            Form.ActiveForm.Close();
+            //miten palataan!!!
         }
         private void ctpVarausAlkaa_ValueChanged(object sender, EventArgs e)
         {
@@ -108,6 +117,7 @@ namespace Hotel
         }
         private void btnvTallenna_Click(object sender, EventArgs e)
         {
+
             Toimialue t = (Toimialue)cbVtoimialue.SelectedItem;
             Asiakas a = (Asiakas)cbVAsiakas.SelectedItem;
             mokki m = (mokki)cbVMokki.SelectedItem;
@@ -119,12 +129,26 @@ namespace Hotel
                 asiakkaanlisausVarauksenYhteydessa(a);
             }
 
-            int varausaika = (int)alku.Subtract(Loppu).TotalDays;
+            int varausaika = (int)Loppu.Subtract(alku).TotalDays;
             DateTime Vahvistus = alku.AddDays(-14);
-            Varaus uusiVaraus = new Varaus(VarausIDsi, a.AsiakasID, m.MokkiID, varausaika, Vahvistus, alku, Loppu);
-            LFDB.SetVaraus(uusiVaraus);
-            TallennaPalvelutVarauseen();
-            Form.ActiveForm.Close();
+            Varaus uusiVaraus = new Varaus(1, a.AsiakasID, m.MokkiID, varausaika, Vahvistus, alku, Loppu);
+
+            if (btnvTallenna.Text.Equals("Lisää varaus"))
+            {
+                LFDB.SetVaraus(uusiVaraus);
+                int ID = LFDB.GetLastVarausID();
+                TallennaPalvelutVarauseen(ID);
+            }
+            else
+            {
+                LFDB.SetMuokattuVaraus(uusiVaraus);
+                PaivitaPalvelutVarauseen();
+            }
+            // Miksi ei löydä varaus idtä
+
+
+
+
 
         }
         private void asiakkaanlisausVarauksenYhteydessa(Asiakas a)
@@ -150,13 +174,25 @@ namespace Hotel
             a.Puhelinnumero = tbvPuhnum.Text;
             LFDB.SetAsiakas(a);
         }
-        private void TallennaPalvelutVarauseen()
+        private void TallennaPalvelutVarauseen(int ID)
         {
             if (PalveluidenlisVar.Count >= 0)
             {
                 foreach (PalvelutVaraukseen item in PalveluidenlisVar)
                 {
+                    item.VarausID = ID;
                     LFDB.SetVarauksenPalvelut(item);
+                }
+            }
+            tbvHenkilomaara.Text = "1";
+        }
+        private void PaivitaPalvelutVarauseen()
+        {
+            if (PalveluidenlisVar.Count >= 0)
+            {
+                foreach (PalvelutVaraukseen item in PalveluidenlisVar)
+                {
+                    LFDB.UpdateVarauksenPalvelut(item);
                 }
             }
             tbvHenkilomaara.Text = "1";
@@ -168,15 +204,23 @@ namespace Hotel
             int i = PalveluidenlisVar.FindIndex(item => item.PalveluID == pv.PalveluID);
             if (i < 0)
             {
+                if (btnvTallenna.Text.Equals("Muokkaa Varausta"))
+                {
+                    LFDB.SetVarauksenPalvelut(pv);
+                }
                 PalveluidenlisVar.Add(pv);
                 Refressing();
             }
         }
         private void btnvPoistaPalvelu_Click(object sender, EventArgs e)
         {
-
+            // MIKSI SEKOAA KUN VIIMEISEN POISTAA
             foreach (PalvelutVaraukseen item in clbPalvelutVarauksessa.CheckedItems)
             {
+                if (btnvTallenna.Text.Equals("Muokkaa Varausta"))
+                {
+                    LFDB.RemoveVarauksenPalvelut(item);
+                }
                 PalveluidenlisVar.Remove(item);
             }
             ((ListBox)clbPalvelutVarauksessa).DataSource = null;
@@ -188,7 +232,6 @@ namespace Hotel
             PalvelutVaraukseen p = new PalvelutVaraukseen();
             ((ListBox)clbPalvelutVarauksessa).DataSource = null;
             clbPalvelutVarauksessa.Items.Clear();
-            // DISPLAY LKM?
             ((ListBox)clbPalvelutVarauksessa).DataSource = PalveluidenlisVar;
             ((ListBox)clbPalvelutVarauksessa).DisplayMember = "nimi";
             ((ListBox)clbPalvelutVarauksessa).ValueMember = "nimi";
@@ -198,15 +241,20 @@ namespace Hotel
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
                 e.Handled = true;
         }
-
         private void getInfoVar()
         {
             PalveluidenlisVar.Clear();
             tbvHenkilomaara.Text = "1";
             Toimialue t = (Toimialue)cbVtoimialue.SelectedItem;
+
+
             mokit = LFDB.getMokitToiauleittain(t.ToimintaAlueID);
+            cbVMokki.DataSource = null;
+            cbVMokki.Items.Clear();
             cbVMokki.DataSource = mokit;
             cbVMokki.DisplayMember = "Mokkinimi";
+            cbVMokki.ValueMember = "Mokkinimi";
+
 
             Palvelut = LFDB.getPalvelutToimiAlueella(t.ToimintaAlueID);
             cbvPalvelunlisäys.DataSource = null;
@@ -215,5 +263,6 @@ namespace Hotel
             cbvPalvelunlisäys.DisplayMember = "nimi";
             cbvPalvelunlisäys.ValueMember = "palveluID";
         }
+
     }
 }

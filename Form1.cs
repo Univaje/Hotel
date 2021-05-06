@@ -215,7 +215,7 @@ namespace Hotel
             dgvAsiakas.DataSource = null;
             dgvAsiakas.DataSource = asiakkaat;
         }
-        /* Palvelun toiminnot*/
+        
 
 
         /* Laskun toiminnot*/
@@ -246,7 +246,6 @@ namespace Hotel
             MuokkaaVarausta.Text = "Muokkaa Varausta";
             MuokkaaVarausta.Show();
         }
-
         private void HotelManhattan_Activated(object sender, EventArgs e)
         {
             asiakkaat = LFDB.getAsiakas();
@@ -254,8 +253,15 @@ namespace Hotel
             dgvAsiakas.DataSource = asiakkaat;
         }
 
-
-        //palvelut
+        private void btnPoistaVaraus_Click(object sender, EventArgs e)
+        {
+            Varaustiedot VarausP = (Varaustiedot)dgvVaraus.CurrentRow.DataBoundItem;
+            LFDB.RemoveVaraus(VarausP.Varaus_id);
+            VarauksienTiedot.Remove(VarausP);
+            dgvVaraus.DataSource = null;
+            dgvVaraus.DataSource = VarauksienTiedot;
+        }
+        /* Palvelun toiminnot*/
         private void button5_Click(object sender, EventArgs e)
         {
 
