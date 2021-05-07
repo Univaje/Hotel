@@ -24,6 +24,7 @@ namespace Hotel
         private mokki m = new mokki();
         private Palvelu p = new Palvelu();
         private List<Palvelu> Palvelutiedot = new List<Palvelu>();
+        private List<Lasku> Laskut = new List<Lasku>();
 
 
         public HotelManhattan()
@@ -60,8 +61,9 @@ namespace Hotel
             cmbAsiakasToimialue.DataSource = toimialueet;
 
             //Laskut
+            Laskut = LFDB.getLasku();
+            dgvLaskut.DataSource = Laskut;
             
-            dgvLaskut.DataSource = LFDB.getLasku();
 
             //Palvelut
             dgv_palvelut.DataSource = LFDB.getPalvelut();
@@ -230,6 +232,16 @@ namespace Hotel
 
         }
 
+        private void PoistaLasku_Click(object sender, EventArgs e)
+        {
+            Lasku poista = new Lasku();
+            poista = (Lasku)dgvLaskut.CurrentRow.DataBoundItem;
+            LFDB.RemoveLasku(poista.LaskuID);
+            Laskut.Remove(poista);
+            dgvLaskut.DataSource = null;
+            dgvLaskut.DataSource = Laskut;
+        }
+
         /* Varausten toiminnot*/
         private void btnUusiVaraus_Click(object sender, EventArgs e)
         {
@@ -293,5 +305,7 @@ namespace Hotel
         {
            
         }
+
+        
     }
 }

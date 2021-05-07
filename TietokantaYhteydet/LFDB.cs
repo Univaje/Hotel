@@ -552,7 +552,7 @@ namespace Hotel
         }
 
         /* Laskujen Tietokanta haut*/
-        public static List<Lasku> getLasku()// Toimiiko?  
+        public static List<Lasku> getLasku() 
         {
 
             try
@@ -583,6 +583,33 @@ namespace Hotel
             }
             return Laskut;
         }
+
+        public static void RemoveLasku(int i)
+        {
+            //Lasku = new List<Lasku>();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "DELETE FROM lasku WHERE lasku_id = " + i;
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            //return laskuuuuuuuuuuuuuuuuuuu;
+        }
+
         /* Varausten Tietokanta haut*/
         public static List<Varaus> getVaraus()// Toimiva 
         {
