@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.Oliot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,21 @@ namespace Hotel
 {
     public partial class PalveluNakyma : Form
     {
+        private List<Palvelu> Palvelut = new List<Palvelu>();
+        
         public PalveluNakyma()
         {
             InitializeComponent();
+            Palvelut = LFDB.getPalvelut();
+            
+
+            
+           
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            //testi
+            
         }
     }
 }

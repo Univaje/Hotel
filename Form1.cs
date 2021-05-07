@@ -22,6 +22,9 @@ namespace Hotel
         private int currToimAlue;
         private Toimialue t;
         private mokki m = new mokki();
+        private Palvelu p = new Palvelu();
+        private List<Palvelu> Palvelutiedot = new List<Palvelu>();
+
 
         public HotelManhattan()
         {
@@ -59,6 +62,9 @@ namespace Hotel
             //Laskut
             
             dgvLaskut.DataSource = LFDB.getLasku();
+
+            //Palvelut
+            dgv_palvelut.DataSource = LFDB.getPalvelut();
 
         }
 
@@ -261,15 +267,31 @@ namespace Hotel
             dgvVaraus.DataSource = null;
             dgvVaraus.DataSource = VarauksienTiedot;
         }
-        /* Palvelun toiminnot*/
-        private void button5_Click(object sender, EventArgs e)
-        {
 
+
+        /* Palvelun toiminnot*/
+        private void lisääp_btn(object sender, EventArgs e)
+        {
+            PalveluNakyma lisaaPalvelu = new PalveluNakyma();
+            lisaaPalvelu.Text = "Lisaa palvelu varaus";
+            lisaaPalvelu.Show();
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+            
 
+        }
+
+        private void poistapalvelu_btn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void muokkaapalvelua_btn_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }
