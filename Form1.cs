@@ -37,9 +37,7 @@ namespace Hotel
 
         private void HotelManhattan_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'manhattanProject.asiakas' table. You can move, or remove it, as needed.
-            // this.asiakasTableAdapter.Fill(this.manhattanProject.asiakas);
-
+   
             // Toimialueet ja mökit
             mokit = LFDB.getMokit();
             toimialueet = LFDB.GetToimialue();
@@ -111,13 +109,16 @@ namespace Hotel
             dgvMokit.DataSource = null;
             currToimAlue = int.Parse((sender as Button).Tag.ToString());
             ToimialueenMokit = new List<mokki>();
+
             ToimialueenMokit = t.Toimialueet(currToimAlue);
             dgvMokit.DataSource = ToimialueenMokit;
             tcHotelli.SelectedTab = tpMokki;
+
+            cbMRM.DataSource = null;
+            cbMRM.Items.Clear();
             cbMRM.DataSource = ToimialueenMokit;
+            cbMRM.DisplayMember = "mokkinimi";
             cbMRM.ValueMember = "mokkinimi";
-
-
         }
         private void cbPoistaToimi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -142,9 +143,10 @@ namespace Hotel
         }
         private void btnToimialueMuokkaa_Click(object sender, EventArgs e)
         {
-            int index = cbPoistaToimi.SelectedIndex + 1;
+            t = (Toimialue)cbPoistaToimi.SelectedItem;
+
             string muokattuToimialue = tbToimialueMuokkaa.Text;
-            t.MuokkaaToimialue(index, muokattuToimialue);
+            t.MuokkaaToimialue(t.ToimintaAlueID, muokattuToimialue);
             tbToimialueMuokkaa.Text = "";
             gbToimialueet.Controls.Clear();
             toimialueet.Clear();
@@ -154,8 +156,8 @@ namespace Hotel
         }
         private void btnToimialuePoista_Click(object sender, EventArgs e)
         {
-            int index = cbPoistaToimi.SelectedIndex + 1;
-            t.PoistaToimialue(index);
+            t = (Toimialue)cbPoistaToimi.SelectedItem;
+            t.PoistaToimialue(t.ToimintaAlueID);
             tbToimialueMuokkaa.Text = "";
             gbToimialueet.Controls.Clear();
             toimialueet.Clear();
@@ -187,7 +189,7 @@ namespace Hotel
         {
             mokki m = new mokki();
             m = (mokki)dgvMokit.CurrentRow.DataBoundItem;
-            MokkiNakyma LisaaMokki = new MokkiNakyma(m, m.MokkiID, m.ToimintaalueID);
+            MokkiNakyma LisaaMokki = new MokkiNakyma(m);
 
             LisaaMokki.Text = "Muokkaa mokkia";
             LisaaMokki.ShowDialog();
@@ -201,6 +203,21 @@ namespace Hotel
             ToimialueenMokit.Remove(poista);
             dgvMokit.DataSource = null;
             dgvMokit.DataSource = ToimialueenMokit;
+        }
+        private void btnMRaportti_Click(object sender, EventArgs e)
+        {
+            mokki m = (mokki)cbMRM.SelectedItem;
+            DateTime a = dtbMRalku.Value;
+            DateTime l = dtbMRloppu.Value;
+            MokkiRaportti.Raporting(m.MokkiID, a, l);
+        }
+
+        private void dtbMRalku_ValueChanged(object sender, EventArgs e)
+        {
+            dtbMRloppu.MinDate = dtbMRalku.Value;
+            dtbMRloppu.Visible = true;
+            dtbMRloppu.Value = DateTime.Now;
+            btnMRaportti.Enabled = true;
         }
 
         /* Asiakkaan toiminnot*/
@@ -269,6 +286,14 @@ namespace Hotel
             asiakkaat = LFDB.getAsiakas();
             dgvAsiakas.DataSource = null;
             dgvAsiakas.DataSource = asiakkaat;
+
+            Varaukset = LFDB.getVaraus();
+            dgvVaraus.DataSource = null;
+            dgvVaraus.DataSource = Varaukset;
+
+            cbVaraukset.DataSource = asiakkaat;
+            cbVaraukset.DisplayMember = "AsiakasID";
+            cbVaraukset.ValueMember = "AsiakasID";
         }
 
         private void btnPoistaVaraus_Click(object sender, EventArgs e)

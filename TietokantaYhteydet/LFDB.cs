@@ -152,7 +152,7 @@ namespace Hotel
             }
             return mokit;
         }
-        public static void UpdateMokki(int i, string s)  // Toimiva
+        public static void UpdateMokki(mokki m)  // Toimiva
         {
 
             try
@@ -161,10 +161,19 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "UPDATE toimintaalue SET nimi='" + s + "' WHERE toimintaalue_id=" + i;
-                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                string sql = "UPDATE mokki SET mokki_id = @mokki_id, toimintaalue_id = @toimi , postinro = @postinro , mokkinimi = @mokkinimi , katuosoite = @katuosoite , kuvaus = @kuvaus , henkilomaara = @henkilomaara , varustelu = @varustelu , hinta = @hinta WHERE mokki_id = @mokki_id";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+                Parametreille.Parameters.Add("@mokki_id", MySqlDbType.Int32).Value = m.MokkiID;
+                Parametreille.Parameters.Add("@toimi", MySqlDbType.Int32).Value = m.ToimintaalueID;
+                Parametreille.Parameters.Add("@postinro", MySqlDbType.VarChar).Value = m.Postinumero;
+                Parametreille.Parameters.Add("@mokkinimi", MySqlDbType.VarChar).Value = m.Mokkinimi;
+                Parametreille.Parameters.Add("@katuosoite", MySqlDbType.VarChar).Value = m.Katuosoite;
+                Parametreille.Parameters.Add("@kuvaus", MySqlDbType.VarChar).Value = m.Kuvaus;
+                Parametreille.Parameters.Add("@henkilomaara", MySqlDbType.Int32).Value = m.Henkilomaara;
+                Parametreille.Parameters.Add("@varustelu", MySqlDbType.VarChar).Value = m.Varustelu;
+                Parametreille.Parameters.Add("@hinta", MySqlDbType.Decimal).Value = m.Hinta;
 
-                cmd.ExecuteNonQuery();
+                Parametreille.ExecuteNonQuery();
 
             }
             catch (MySqlException ex)
@@ -176,6 +185,7 @@ namespace Hotel
                 connect.Close();
                 connect = null;
             }
+
 
         }
 
@@ -237,21 +247,24 @@ namespace Hotel
         }
 
         /* Mokkiraporttien Tietokanta haut*/
-        public static List<MokkiRaportti> getMokkiRaportti(string s, DateTime a, DateTime l) // Ei toimi
+        public static List<MokkiRaportti> getMokkiRaportti(int i, DateTime a, DateTime l) // Ei toimi
         {
-            
+
             try
             {
                 if (connect == null)
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "SELECT * FROM  raportti where mokkinimi=" + s + " AND varattu_alkpvm >" + a + " AND varattu_loppupvm <" + l;
-                MySqlCommand cmd = new MySqlCommand(sql, connect);
-                MySqlDataReader Reader = cmd.ExecuteReader();
+                string sql = "SELECT * FROM  raportti where mokki_id = @mokki AND varattu_alkupvm > @alku AND varattu_loppupvm < @loppu";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+                Parametreille.Parameters.Add("@mokki", MySqlDbType.Int32).Value = i;
+                Parametreille.Parameters.Add("@alku", MySqlDbType.DateTime).Value = a;
+                Parametreille.Parameters.Add("@loppu", MySqlDbType.DateTime).Value = l;
+                MySqlDataReader Reader = Parametreille.ExecuteReader();
                 while (Reader.Read())
                 {
-                    MokkiRaportti haeraportti = new MokkiRaportti(int.Parse(Reader[0].ToString()), Reader[1].ToString(), Reader[2].ToString(), Reader[3].ToString(), DateTime.Parse(Reader[4].ToString()), DateTime.Parse(Reader[5].ToString()), double.Parse(Reader[6].ToString()));
+                    MokkiRaportti haeraportti = new MokkiRaportti(int.Parse(Reader[0].ToString()), Reader[2].ToString(), Reader[3].ToString(), Reader[4].ToString(), int.Parse(Reader[5].ToString()), DateTime.Parse(Reader[6].ToString()), DateTime.Parse(Reader[7].ToString()), double.Parse(Reader[8].ToString()));
                     MokkiRaportit.Add(haeraportti);
                 }
                 Reader.Close();
@@ -270,7 +283,7 @@ namespace Hotel
         }
 
         /* Toimialueiden Tietokanta haut*/
-        public static List<Toimialue> GetToimialue() // TOimiva
+        public static List<Toimialue> GetToimialue() 
         {
             toimintaalueet.Clear();
             try
@@ -301,7 +314,7 @@ namespace Hotel
             }
             return toimintaalueet;
         }
-        public static void SetToimialue(int i, string s)//Toimiva 
+        public static void SetToimialue(int i, string s) 
         {
 
             try
@@ -328,7 +341,7 @@ namespace Hotel
             }
 
         }
-        public static void RemoveToimialue(int i)//Toimiva 
+        public static void RemoveToimialue(int i) 
         {
             try
             {
@@ -351,7 +364,7 @@ namespace Hotel
             }
 
         }
-        public static void UpdateToimialue(int i, string s) // Toimiva 
+        public static void UpdateToimialue(int i, string s) 
         {
 
             try
@@ -379,7 +392,7 @@ namespace Hotel
         }
 
         /* Palveluiden Tietokanta haut*/
-        public static List<Palvelu> getPalvelut()// Toimiva  
+        public static List<Palvelu> getPalvelut()  
         {
             palvelut.Clear();
             try
@@ -410,7 +423,7 @@ namespace Hotel
             }
             return palvelut;
         }
-        public static List<Palvelu> getPalvelutToimiAlueella(int i)// Toimiva  
+        public static List<Palvelu> getPalvelutToimiAlueella(int i)  
         {
             palvelut.Clear();
             try
@@ -442,7 +455,7 @@ namespace Hotel
             return palvelut;
         }
         /* Asiakkaiden Tietokanta haut*/
-        public static List<Asiakas> getAsiakas()// Toimiiko?  
+        public static List<Asiakas> getAsiakas()  
         {
             asiakkaat.Clear();
             try
@@ -472,33 +485,7 @@ namespace Hotel
                 connect = null;
             }
             return asiakkaat;
-        }
-        public static void SetAsiakas(Asiakas a)  //  toimiiko?
-        {
-
-            try
-            {
-                if (connect == null)
-                    connect = new MySqlConnection();
-                connect.ConnectionString = myConnectionString;
-                connect.Open();
-                string sql = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,email,puhelinnro,postinro) VALUES " +
-                    "(" + a.AsiakasID + ",'" + a.Etunimi + "','" + a.Sukunimi + "','" + a.Lahiosoite + "','" + a.Sahkopostiosoite + "','" + a.Puhelinnumero +
-                    "','" + a.Postinumero + "')";
-                MySqlCommand cmd = new MySqlCommand(sql, connect);
-                cmd.ExecuteNonQuery();
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connect.Close();
-                connect = null;
-            }
-
-        }
+        } 
         public static void SetAsiakasAlt(Asiakas a)  //  Annetaan ID:ksi tietokannalle NULL, auto increment hoitaa ID määrittämisen
         {
 
@@ -610,8 +597,9 @@ namespace Hotel
             //return laskuuuuuuuuuuuuuuuuuuu;
         }
 
+
         /* Varausten Tietokanta haut*/
-        public static List<Varaus> getVaraus()// Toimiva 
+        public static List<Varaus> getVaraus()
         {
             Varaukset.Clear();
             try
@@ -646,7 +634,7 @@ namespace Hotel
             }
             return Varaukset;
         }
-        public static Varaus getCurrVaraus(int i)// Toimiva 
+        public static Varaus getCurrVaraus(int i) 
         {
             Varaus ValittuVaraus = null;
             try
@@ -676,7 +664,7 @@ namespace Hotel
             }
             return ValittuVaraus;
         }
-        public static void SetVaraus(Varaus v)  //  toimiiko?
+        public static void SetVaraus(Varaus v) 
         {
 
             try
@@ -709,7 +697,7 @@ namespace Hotel
             }
 
         }
-        public static void SetMuokattuVaraus(Varaus v)  //  toimiiko?
+        public static void SetMuokattuVaraus(Varaus v)  
         {
 
             try
@@ -742,7 +730,7 @@ namespace Hotel
             }
 
         }
-        public static List<Varaustiedot> getVarausAsiakkaan(int i)// Toimiva 
+        public static List<Varaustiedot> getVarausAsiakkaan(int i) 
         {
             VarausienTiedot.Clear();
             try
@@ -773,7 +761,7 @@ namespace Hotel
             }
             return VarausienTiedot;
         }
-        public static void SetVarauksenPalvelut(PalvelutVaraukseen pv)  //  toimiiko?
+        public static void SetVarauksenPalvelut(PalvelutVaraukseen pv) 
         {
 
             try
@@ -798,7 +786,7 @@ namespace Hotel
             }
 
         }
-        public static void UpdateVarauksenPalvelut(PalvelutVaraukseen pv)  //  toimiiko?
+        public static void UpdateVarauksenPalvelut(PalvelutVaraukseen pv)  
         {
 
             try
@@ -825,7 +813,7 @@ namespace Hotel
             }
 
         }
-        public static void RemoveVarauksenPalvelut(PalvelutVaraukseen pv)  //  toimiiko?
+        public static void RemoveVarauksenPalvelut(PalvelutVaraukseen pv) 
         {
 
             try
@@ -851,7 +839,7 @@ namespace Hotel
             }
 
         }
-        public static List<PalvelutVaraukseen> GetVarauksenPalvelut(int i)  //  toimiiko?
+        public static List<PalvelutVaraukseen> GetVarauksenPalvelut(int i)  
         {
             PalveluidenlisVar.Clear();
             try

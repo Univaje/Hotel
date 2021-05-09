@@ -202,3 +202,5 @@ C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\obj\Debug\Hotel.csproj
 C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\obj\Debug\Hotel.csproj.CopyComplete
 C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\obj\Debug\Hotel.exe
 C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\obj\Debug\Hotel.pdb
+C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\bin\Debug\DynamicPDF.NETFramework40.dll
+C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\bin\Debug\DynamicPDF.NETFramework40.xml

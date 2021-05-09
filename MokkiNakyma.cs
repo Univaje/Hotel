@@ -24,11 +24,12 @@ namespace Hotel
             Lista = p.HaetPostinrot();
             Toimiid = count;
             tbMhlomaara.Text = "1";
+            btnTallennaMokki.Text = "Lisää";
         }
-        internal MokkiNakyma(mokki Uusimokki, int mokkiid, int toimiid)
+        internal MokkiNakyma(mokki Uusimokki)
         {
             InitializeComponent();
-
+            btnTallennaMokki.Text = "Muokkaa";
             tbMnimi.Text = Uusimokki.Mokkinimi;
             tbMosoite.Text = Uusimokki.Katuosoite;
             tbMposti.Text = Uusimokki.Postinumero;
@@ -38,8 +39,8 @@ namespace Hotel
             tbMHinta.Text = Uusimokki.Hinta.ToString();
             Lista = p.HaetPostinrot();
 
-            Mokkiid = mokkiid;
-            Toimiid = toimiid;
+            Mokkiid = Uusimokki.MokkiID;
+            Toimiid = Uusimokki.ToimintaalueID;
 
 
         }
@@ -54,8 +55,11 @@ namespace Hotel
                 LFDB.setPostinro(p);
             }
             m = new mokki(Mokkiid, Toimiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(tbMhlomaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
-            LFDB.SetMokki(m);
-           // MokkiNakyma.ActiveForm.Close();
+            if (btnTallennaMokki.Text.Equals("Lisää"))
+                LFDB.SetMokki(m);
+            else
+                LFDB.UpdateMokki(m);
+            Form.ActiveForm.Close();
 
         }
         private void btnPeruutaLisaus_Click(object sender, EventArgs e)
@@ -115,11 +119,11 @@ namespace Hotel
         }
         private void tbMhlomaara_KeyUp(object sender, KeyEventArgs e)
         {
-            if (tbMhlomaara.Text != "") 
+            if (tbMhlomaara.Text != "")
             {
                 int maara = int.Parse(tbMhlomaara.Text);
                 if (maara > 12)
-                tbMhlomaara.Text = "12";
+                    tbMhlomaara.Text = "12";
             }
         }
     }
