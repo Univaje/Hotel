@@ -78,6 +78,7 @@ namespace Hotel.Oliot
                 Label Loppurivi = new Label("Varaus-ajan " + a + " - " + l + " Kokonaistuotto: " + loppusumma + "€, alv% " + (loppusumma * 0.24) + "€", 0, floaty, 504, 100, Font.Helvetica, 12, TextAlign.Left);
                 Sivu.Elements.Add(Loppurivi);
                 MRaport.Draw(@"C:\\CabinRaports\\Raport1-" + n + "-" + a + "-" + l + ".pdf");
+                
             }
         }
     }

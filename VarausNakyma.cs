@@ -36,12 +36,12 @@ namespace Hotel
             cbVAsiakas.DataSource = asiakkaat;
             cbVAsiakas.DisplayMember = "asiakasID";
             cbVMokki.DataSource = null;
-            //VarausIDsi = count;
+
             dtpVarausAlkaa.MinDate = DateTime.Now;
             dtpVarausLoppuu.MinDate = DateTime.Now;
             tbvHenkilomaara.Text = "1";
             btnvTallenna.Text = "Lisää varaus";
-            // TOIMIALUE VALINTAAN TEKSTIKSI VALITSE!
+
         }
         internal VarausNakyma(Varaustiedot v)
         {
@@ -130,6 +130,7 @@ namespace Hotel
             }
 
             int varausaika = (int)Loppu.Subtract(alku).TotalDays;
+            varausaika++;
             DateTime Vahvistus = alku.AddDays(-14);
             Varaus uusiVaraus = new Varaus(1, a.AsiakasID, m.MokkiID, varausaika, Vahvistus, alku, Loppu);
 

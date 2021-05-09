@@ -57,9 +57,9 @@ namespace Hotel
             return ToimialueenMokit;
         }
 
-        public void LisaaToimialue(int i, string t)
+        public void LisaaToimialue(string t)
         {
-            LFDB.SetToimialue(i, t);
+            LFDB.SetToimialue(t);
         }
         public void MuokkaaToimialue(int i, string t)
         {

@@ -49,9 +49,7 @@ namespace Hotel
             tbToimialueMuokkaa.Visible = false;
 
             //Varaukset ja asiakashallinta
-            Varaukset = LFDB.getVaraus();
             asiakkaat = LFDB.getAsiakas();
-            dgvVaraus.DataSource = Varaukset;
             cbVaraukset.DataSource = asiakkaat;
             cbVaraukset.DisplayMember = "AsiakasID";
             cbVaraukset.ValueMember = "AsiakasID";
@@ -119,6 +117,8 @@ namespace Hotel
             cbMRM.DataSource = ToimialueenMokit;
             cbMRM.DisplayMember = "mokkinimi";
             cbMRM.ValueMember = "mokkinimi";
+
+
         }
         private void cbPoistaToimi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -130,9 +130,8 @@ namespace Hotel
         }
         private void btnLisaaToimialue_Click(object sender, EventArgs e)
         {
-            int index = toimialueet.Count() + 1;
             string uusiToimialue = tbLisaaToimi.Text;
-            t.LisaaToimialue(index, uusiToimialue);
+            t.LisaaToimialue(uusiToimialue);
             tbLisaaToimi.Text = "";
             gbToimialueet.Controls.Clear();
             toimialueet.Clear();
@@ -156,14 +155,20 @@ namespace Hotel
         }
         private void btnToimialuePoista_Click(object sender, EventArgs e)
         {
-            t = (Toimialue)cbPoistaToimi.SelectedItem;
-            t.PoistaToimialue(t.ToimintaAlueID);
-            tbToimialueMuokkaa.Text = "";
-            gbToimialueet.Controls.Clear();
-            toimialueet.Clear();
-            toimialueet = LFDB.GetToimialue();
-            luoNappi();
-            FormatDisplay();
+            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa Toimialueen?\nHuomioithan ettei toimialuetta voi poistaa jos sillä on mökkejä", "Poisto", MessageBoxButtons.OKCancel);
+            if (result != DialogResult.Cancel)
+            {
+                t = (Toimialue)cbPoistaToimi.SelectedItem;
+                t.PoistaToimialue(t.ToimintaAlueID);
+                tbToimialueMuokkaa.Text = "";
+                gbToimialueet.Controls.Clear();
+                toimialueet.Clear();
+                toimialueet = LFDB.GetToimialue();
+                luoNappi();
+                FormatDisplay();
+            }
+            else
+                return;
 
         }
         private void FormatDisplay()
@@ -187,22 +192,32 @@ namespace Hotel
         }
         private void btnMokkiMuokkaa_Click(object sender, EventArgs e)
         {
+
             mokki m = new mokki();
             m = (mokki)dgvMokit.CurrentRow.DataBoundItem;
             MokkiNakyma LisaaMokki = new MokkiNakyma(m);
 
             LisaaMokki.Text = "Muokkaa mokkia";
             LisaaMokki.ShowDialog();
+
         }
         private void btnMokkiPoista_Click(object sender, EventArgs e)
         {
-            mokki poista = new mokki();
-            poista = (mokki)dgvMokit.CurrentRow.DataBoundItem;
-            int mokinpoisto = poista.MokkiID;
-            LFDB.RemoveMokki(mokinpoisto);
-            ToimialueenMokit.Remove(poista);
-            dgvMokit.DataSource = null;
-            dgvMokit.DataSource = ToimialueenMokit;
+            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa mökin?\nHuomioithan ettei mökkiä voi poistaa jos sillä on varauksia", "Poisto", MessageBoxButtons.OKCancel);
+            if (result != DialogResult.Cancel)
+            {
+                mokki poista = new mokki();
+                poista = (mokki)dgvMokit.CurrentRow.DataBoundItem;
+                int mokinpoisto = poista.MokkiID;
+                LFDB.RemoveMokki(mokinpoisto);
+                ToimialueenMokit.Clear();
+                ToimialueenMokit = t.Toimialueet(currToimAlue);
+                dgvMokit.DataSource = null;
+                dgvMokit.DataSource = ToimialueenMokit;
+            }
+            else
+                return;
+
         }
         private void btnMRaportti_Click(object sender, EventArgs e)
         {
@@ -210,8 +225,9 @@ namespace Hotel
             DateTime a = dtbMRalku.Value;
             DateTime l = dtbMRloppu.Value;
             MokkiRaportti.Raporting(m.MokkiID, a, l);
-        }
+            MessageBox.Show("Tiedosto Tallennettiin", "Raportointi", MessageBoxButtons.OK);
 
+        }
         private void dtbMRalku_ValueChanged(object sender, EventArgs e)
         {
             dtbMRloppu.MinDate = dtbMRalku.Value;
@@ -268,10 +284,13 @@ namespace Hotel
         }
         private void cbVaraukset_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             dgvVaraus.DataSource = null;
             Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
             VarauksienTiedot = LFDB.getVarausAsiakkaan(A.AsiakasID);
             dgvVaraus.DataSource = VarauksienTiedot;
+
+
 
         }
         private void btnMuokkaaVarausta_Click(object sender, EventArgs e)
@@ -287,22 +306,34 @@ namespace Hotel
             dgvAsiakas.DataSource = null;
             dgvAsiakas.DataSource = asiakkaat;
 
-            Varaukset = LFDB.getVaraus();
-            dgvVaraus.DataSource = null;
-            dgvVaraus.DataSource = Varaukset;
-
             cbVaraukset.DataSource = asiakkaat;
             cbVaraukset.DisplayMember = "AsiakasID";
             cbVaraukset.ValueMember = "AsiakasID";
-        }
 
+
+
+        }
         private void btnPoistaVaraus_Click(object sender, EventArgs e)
         {
-            Varaustiedot VarausP = (Varaustiedot)dgvVaraus.CurrentRow.DataBoundItem;
-            LFDB.RemoveVaraus(VarausP.Varaus_id);
-            VarauksienTiedot.Remove(VarausP);
-            dgvVaraus.DataSource = null;
-            dgvVaraus.DataSource = VarauksienTiedot;
+            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa varaukset?", "Poisto", MessageBoxButtons.OKCancel);
+            if (result != DialogResult.Cancel)
+            {
+                Varaustiedot VarausP = (Varaustiedot)dgvVaraus.CurrentRow.DataBoundItem;
+                List<PalvelutVaraukseen> PoistettavatPalvelut = new List<PalvelutVaraukseen>();
+                PoistettavatPalvelut = LFDB.GetVarauksenPalvelut(VarausP.Varaus_id);
+                foreach (PalvelutVaraukseen pv in PoistettavatPalvelut)
+                {
+                    LFDB.RemoveVarauksenPalvelut(pv);
+                }
+                LFDB.RemoveVaraus(VarausP.Varaus_id);
+
+                dgvVaraus.DataSource = null;
+                Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
+                VarauksienTiedot = LFDB.getVarausAsiakkaan(A.AsiakasID);
+                dgvVaraus.DataSource = VarauksienTiedot;
+            }
+            else
+                return;
         }
 
 

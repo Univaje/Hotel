@@ -314,7 +314,7 @@ namespace Hotel
             }
             return toimintaalueet;
         }
-        public static void SetToimialue(int i, string s) 
+        public static void SetToimialue( string s) 
         {
 
             try
@@ -323,11 +323,11 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "INSERT INTO toimintaalue(toimintaalue_id,nimi) VALUES ( " + i + ",'" + s + "');";
+                string sql = "INSERT INTO toimintaalue(toimintaalue_id,nimi) VALUES ( @toimialue, @nimi);";
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
 
-                cmd.Parameters.Add(i.ToString(), MySqlDbType.Int64).Value = i;
-                cmd.Parameters.Add(s, MySqlDbType.VarChar).Value = s;
+                cmd.Parameters.Add("@toimialue", MySqlDbType.Int64).Value = default;
+                cmd.Parameters.Add("@nimi", MySqlDbType.VarChar).Value = s;
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
