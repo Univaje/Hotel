@@ -16,6 +16,7 @@ namespace Hotel
         private List<mokki> mokit = new List<mokki>();
         private List<Toimialue> toimialueet = new List<Toimialue>();
         private List<Asiakas> asiakkaat = new List<Asiakas>();
+        private List<Asiakas> asiakkaatSuodatin = new List<Asiakas>();
         private List<mokki> ToimialueenMokit = new List<mokki>();
         private List<Varaus> Varaukset = new List<Varaus>();
         private List<Varaustiedot> VarauksienTiedot = new List<Varaustiedot>();
@@ -58,6 +59,8 @@ namespace Hotel
             cmbAsiakasToimialue.DataSource = toimialueet;
             cmbAsiakasToimialue.DisplayMember = "toimintaAlueNimi";
             cmbAsiakasToimialue.ValueMember = "toimintaAlueNimi";
+            cmbAsiakasToimialue.Enabled = false;
+            rbtnAsiakasKaikki.Checked = true;
 
             //Laskut
             Laskut = LFDB.getLasku();
@@ -73,6 +76,7 @@ namespace Hotel
             asiakkaat = LFDB.getAsiakas();
             dgvAsiakas.DataSource = null;
             dgvAsiakas.DataSource = asiakkaat;
+            rbtnAsiakasKaikki.Checked = true;
 
             cbVaraukset.DataSource = asiakkaat;
             cbVaraukset.DisplayMember = "AsiakasID";
@@ -286,7 +290,58 @@ namespace Hotel
             tcHotelli.SelectedTab = tpVaraus;
         }
 
+        private void cmbAsiakasToimialue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            asiakkaatSuodatin.Clear();
+            Toimialue asiakasSuodToimi = (Toimialue)cmbAsiakasToimialue.SelectedItem;
+            foreach (Asiakas a in asiakkaat)
+            {
+                List<Varaustiedot> varauksetSuodatus = new List<Varaustiedot>();
+                varauksetSuodatus = LFDB.getVarausAsiakkaan(a.AsiakasID);
+                foreach (Varaustiedot v in varauksetSuodatus)
+                {
+                    if (v.ToimintaalueNimi.ToString() == asiakasSuodToimi.ToimintaAlueNimi.ToString() && !asiakkaatSuodatin.Contains(a))
+                    asiakkaatSuodatin.Add(a);
+                }
+            }
+            dgvAsiakas.DataSource = null;
+            dgvAsiakas.DataSource = asiakkaatSuodatin;
+        }
 
+        private void rbtnAsiakasKaikki_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnAsiakasKaikki.Checked)
+            {
+                asiakkaat.Clear();
+                asiakkaat = LFDB.getAsiakas();
+                dgvAsiakas.DataSource = null;
+                dgvAsiakas.DataSource = asiakkaat;
+                //cmbAsiakasToimialue.Enabled = false;
+            }
+        }
+        private void rbtnAsiakasToimi_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnAsiakasToimi.Checked)
+            {
+                cmbAsiakasToimialue.Enabled = true;
+                asiakkaatSuodatin.Clear();
+                Toimialue asiakasSuodToimi = (Toimialue)cmbAsiakasToimialue.SelectedItem;
+                foreach (Asiakas a in asiakkaat)
+                {
+                    List<Varaustiedot> varauksetSuodatus = new List<Varaustiedot>();
+                    varauksetSuodatus = LFDB.getVarausAsiakkaan(a.AsiakasID);
+                    foreach (Varaustiedot v in varauksetSuodatus)
+                    {
+                        if (v.ToimintaalueNimi.ToString() == asiakasSuodToimi.ToimintaAlueNimi.ToString() && !asiakkaatSuodatin.Contains(a))
+                            asiakkaatSuodatin.Add(a);
+                    }
+                }
+                dgvAsiakas.DataSource = null;
+                dgvAsiakas.DataSource = asiakkaatSuodatin;
+            }
+            else
+                cmbAsiakasToimialue.Enabled = false;
+        }
 
         /* Laskun toiminnot*/
         private void HaelaskutNappi_Click(object sender, EventArgs e)
