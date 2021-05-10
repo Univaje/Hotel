@@ -70,8 +70,6 @@ namespace Hotel
             getInfoVar();
             cbVMokki.SelectedValue = v.Mokkinimi;
             PalveluidenlisVar = LFDB.GetVarauksenPalvelut(v.Varaus_id);
-            ((ListBox)clbPalvelutVarauksessa).DataSource = null;
-            clbPalvelutVarauksessa.Items.Clear();
             Refressing();
             btnvTallenna.Text = "Muokkaa Varausta";
 
@@ -103,13 +101,11 @@ namespace Hotel
         private void cbVtoimialue_SelectedIndexChanged(object sender, EventArgs e)
         {
             getInfoVar();
-            ((ListBox)clbPalvelutVarauksessa).DataSource = null;
-            clbPalvelutVarauksessa.Items.Clear();
             Refressing();
         }
         private void btvCancel_Click(object sender, EventArgs e)
         {
-            //miten palataan!!!
+            Form.ActiveForm.Close();
         }
         private void ctpVarausAlkaa_ValueChanged(object sender, EventArgs e)
         {
@@ -209,27 +205,22 @@ namespace Hotel
         }
         private void btnvPoistaPalvelu_Click(object sender, EventArgs e)
         {
-            // MIKSI SEKOAA KUN VIIMEISEN POISTAA
-            foreach (PalvelutVaraukseen item in clbPalvelutVarauksessa.CheckedItems)
+          
+            if (btnvTallenna.Text.Equals("Muokkaa Varausta"))
             {
-                if (btnvTallenna.Text.Equals("Muokkaa Varausta"))
-                {
-                    LFDB.RemoveVarauksenPalvelut(item);
-                }
-                PalveluidenlisVar.Remove(item);
+                LFDB.RemoveVarauksenPalvelut((PalvelutVaraukseen)lbPalvelut.SelectedItem);
             }
-            ((ListBox)clbPalvelutVarauksessa).DataSource = null;
-            clbPalvelutVarauksessa.Items.Clear();
+            PalveluidenlisVar.Remove((PalvelutVaraukseen)lbPalvelut.SelectedItem);
             Refressing();
         }
         private void Refressing()
         {
             PalvelutVaraukseen p = new PalvelutVaraukseen();
-            ((ListBox)clbPalvelutVarauksessa).DataSource = null;
-            clbPalvelutVarauksessa.Items.Clear();
-            ((ListBox)clbPalvelutVarauksessa).DataSource = PalveluidenlisVar;
-            ((ListBox)clbPalvelutVarauksessa).DisplayMember = "nimi";
-            ((ListBox)clbPalvelutVarauksessa).ValueMember = "nimi";
+            lbPalvelut.DataSource = null;
+            lbPalvelut.Items.Clear();
+            lbPalvelut.DataSource = PalveluidenlisVar;
+            lbPalvelut.DisplayMember = "nimi";
+            lbPalvelut.ValueMember = "nimi";
         }
         private void tbHenkilomaara_KeyPress(object sender, KeyPressEventArgs e)
         {

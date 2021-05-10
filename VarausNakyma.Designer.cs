@@ -49,7 +49,6 @@ namespace Hotel
             this.btnvPalvelunLisaus = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.clbPalvelutVarauksessa = new System.Windows.Forms.CheckedListBox();
             this.cbvPalvelunlisäys = new System.Windows.Forms.ComboBox();
             this.gbUuVaAs = new System.Windows.Forms.GroupBox();
             this.tbvToimipaikka = new System.Windows.Forms.TextBox();
@@ -68,6 +67,7 @@ namespace Hotel
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnvTallenna = new System.Windows.Forms.Button();
+            this.lbPalvelut = new System.Windows.Forms.ListBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -200,13 +200,13 @@ namespace Hotel
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbPalvelut);
             this.groupBox1.Controls.Add(this.tbvHenkilomaara);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.btnvPoistaPalvelu);
             this.groupBox1.Controls.Add(this.btnvPalvelunLisaus);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.clbPalvelutVarauksessa);
             this.groupBox1.Controls.Add(this.cbvPalvelunlisäys);
             this.groupBox1.Location = new System.Drawing.Point(536, 12);
             this.groupBox1.Name = "groupBox1";
@@ -268,14 +268,6 @@ namespace Hotel
             this.label2.Size = new System.Drawing.Size(58, 17);
             this.label2.TabIndex = 12;
             this.label2.Text = "Palvelut";
-            // 
-            // clbPalvelutVarauksessa
-            // 
-            this.clbPalvelutVarauksessa.FormattingEnabled = true;
-            this.clbPalvelutVarauksessa.Location = new System.Drawing.Point(19, 267);
-            this.clbPalvelutVarauksessa.Name = "clbPalvelutVarauksessa";
-            this.clbPalvelutVarauksessa.Size = new System.Drawing.Size(324, 174);
-            this.clbPalvelutVarauksessa.TabIndex = 17;
             // 
             // cbvPalvelunlisäys
             // 
@@ -441,6 +433,15 @@ namespace Hotel
             this.btnvTallenna.UseVisualStyleBackColor = true;
             this.btnvTallenna.Click += new System.EventHandler(this.btnvTallenna_Click);
             // 
+            // lbPalvelut
+            // 
+            this.lbPalvelut.FormattingEnabled = true;
+            this.lbPalvelut.ItemHeight = 16;
+            this.lbPalvelut.Location = new System.Drawing.Point(6, 246);
+            this.lbPalvelut.Name = "lbPalvelut";
+            this.lbPalvelut.Size = new System.Drawing.Size(326, 180);
+            this.lbPalvelut.TabIndex = 101;
+            // 
             // VarausNakyma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -484,7 +485,6 @@ namespace Hotel
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckedListBox clbPalvelutVarauksessa;
         private System.Windows.Forms.ComboBox cbVMokki;
         private System.Windows.Forms.ComboBox cbVAsiakas;
         private System.Windows.Forms.ComboBox cbVtoimialue;
@@ -507,5 +507,6 @@ namespace Hotel
         private System.Windows.Forms.TextBox tbvSukunimi;
         private System.Windows.Forms.TextBox tbvEtunimi;
         private System.Windows.Forms.Button btnvTallenna;
+        private System.Windows.Forms.ListBox lbPalvelut;
     }
 }
