@@ -43,26 +43,28 @@ namespace Hotel
             this.tbAsiakasMuokEmail = new System.Windows.Forms.TextBox();
             this.tbAsiakasMuokOsoite = new System.Windows.Forms.TextBox();
             this.tbAsiakasMuokPosti = new System.Windows.Forms.TextBox();
+            this.lblAsiakasMuokToimipaikka = new System.Windows.Forms.Label();
+            this.tbAsiakasMuokToimipaikka = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnAsiakasMuokTallenna
             // 
-            this.btnAsiakasMuokTallenna.Location = new System.Drawing.Point(21, 259);
+            this.btnAsiakasMuokTallenna.Location = new System.Drawing.Point(11, 293);
             this.btnAsiakasMuokTallenna.Margin = new System.Windows.Forms.Padding(2);
             this.btnAsiakasMuokTallenna.Name = "btnAsiakasMuokTallenna";
             this.btnAsiakasMuokTallenna.Size = new System.Drawing.Size(142, 46);
-            this.btnAsiakasMuokTallenna.TabIndex = 0;
+            this.btnAsiakasMuokTallenna.TabIndex = 7;
             this.btnAsiakasMuokTallenna.Text = "Tallenna";
             this.btnAsiakasMuokTallenna.UseVisualStyleBackColor = true;
             this.btnAsiakasMuokTallenna.Click += new System.EventHandler(this.btnAsiakasMuokTallenna_Click);
             // 
             // btnAsiakasMuokPeruuta
             // 
-            this.btnAsiakasMuokPeruuta.Location = new System.Drawing.Point(178, 259);
+            this.btnAsiakasMuokPeruuta.Location = new System.Drawing.Point(187, 293);
             this.btnAsiakasMuokPeruuta.Margin = new System.Windows.Forms.Padding(2);
             this.btnAsiakasMuokPeruuta.Name = "btnAsiakasMuokPeruuta";
             this.btnAsiakasMuokPeruuta.Size = new System.Drawing.Size(138, 46);
-            this.btnAsiakasMuokPeruuta.TabIndex = 1;
+            this.btnAsiakasMuokPeruuta.TabIndex = 8;
             this.btnAsiakasMuokPeruuta.Text = "Peruuta";
             this.btnAsiakasMuokPeruuta.UseVisualStyleBackColor = true;
             this.btnAsiakasMuokPeruuta.Click += new System.EventHandler(this.btnAsiakasMuokPeruuta_Click);
@@ -133,7 +135,7 @@ namespace Hotel
             this.tbAsiakasMuokENimi.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokENimi.Name = "tbAsiakasMuokENimi";
             this.tbAsiakasMuokENimi.Size = new System.Drawing.Size(156, 20);
-            this.tbAsiakasMuokENimi.TabIndex = 3;
+            this.tbAsiakasMuokENimi.TabIndex = 1;
             // 
             // tbAsiakasMuokSNimi
             // 
@@ -141,7 +143,7 @@ namespace Hotel
             this.tbAsiakasMuokSNimi.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokSNimi.Name = "tbAsiakasMuokSNimi";
             this.tbAsiakasMuokSNimi.Size = new System.Drawing.Size(156, 20);
-            this.tbAsiakasMuokSNimi.TabIndex = 3;
+            this.tbAsiakasMuokSNimi.TabIndex = 2;
             // 
             // tbAsiakasMuokPuh
             // 
@@ -157,7 +159,7 @@ namespace Hotel
             this.tbAsiakasMuokEmail.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokEmail.Name = "tbAsiakasMuokEmail";
             this.tbAsiakasMuokEmail.Size = new System.Drawing.Size(156, 20);
-            this.tbAsiakasMuokEmail.TabIndex = 3;
+            this.tbAsiakasMuokEmail.TabIndex = 4;
             // 
             // tbAsiakasMuokOsoite
             // 
@@ -165,7 +167,7 @@ namespace Hotel
             this.tbAsiakasMuokOsoite.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokOsoite.Name = "tbAsiakasMuokOsoite";
             this.tbAsiakasMuokOsoite.Size = new System.Drawing.Size(156, 20);
-            this.tbAsiakasMuokOsoite.TabIndex = 3;
+            this.tbAsiakasMuokOsoite.TabIndex = 5;
             // 
             // tbAsiakasMuokPosti
             // 
@@ -173,13 +175,31 @@ namespace Hotel
             this.tbAsiakasMuokPosti.Margin = new System.Windows.Forms.Padding(2);
             this.tbAsiakasMuokPosti.Name = "tbAsiakasMuokPosti";
             this.tbAsiakasMuokPosti.Size = new System.Drawing.Size(156, 20);
-            this.tbAsiakasMuokPosti.TabIndex = 3;
+            this.tbAsiakasMuokPosti.TabIndex = 6;
+            // 
+            // lblAsiakasMuokToimipaikka
+            // 
+            this.lblAsiakasMuokToimipaikka.AutoSize = true;
+            this.lblAsiakasMuokToimipaikka.Location = new System.Drawing.Point(29, 226);
+            this.lblAsiakasMuokToimipaikka.Name = "lblAsiakasMuokToimipaikka";
+            this.lblAsiakasMuokToimipaikka.Size = new System.Drawing.Size(83, 13);
+            this.lblAsiakasMuokToimipaikka.TabIndex = 9;
+            this.lblAsiakasMuokToimipaikka.Text = "Postitoimipaikka";
+            // 
+            // tbAsiakasMuokToimipaikka
+            // 
+            this.tbAsiakasMuokToimipaikka.Location = new System.Drawing.Point(138, 223);
+            this.tbAsiakasMuokToimipaikka.Name = "tbAsiakasMuokToimipaikka";
+            this.tbAsiakasMuokToimipaikka.Size = new System.Drawing.Size(156, 20);
+            this.tbAsiakasMuokToimipaikka.TabIndex = 10;
             // 
             // AsiakasNakyma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 326);
+            this.ClientSize = new System.Drawing.Size(336, 350);
+            this.Controls.Add(this.tbAsiakasMuokToimipaikka);
+            this.Controls.Add(this.lblAsiakasMuokToimipaikka);
             this.Controls.Add(this.tbAsiakasMuokPosti);
             this.Controls.Add(this.tbAsiakasMuokOsoite);
             this.Controls.Add(this.tbAsiakasMuokEmail);
@@ -218,5 +238,7 @@ namespace Hotel
         private System.Windows.Forms.TextBox tbAsiakasMuokEmail;
         private System.Windows.Forms.TextBox tbAsiakasMuokOsoite;
         private System.Windows.Forms.TextBox tbAsiakasMuokPosti;
+        private System.Windows.Forms.Label lblAsiakasMuokToimipaikka;
+        private System.Windows.Forms.TextBox tbAsiakasMuokToimipaikka;
     }
 }
