@@ -204,3 +204,5 @@ C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\obj\Debug\Hotel.exe
 C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\obj\Debug\Hotel.pdb
 C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\bin\Debug\DynamicPDF.NETFramework40.dll
 C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\bin\Debug\DynamicPDF.NETFramework40.xml
+C:\Users\Mira\Source\Repos\Hotel2\bin\Debug\DynamicPDF.NETFramework40.dll
+C:\Users\Mira\Source\Repos\Hotel2\bin\Debug\DynamicPDF.NETFramework40.xml

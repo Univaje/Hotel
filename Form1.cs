@@ -23,7 +23,7 @@ namespace Hotel
         private Toimialue t;
         private mokki m = new mokki();
         private Palvelu p = new Palvelu();
-        private List<Palvelu> Palvelutiedot = new List<Palvelu>();
+        private List<Palvelu> palvelut = new List<Palvelu>();
         private List<Lasku> Laskut = new List<Lasku>();
 
 
@@ -340,7 +340,7 @@ namespace Hotel
         /* Palvelun toiminnot*/
         private void lisääp_btn(object sender, EventArgs e)
         {
-            PalveluNakyma lisaaPalvelu = new PalveluNakyma();
+            PalveluNakyma lisaaPalvelu = new PalveluNakyma(palvelut.Count);
             lisaaPalvelu.Text = "Lisaa palvelu varaus";
             lisaaPalvelu.Show();
         }
@@ -354,7 +354,12 @@ namespace Hotel
 
         private void poistapalvelu_btn_Click(object sender, EventArgs e)
         {
-            
+            Palvelu poistaPalvelu = new Palvelu();
+            poistaPalvelu = (Palvelu)dgv_palvelut.CurrentRow.DataBoundItem;
+            LFDB.RemovePalvelu(poistaPalvelu.PalveluID);
+           // Palvelu.Remove(poistaPalvelut);
+            dgv_palvelut.DataSource = null;
+            //dgv_palvelut.DataSource = palvelut;
         }
 
         private void muokkaapalvelua_btn_Click(object sender, EventArgs e)

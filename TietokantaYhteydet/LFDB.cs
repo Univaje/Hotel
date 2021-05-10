@@ -926,5 +926,32 @@ namespace Hotel
 
             return ID;
         }
+        public static void RemovePalvelu(int i)
+        {
+            palvelut = new List<Palvelu>();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "DELETE FROM palvelu WHERE palvelu_id = " + i;
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+
+
     }
 }
