@@ -22,6 +22,7 @@ namespace Hotel
         private int currToimAlue;
         private Toimialue t;
         private mokki m = new mokki();
+        private Asiakas a = new Asiakas();
         private Palvelu p = new Palvelu();
         private List<Palvelu> palvelut = new List<Palvelu>();
         private List<Lasku> Laskut = new List<Lasku>();
@@ -55,6 +56,8 @@ namespace Hotel
             cbVaraukset.ValueMember = "AsiakasID";
             dgvAsiakas.DataSource = asiakkaat;
             cmbAsiakasToimialue.DataSource = toimialueet;
+            cmbAsiakasToimialue.DisplayMember = "toimintaAlueNimi";
+            cmbAsiakasToimialue.ValueMember = "toimintaAlueNimi";
 
             //Laskut
             Laskut = LFDB.getLasku();
@@ -65,7 +68,19 @@ namespace Hotel
             dgv_palvelut.DataSource = LFDB.getPalvelut();
 
         }
+        private void HotelManhattan_Activated(object sender, EventArgs e)
+        {
+            asiakkaat = LFDB.getAsiakas();
+            dgvAsiakas.DataSource = null;
+            dgvAsiakas.DataSource = asiakkaat;
 
+            cbVaraukset.DataSource = asiakkaat;
+            cbVaraukset.DisplayMember = "AsiakasID";
+            cbVaraukset.ValueMember = "AsiakasID";
+
+
+
+        }
         /* Toimialueen toiminnot*/
         public void luoNappi()
         {
@@ -155,7 +170,7 @@ namespace Hotel
         }
         private void btnToimialuePoista_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa Toimialueen?\nHuomioithan ettei toimialuetta voi poistaa jos sillä on mökkejä", "Poisto", MessageBoxButtons.OKCancel);
+            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa Toimialueen?\nHuomioithan, ettei toimialuetta voi poistaa, jos sillä on mökkejä.", "Poisto", MessageBoxButtons.OKCancel);
             if (result != DialogResult.Cancel)
             {
                 t = (Toimialue)cbPoistaToimi.SelectedItem;
@@ -203,7 +218,7 @@ namespace Hotel
         }
         private void btnMokkiPoista_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa mökin?\nHuomioithan ettei mökkiä voi poistaa jos sillä on varauksia", "Poisto", MessageBoxButtons.OKCancel);
+            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa mökin?\nHuomioithan, ettei mökkiä voi poistaa, jos sillä on varauksia.", "Poisto", MessageBoxButtons.OKCancel);
             if (result != DialogResult.Cancel)
             {
                 mokki poista = new mokki();
@@ -244,19 +259,33 @@ namespace Hotel
         }
         private void btnAsiakasMuokkaa_Click(object sender, EventArgs e)
         {
-            AsiakasNakyma an = new AsiakasNakyma();
+            Asiakas a = new Asiakas();
+            a = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;
+            AsiakasNakyma an = new AsiakasNakyma(a);
             an.ShowDialog();
         }
         private void btnAsiakasPoista_Click(object sender, EventArgs e)
         {
-            Asiakas poista = new Asiakas();
-            poista = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;            
-            LFDB.RemoveAsiakas(poista.AsiakasID);
-            asiakkaat.Remove(poista);
-            dgvAsiakas.DataSource = null;
-            dgvAsiakas.DataSource = asiakkaat;
+            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa asiakkaan?\nHuomioithan, ettei asiakasta voi poistaa, jos hänellä on varauksia.", "Poisto", MessageBoxButtons.OKCancel);
+            if (result != DialogResult.Cancel)
+            {
+                Asiakas poista = new Asiakas();
+                poista = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;
+                LFDB.RemoveAsiakas(poista.AsiakasID);
+                //asiakkaat.Remove(poista);
+                asiakkaat.Clear();
+                asiakkaat = LFDB.getAsiakas();
+                dgvAsiakas.DataSource = null;
+                dgvAsiakas.DataSource = asiakkaat;
+            }
+            else
+                return;
         }
-        
+        private void btnAsiakasSiirryVaraus_Click(object sender, EventArgs e)
+        {
+            tcHotelli.SelectedTab = tpVaraus;
+        }
+
 
 
         /* Laskun toiminnot*/
@@ -300,19 +329,7 @@ namespace Hotel
             MuokkaaVarausta.Text = "Muokkaa Varausta";
             MuokkaaVarausta.Show();
         }
-        private void HotelManhattan_Activated(object sender, EventArgs e)
-        {
-            asiakkaat = LFDB.getAsiakas();
-            dgvAsiakas.DataSource = null;
-            dgvAsiakas.DataSource = asiakkaat;
-
-            cbVaraukset.DataSource = asiakkaat;
-            cbVaraukset.DisplayMember = "AsiakasID";
-            cbVaraukset.ValueMember = "AsiakasID";
-
-
-
-        }
+        
         private void btnPoistaVaraus_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Haluatko varmasti poistaa varaukset?", "Poisto", MessageBoxButtons.OKCancel);

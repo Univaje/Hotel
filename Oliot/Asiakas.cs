@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Hotel
 {
-    class Asiakas
+    internal class Asiakas
     {
         private int asiakas_ID;
         private string etunimi;
