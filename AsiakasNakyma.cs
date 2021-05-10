@@ -41,6 +41,7 @@ namespace Hotel
             tbAsiakasMuokEmail.Text = muokattava.Sahkopostiosoite;
             tbAsiakasMuokPuh.Text = muokattava.Puhelinnumero;
             Lista = p.HaetPostinrot();
+            ToimipaikanHaku(muokattava.Postinumero.ToString());
 
 
         }
@@ -77,6 +78,54 @@ namespace Hotel
             //dgvAsiakas.DataSource = null;
             //dgvAsiakas.DataSource = asiakkaat;
             AsiakasNakyma.ActiveForm.Close();
+        }
+
+        private void tbAsiakasMuokPosti_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+                e.Handled = true;
+            else if (tbAsiakasMuokPosti.TextLength >= 5 && e.KeyChar != '\b')
+                e.Handled = true;
+        }
+
+        private void tbAsiakasMuokPosti_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (tbAsiakasMuokPosti.TextLength > 0)
+                ToimipaikanHaku();
+            else
+                tbAsiakasMuokToimipaikka.Text = "";
+        }
+
+        private void ToimipaikanHaku()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+
+
+                if (Lista != null && tbAsiakasMuokPosti.TextLength == i)
+                {
+                    string vertaa = tbAsiakasMuokPosti.Text;
+                    foreach (Posti p in Lista)
+                    {
+
+                        if (vertaa == p.Postinro.Substring(0, i))
+                        {
+                            tbAsiakasMuokToimipaikka.Text = p.Toimipaikka;
+                        }
+
+                    }
+                }
+            }
+        }
+        private void ToimipaikanHaku(string vertaa)
+        {
+            foreach (Posti p in Lista)
+            {          
+            if (vertaa == p.Postinro.Substring(0, 5))
+            {
+                tbAsiakasMuokToimipaikka.Text = p.Toimipaikka;
+            }
+            }
         }
     }
 }

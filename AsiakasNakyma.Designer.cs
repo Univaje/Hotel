@@ -176,6 +176,8 @@ namespace Hotel
             this.tbAsiakasMuokPosti.Name = "tbAsiakasMuokPosti";
             this.tbAsiakasMuokPosti.Size = new System.Drawing.Size(156, 20);
             this.tbAsiakasMuokPosti.TabIndex = 6;
+            this.tbAsiakasMuokPosti.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbAsiakasMuokPosti_KeyPress);
+            this.tbAsiakasMuokPosti.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbAsiakasMuokPosti_KeyUp);
             // 
             // lblAsiakasMuokToimipaikka
             // 
