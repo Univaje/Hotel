@@ -486,7 +486,38 @@ namespace Hotel
                 connect = null;
             }
             return asiakkaat;
-        } 
+        }
+        public static List<Asiakas> getAsiakasBySukunimi(string hakunimi)
+        {
+            asiakkaat.Clear();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  asiakas WHERE sukunimi LIKE '" + hakunimi + "%' ORDER BY sukunimi";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    Asiakas haeAsiakkaat = new Asiakas(int.Parse(Reader[0].ToString()), Reader[1].ToString(), Reader[2].ToString(), Reader[3].ToString(), Reader[4].ToString(), Reader[5].ToString(), Reader[6].ToString());
+                    asiakkaat.Add(haeAsiakkaat);
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return asiakkaat;
+        }
         public static void SetAsiakasAlt(Asiakas a)  //  Annetaan ID:ksi tietokannalle NULL, auto increment hoitaa ID määrittämisen
         {
 

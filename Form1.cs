@@ -60,6 +60,7 @@ namespace Hotel
             cmbAsiakasToimialue.DisplayMember = "toimintaAlueNimi";
             cmbAsiakasToimialue.ValueMember = "toimintaAlueNimi";
             cmbAsiakasToimialue.Enabled = false;
+            tbAsiakasHakuNimi.Enabled = false;
             rbtnAsiakasKaikki.Checked = true;
 
             //Laskut
@@ -315,8 +316,7 @@ namespace Hotel
                 asiakkaat.Clear();
                 asiakkaat = LFDB.getAsiakas();
                 dgvAsiakas.DataSource = null;
-                dgvAsiakas.DataSource = asiakkaat;
-                //cmbAsiakasToimialue.Enabled = false;
+                dgvAsiakas.DataSource = asiakkaat;                
             }
         }
         private void rbtnAsiakasToimi_CheckedChanged(object sender, EventArgs e)
@@ -341,6 +341,27 @@ namespace Hotel
             }
             else
                 cmbAsiakasToimialue.Enabled = false;
+        }
+
+        private void rbtnAsiakasHakuNimi_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnAsiakasHakuNimi.Checked)
+            {
+                tbAsiakasHakuNimi.Enabled = true;
+                asiakkaatSuodatin.Clear();
+                asiakkaatSuodatin = LFDB.getAsiakasBySukunimi(tbAsiakasHakuNimi.Text);
+                dgvAsiakas.DataSource = null;
+                dgvAsiakas.DataSource = asiakkaatSuodatin;
+            }
+            else
+                tbAsiakasHakuNimi.Enabled = false;
+        }
+        private void tbAsiakasHakuNimi_KeyUp(object sender, KeyEventArgs e)
+        {
+            asiakkaatSuodatin.Clear();
+            asiakkaatSuodatin = LFDB.getAsiakasBySukunimi(tbAsiakasHakuNimi.Text);
+            dgvAsiakas.DataSource = null;
+            dgvAsiakas.DataSource = asiakkaatSuodatin;
         }
 
         /* Laskun toiminnot*/
@@ -447,5 +468,7 @@ namespace Hotel
         {
 
         }
+
+        
     }
 }
