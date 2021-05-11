@@ -31,12 +31,14 @@ namespace Hotel
         {
             this.components = new System.ComponentModel.Container();
             this.tpAsiakas = new System.Windows.Forms.TabPage();
+            this.gbAsiakasSuodatin = new System.Windows.Forms.GroupBox();
+            this.rbtnAsiakasToimi = new System.Windows.Forms.RadioButton();
+            this.rbtnAsiakasKaikki = new System.Windows.Forms.RadioButton();
+            this.cmbAsiakasToimialue = new System.Windows.Forms.ComboBox();
             this.btnAsiakasSiirryVaraus = new System.Windows.Forms.Button();
             this.btnAsiakasLisaa = new System.Windows.Forms.Button();
             this.btnAsiakasMuokkaa = new System.Windows.Forms.Button();
             this.btnAsiakasPoista = new System.Windows.Forms.Button();
-            this.lblAsiakasToimialue = new System.Windows.Forms.Label();
-            this.cmbAsiakasToimialue = new System.Windows.Forms.ComboBox();
             this.dgvAsiakas = new System.Windows.Forms.DataGridView();
             this.asiakasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.manhattanProjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -102,10 +104,10 @@ namespace Hotel
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
             this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
-            this.gbAsiakasSuodatin = new System.Windows.Forms.GroupBox();
-            this.rbtnAsiakasKaikki = new System.Windows.Forms.RadioButton();
-            this.rbtnAsiakasToimi = new System.Windows.Forms.RadioButton();
+            this.rbtnAsiakasHakuNimi = new System.Windows.Forms.RadioButton();
+            this.tbAsiakasHakuNimi = new System.Windows.Forms.TextBox();
             this.tpAsiakas.SuspendLayout();
+            this.gbAsiakasSuodatin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProjectBindingSource)).BeginInit();
@@ -126,7 +128,6 @@ namespace Hotel
             this.tpVaraus.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
-            this.gbAsiakasSuodatin.SuspendLayout();
             this.SuspendLayout();
             // 
             // tpAsiakas
@@ -136,7 +137,6 @@ namespace Hotel
             this.tpAsiakas.Controls.Add(this.btnAsiakasLisaa);
             this.tpAsiakas.Controls.Add(this.btnAsiakasMuokkaa);
             this.tpAsiakas.Controls.Add(this.btnAsiakasPoista);
-            this.tpAsiakas.Controls.Add(this.lblAsiakasToimialue);
             this.tpAsiakas.Controls.Add(this.dgvAsiakas);
             this.tpAsiakas.Location = new System.Drawing.Point(4, 22);
             this.tpAsiakas.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -147,59 +147,43 @@ namespace Hotel
             this.tpAsiakas.Text = "Asiakas";
             this.tpAsiakas.UseVisualStyleBackColor = true;
             // 
-            // btnAsiakasSiirryVaraus
+            // gbAsiakasSuodatin
             // 
-            this.btnAsiakasSiirryVaraus.Location = new System.Drawing.Point(942, 350);
-            this.btnAsiakasSiirryVaraus.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnAsiakasSiirryVaraus.Name = "btnAsiakasSiirryVaraus";
-            this.btnAsiakasSiirryVaraus.Size = new System.Drawing.Size(119, 38);
-            this.btnAsiakasSiirryVaraus.TabIndex = 6;
-            this.btnAsiakasSiirryVaraus.Text = "Varaukset";
-            this.btnAsiakasSiirryVaraus.UseVisualStyleBackColor = true;
-            this.btnAsiakasSiirryVaraus.Click += new System.EventHandler(this.btnAsiakasSiirryVaraus_Click);
+            this.gbAsiakasSuodatin.Controls.Add(this.tbAsiakasHakuNimi);
+            this.gbAsiakasSuodatin.Controls.Add(this.rbtnAsiakasHakuNimi);
+            this.gbAsiakasSuodatin.Controls.Add(this.rbtnAsiakasToimi);
+            this.gbAsiakasSuodatin.Controls.Add(this.rbtnAsiakasKaikki);
+            this.gbAsiakasSuodatin.Controls.Add(this.cmbAsiakasToimialue);
+            this.gbAsiakasSuodatin.Location = new System.Drawing.Point(731, 17);
+            this.gbAsiakasSuodatin.Name = "gbAsiakasSuodatin";
+            this.gbAsiakasSuodatin.Size = new System.Drawing.Size(200, 196);
+            this.gbAsiakasSuodatin.TabIndex = 7;
+            this.gbAsiakasSuodatin.TabStop = false;
+            this.gbAsiakasSuodatin.Text = "Suodattimet";
             // 
-            // btnAsiakasLisaa
+            // rbtnAsiakasToimi
             // 
-            this.btnAsiakasLisaa.Location = new System.Drawing.Point(33, 404);
-            this.btnAsiakasLisaa.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnAsiakasLisaa.Name = "btnAsiakasLisaa";
-            this.btnAsiakasLisaa.Size = new System.Drawing.Size(147, 40);
-            this.btnAsiakasLisaa.TabIndex = 5;
-            this.btnAsiakasLisaa.Text = "Lisää";
-            this.btnAsiakasLisaa.UseVisualStyleBackColor = true;
-            this.btnAsiakasLisaa.Click += new System.EventHandler(this.btnAsiakasLisaa_Click);
+            this.rbtnAsiakasToimi.AutoSize = true;
+            this.rbtnAsiakasToimi.Location = new System.Drawing.Point(17, 65);
+            this.rbtnAsiakasToimi.Name = "rbtnAsiakasToimi";
+            this.rbtnAsiakasToimi.Size = new System.Drawing.Size(87, 17);
+            this.rbtnAsiakasToimi.TabIndex = 1;
+            this.rbtnAsiakasToimi.TabStop = true;
+            this.rbtnAsiakasToimi.Text = "Toimialueelta";
+            this.rbtnAsiakasToimi.UseVisualStyleBackColor = true;
+            this.rbtnAsiakasToimi.CheckedChanged += new System.EventHandler(this.rbtnAsiakasToimi_CheckedChanged);
             // 
-            // btnAsiakasMuokkaa
+            // rbtnAsiakasKaikki
             // 
-            this.btnAsiakasMuokkaa.Location = new System.Drawing.Point(299, 402);
-            this.btnAsiakasMuokkaa.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnAsiakasMuokkaa.Name = "btnAsiakasMuokkaa";
-            this.btnAsiakasMuokkaa.Size = new System.Drawing.Size(110, 44);
-            this.btnAsiakasMuokkaa.TabIndex = 4;
-            this.btnAsiakasMuokkaa.Text = "Muokkaa";
-            this.btnAsiakasMuokkaa.UseVisualStyleBackColor = true;
-            this.btnAsiakasMuokkaa.Click += new System.EventHandler(this.btnAsiakasMuokkaa_Click);
-            // 
-            // btnAsiakasPoista
-            // 
-            this.btnAsiakasPoista.Location = new System.Drawing.Point(514, 404);
-            this.btnAsiakasPoista.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnAsiakasPoista.Name = "btnAsiakasPoista";
-            this.btnAsiakasPoista.Size = new System.Drawing.Size(109, 46);
-            this.btnAsiakasPoista.TabIndex = 3;
-            this.btnAsiakasPoista.Text = "Poista";
-            this.btnAsiakasPoista.UseVisualStyleBackColor = true;
-            this.btnAsiakasPoista.Click += new System.EventHandler(this.btnAsiakasPoista_Click);
-            // 
-            // lblAsiakasToimialue
-            // 
-            this.lblAsiakasToimialue.AutoSize = true;
-            this.lblAsiakasToimialue.Location = new System.Drawing.Point(982, 261);
-            this.lblAsiakasToimialue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAsiakasToimialue.Name = "lblAsiakasToimialue";
-            this.lblAsiakasToimialue.Size = new System.Drawing.Size(52, 13);
-            this.lblAsiakasToimialue.TabIndex = 2;
-            this.lblAsiakasToimialue.Text = "Toimialue";
+            this.rbtnAsiakasKaikki.AutoSize = true;
+            this.rbtnAsiakasKaikki.Location = new System.Drawing.Point(17, 31);
+            this.rbtnAsiakasKaikki.Name = "rbtnAsiakasKaikki";
+            this.rbtnAsiakasKaikki.Size = new System.Drawing.Size(104, 17);
+            this.rbtnAsiakasKaikki.TabIndex = 0;
+            this.rbtnAsiakasKaikki.TabStop = true;
+            this.rbtnAsiakasKaikki.Text = "Kaikki Asiakkaat";
+            this.rbtnAsiakasKaikki.UseVisualStyleBackColor = true;
+            this.rbtnAsiakasKaikki.CheckedChanged += new System.EventHandler(this.rbtnAsiakasKaikki_CheckedChanged);
             // 
             // cmbAsiakasToimialue
             // 
@@ -211,16 +195,60 @@ namespace Hotel
             this.cmbAsiakasToimialue.TabIndex = 1;
             this.cmbAsiakasToimialue.SelectedIndexChanged += new System.EventHandler(this.cmbAsiakasToimialue_SelectedIndexChanged);
             // 
+            // btnAsiakasSiirryVaraus
+            // 
+            this.btnAsiakasSiirryVaraus.Location = new System.Drawing.Point(748, 278);
+            this.btnAsiakasSiirryVaraus.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnAsiakasSiirryVaraus.Name = "btnAsiakasSiirryVaraus";
+            this.btnAsiakasSiirryVaraus.Size = new System.Drawing.Size(162, 38);
+            this.btnAsiakasSiirryVaraus.TabIndex = 6;
+            this.btnAsiakasSiirryVaraus.Text = "Asiakkaan Varaukset";
+            this.btnAsiakasSiirryVaraus.UseVisualStyleBackColor = true;
+            this.btnAsiakasSiirryVaraus.Click += new System.EventHandler(this.btnAsiakasSiirryVaraus_Click);
+            // 
+            // btnAsiakasLisaa
+            // 
+            this.btnAsiakasLisaa.Location = new System.Drawing.Point(72, 428);
+            this.btnAsiakasLisaa.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnAsiakasLisaa.Name = "btnAsiakasLisaa";
+            this.btnAsiakasLisaa.Size = new System.Drawing.Size(109, 46);
+            this.btnAsiakasLisaa.TabIndex = 5;
+            this.btnAsiakasLisaa.Text = "Lisää";
+            this.btnAsiakasLisaa.UseVisualStyleBackColor = true;
+            this.btnAsiakasLisaa.Click += new System.EventHandler(this.btnAsiakasLisaa_Click);
+            // 
+            // btnAsiakasMuokkaa
+            // 
+            this.btnAsiakasMuokkaa.Location = new System.Drawing.Point(308, 428);
+            this.btnAsiakasMuokkaa.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnAsiakasMuokkaa.Name = "btnAsiakasMuokkaa";
+            this.btnAsiakasMuokkaa.Size = new System.Drawing.Size(109, 46);
+            this.btnAsiakasMuokkaa.TabIndex = 4;
+            this.btnAsiakasMuokkaa.Text = "Muokkaa";
+            this.btnAsiakasMuokkaa.UseVisualStyleBackColor = true;
+            this.btnAsiakasMuokkaa.Click += new System.EventHandler(this.btnAsiakasMuokkaa_Click);
+            // 
+            // btnAsiakasPoista
+            // 
+            this.btnAsiakasPoista.Location = new System.Drawing.Point(548, 428);
+            this.btnAsiakasPoista.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnAsiakasPoista.Name = "btnAsiakasPoista";
+            this.btnAsiakasPoista.Size = new System.Drawing.Size(109, 46);
+            this.btnAsiakasPoista.TabIndex = 3;
+            this.btnAsiakasPoista.Text = "Poista";
+            this.btnAsiakasPoista.UseVisualStyleBackColor = true;
+            this.btnAsiakasPoista.Click += new System.EventHandler(this.btnAsiakasPoista_Click);
+            // 
             // dgvAsiakas
             // 
             this.dgvAsiakas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvAsiakas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAsiakas.Location = new System.Drawing.Point(2, 1);
+            this.dgvAsiakas.Location = new System.Drawing.Point(16, 17);
             this.dgvAsiakas.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dgvAsiakas.Name = "dgvAsiakas";
             this.dgvAsiakas.RowHeadersWidth = 51;
             this.dgvAsiakas.RowTemplate.Height = 24;
-            this.dgvAsiakas.Size = new System.Drawing.Size(866, 376);
+            this.dgvAsiakas.Size = new System.Drawing.Size(698, 390);
             this.dgvAsiakas.TabIndex = 0;
             // 
             // asiakasBindingSource
@@ -914,41 +942,25 @@ namespace Hotel
             // 
             this.asiakasTableAdapter.ClearBeforeFill = true;
             // 
-            // gbAsiakasSuodatin
+            // rbtnAsiakasHakuNimi
             // 
-            this.gbAsiakasSuodatin.Controls.Add(this.rbtnAsiakasToimi);
-            this.gbAsiakasSuodatin.Controls.Add(this.rbtnAsiakasKaikki);
-            this.gbAsiakasSuodatin.Controls.Add(this.cmbAsiakasToimialue);
-            this.gbAsiakasSuodatin.Location = new System.Drawing.Point(891, 17);
-            this.gbAsiakasSuodatin.Name = "gbAsiakasSuodatin";
-            this.gbAsiakasSuodatin.Size = new System.Drawing.Size(200, 222);
-            this.gbAsiakasSuodatin.TabIndex = 7;
-            this.gbAsiakasSuodatin.TabStop = false;
-            this.gbAsiakasSuodatin.Text = "Suodattimet";
+            this.rbtnAsiakasHakuNimi.AutoSize = true;
+            this.rbtnAsiakasHakuNimi.Location = new System.Drawing.Point(17, 126);
+            this.rbtnAsiakasHakuNimi.Name = "rbtnAsiakasHakuNimi";
+            this.rbtnAsiakasHakuNimi.Size = new System.Drawing.Size(82, 17);
+            this.rbtnAsiakasHakuNimi.TabIndex = 2;
+            this.rbtnAsiakasHakuNimi.TabStop = true;
+            this.rbtnAsiakasHakuNimi.Text = "Sukunimellä";
+            this.rbtnAsiakasHakuNimi.UseVisualStyleBackColor = true;
+            this.rbtnAsiakasHakuNimi.CheckedChanged += new System.EventHandler(this.rbtnAsiakasHakuNimi_CheckedChanged);
             // 
-            // rbtnAsiakasKaikki
+            // tbAsiakasHakuNimi
             // 
-            this.rbtnAsiakasKaikki.AutoSize = true;
-            this.rbtnAsiakasKaikki.Location = new System.Drawing.Point(17, 31);
-            this.rbtnAsiakasKaikki.Name = "rbtnAsiakasKaikki";
-            this.rbtnAsiakasKaikki.Size = new System.Drawing.Size(104, 17);
-            this.rbtnAsiakasKaikki.TabIndex = 0;
-            this.rbtnAsiakasKaikki.TabStop = true;
-            this.rbtnAsiakasKaikki.Text = "Kaikki Asiakkaat";
-            this.rbtnAsiakasKaikki.UseVisualStyleBackColor = true;
-            this.rbtnAsiakasKaikki.CheckedChanged += new System.EventHandler(this.rbtnAsiakasKaikki_CheckedChanged);
-            // 
-            // rbtnAsiakasToimi
-            // 
-            this.rbtnAsiakasToimi.AutoSize = true;
-            this.rbtnAsiakasToimi.Location = new System.Drawing.Point(17, 65);
-            this.rbtnAsiakasToimi.Name = "rbtnAsiakasToimi";
-            this.rbtnAsiakasToimi.Size = new System.Drawing.Size(87, 17);
-            this.rbtnAsiakasToimi.TabIndex = 1;
-            this.rbtnAsiakasToimi.TabStop = true;
-            this.rbtnAsiakasToimi.Text = "Toimialueelta";
-            this.rbtnAsiakasToimi.UseVisualStyleBackColor = true;
-            this.rbtnAsiakasToimi.CheckedChanged += new System.EventHandler(this.rbtnAsiakasToimi_CheckedChanged);
+            this.tbAsiakasHakuNimi.Location = new System.Drawing.Point(17, 149);
+            this.tbAsiakasHakuNimi.Name = "tbAsiakasHakuNimi";
+            this.tbAsiakasHakuNimi.Size = new System.Drawing.Size(162, 20);
+            this.tbAsiakasHakuNimi.TabIndex = 3;
+            this.tbAsiakasHakuNimi.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbAsiakasHakuNimi_KeyUp);
             // 
             // HotelManhattan
             // 
@@ -962,7 +974,8 @@ namespace Hotel
             this.Activated += new System.EventHandler(this.HotelManhattan_Activated);
             this.Load += new System.EventHandler(this.HotelManhattan_Load);
             this.tpAsiakas.ResumeLayout(false);
-            this.tpAsiakas.PerformLayout();
+            this.gbAsiakasSuodatin.ResumeLayout(false);
+            this.gbAsiakasSuodatin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manhattanProjectBindingSource)).EndInit();
@@ -988,8 +1001,6 @@ namespace Hotel
             this.tpVaraus.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
-            this.gbAsiakasSuodatin.ResumeLayout(false);
-            this.gbAsiakasSuodatin.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1016,7 +1027,6 @@ namespace Hotel
         private System.Windows.Forms.Button btnAsiakasLisaa;
         private System.Windows.Forms.Button btnAsiakasMuokkaa;
         private System.Windows.Forms.Button btnAsiakasPoista;
-        private System.Windows.Forms.Label lblAsiakasToimialue;
         private System.Windows.Forms.ComboBox cmbAsiakasToimialue;
         private System.Windows.Forms.Button btnAsiakasSiirryVaraus;
         private System.Windows.Forms.ComboBox comboBox3;
@@ -1070,6 +1080,8 @@ namespace Hotel
         private System.Windows.Forms.GroupBox gbAsiakasSuodatin;
         private System.Windows.Forms.RadioButton rbtnAsiakasToimi;
         private System.Windows.Forms.RadioButton rbtnAsiakasKaikki;
+        private System.Windows.Forms.TextBox tbAsiakasHakuNimi;
+        private System.Windows.Forms.RadioButton rbtnAsiakasHakuNimi;
     }
 }
 
