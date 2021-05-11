@@ -2,6 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace Hotel
 {
@@ -10,8 +17,9 @@ namespace Hotel
         private List<Palvelu> Palvelut = new List<Palvelu>();
         private List<Toimialue> Toimialueet = new List<Toimialue>();
         private int PalveluID;
-        private int ToimialueID;
+       // private int ToimialueID;
         private Palvelu pali = new Palvelu();
+       
 
 
         
@@ -37,7 +45,7 @@ namespace Hotel
             
            // phinta_tb.Text = uusiPalvelu.Hinta.ToString;
             //  ptyyppi_tb.Text = uusiPalvelu.Tyyppi;
-           // palv_tb.Text = uusiPalvelu.Alv;
+           //palv_tb.Text = uusiPalvelu.Alv;
 
             PalveluID = uusiPalvelu.PalveluID;
 
@@ -52,8 +60,15 @@ namespace Hotel
 
         private void lisää_btn_Click(object sender, EventArgs e)
         {
-            pali = new Palvelu(PalveluID, ToimialueID, ppalvelu_tb.Text, int.Parse(ptyyppi_tb.Text), pkuvaus_tb.Text, double.Parse(phinta_tb.Text), double.Parse(palv_tb.Text));
-            
+          
+            pali = new Palvelu(PalveluID, int.Parse(ptoimialue_tb.Text), ppalvelu_tb.Text, int.Parse(ptyyppi_tb.Text),
+            pkuvaus_tb.Text, double.Parse(phinta_tb.Text), double.Parse(palv_tb.Text));
+            if (lisää_btn.Text.Equals("Lisää"))
+                LFDB.setPalvelu(pali);
+            else
+                LFDB.UpdatePalvelu(pali);
+
+          
             PalveluNakyma.ActiveForm.Close();
         
         }

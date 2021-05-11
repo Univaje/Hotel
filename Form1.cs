@@ -374,16 +374,23 @@ namespace Hotel
             Palvelu poistaPalvelu = new Palvelu();
             poistaPalvelu = (Palvelu)dgv_palvelut.CurrentRow.DataBoundItem;
             LFDB.RemovePalvelu(poistaPalvelu.PalveluID);
-           // Palvelu.Remove(poistaPalvelut);
+            palvelut.Remove(poistaPalvelu);
             dgv_palvelut.DataSource = null;
-            //dgv_palvelut.DataSource = palvelut;
+            dgv_palvelut.DataSource = palvelut;
         }
 
         private void muokkaapalvelua_btn_Click(object sender, EventArgs e)
         {
-           
+            Palvelu muokkaaPalvelu = (Palvelu)dgv_palvelut.CurrentRow.DataBoundItem;
+            PalveluNakyma muokkaaPalvelua = new PalveluNakyma(muokkaaPalvelu);
+            muokkaaPalvelua.Text = "Muokkaa palvelua";
+            muokkaaPalvelua.Show();
+            
         }
 
-        
+        private void praportti_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

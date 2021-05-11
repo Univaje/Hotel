@@ -7,7 +7,7 @@ using System.Globalization;
 namespace Hotel
 {
 
-    class LFDB
+    class LFDB : LFDBBase
     {
         public static MySqlConnection connect = null;
         public static List<mokki> mokit = new List<mokki>();
@@ -963,6 +963,8 @@ namespace Hotel
 
             return ID;
         }
+
+        //Palvelut
         public static void RemovePalvelu(int i)
         {
             palvelut = new List<Palvelu>();
@@ -989,6 +991,67 @@ namespace Hotel
 
         }
 
+        public static void setPalvelu(Palvelu p)
+        {
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "INSERT INTO palvelu (palvelu_id,toimintaalue_id,nimi,tyyppi,kuvaus,hinta,alv) VALUES " +
+                    "(@palvelu_id,@toimialue_id,@nimi,@tyyppi,@kuvaus,@hinta,@alv)";
 
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@palvelu_id", MySqlDbType.Int32).Value = default;
+                cmd.Parameters.Add("@toimi_id", MySqlDbType.Int32).Value = p.ToimintaalueID1;
+                cmd.Parameters.Add("@nimi", MySqlDbType.VarChar).Value = p.Nimi;
+                cmd.Parameters.Add("@tyyppi", MySqlDbType.Int32).Value = p.Tyyppi;
+                cmd.Parameters.Add("@kuvaus", MySqlDbType.VarChar).Value = p.Kuvaus;
+                cmd.Parameters.Add("@hinta", MySqlDbType.Decimal).Value = p.Hinta;
+                cmd.Parameters.Add("@alv", MySqlDbType.Decimal).Value = p.Alv;
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+        }
+        public static void UpdatePalvelu(Palvelu p)
+        {
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "UPDATE palvelu SET palvelu_id = @palvelu_id, toimintaalue_id = @toimialue , nimi = @nimi , tyyppi = @tyyppi , hinta = @hinta , alv = @alv WHERE palvelu_id = @palvelu_id";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@palvelu_id", MySqlDbType.Int32).Value = default;
+                cmd.Parameters.Add("@toimialue", MySqlDbType.Int32).Value = default;
+                cmd.Parameters.Add("@nimi", MySqlDbType.VarChar).Value = p.Nimi;
+                cmd.Parameters.Add("@tyyppi", MySqlDbType.Int32).Value = p.Tyyppi;
+                cmd.Parameters.Add("@kuvaus", MySqlDbType.VarChar).Value = p.Kuvaus;
+                cmd.Parameters.Add("@hinta", MySqlDbType.Decimal).Value = p.Hinta;
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
     }
 }

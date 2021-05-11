@@ -43,8 +43,6 @@ namespace Hotel
             this.label6 = new System.Windows.Forms.Label();
             this.pkuvaus_tb = new System.Windows.Forms.TextBox();
             this.ptyyppi_tb = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.ppalveluID_tb = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // ppalvelu_tb
@@ -58,7 +56,7 @@ namespace Hotel
             // 
             // ptoimialue_tb
             // 
-            this.ptoimialue_tb.Location = new System.Drawing.Point(185, 254);
+            this.ptoimialue_tb.Location = new System.Drawing.Point(185, 220);
             this.ptoimialue_tb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ptoimialue_tb.Name = "ptoimialue_tb";
             this.ptoimialue_tb.Size = new System.Drawing.Size(229, 26);
@@ -88,7 +86,7 @@ namespace Hotel
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 260);
+            this.label1.Location = new System.Drawing.Point(48, 223);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 6;
@@ -173,31 +171,11 @@ namespace Hotel
             this.ptyyppi_tb.Size = new System.Drawing.Size(112, 26);
             this.ptyyppi_tb.TabIndex = 15;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(48, 190);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 40);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "\r\nPalveluID";
-            // 
-            // ppalveluID_tb
-            // 
-            this.ppalveluID_tb.Location = new System.Drawing.Point(185, 204);
-            this.ppalveluID_tb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ppalveluID_tb.Name = "ppalveluID_tb";
-            this.ppalveluID_tb.Size = new System.Drawing.Size(112, 26);
-            this.ppalveluID_tb.TabIndex = 16;
-            this.ppalveluID_tb.Text = "\r\n";
-            // 
             // PalveluNakyma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 699);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.ppalveluID_tb);
             this.Controls.Add(this.pkuvaus_tb);
             this.Controls.Add(this.ptyyppi_tb);
             this.Controls.Add(this.label6);
@@ -235,7 +213,5 @@ namespace Hotel
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox pkuvaus_tb;
         private System.Windows.Forms.TextBox ptyyppi_tb;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox ppalveluID_tb;
     }
 }
