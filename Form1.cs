@@ -558,10 +558,21 @@ namespace Hotel
         private void lisääp_btn(object sender, EventArgs e)
         {
             PalveluNakyma lisaaPalvelu = new PalveluNakyma(palvelut.Count);
-            lisaaPalvelu.Text = "Lisaa palvelu varaus";
+            lisaaPalvelu.Text = "Lisaa uusi palvelu";
             lisaaPalvelu.Show();
         }
 
+        public void UpdatePalveluGrid()
+        {
+            
+
+            dgv_palvelut.Refresh();
+            palvelut = LFDB.getPalvelut();
+            dgv_palvelut.DataSource = null;
+            dgv_palvelut.DataSource = palvelut;
+
+
+        }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -593,6 +604,9 @@ namespace Hotel
 
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

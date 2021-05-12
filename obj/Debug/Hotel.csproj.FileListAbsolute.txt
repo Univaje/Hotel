@@ -213,3 +213,4 @@ C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\bin\Debug\DynamicPDF.N
 C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\obj\Debug\Hotel.LaskuNakyma.resources
 C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\obj\Debug\Hotel.LaskuNakyma.resources
 C:\Users\artoi\OneDrive\Documents\GitHub\Hotel\obj\Debug\Hotel.LaskuNakyma.resources
+C:\Users\Mira\source\repos\Hotel2\obj\Debug\Hotel.LaskuNakyma.resources

@@ -13,7 +13,9 @@ using System.Threading.Tasks;
 namespace Hotel
 {
     public partial class PalveluNakyma : Form
+
     {
+        private HotelManhattan Form1;
         private List<Palvelu> Palvelut = new List<Palvelu>();
         private List<Toimialue> Toimialueet = new List<Toimialue>();
         private int PalveluID;
@@ -70,7 +72,7 @@ namespace Hotel
 
           
             PalveluNakyma.ActiveForm.Close();
-        
+            Form1.UpdatePalveluGrid();
         }
 
         private void peruuta_btn_Click(object sender, EventArgs e)
