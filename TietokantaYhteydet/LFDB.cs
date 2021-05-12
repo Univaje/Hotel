@@ -581,12 +581,12 @@ namespace Hotel
                 string sql = "UPDATE asiakas SET asiakas_id = @asiakas_id , postinro = @postinro , etunimi = @etunimi , sukunimi = @sukunimi , lahiosoite = @lahiosoite , email = @email , puhelinnro = @puhelinnro WHERE asiakas_id = @asiakas_id";
                 MySqlCommand Parametreille = new MySqlCommand(sql, connect);
                 Parametreille.Parameters.Add("@asiakas_id", MySqlDbType.Int32).Value = a.AsiakasID;
-                //Parametreille.Parameters.Add("@toimi", MySqlDbType.Int32).Value = m.ToimintaalueID;
+                
                 Parametreille.Parameters.Add("@postinro", MySqlDbType.VarChar).Value = a.Postinumero;
                 Parametreille.Parameters.Add("@etunimi", MySqlDbType.VarChar).Value = a.Etunimi;
                 Parametreille.Parameters.Add("@sukunimi", MySqlDbType.VarChar).Value = a.Sukunimi;
                 Parametreille.Parameters.Add("@lahiosoite", MySqlDbType.VarChar).Value = a.Lahiosoite;
-                //Parametreille.Parameters.Add("@henkilomaara", MySqlDbType.Int32).Value = m.Henkilomaara;
+                
                 Parametreille.Parameters.Add("@email", MySqlDbType.VarChar).Value = a.Sahkopostiosoite;
                 Parametreille.Parameters.Add("@puhelinnro", MySqlDbType.VarChar).Value = a.Puhelinnumero;
 

@@ -18,7 +18,8 @@ namespace Hotel
         private Posti p = new Posti();
         private bool muokkaus = false;
         private int aID;
-        public AsiakasNakyma()
+        private HotelManhattan Form1;
+        public AsiakasNakyma(HotelManhattan tullutformi)
         {
             InitializeComponent();
             muokkaus = false;
@@ -26,9 +27,10 @@ namespace Hotel
             // asiakkaat = LFDB.getAsiakas();
             btnAsiakasMuokTallenna.Text = "Lisää";
             aID = 1;
+            this.Form1 = tullutformi;
         }
 
-        internal AsiakasNakyma(Asiakas muokattava)
+        internal AsiakasNakyma(Asiakas muokattava, HotelManhattan tullutformi)
         {
             InitializeComponent();
             muokkaus = true;
@@ -42,13 +44,13 @@ namespace Hotel
             tbAsiakasMuokPuh.Text = muokattava.Puhelinnumero;
             Lista = p.HaetPostinrot();
             ToimipaikanHaku(muokattava.Postinumero.ToString());
-
+            this.Form1 = tullutformi;
 
         }
 
         private void btnAsiakasMuokPeruuta_Click(object sender, EventArgs e)
         {
-            AsiakasNakyma.ActiveForm.Close();
+            this.Hide();
         }
 
         private void btnAsiakasMuokTallenna_Click(object sender, EventArgs e)
@@ -74,10 +76,9 @@ namespace Hotel
                 LFDB.SetAsiakasAlt(lisattava);
             else
                 LFDB.UpdateAsiakas(lisattava);
-            
-            //dgvAsiakas.DataSource = null;
-            //dgvAsiakas.DataSource = asiakkaat;
-            AsiakasNakyma.ActiveForm.Close();
+
+            this.Hide();
+            Form1.UpdateGridAsiakas();
         }
 
         private void tbAsiakasMuokPosti_KeyPress(object sender, KeyPressEventArgs e)
