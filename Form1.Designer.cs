@@ -31,7 +31,10 @@ namespace Hotel
         {
             this.components = new System.ComponentModel.Container();
             this.tpAsiakas = new System.Windows.Forms.TabPage();
+            this.btnTestAsiakas = new System.Windows.Forms.Button();
             this.gbAsiakasSuodatin = new System.Windows.Forms.GroupBox();
+            this.tbAsiakasHakuNimi = new System.Windows.Forms.TextBox();
+            this.rbtnAsiakasHakuNimi = new System.Windows.Forms.RadioButton();
             this.rbtnAsiakasToimi = new System.Windows.Forms.RadioButton();
             this.rbtnAsiakasKaikki = new System.Windows.Forms.RadioButton();
             this.cmbAsiakasToimialue = new System.Windows.Forms.ComboBox();
@@ -104,8 +107,14 @@ namespace Hotel
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
             this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
-            this.rbtnAsiakasHakuNimi = new System.Windows.Forms.RadioButton();
-            this.tbAsiakasHakuNimi = new System.Windows.Forms.TextBox();
+            this.btnAsiakasGimme = new System.Windows.Forms.Button();
+            this.lblAsiEtu = new System.Windows.Forms.Label();
+            this.lblAsiSuk = new System.Windows.Forms.Label();
+            this.lblAsiID = new System.Windows.Forms.Label();
+            this.lblAsiOso = new System.Windows.Forms.Label();
+            this.lblAsiEma = new System.Windows.Forms.Label();
+            this.lblAsiPuh = new System.Windows.Forms.Label();
+            this.lblAsiPnr = new System.Windows.Forms.Label();
             this.tpAsiakas.SuspendLayout();
             this.gbAsiakasSuodatin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
@@ -132,6 +141,15 @@ namespace Hotel
             // 
             // tpAsiakas
             // 
+            this.tpAsiakas.Controls.Add(this.lblAsiPnr);
+            this.tpAsiakas.Controls.Add(this.lblAsiPuh);
+            this.tpAsiakas.Controls.Add(this.lblAsiEma);
+            this.tpAsiakas.Controls.Add(this.lblAsiOso);
+            this.tpAsiakas.Controls.Add(this.lblAsiID);
+            this.tpAsiakas.Controls.Add(this.lblAsiSuk);
+            this.tpAsiakas.Controls.Add(this.lblAsiEtu);
+            this.tpAsiakas.Controls.Add(this.btnAsiakasGimme);
+            this.tpAsiakas.Controls.Add(this.btnTestAsiakas);
             this.tpAsiakas.Controls.Add(this.gbAsiakasSuodatin);
             this.tpAsiakas.Controls.Add(this.btnAsiakasSiirryVaraus);
             this.tpAsiakas.Controls.Add(this.btnAsiakasLisaa);
@@ -147,6 +165,16 @@ namespace Hotel
             this.tpAsiakas.Text = "Asiakas";
             this.tpAsiakas.UseVisualStyleBackColor = true;
             // 
+            // btnTestAsiakas
+            // 
+            this.btnTestAsiakas.Location = new System.Drawing.Point(789, 375);
+            this.btnTestAsiakas.Name = "btnTestAsiakas";
+            this.btnTestAsiakas.Size = new System.Drawing.Size(75, 23);
+            this.btnTestAsiakas.TabIndex = 8;
+            this.btnTestAsiakas.Text = "button1";
+            this.btnTestAsiakas.UseVisualStyleBackColor = true;
+            this.btnTestAsiakas.Click += new System.EventHandler(this.btnTestAsiakas_Click);
+            // 
             // gbAsiakasSuodatin
             // 
             this.gbAsiakasSuodatin.Controls.Add(this.tbAsiakasHakuNimi);
@@ -160,6 +188,26 @@ namespace Hotel
             this.gbAsiakasSuodatin.TabIndex = 7;
             this.gbAsiakasSuodatin.TabStop = false;
             this.gbAsiakasSuodatin.Text = "Suodattimet";
+            // 
+            // tbAsiakasHakuNimi
+            // 
+            this.tbAsiakasHakuNimi.Location = new System.Drawing.Point(17, 149);
+            this.tbAsiakasHakuNimi.Name = "tbAsiakasHakuNimi";
+            this.tbAsiakasHakuNimi.Size = new System.Drawing.Size(162, 20);
+            this.tbAsiakasHakuNimi.TabIndex = 3;
+            this.tbAsiakasHakuNimi.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbAsiakasHakuNimi_KeyUp);
+            // 
+            // rbtnAsiakasHakuNimi
+            // 
+            this.rbtnAsiakasHakuNimi.AutoSize = true;
+            this.rbtnAsiakasHakuNimi.Location = new System.Drawing.Point(17, 126);
+            this.rbtnAsiakasHakuNimi.Name = "rbtnAsiakasHakuNimi";
+            this.rbtnAsiakasHakuNimi.Size = new System.Drawing.Size(82, 17);
+            this.rbtnAsiakasHakuNimi.TabIndex = 2;
+            this.rbtnAsiakasHakuNimi.TabStop = true;
+            this.rbtnAsiakasHakuNimi.Text = "Sukunimellä";
+            this.rbtnAsiakasHakuNimi.UseVisualStyleBackColor = true;
+            this.rbtnAsiakasHakuNimi.CheckedChanged += new System.EventHandler(this.rbtnAsiakasHakuNimi_CheckedChanged);
             // 
             // rbtnAsiakasToimi
             // 
@@ -942,25 +990,78 @@ namespace Hotel
             // 
             this.asiakasTableAdapter.ClearBeforeFill = true;
             // 
-            // rbtnAsiakasHakuNimi
+            // btnAsiakasGimme
             // 
-            this.rbtnAsiakasHakuNimi.AutoSize = true;
-            this.rbtnAsiakasHakuNimi.Location = new System.Drawing.Point(17, 126);
-            this.rbtnAsiakasHakuNimi.Name = "rbtnAsiakasHakuNimi";
-            this.rbtnAsiakasHakuNimi.Size = new System.Drawing.Size(82, 17);
-            this.rbtnAsiakasHakuNimi.TabIndex = 2;
-            this.rbtnAsiakasHakuNimi.TabStop = true;
-            this.rbtnAsiakasHakuNimi.Text = "Sukunimellä";
-            this.rbtnAsiakasHakuNimi.UseVisualStyleBackColor = true;
-            this.rbtnAsiakasHakuNimi.CheckedChanged += new System.EventHandler(this.rbtnAsiakasHakuNimi_CheckedChanged);
+            this.btnAsiakasGimme.Location = new System.Drawing.Point(1031, 39);
+            this.btnAsiakasGimme.Name = "btnAsiakasGimme";
+            this.btnAsiakasGimme.Size = new System.Drawing.Size(75, 23);
+            this.btnAsiakasGimme.TabIndex = 9;
+            this.btnAsiakasGimme.Text = "gimme";
+            this.btnAsiakasGimme.UseVisualStyleBackColor = true;
+            this.btnAsiakasGimme.Click += new System.EventHandler(this.btnAsiakasGimme_Click);
             // 
-            // tbAsiakasHakuNimi
+            // lblAsiEtu
             // 
-            this.tbAsiakasHakuNimi.Location = new System.Drawing.Point(17, 149);
-            this.tbAsiakasHakuNimi.Name = "tbAsiakasHakuNimi";
-            this.tbAsiakasHakuNimi.Size = new System.Drawing.Size(162, 20);
-            this.tbAsiakasHakuNimi.TabIndex = 3;
-            this.tbAsiakasHakuNimi.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbAsiakasHakuNimi_KeyUp);
+            this.lblAsiEtu.AutoSize = true;
+            this.lblAsiEtu.Location = new System.Drawing.Point(1011, 116);
+            this.lblAsiEtu.Name = "lblAsiEtu";
+            this.lblAsiEtu.Size = new System.Drawing.Size(35, 13);
+            this.lblAsiEtu.TabIndex = 10;
+            this.lblAsiEtu.Text = "label6";
+            // 
+            // lblAsiSuk
+            // 
+            this.lblAsiSuk.AutoSize = true;
+            this.lblAsiSuk.Location = new System.Drawing.Point(1011, 147);
+            this.lblAsiSuk.Name = "lblAsiSuk";
+            this.lblAsiSuk.Size = new System.Drawing.Size(35, 13);
+            this.lblAsiSuk.TabIndex = 11;
+            this.lblAsiSuk.Text = "label8";
+            // 
+            // lblAsiID
+            // 
+            this.lblAsiID.AutoSize = true;
+            this.lblAsiID.Location = new System.Drawing.Point(1011, 86);
+            this.lblAsiID.Name = "lblAsiID";
+            this.lblAsiID.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiID.TabIndex = 12;
+            this.lblAsiID.Text = "label10";
+            // 
+            // lblAsiOso
+            // 
+            this.lblAsiOso.AutoSize = true;
+            this.lblAsiOso.Location = new System.Drawing.Point(1005, 200);
+            this.lblAsiOso.Name = "lblAsiOso";
+            this.lblAsiOso.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiOso.TabIndex = 13;
+            this.lblAsiOso.Text = "label11";
+            // 
+            // lblAsiEma
+            // 
+            this.lblAsiEma.AutoSize = true;
+            this.lblAsiEma.Location = new System.Drawing.Point(1005, 239);
+            this.lblAsiEma.Name = "lblAsiEma";
+            this.lblAsiEma.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiEma.TabIndex = 14;
+            this.lblAsiEma.Text = "label12";
+            // 
+            // lblAsiPuh
+            // 
+            this.lblAsiPuh.AutoSize = true;
+            this.lblAsiPuh.Location = new System.Drawing.Point(1005, 278);
+            this.lblAsiPuh.Name = "lblAsiPuh";
+            this.lblAsiPuh.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiPuh.TabIndex = 15;
+            this.lblAsiPuh.Text = "label13";
+            // 
+            // lblAsiPnr
+            // 
+            this.lblAsiPnr.AutoSize = true;
+            this.lblAsiPnr.Location = new System.Drawing.Point(1005, 320);
+            this.lblAsiPnr.Name = "lblAsiPnr";
+            this.lblAsiPnr.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiPnr.TabIndex = 16;
+            this.lblAsiPnr.Text = "label14";
             // 
             // HotelManhattan
             // 
@@ -974,6 +1075,7 @@ namespace Hotel
             this.Activated += new System.EventHandler(this.HotelManhattan_Activated);
             this.Load += new System.EventHandler(this.HotelManhattan_Load);
             this.tpAsiakas.ResumeLayout(false);
+            this.tpAsiakas.PerformLayout();
             this.gbAsiakasSuodatin.ResumeLayout(false);
             this.gbAsiakasSuodatin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).EndInit();
@@ -1082,6 +1184,15 @@ namespace Hotel
         private System.Windows.Forms.RadioButton rbtnAsiakasKaikki;
         private System.Windows.Forms.TextBox tbAsiakasHakuNimi;
         private System.Windows.Forms.RadioButton rbtnAsiakasHakuNimi;
+        private System.Windows.Forms.Button btnTestAsiakas;
+        private System.Windows.Forms.Label lblAsiPnr;
+        private System.Windows.Forms.Label lblAsiPuh;
+        private System.Windows.Forms.Label lblAsiEma;
+        private System.Windows.Forms.Label lblAsiOso;
+        private System.Windows.Forms.Label lblAsiID;
+        private System.Windows.Forms.Label lblAsiSuk;
+        private System.Windows.Forms.Label lblAsiEtu;
+        private System.Windows.Forms.Button btnAsiakasGimme;
     }
 }
 

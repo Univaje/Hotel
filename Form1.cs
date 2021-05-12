@@ -16,7 +16,11 @@ namespace Hotel
         private List<mokki> mokit = new List<mokki>();
         private List<Toimialue> toimialueet = new List<Toimialue>();
         private List<Asiakas> asiakkaat = new List<Asiakas>();
-        private List<Asiakas> asiakkaatSuodatin = new List<Asiakas>();
+        // private List<Asiakas> asiakkaatSuodatinT = new List<Asiakas>();
+        private BindingList<Asiakas> asiakkaatSuodatinT = new BindingList<Asiakas>();
+        private List<Asiakas> asiakkaatSuodatinS = new List<Asiakas>();
+        private List<Asiakas> asiakkaatSuodatinTesti = new List<Asiakas>();
+        private List<Varaustiedot> varauksetAsiakasSuodatus = new List<Varaustiedot>();
         private List<mokki> ToimialueenMokit = new List<mokki>();
         private List<Varaus> Varaukset = new List<Varaus>();
         private List<Varaustiedot> VarauksienTiedot = new List<Varaustiedot>();
@@ -74,15 +78,18 @@ namespace Hotel
         }
         private void HotelManhattan_Activated(object sender, EventArgs e)
         {
+            /*
             asiakkaat = LFDB.getAsiakas();
             dgvAsiakas.DataSource = null;
             dgvAsiakas.DataSource = asiakkaat;
             rbtnAsiakasKaikki.Checked = true;
+            */
 
+            /*
             cbVaraukset.DataSource = asiakkaat;
             cbVaraukset.DisplayMember = "AsiakasID";
             cbVaraukset.ValueMember = "AsiakasID";
-
+            */
 
 
         }
@@ -257,16 +264,57 @@ namespace Hotel
         }
 
         /* Asiakkaan toiminnot*/
+        public void UpdateGridAsiakas()
+        {
+            asiakkaat = LFDB.getAsiakas();
+            dgvAsiakas.DataSource = null;
+            dgvAsiakas.DataSource = asiakkaat;
+            rbtnAsiakasKaikki.Checked = true;
+            asiakasCountCheck(asiakkaat);
+        }
+        
+
+        private void asiakasCountCheck(List<Asiakas> listToCheck)
+        {
+            if (listToCheck.Count < 1)
+            {
+                btnAsiakasMuokkaa.Enabled = false;
+                btnAsiakasPoista.Enabled = false;
+                btnAsiakasSiirryVaraus.Enabled = false;
+            }
+            else
+            {
+                btnAsiakasMuokkaa.Enabled = true;
+                btnAsiakasPoista.Enabled = true;
+                btnAsiakasSiirryVaraus.Enabled = true;
+            }
+        }
+        private void asiakasCountCheck(BindingList<Asiakas> listToCheck)
+        {
+            if (listToCheck.Count < 1)
+            {
+                btnAsiakasMuokkaa.Enabled = false;
+                btnAsiakasPoista.Enabled = false;
+                btnAsiakasSiirryVaraus.Enabled = false;
+            }
+            else
+            {
+                btnAsiakasMuokkaa.Enabled = true;
+                btnAsiakasPoista.Enabled = true;
+                btnAsiakasSiirryVaraus.Enabled = true;
+            }
+        }
+
         private void btnAsiakasLisaa_Click(object sender, EventArgs e)
         {
-            AsiakasNakyma an = new AsiakasNakyma();
+            AsiakasNakyma an = new AsiakasNakyma(this);
             an.ShowDialog();
         }
         private void btnAsiakasMuokkaa_Click(object sender, EventArgs e)
         {
             Asiakas a = new Asiakas();
             a = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;
-            AsiakasNakyma an = new AsiakasNakyma(a);
+            AsiakasNakyma an = new AsiakasNakyma(a, this);
             an.ShowDialog();
         }
         private void btnAsiakasPoista_Click(object sender, EventArgs e)
@@ -278,10 +326,14 @@ namespace Hotel
                 poista = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;
                 LFDB.RemoveAsiakas(poista.AsiakasID);
                 //asiakkaat.Remove(poista);
+                UpdateGridAsiakas();
+                /*
                 asiakkaat.Clear();
                 asiakkaat = LFDB.getAsiakas();
                 dgvAsiakas.DataSource = null;
                 dgvAsiakas.DataSource = asiakkaat;
+                rbtnAsiakasKaikki.Checked = true;
+                */
             }
             else
                 return;
@@ -289,58 +341,62 @@ namespace Hotel
         private void btnAsiakasSiirryVaraus_Click(object sender, EventArgs e)
         {
             tcHotelli.SelectedTab = tpVaraus;
+            Asiakas siirrettava = new Asiakas();
+            siirrettava = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;
+            cbVaraukset.SelectedItem = siirrettava;                        
         }
 
-        private void cmbAsiakasToimialue_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            asiakkaatSuodatin.Clear();
-            Toimialue asiakasSuodToimi = (Toimialue)cmbAsiakasToimialue.SelectedItem;
-            foreach (Asiakas a in asiakkaat)
-            {
-                List<Varaustiedot> varauksetSuodatus = new List<Varaustiedot>();
-                varauksetSuodatus = LFDB.getVarausAsiakkaan(a.AsiakasID);
-                foreach (Varaustiedot v in varauksetSuodatus)
-                {
-                    if (v.ToimintaalueNimi.ToString() == asiakasSuodToimi.ToimintaAlueNimi.ToString() && !asiakkaatSuodatin.Contains(a))
-                    asiakkaatSuodatin.Add(a);
-                }
-            }
-            dgvAsiakas.DataSource = null;
-            dgvAsiakas.DataSource = asiakkaatSuodatin;
-        }
-
+        
         private void rbtnAsiakasKaikki_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtnAsiakasKaikki.Checked)
             {
-                asiakkaat.Clear();
-                asiakkaat = LFDB.getAsiakas();
-                dgvAsiakas.DataSource = null;
-                dgvAsiakas.DataSource = asiakkaat;                
+                UpdateGridAsiakas();                                
             }
         }
+
+        private void cmbAsiakasToimialue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            asiakashakuToimipaikalla();
+        }
+
         private void rbtnAsiakasToimi_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtnAsiakasToimi.Checked)
             {
+                asiakashakuToimipaikalla();                
                 cmbAsiakasToimialue.Enabled = true;
-                asiakkaatSuodatin.Clear();
-                Toimialue asiakasSuodToimi = (Toimialue)cmbAsiakasToimialue.SelectedItem;
-                foreach (Asiakas a in asiakkaat)
-                {
-                    List<Varaustiedot> varauksetSuodatus = new List<Varaustiedot>();
-                    varauksetSuodatus = LFDB.getVarausAsiakkaan(a.AsiakasID);
-                    foreach (Varaustiedot v in varauksetSuodatus)
-                    {
-                        if (v.ToimintaalueNimi.ToString() == asiakasSuodToimi.ToimintaAlueNimi.ToString() && !asiakkaatSuodatin.Contains(a))
-                            asiakkaatSuodatin.Add(a);
-                    }
-                }
-                dgvAsiakas.DataSource = null;
-                dgvAsiakas.DataSource = asiakkaatSuodatin;
             }
             else
                 cmbAsiakasToimialue.Enabled = false;
+        }
+
+        private void asiakashakuToimipaikalla()
+        {
+            asiakkaatSuodatinT.Clear();
+            
+            //asiakkaat.Clear();
+            //asiakkaat = LFDB.getAsiakas();
+            Toimialue asiakasSuodToimi = (Toimialue)cmbAsiakasToimialue.SelectedItem;
+            foreach (Asiakas a in asiakkaat)
+            {
+                varauksetAsiakasSuodatus.Clear();
+                varauksetAsiakasSuodatus = LFDB.getVarausAsiakkaan(a.AsiakasID);
+                foreach (Varaustiedot v in varauksetAsiakasSuodatus)
+                {
+                    if (v.ToimintaalueNimi.ToString() == asiakasSuodToimi.ToimintaAlueNimi.ToString() /*&& !asiakkaatSuodatinT.Contains(a)*/) // !asiakkaat.Contains(a)
+                        // asiakkaat.Add(a);
+                        asiakkaatSuodatinT.Add(a);
+                }
+            }
+            dgvAsiakas.DataSource = null;
+            //dgvAsiakas.Refresh();
+            if (asiakkaatSuodatinT.Count() > 0)
+                dgvAsiakas.DataSource = asiakkaatSuodatinT;
+            asiakasCountCheck(asiakkaatSuodatinT);
+
+            //dgvAsiakas.DataSource = asiakkaat;
+            //dgvAsiakas.Refresh();
         }
 
         private void rbtnAsiakasHakuNimi_CheckedChanged(object sender, EventArgs e)
@@ -348,20 +404,51 @@ namespace Hotel
             if (rbtnAsiakasHakuNimi.Checked)
             {
                 tbAsiakasHakuNimi.Enabled = true;
-                asiakkaatSuodatin.Clear();
-                asiakkaatSuodatin = LFDB.getAsiakasBySukunimi(tbAsiakasHakuNimi.Text);
-                dgvAsiakas.DataSource = null;
-                dgvAsiakas.DataSource = asiakkaatSuodatin;
+                asiakashakuSukunimella();                
             }
             else
                 tbAsiakasHakuNimi.Enabled = false;
         }
         private void tbAsiakasHakuNimi_KeyUp(object sender, KeyEventArgs e)
         {
-            asiakkaatSuodatin.Clear();
-            asiakkaatSuodatin = LFDB.getAsiakasBySukunimi(tbAsiakasHakuNimi.Text);
+            asiakashakuSukunimella();
+        }
+
+        private void asiakashakuSukunimella()
+        {
+            asiakkaatSuodatinS.Clear();
+            asiakkaatSuodatinS = LFDB.getAsiakasBySukunimi(tbAsiakasHakuNimi.Text);
+            //asiakkaat.Clear();
+            //asiakkaat = LFDB.getAsiakasBySukunimi(tbAsiakasHakuNimi.Text);
             dgvAsiakas.DataSource = null;
-            dgvAsiakas.DataSource = asiakkaatSuodatin;
+            dgvAsiakas.DataSource = asiakkaatSuodatinS;
+            //dgvAsiakas.DataSource = asiakkaat;
+            asiakasCountCheck(asiakkaatSuodatinS);
+        }
+        private void btnTestAsiakas_Click(object sender, EventArgs e)
+        {
+            asiakkaatSuodatinTesti.Clear();
+            int i = 1;
+            foreach (Asiakas asi in asiakkaat)
+            {
+                i++;
+                if (i % 2 == 0)
+                asiakkaatSuodatinTesti.Add(asi);
+            }
+            dgvAsiakas.DataSource = null;
+            dgvAsiakas.DataSource = asiakkaatSuodatinTesti;
+        }
+        private void btnAsiakasGimme_Click(object sender, EventArgs e)
+        {
+            Asiakas testattava = new Asiakas();
+            testattava = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;
+            lblAsiEma.Text = testattava.Sahkopostiosoite;
+            lblAsiEtu.Text = testattava.Etunimi;
+            lblAsiID.Text = testattava.AsiakasID.ToString();
+            lblAsiOso.Text = testattava.Lahiosoite;
+            lblAsiPnr.Text = testattava.Postinumero;
+            lblAsiPuh.Text = testattava.Puhelinnumero;
+            lblAsiSuk.Text = testattava.Sukunimi;
         }
 
         /* Laskun toiminnot*/
