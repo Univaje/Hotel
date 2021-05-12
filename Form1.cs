@@ -16,10 +16,10 @@ namespace Hotel
         private List<mokki> mokit = new List<mokki>();
         private List<Toimialue> toimialueet = new List<Toimialue>();
         private List<Asiakas> asiakkaat = new List<Asiakas>();
-        // private List<Asiakas> asiakkaatSuodatinT = new List<Asiakas>();
+        private BindingList<Asiakas> asiakkaatB = new BindingList<Asiakas>();
         private BindingList<Asiakas> asiakkaatSuodatinT = new BindingList<Asiakas>();
         private List<Asiakas> asiakkaatSuodatinS = new List<Asiakas>();
-        private List<Asiakas> asiakkaatSuodatinTesti = new List<Asiakas>();
+        private BindingList<Asiakas> asiakkaatSuodatinSB = new BindingList<Asiakas>();
         private List<Varaustiedot> varauksetAsiakasSuodatus = new List<Varaustiedot>();
         private List<mokki> ToimialueenMokit = new List<mokki>();
         private List<Varaus> Varaukset = new List<Varaus>();
@@ -56,10 +56,11 @@ namespace Hotel
 
             //Varaukset ja asiakashallinta
             asiakkaat = LFDB.getAsiakas();
-            cbVaraukset.DataSource = asiakkaat;
+            asiakkaatB = convertToBindingAsiakas(asiakkaat);
+            cbVaraukset.DataSource = asiakkaatB;
             cbVaraukset.DisplayMember = "AsiakasID";
             cbVaraukset.ValueMember = "AsiakasID";
-            dgvAsiakas.DataSource = asiakkaat;
+            dgvAsiakas.DataSource = asiakkaatB;
             cmbAsiakasToimialue.DataSource = toimialueet;
             cmbAsiakasToimialue.DisplayMember = "toimintaAlueNimi";
             cmbAsiakasToimialue.ValueMember = "toimintaAlueNimi";
@@ -258,10 +259,16 @@ namespace Hotel
         public void UpdateGridAsiakas()
         {
             asiakkaat = LFDB.getAsiakas();
+            asiakkaatB = convertToBindingAsiakas(asiakkaat);
             dgvAsiakas.DataSource = null;
-            dgvAsiakas.DataSource = asiakkaat;
+            dgvAsiakas.DataSource = asiakkaatB;
             rbtnAsiakasKaikki.Checked = true;
             asiakasCountCheck(asiakkaat);
+
+            // Päivitetään combon datasource
+            cbVaraukset.DataSource = asiakkaatB;
+            cbVaraukset.DisplayMember = "AsiakasID";
+            cbVaraukset.ValueMember = "AsiakasID";
         }
         
 
@@ -315,26 +322,15 @@ namespace Hotel
             {
                 Asiakas poista = new Asiakas();
                 poista = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;
-                LFDB.RemoveAsiakas(poista.AsiakasID);
-                //asiakkaat.Remove(poista);
-                UpdateGridAsiakas();
-                /*
-                asiakkaat.Clear();
-                asiakkaat = LFDB.getAsiakas();
-                dgvAsiakas.DataSource = null;
-                dgvAsiakas.DataSource = asiakkaat;
-                rbtnAsiakasKaikki.Checked = true;
-                */
+                LFDB.RemoveAsiakas(poista.AsiakasID);                
+                UpdateGridAsiakas();                
             }
             else
                 return;
         }
         private void btnAsiakasSiirryVaraus_Click(object sender, EventArgs e)
         {
-            tcHotelli.SelectedTab = tpVaraus;
-            Asiakas siirrettava = new Asiakas();
-            siirrettava = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;
-            cbVaraukset.SelectedItem = siirrettava;                        
+            tcHotelli.SelectedTab = tpVaraus;                                   
         }
 
         
@@ -365,29 +361,29 @@ namespace Hotel
         private void asiakashakuToimipaikalla()
         {
             asiakkaatSuodatinT.Clear();
-            
-            //asiakkaat.Clear();
-            //asiakkaat = LFDB.getAsiakas();
+                        
+            asiakkaat = LFDB.getAsiakas();
             Toimialue asiakasSuodToimi = (Toimialue)cmbAsiakasToimialue.SelectedItem;
+
             foreach (Asiakas a in asiakkaat)
             {
                 varauksetAsiakasSuodatus.Clear();
                 varauksetAsiakasSuodatus = LFDB.getVarausAsiakkaan(a.AsiakasID);
                 foreach (Varaustiedot v in varauksetAsiakasSuodatus)
                 {
-                    if (v.ToimintaalueNimi.ToString() == asiakasSuodToimi.ToimintaAlueNimi.ToString() /*&& !asiakkaatSuodatinT.Contains(a)*/) // !asiakkaat.Contains(a)
-                        // asiakkaat.Add(a);
+                    if (v.ToimintaalueNimi.ToString() == asiakasSuodToimi.ToimintaAlueNimi.ToString() && !asiakkaatSuodatinT.Contains(a))                        
                         asiakkaatSuodatinT.Add(a);
                 }
             }
             dgvAsiakas.DataSource = null;
-            //dgvAsiakas.Refresh();
             if (asiakkaatSuodatinT.Count() > 0)
                 dgvAsiakas.DataSource = asiakkaatSuodatinT;
             asiakasCountCheck(asiakkaatSuodatinT);
 
-            //dgvAsiakas.DataSource = asiakkaat;
-            //dgvAsiakas.Refresh();
+            // Vaihdetaan combon datasource
+            cbVaraukset.DataSource = asiakkaatSuodatinT;
+            cbVaraukset.DisplayMember = "AsiakasID";
+            cbVaraukset.ValueMember = "AsiakasID";
         }
 
         private void rbtnAsiakasHakuNimi_CheckedChanged(object sender, EventArgs e)
@@ -408,39 +404,29 @@ namespace Hotel
         private void asiakashakuSukunimella()
         {
             asiakkaatSuodatinS.Clear();
+            asiakkaatSuodatinSB.Clear();
             asiakkaatSuodatinS = LFDB.getAsiakasBySukunimi(tbAsiakasHakuNimi.Text);
-            //asiakkaat.Clear();
-            //asiakkaat = LFDB.getAsiakasBySukunimi(tbAsiakasHakuNimi.Text);
+            asiakkaatSuodatinSB = convertToBindingAsiakas(asiakkaatSuodatinS);
+
             dgvAsiakas.DataSource = null;
-            dgvAsiakas.DataSource = asiakkaatSuodatinS;
-            //dgvAsiakas.DataSource = asiakkaat;
+            dgvAsiakas.DataSource = asiakkaatSuodatinSB;
             asiakasCountCheck(asiakkaatSuodatinS);
+
+            // Vaihdetaanko combon datasource
+            cbVaraukset.DataSource = asiakkaatSuodatinSB;
+            cbVaraukset.DisplayMember = "AsiakasID";
+            cbVaraukset.ValueMember = "AsiakasID";
         }
-        private void btnTestAsiakas_Click(object sender, EventArgs e)
+        private BindingList<Asiakas> convertToBindingAsiakas(List<Asiakas> listToConvert)
         {
-            asiakkaatSuodatinTesti.Clear();
-            int i = 1;
-            foreach (Asiakas asi in asiakkaat)
+            BindingList<Asiakas> listToMake = new BindingList<Asiakas>();
+            foreach (Asiakas a in listToConvert)
             {
-                i++;
-                if (i % 2 == 0)
-                asiakkaatSuodatinTesti.Add(asi);
+                listToMake.Add(a);
             }
-            dgvAsiakas.DataSource = null;
-            dgvAsiakas.DataSource = asiakkaatSuodatinTesti;
+            return listToMake;
         }
-        private void btnAsiakasGimme_Click(object sender, EventArgs e)
-        {
-            Asiakas testattava = new Asiakas();
-            testattava = (Asiakas)dgvAsiakas.CurrentRow.DataBoundItem;
-            lblAsiEma.Text = testattava.Sahkopostiosoite;
-            lblAsiEtu.Text = testattava.Etunimi;
-            lblAsiID.Text = testattava.AsiakasID.ToString();
-            lblAsiOso.Text = testattava.Lahiosoite;
-            lblAsiPnr.Text = testattava.Postinumero;
-            lblAsiPuh.Text = testattava.Puhelinnumero;
-            lblAsiSuk.Text = testattava.Sukunimi;
-        }
+        
 
         /* Laskun toiminnot*/
         private void HaelaskutNappi_Click(object sender, EventArgs e)
@@ -494,11 +480,13 @@ namespace Hotel
         {
 
             dgvVaraus.DataSource = null;
-
+            
+            if (cbVaraukset.SelectedItem != null) 
+            { 
             Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
             VarauksienTiedot = LFDB.getVarausAsiakkaan(A.AsiakasID);
             dgvVaraus.DataSource = VarauksienTiedot;
-
+            }
 
 
         }
@@ -511,6 +499,7 @@ namespace Hotel
         }
         private void HotelManhattan_Activated(object sender, EventArgs e)
         {
+            /*
             asiakkaat = LFDB.getAsiakas();
             dgvAsiakas.DataSource = null;
             dgvAsiakas.DataSource = asiakkaat;
@@ -518,9 +507,7 @@ namespace Hotel
             cbVaraukset.DataSource = asiakkaat;
             cbVaraukset.DisplayMember = "AsiakasID";
             cbVaraukset.ValueMember = "AsiakasID";
-
-
-
+            */
         }
         private void btnPoistaVaraus_Click(object sender, EventArgs e)
         {
