@@ -664,6 +664,63 @@ namespace Hotel
             }
             //return laskuuuuuuuuuuuuuuuuuuu;
         }
+        public static void UusiLasku(Lasku oo)  //  Uusi lasku toiminto
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "INSERT INTO lasku(lasku_id,varaus_id,summa,alv) VALUES " +
+                    (oo.LaskuID + "','" + oo.VarausID1 + "','" + oo.Summa + "','" + oo.Alv );
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+        public static void UpdateLasku(Lasku oo) // laskun muokkaus hommelisysteemi
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "UPDATE lasku SET lasku_id = @lasku_id , varaus_id = @varaus_id , summa = @summa , alv = @alv";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+                
+                Parametreille.Parameters.Add("@lasku_id", MySqlDbType.Int32).Value = oo.LaskuID;
+                Parametreille.Parameters.Add("@varaus_id", MySqlDbType.Int32).Value = oo.VarausID1;
+                Parametreille.Parameters.Add("@summa", MySqlDbType.Double).Value = oo.Summa;
+                Parametreille.Parameters.Add("@alv", MySqlDbType.Double).Value = oo.Alv;
+
+                Parametreille.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+
+        }
 
 
         /* Varausten Tietokanta haut*/

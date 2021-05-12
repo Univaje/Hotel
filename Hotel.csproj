@@ -107,6 +107,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LaskuNakyma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaskuNakyma.Designer.cs">
+      <DependentUpon>LaskuNakyma.cs</DependentUpon>
+    </Compile>
     <Compile Include="MokkiNakyma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaskuNakyma.resx">
+      <DependentUpon>LaskuNakyma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MokkiNakyma.resx">
       <DependentUpon>MokkiNakyma.cs</DependentUpon>

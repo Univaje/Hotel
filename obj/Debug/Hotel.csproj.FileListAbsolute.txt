@@ -208,3 +208,6 @@ C:\Users\artoi\OneDrive\Documents\GitHub\Hotel\bin\Debug\DynamicPDF.NETFramework
 C:\Users\artoi\OneDrive\Documents\GitHub\Hotel\bin\Debug\DynamicPDF.NETFramework40.xml
 C:\Users\Mira\Source\Repos\Hotel2\bin\Debug\DynamicPDF.NETFramework40.dll
 C:\Users\Mira\Source\Repos\Hotel2\bin\Debug\DynamicPDF.NETFramework40.xml
+C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\bin\Debug\DynamicPDF.NETFramework40.dll
+C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\bin\Debug\DynamicPDF.NETFramework40.xml
+C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\obj\Debug\Hotel.LaskuNakyma.resources

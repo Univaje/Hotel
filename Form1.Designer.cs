@@ -31,6 +31,14 @@ namespace Hotel
         {
             this.components = new System.ComponentModel.Container();
             this.tpAsiakas = new System.Windows.Forms.TabPage();
+            this.lblAsiPnr = new System.Windows.Forms.Label();
+            this.lblAsiPuh = new System.Windows.Forms.Label();
+            this.lblAsiEma = new System.Windows.Forms.Label();
+            this.lblAsiOso = new System.Windows.Forms.Label();
+            this.lblAsiID = new System.Windows.Forms.Label();
+            this.lblAsiSuk = new System.Windows.Forms.Label();
+            this.lblAsiEtu = new System.Windows.Forms.Label();
+            this.btnAsiakasGimme = new System.Windows.Forms.Button();
             this.btnTestAsiakas = new System.Windows.Forms.Button();
             this.gbAsiakasSuodatin = new System.Windows.Forms.GroupBox();
             this.tbAsiakasHakuNimi = new System.Windows.Forms.TextBox();
@@ -107,14 +115,8 @@ namespace Hotel
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
             this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
-            this.btnAsiakasGimme = new System.Windows.Forms.Button();
-            this.lblAsiEtu = new System.Windows.Forms.Label();
-            this.lblAsiSuk = new System.Windows.Forms.Label();
-            this.lblAsiID = new System.Windows.Forms.Label();
-            this.lblAsiOso = new System.Windows.Forms.Label();
-            this.lblAsiEma = new System.Windows.Forms.Label();
-            this.lblAsiPuh = new System.Windows.Forms.Label();
-            this.lblAsiPnr = new System.Windows.Forms.Label();
+            this.MuokkaaLAsku = new System.Windows.Forms.Button();
+            this.LisaaLasku = new System.Windows.Forms.Button();
             this.tpAsiakas.SuspendLayout();
             this.gbAsiakasSuodatin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
@@ -164,6 +166,79 @@ namespace Hotel
             this.tpAsiakas.TabIndex = 1;
             this.tpAsiakas.Text = "Asiakas";
             this.tpAsiakas.UseVisualStyleBackColor = true;
+            // 
+            // lblAsiPnr
+            // 
+            this.lblAsiPnr.AutoSize = true;
+            this.lblAsiPnr.Location = new System.Drawing.Point(1005, 320);
+            this.lblAsiPnr.Name = "lblAsiPnr";
+            this.lblAsiPnr.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiPnr.TabIndex = 16;
+            this.lblAsiPnr.Text = "label14";
+            // 
+            // lblAsiPuh
+            // 
+            this.lblAsiPuh.AutoSize = true;
+            this.lblAsiPuh.Location = new System.Drawing.Point(1005, 278);
+            this.lblAsiPuh.Name = "lblAsiPuh";
+            this.lblAsiPuh.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiPuh.TabIndex = 15;
+            this.lblAsiPuh.Text = "label13";
+            // 
+            // lblAsiEma
+            // 
+            this.lblAsiEma.AutoSize = true;
+            this.lblAsiEma.Location = new System.Drawing.Point(1005, 239);
+            this.lblAsiEma.Name = "lblAsiEma";
+            this.lblAsiEma.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiEma.TabIndex = 14;
+            this.lblAsiEma.Text = "label12";
+            // 
+            // lblAsiOso
+            // 
+            this.lblAsiOso.AutoSize = true;
+            this.lblAsiOso.Location = new System.Drawing.Point(1005, 200);
+            this.lblAsiOso.Name = "lblAsiOso";
+            this.lblAsiOso.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiOso.TabIndex = 13;
+            this.lblAsiOso.Text = "label11";
+            // 
+            // lblAsiID
+            // 
+            this.lblAsiID.AutoSize = true;
+            this.lblAsiID.Location = new System.Drawing.Point(1011, 86);
+            this.lblAsiID.Name = "lblAsiID";
+            this.lblAsiID.Size = new System.Drawing.Size(41, 13);
+            this.lblAsiID.TabIndex = 12;
+            this.lblAsiID.Text = "label10";
+            // 
+            // lblAsiSuk
+            // 
+            this.lblAsiSuk.AutoSize = true;
+            this.lblAsiSuk.Location = new System.Drawing.Point(1011, 147);
+            this.lblAsiSuk.Name = "lblAsiSuk";
+            this.lblAsiSuk.Size = new System.Drawing.Size(35, 13);
+            this.lblAsiSuk.TabIndex = 11;
+            this.lblAsiSuk.Text = "label8";
+            // 
+            // lblAsiEtu
+            // 
+            this.lblAsiEtu.AutoSize = true;
+            this.lblAsiEtu.Location = new System.Drawing.Point(1011, 116);
+            this.lblAsiEtu.Name = "lblAsiEtu";
+            this.lblAsiEtu.Size = new System.Drawing.Size(35, 13);
+            this.lblAsiEtu.TabIndex = 10;
+            this.lblAsiEtu.Text = "label6";
+            // 
+            // btnAsiakasGimme
+            // 
+            this.btnAsiakasGimme.Location = new System.Drawing.Point(1031, 39);
+            this.btnAsiakasGimme.Name = "btnAsiakasGimme";
+            this.btnAsiakasGimme.Size = new System.Drawing.Size(75, 23);
+            this.btnAsiakasGimme.TabIndex = 9;
+            this.btnAsiakasGimme.Text = "gimme";
+            this.btnAsiakasGimme.UseVisualStyleBackColor = true;
+            this.btnAsiakasGimme.Click += new System.EventHandler(this.btnAsiakasGimme_Click);
             // 
             // btnTestAsiakas
             // 
@@ -779,6 +854,8 @@ namespace Hotel
             // 
             // tpLaskut
             // 
+            this.tpLaskut.Controls.Add(this.LisaaLasku);
+            this.tpLaskut.Controls.Add(this.MuokkaaLAsku);
             this.tpLaskut.Controls.Add(this.PoistaLasku);
             this.tpLaskut.Controls.Add(this.LaskuPVM2);
             this.tpLaskut.Controls.Add(this.LaskuPVM1);
@@ -798,9 +875,9 @@ namespace Hotel
             // 
             // PoistaLasku
             // 
-            this.PoistaLasku.Location = new System.Drawing.Point(788, 122);
+            this.PoistaLasku.Location = new System.Drawing.Point(387, 358);
             this.PoistaLasku.Name = "PoistaLasku";
-            this.PoistaLasku.Size = new System.Drawing.Size(107, 48);
+            this.PoistaLasku.Size = new System.Drawing.Size(112, 52);
             this.PoistaLasku.TabIndex = 11;
             this.PoistaLasku.Text = "Poista";
             this.PoistaLasku.UseVisualStyleBackColor = true;
@@ -990,78 +1067,25 @@ namespace Hotel
             // 
             this.asiakasTableAdapter.ClearBeforeFill = true;
             // 
-            // btnAsiakasGimme
+            // MuokkaaLAsku
             // 
-            this.btnAsiakasGimme.Location = new System.Drawing.Point(1031, 39);
-            this.btnAsiakasGimme.Name = "btnAsiakasGimme";
-            this.btnAsiakasGimme.Size = new System.Drawing.Size(75, 23);
-            this.btnAsiakasGimme.TabIndex = 9;
-            this.btnAsiakasGimme.Text = "gimme";
-            this.btnAsiakasGimme.UseVisualStyleBackColor = true;
-            this.btnAsiakasGimme.Click += new System.EventHandler(this.btnAsiakasGimme_Click);
+            this.MuokkaaLAsku.Location = new System.Drawing.Point(23, 358);
+            this.MuokkaaLAsku.Name = "MuokkaaLAsku";
+            this.MuokkaaLAsku.Size = new System.Drawing.Size(115, 52);
+            this.MuokkaaLAsku.TabIndex = 12;
+            this.MuokkaaLAsku.Text = "Muokkaa laskua";
+            this.MuokkaaLAsku.UseVisualStyleBackColor = true;
+            this.MuokkaaLAsku.Click += new System.EventHandler(this.MuokkaaLAsku_Click);
             // 
-            // lblAsiEtu
+            // LisaaLasku
             // 
-            this.lblAsiEtu.AutoSize = true;
-            this.lblAsiEtu.Location = new System.Drawing.Point(1011, 116);
-            this.lblAsiEtu.Name = "lblAsiEtu";
-            this.lblAsiEtu.Size = new System.Drawing.Size(35, 13);
-            this.lblAsiEtu.TabIndex = 10;
-            this.lblAsiEtu.Text = "label6";
-            // 
-            // lblAsiSuk
-            // 
-            this.lblAsiSuk.AutoSize = true;
-            this.lblAsiSuk.Location = new System.Drawing.Point(1011, 147);
-            this.lblAsiSuk.Name = "lblAsiSuk";
-            this.lblAsiSuk.Size = new System.Drawing.Size(35, 13);
-            this.lblAsiSuk.TabIndex = 11;
-            this.lblAsiSuk.Text = "label8";
-            // 
-            // lblAsiID
-            // 
-            this.lblAsiID.AutoSize = true;
-            this.lblAsiID.Location = new System.Drawing.Point(1011, 86);
-            this.lblAsiID.Name = "lblAsiID";
-            this.lblAsiID.Size = new System.Drawing.Size(41, 13);
-            this.lblAsiID.TabIndex = 12;
-            this.lblAsiID.Text = "label10";
-            // 
-            // lblAsiOso
-            // 
-            this.lblAsiOso.AutoSize = true;
-            this.lblAsiOso.Location = new System.Drawing.Point(1005, 200);
-            this.lblAsiOso.Name = "lblAsiOso";
-            this.lblAsiOso.Size = new System.Drawing.Size(41, 13);
-            this.lblAsiOso.TabIndex = 13;
-            this.lblAsiOso.Text = "label11";
-            // 
-            // lblAsiEma
-            // 
-            this.lblAsiEma.AutoSize = true;
-            this.lblAsiEma.Location = new System.Drawing.Point(1005, 239);
-            this.lblAsiEma.Name = "lblAsiEma";
-            this.lblAsiEma.Size = new System.Drawing.Size(41, 13);
-            this.lblAsiEma.TabIndex = 14;
-            this.lblAsiEma.Text = "label12";
-            // 
-            // lblAsiPuh
-            // 
-            this.lblAsiPuh.AutoSize = true;
-            this.lblAsiPuh.Location = new System.Drawing.Point(1005, 278);
-            this.lblAsiPuh.Name = "lblAsiPuh";
-            this.lblAsiPuh.Size = new System.Drawing.Size(41, 13);
-            this.lblAsiPuh.TabIndex = 15;
-            this.lblAsiPuh.Text = "label13";
-            // 
-            // lblAsiPnr
-            // 
-            this.lblAsiPnr.AutoSize = true;
-            this.lblAsiPnr.Location = new System.Drawing.Point(1005, 320);
-            this.lblAsiPnr.Name = "lblAsiPnr";
-            this.lblAsiPnr.Size = new System.Drawing.Size(41, 13);
-            this.lblAsiPnr.TabIndex = 16;
-            this.lblAsiPnr.Text = "label14";
+            this.LisaaLasku.Location = new System.Drawing.Point(214, 358);
+            this.LisaaLasku.Name = "LisaaLasku";
+            this.LisaaLasku.Size = new System.Drawing.Size(119, 52);
+            this.LisaaLasku.TabIndex = 13;
+            this.LisaaLasku.Text = "Lisää Lasku";
+            this.LisaaLasku.UseVisualStyleBackColor = true;
+            this.LisaaLasku.Click += new System.EventHandler(this.LisaaLasku_Click);
             // 
             // HotelManhattan
             // 
@@ -1193,6 +1217,8 @@ namespace Hotel
         private System.Windows.Forms.Label lblAsiSuk;
         private System.Windows.Forms.Label lblAsiEtu;
         private System.Windows.Forms.Button btnAsiakasGimme;
+        private System.Windows.Forms.Button LisaaLasku;
+        private System.Windows.Forms.Button MuokkaaLAsku;
     }
 }
 

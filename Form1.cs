@@ -467,6 +467,30 @@ namespace Hotel
             dgvLaskut.DataSource = Laskut;
         }
 
+        private void MuokkaaLAsku_Click(object sender, EventArgs e)
+        {
+            Lasku oo = new Lasku();
+            oo = (Lasku)dgvLaskut.CurrentRow.DataBoundItem;
+            LaskuNakyma uu = new LaskuNakyma(oo, this);
+            uu.ShowDialog();
+        }
+
+        private void LisaaLasku_Click(object sender, EventArgs e)
+        {
+            LaskuNakyma uu = new LaskuNakyma(this);
+            uu.ShowDialog();
+        }
+
+        public void UpdateGridLaskut()
+        {
+           
+            dgvLaskut.Refresh();
+            Laskut = LFDB.getLasku();
+            dgvLaskut.DataSource = null;
+            dgvLaskut.DataSource = Laskut;
+            
+        }
+
         /* Varausten toiminnot*/
         private void btnUusiVaraus_Click(object sender, EventArgs e)
         {
@@ -556,6 +580,6 @@ namespace Hotel
 
         }
 
-        
+      
     }
 }
