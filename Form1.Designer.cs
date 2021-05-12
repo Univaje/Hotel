@@ -95,6 +95,8 @@ namespace Hotel
             this.lisää_btn = new System.Windows.Forms.Button();
             this.dgv_palvelut = new System.Windows.Forms.DataGridView();
             this.tpLaskut = new System.Windows.Forms.TabPage();
+            this.LisaaLasku = new System.Windows.Forms.Button();
+            this.MuokkaaLAsku = new System.Windows.Forms.Button();
             this.PoistaLasku = new System.Windows.Forms.Button();
             this.LaskuPVM2 = new System.Windows.Forms.DateTimePicker();
             this.LaskuPVM1 = new System.Windows.Forms.DateTimePicker();
@@ -115,8 +117,6 @@ namespace Hotel
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
             this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
-            this.MuokkaaLAsku = new System.Windows.Forms.Button();
-            this.LisaaLasku = new System.Windows.Forms.Button();
             this.tpAsiakas.SuspendLayout();
             this.gbAsiakasSuodatin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
@@ -364,11 +364,14 @@ namespace Hotel
             // 
             // dgvAsiakas
             // 
+            this.dgvAsiakas.AllowUserToAddRows = false;
+            this.dgvAsiakas.AllowUserToDeleteRows = false;
             this.dgvAsiakas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvAsiakas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAsiakas.Location = new System.Drawing.Point(16, 17);
             this.dgvAsiakas.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dgvAsiakas.Name = "dgvAsiakas";
+            this.dgvAsiakas.ReadOnly = true;
             this.dgvAsiakas.RowHeadersWidth = 51;
             this.dgvAsiakas.RowTemplate.Height = 24;
             this.dgvAsiakas.Size = new System.Drawing.Size(698, 390);
@@ -873,6 +876,26 @@ namespace Hotel
             this.tpLaskut.Text = "Laskut";
             this.tpLaskut.UseVisualStyleBackColor = true;
             // 
+            // LisaaLasku
+            // 
+            this.LisaaLasku.Location = new System.Drawing.Point(214, 358);
+            this.LisaaLasku.Name = "LisaaLasku";
+            this.LisaaLasku.Size = new System.Drawing.Size(119, 52);
+            this.LisaaLasku.TabIndex = 13;
+            this.LisaaLasku.Text = "Lisää Lasku";
+            this.LisaaLasku.UseVisualStyleBackColor = true;
+            this.LisaaLasku.Click += new System.EventHandler(this.LisaaLasku_Click);
+            // 
+            // MuokkaaLAsku
+            // 
+            this.MuokkaaLAsku.Location = new System.Drawing.Point(23, 358);
+            this.MuokkaaLAsku.Name = "MuokkaaLAsku";
+            this.MuokkaaLAsku.Size = new System.Drawing.Size(115, 52);
+            this.MuokkaaLAsku.TabIndex = 12;
+            this.MuokkaaLAsku.Text = "Muokkaa laskua";
+            this.MuokkaaLAsku.UseVisualStyleBackColor = true;
+            this.MuokkaaLAsku.Click += new System.EventHandler(this.MuokkaaLAsku_Click);
+            // 
             // PoistaLasku
             // 
             this.PoistaLasku.Location = new System.Drawing.Point(387, 358);
@@ -1066,26 +1089,6 @@ namespace Hotel
             // asiakasTableAdapter
             // 
             this.asiakasTableAdapter.ClearBeforeFill = true;
-            // 
-            // MuokkaaLAsku
-            // 
-            this.MuokkaaLAsku.Location = new System.Drawing.Point(23, 358);
-            this.MuokkaaLAsku.Name = "MuokkaaLAsku";
-            this.MuokkaaLAsku.Size = new System.Drawing.Size(115, 52);
-            this.MuokkaaLAsku.TabIndex = 12;
-            this.MuokkaaLAsku.Text = "Muokkaa laskua";
-            this.MuokkaaLAsku.UseVisualStyleBackColor = true;
-            this.MuokkaaLAsku.Click += new System.EventHandler(this.MuokkaaLAsku_Click);
-            // 
-            // LisaaLasku
-            // 
-            this.LisaaLasku.Location = new System.Drawing.Point(214, 358);
-            this.LisaaLasku.Name = "LisaaLasku";
-            this.LisaaLasku.Size = new System.Drawing.Size(119, 52);
-            this.LisaaLasku.TabIndex = 13;
-            this.LisaaLasku.Text = "Lisää Lasku";
-            this.LisaaLasku.UseVisualStyleBackColor = true;
-            this.LisaaLasku.Click += new System.EventHandler(this.LisaaLasku_Click);
             // 
             // HotelManhattan
             // 
