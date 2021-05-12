@@ -76,23 +76,7 @@ namespace Hotel
             dgv_palvelut.DataSource = LFDB.getPalvelut();
 
         }
-        private void HotelManhattan_Activated(object sender, EventArgs e)
-        {
-            /*
-            asiakkaat = LFDB.getAsiakas();
-            dgvAsiakas.DataSource = null;
-            dgvAsiakas.DataSource = asiakkaat;
-            rbtnAsiakasKaikki.Checked = true;
-            */
 
-            /*
-            cbVaraukset.DataSource = asiakkaat;
-            cbVaraukset.DisplayMember = "AsiakasID";
-            cbVaraukset.ValueMember = "AsiakasID";
-            */
-
-
-        }
         /* Toimialueen toiminnot*/
         public void luoNappi()
         {
@@ -135,16 +119,16 @@ namespace Hotel
             currToimAlue = int.Parse((sender as Button).Tag.ToString());
             ToimialueenMokit = new List<mokki>();
 
-            ToimialueenMokit = t.Toimialueet(currToimAlue);
-            dgvMokit.DataSource = ToimialueenMokit;
-            tcHotelli.SelectedTab = tpMokki;
+            UpdateMokkiGrid();
 
             cbMRM.DataSource = null;
             cbMRM.Items.Clear();
             cbMRM.DataSource = ToimialueenMokit;
             cbMRM.DisplayMember = "mokkinimi";
             cbMRM.ValueMember = "mokkinimi";
-
+            btnMokkiLisaa.Enabled = true;
+            btnMokkiMuokkaa.Enabled = true;
+            btnMokkiPoista.Enabled = true;
 
         }
         private void cbPoistaToimi_SelectedIndexChanged(object sender, EventArgs e)
@@ -182,7 +166,7 @@ namespace Hotel
         }
         private void btnToimialuePoista_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa Toimialueen?\nHuomioithan, ettei toimialuetta voi poistaa, jos sillä on mökkejä.", "Poisto", MessageBoxButtons.OKCancel);
+            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa Toimialueen?\nHuomioithan ettei toimialuetta voi poistaa jos sillä on mökkejä", "Poisto", MessageBoxButtons.OKCancel);
             if (result != DialogResult.Cancel)
             {
                 t = (Toimialue)cbPoistaToimi.SelectedItem;
@@ -213,7 +197,7 @@ namespace Hotel
 
         private void btnMokkiLisaa_Click(object sender, EventArgs e)
         {
-            MokkiNakyma LisaaMokki = new MokkiNakyma(currToimAlue);
+            MokkiNakyma LisaaMokki = new MokkiNakyma(currToimAlue, this);
             LisaaMokki.Text = "Lisaa mokki";
             LisaaMokki.Show();
         }
@@ -222,7 +206,7 @@ namespace Hotel
 
             mokki m = new mokki();
             m = (mokki)dgvMokit.CurrentRow.DataBoundItem;
-            MokkiNakyma LisaaMokki = new MokkiNakyma(m);
+            MokkiNakyma LisaaMokki = new MokkiNakyma(m, this);
 
             LisaaMokki.Text = "Muokkaa mokkia";
             LisaaMokki.ShowDialog();
@@ -230,7 +214,7 @@ namespace Hotel
         }
         private void btnMokkiPoista_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa mökin?\nHuomioithan, ettei mökkiä voi poistaa, jos sillä on varauksia.", "Poisto", MessageBoxButtons.OKCancel);
+            DialogResult result = MessageBox.Show("Haluatko varmasti poistaa mökin?\nHuomioithan ettei mökkiä voi poistaa jos sillä on varauksia", "Poisto", MessageBoxButtons.OKCancel);
             if (result != DialogResult.Cancel)
             {
                 mokki poista = new mokki();
@@ -261,6 +245,13 @@ namespace Hotel
             dtbMRloppu.Visible = true;
             dtbMRloppu.Value = DateTime.Now;
             btnMRaportti.Enabled = true;
+        }
+        public void UpdateMokkiGrid()
+        {
+            dgvMokit.DataSource = null;
+            ToimialueenMokit = t.Toimialueet(currToimAlue);
+            dgvMokit.DataSource = ToimialueenMokit;
+            tcHotelli.SelectedTab = tpMokki;
         }
 
         /* Asiakkaan toiminnot*/
@@ -492,9 +483,10 @@ namespace Hotel
         }
 
         /* Varausten toiminnot*/
+        /* Varausten toiminnot*/
         private void btnUusiVaraus_Click(object sender, EventArgs e)
         {
-            VarausNakyma LisaaVaraus = new VarausNakyma(Varaukset.Count);
+            VarausNakyma LisaaVaraus = new VarausNakyma(Varaukset.Count, this);
             LisaaVaraus.Text = "Lisaa Varaus";
             LisaaVaraus.Show();
         }
@@ -502,6 +494,7 @@ namespace Hotel
         {
 
             dgvVaraus.DataSource = null;
+
             Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
             VarauksienTiedot = LFDB.getVarausAsiakkaan(A.AsiakasID);
             dgvVaraus.DataSource = VarauksienTiedot;
@@ -512,11 +505,23 @@ namespace Hotel
         private void btnMuokkaaVarausta_Click(object sender, EventArgs e)
         {
             Varaustiedot VarausM = (Varaustiedot)dgvVaraus.CurrentRow.DataBoundItem;
-            VarausNakyma MuokkaaVarausta = new VarausNakyma(VarausM);
+            VarausNakyma MuokkaaVarausta = new VarausNakyma(VarausM, this);
             MuokkaaVarausta.Text = "Muokkaa Varausta";
             MuokkaaVarausta.Show();
         }
-        
+        private void HotelManhattan_Activated(object sender, EventArgs e)
+        {
+            asiakkaat = LFDB.getAsiakas();
+            dgvAsiakas.DataSource = null;
+            dgvAsiakas.DataSource = asiakkaat;
+
+            cbVaraukset.DataSource = asiakkaat;
+            cbVaraukset.DisplayMember = "AsiakasID";
+            cbVaraukset.ValueMember = "AsiakasID";
+
+
+
+        }
         private void btnPoistaVaraus_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Haluatko varmasti poistaa varaukset?", "Poisto", MessageBoxButtons.OKCancel);
@@ -539,7 +544,28 @@ namespace Hotel
             else
                 return;
         }
+        public void UpdateVarausGrid(int asiakasID)
+        {
 
+            dgvVaraus.DataSource = null;
+            Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
+            VarauksienTiedot = LFDB.getVarausAsiakkaan(asiakasID);
+            dgvVaraus.DataSource = VarauksienTiedot;
+        }
+        private void btnVarausHae_Click(object sender, EventArgs e)
+        {
+            int i = asiakkaat.FindIndex(item => item.AsiakasID == int.Parse(tbVarausHaku.Text));
+            if (i > 0)
+            {
+                
+                cbVaraukset.SelectedValue = int.Parse(tbVarausHaku.Text);
+            }
+        }
+        private void tbVarausHaku_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+                e.Handled = true;
+        }
 
         /* Palvelun toiminnot*/
         private void lisääp_btn(object sender, EventArgs e)
@@ -580,6 +606,6 @@ namespace Hotel
 
         }
 
-      
+
     }
 }

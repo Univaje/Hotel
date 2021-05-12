@@ -1,4 +1,5 @@
 ﻿using Hotel.Oliot;
+using Hotel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace Hotel
 {
     public partial class MokkiNakyma : Form
@@ -19,15 +19,18 @@ namespace Hotel
         private mokki m = new mokki();
         private int Mokkiid;
         private int Toimiid;
-        public MokkiNakyma(int count)
+        private HotelManhattan Form1;
+        public MokkiNakyma(int count, HotelManhattan Formi1)
         {
             InitializeComponent();
             Lista = p.HaetPostinrot();
             Toimiid = count;
             tbMhlomaara.Text = "1";
             btnTallennaMokki.Text = "Lisää";
+            this.Form1 = Formi1;
+
         }
-        internal MokkiNakyma(mokki Uusimokki)
+        internal MokkiNakyma(mokki Uusimokki, HotelManhattan Formi1)
         {
             InitializeComponent();
             btnTallennaMokki.Text = "Muokkaa";
@@ -42,10 +45,10 @@ namespace Hotel
 
             Mokkiid = Uusimokki.MokkiID;
             Toimiid = Uusimokki.ToimintaalueID;
-
-
+            Form1 = Formi1;
         }
-        private void TallennaMokki_Click(object sender, EventArgs e)
+
+        public void TallennaMokki_Click(object sender, EventArgs e)
         {
 
             int i = Lista.FindIndex(item => item.Postinro == tbMposti.Text);
@@ -60,8 +63,10 @@ namespace Hotel
                 LFDB.SetMokki(m);
             else
                 LFDB.UpdateMokki(m);
-            Form.ActiveForm.Close();
 
+
+            this.Hide();
+            Form1.UpdateMokkiGrid();
         }
         private void btnPeruutaLisaus_Click(object sender, EventArgs e)
         {
@@ -114,8 +119,8 @@ namespace Hotel
         private void tbMhlomaara_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
-                e.Handled = true;
+                if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+                    e.Handled = true;
 
         }
         private void tbMhlomaara_KeyUp(object sender, KeyEventArgs e)
