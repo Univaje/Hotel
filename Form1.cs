@@ -421,17 +421,17 @@ namespace Hotel
         }
 
         /* Laskun toiminnot*/
-        private void button9_Click(object sender, EventArgs e)
+        private void button9_Click_1(object sender, EventArgs e)
         {
+
             Lasku la = (Lasku)dgvLaskut.CurrentRow.DataBoundItem;
 
             LaskuRaportti.Reportteri();
-            MessageBox.Show("Tiedosto Tallennettiin tulostettavaksi", "Laskutus", MessageBoxButtons.OK);
+            MessageBox.Show("Tiedosto Tallennettiin sähköpostiin lähetettäväksi", "Laskutus", MessageBoxButtons.OK);
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void button10_Click_1(object sender, EventArgs e)
         {
-
             Lasku la = (Lasku)dgvLaskut.CurrentRow.DataBoundItem;
 
             LaskuRaportti.Reportteri();
@@ -612,5 +612,7 @@ namespace Hotel
             PalveluRaportti.ServiceRaporting(p.PalveluID, a, l);
             MessageBox.Show("Tiedosto Tallennettiin", "Raportointi", MessageBoxButtons.OK);
         }
+
+        
     }
 }
