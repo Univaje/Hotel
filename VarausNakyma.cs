@@ -39,13 +39,13 @@ namespace Hotel
             cbVAsiakas.DisplayMember = "asiakasID";
             cbVMokki.DataSource = null;
 
-            
-
             dtpVarausAlkaa.MinDate = DateTime.Now;
             dtpVarausLoppuu.MinDate = DateTime.Now;
             tbvHenkilomaara.Text = "1";
             btnvTallenna.Text = "Lisää varaus";
             this.Form1 = from1;
+            getInfoVar();
+
         }
         internal VarausNakyma(Varaustiedot v, HotelManhattan from1)
         {
@@ -90,6 +90,7 @@ namespace Hotel
             cbvPalvelunlisäys.ValueMember = "";
             cbVtoimialue.DataSource = Toimialueet;
             cbVtoimialue.DisplayMember = "toimintaAlueID";
+            cbVtoimialue.ValueMember = "toimintaAlueID";
             cbVAsiakas.DataSource = asiakkaat;
             cbVAsiakas.DisplayMember = "asiakas_ID";
             cbVMokki.DataSource = null;
