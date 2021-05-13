@@ -418,10 +418,27 @@ namespace Hotel
         }
 
         /* Laskun toiminnot*/
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Lasku la = (Lasku)dgvLaskut.CurrentRow.DataBoundItem;
+
+            LaskuRaportti.Reportteri();
+            MessageBox.Show("Tiedosto Tallennettiin tulostettavaksi", "Laskutus", MessageBoxButtons.OK);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+            Lasku la = (Lasku)dgvLaskut.CurrentRow.DataBoundItem;
+
+            LaskuRaportti.Reportteri();
+            MessageBox.Show("Tiedosto Tallennettiin sähköpostiin lähetettäväksi", "Laskutus", MessageBoxButtons.OK);
+        }
         private void HaelaskutNappi_Click(object sender, EventArgs e)
         {
 
         }
+
         private void PoistaLasku_Click(object sender, EventArgs e)
         {
             Lasku poista = new Lasku();
@@ -431,26 +448,34 @@ namespace Hotel
             dgvLaskut.DataSource = null;
             dgvLaskut.DataSource = Laskut;
         }
+
         private void MuokkaaLAsku_Click(object sender, EventArgs e)
         {
             Lasku oo = new Lasku();
             oo = (Lasku)dgvLaskut.CurrentRow.DataBoundItem;
             LaskuNakyma uu = new LaskuNakyma(oo, this);
             uu.ShowDialog();
+            dgvLaskut.DataSource = null;
+            dgvLaskut.DataSource = Laskut;
         }
+
         private void LisaaLasku_Click(object sender, EventArgs e)
         {
             LaskuNakyma uu = new LaskuNakyma(this);
             uu.ShowDialog();
+            dgvLaskut.DataSource = null;
+            dgvLaskut.DataSource = Laskut;
         }
+
         public void UpdateGridLaskut()
         {
-           
+
             dgvLaskut.Refresh();
             Laskut = LFDB.getLasku();
             dgvLaskut.DataSource = null;
             dgvLaskut.DataSource = Laskut;
-            
+
+
         }
 
         /* Varausten toiminnot*/
@@ -579,5 +604,7 @@ namespace Hotel
         {
 
         }
+
+       
     }
 }

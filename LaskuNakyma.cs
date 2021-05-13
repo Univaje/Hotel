@@ -12,9 +12,9 @@ namespace Hotel
 {
     public partial class LaskuNakyma : Form
     {
-        
-        
-        
+
+
+        private int lID;
         private HotelManhattan Form1;
         public LaskuNakyma(HotelManhattan tullutformiL)
         {
@@ -34,23 +34,25 @@ namespace Hotel
 
 
 
-            LaskuIdtxt.Text = muokattava.LaskuID.ToString();
+            lID = muokattava.LaskuID;
             Varausid1tx.Text = muokattava.VarausID1.ToString();
             Summatxt.Text = muokattava.Summa.ToString();
             ALVtxt.Text = muokattava.Alv.ToString();
-            
-           
+            MAKSETTUtxt.Text = muokattava.maksettu.ToString();
+
+
             this.Form1 = tullutformiL;
 
         }
         private void TallennaLasku_Click(object sender, EventArgs e)
         {
             Lasku lisutettu = new Lasku();
-            
-            lisutettu.LaskuID = int.Parse(LaskuIdtxt.Text);
+
+            lisutettu.LaskuID = lID;
             lisutettu.VarausID1 = int.Parse(Varausid1tx.Text);
             lisutettu.Summa = double.Parse(Summatxt.Text);
             lisutettu.Alv = double.Parse(ALVtxt.Text);
+            lisutettu.maksettu = int.Parse(MAKSETTUtxt.Text);
 
 
             if (TallennaLasku.Text == "Lisää")
@@ -73,3 +75,4 @@ namespace Hotel
         }
     }
 }
+

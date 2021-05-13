@@ -12,22 +12,26 @@ namespace Hotel
         private int VarausID;
         private double summa;
         private double alv;
+        private int Maksettu;
 
         public int LaskuID { get => laskuID; set => laskuID = value; }
         public int VarausID1 { get => VarausID; set => VarausID = value; }
         public double Summa { get => summa; set => summa = value; }
         public double Alv { get => alv; set => alv = value; }
 
+        public int maksettu { get => Maksettu; set => Maksettu = value; }
+
         public Lasku()
         {
         }
 
-        public Lasku(int laskuID, int varausID1, double summa, double alv)
+        public Lasku(int laskuID, int varausID1, double summa, double alv, int Maksettu)
         {
             LaskuID = laskuID;
             VarausID1 = varausID1;
             Summa = summa;
             Alv = alv;
+            maksettu = Maksettu;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Hotel
         public static List<Asiakas> asiakkaat = new List<Asiakas>();
         public static List<Palvelu> palvelut = new List<Palvelu>();
         public static List<Lasku> Laskut = new List<Lasku>();
+        public static List<LaskuRaportti> LaskuRaportit = new List<LaskuRaportti>();
         public static List<Toimialue> toimintaalueet = new List<Toimialue>();
         public static List<Varaus> Varaukset = new List<Varaus>();
         public static List<Varaustiedot> VarausienTiedot = new List<Varaustiedot>();
@@ -638,10 +639,10 @@ namespace Hotel
 
             return ID;
         }
-        
+
 
         /* Laskujen Tietokanta haut*/
-        public static List<Lasku> getLasku() 
+        public static List<LaskuRaportti> getLaskuTuloste()
         {
 
             try
@@ -655,7 +656,38 @@ namespace Hotel
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 while (Reader.Read())
                 {
-                    Lasku haeLasku = new Lasku(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), double.Parse(Reader[2].ToString()), double.Parse(Reader[3].ToString()));
+                    LaskuRaportti haeLaskuRaportit = new LaskuRaportti(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), double.Parse(Reader[2].ToString()), double.Parse(Reader[3].ToString()), int.Parse(Reader[4].ToString()));
+                    LaskuRaportit.Add(haeLaskuRaportit);
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return LaskuRaportit;
+        }
+        public static List<Lasku> getLasku()
+        {
+            Laskut.Clear();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  lasku ";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    Lasku haeLasku = new Lasku(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), double.Parse(Reader[2].ToString()), double.Parse(Reader[3].ToString()), int.Parse(Reader[4].ToString()));
                     Laskut.Add(haeLasku);
                 }
                 Reader.Close();
@@ -707,8 +739,8 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "INSERT INTO lasku(lasku_id,varaus_id,summa,alv) VALUES " +
-                    (oo.LaskuID + "','" + oo.VarausID1 + "','" + oo.Summa + "','" + oo.Alv );
+                string sql = "INSERT INTO lasku(lasku_id,varaus_id,summa,alv,Maksettu) VALUES " +
+                    "(NULL,'" + oo.VarausID1 + "','" + oo.Summa + "','" + oo.Alv + "','" + oo.maksettu + "')";
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 cmd.ExecuteNonQuery();
             }
@@ -732,13 +764,14 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "UPDATE lasku SET lasku_id = @lasku_id , varaus_id = @varaus_id , summa = @summa , alv = @alv";
+                string sql = "UPDATE lasku SET varaus_id = @varaus_id , summa = @summa , alv = @alv , Maksettu = @maksettu WHERE lasku_id = @lasku_id ";
                 MySqlCommand Parametreille = new MySqlCommand(sql, connect);
-                
+
                 Parametreille.Parameters.Add("@lasku_id", MySqlDbType.Int32).Value = oo.LaskuID;
                 Parametreille.Parameters.Add("@varaus_id", MySqlDbType.Int32).Value = oo.VarausID1;
                 Parametreille.Parameters.Add("@summa", MySqlDbType.Double).Value = oo.Summa;
                 Parametreille.Parameters.Add("@alv", MySqlDbType.Double).Value = oo.Alv;
+                Parametreille.Parameters.Add("@maksettu", MySqlDbType.Int32).Value = oo.maksettu;
 
                 Parametreille.ExecuteNonQuery();
 

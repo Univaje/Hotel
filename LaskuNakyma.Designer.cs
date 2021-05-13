@@ -28,24 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LaskuIdtxt = new System.Windows.Forms.TextBox();
             this.Varausid1tx = new System.Windows.Forms.TextBox();
             this.Summatxt = new System.Windows.Forms.TextBox();
             this.ALVtxt = new System.Windows.Forms.TextBox();
-            this.LaskuIDmuokkaus = new System.Windows.Forms.Label();
             this.VarausID1muokkaus = new System.Windows.Forms.Label();
             this.Summamuokkaus = new System.Windows.Forms.Label();
             this.Alvmuokkaus = new System.Windows.Forms.Label();
             this.TallennaLasku = new System.Windows.Forms.Button();
             this.PeruutaLasku = new System.Windows.Forms.Button();
+            this.MAKSETTUtxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // LaskuIdtxt
-            // 
-            this.LaskuIdtxt.Location = new System.Drawing.Point(183, 34);
-            this.LaskuIdtxt.Name = "LaskuIdtxt";
-            this.LaskuIdtxt.Size = new System.Drawing.Size(100, 20);
-            this.LaskuIdtxt.TabIndex = 0;
             // 
             // Varausid1tx
             // 
@@ -67,15 +60,6 @@
             this.ALVtxt.Name = "ALVtxt";
             this.ALVtxt.Size = new System.Drawing.Size(100, 20);
             this.ALVtxt.TabIndex = 3;
-            // 
-            // LaskuIDmuokkaus
-            // 
-            this.LaskuIDmuokkaus.AutoSize = true;
-            this.LaskuIDmuokkaus.Location = new System.Drawing.Point(47, 34);
-            this.LaskuIDmuokkaus.Name = "LaskuIDmuokkaus";
-            this.LaskuIDmuokkaus.Size = new System.Drawing.Size(47, 13);
-            this.LaskuIDmuokkaus.TabIndex = 4;
-            this.LaskuIDmuokkaus.Text = "LaskuID";
             // 
             // VarausID1muokkaus
             // 
@@ -124,21 +108,37 @@
             this.PeruutaLasku.UseVisualStyleBackColor = true;
             this.PeruutaLasku.Click += new System.EventHandler(this.PeruutaLasku_Click);
             // 
+            // MAKSETTUtxt
+            // 
+            this.MAKSETTUtxt.Location = new System.Drawing.Point(183, 266);
+            this.MAKSETTUtxt.Name = "MAKSETTUtxt";
+            this.MAKSETTUtxt.Size = new System.Drawing.Size(100, 20);
+            this.MAKSETTUtxt.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(53, 272);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Maksettu";
+            // 
             // LaskuNakyma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 432);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.MAKSETTUtxt);
             this.Controls.Add(this.PeruutaLasku);
             this.Controls.Add(this.TallennaLasku);
             this.Controls.Add(this.Alvmuokkaus);
             this.Controls.Add(this.Summamuokkaus);
             this.Controls.Add(this.VarausID1muokkaus);
-            this.Controls.Add(this.LaskuIDmuokkaus);
             this.Controls.Add(this.ALVtxt);
             this.Controls.Add(this.Summatxt);
             this.Controls.Add(this.Varausid1tx);
-            this.Controls.Add(this.LaskuIdtxt);
             this.Name = "LaskuNakyma";
             this.Text = "LaskuNakyma";
             this.ResumeLayout(false);
@@ -147,16 +147,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox LaskuIdtxt;
         private System.Windows.Forms.TextBox Varausid1tx;
         private System.Windows.Forms.TextBox Summatxt;
         private System.Windows.Forms.TextBox ALVtxt;
-        private System.Windows.Forms.Label LaskuIDmuokkaus;
         private System.Windows.Forms.Label VarausID1muokkaus;
         private System.Windows.Forms.Label Summamuokkaus;
         private System.Windows.Forms.Label Alvmuokkaus;
         private System.Windows.Forms.Button TallennaLasku;
         private System.Windows.Forms.Button PeruutaLasku;
+        private System.Windows.Forms.TextBox MAKSETTUtxt;
+        private System.Windows.Forms.Label label1;
     }
 }
