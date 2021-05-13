@@ -535,6 +535,14 @@ namespace Hotel
             Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
             VarauksienTiedot = LFDB.getVarausAsiakkaan(asiakasID);
             dgvVaraus.DataSource = VarauksienTiedot;
+
+            cbVaraukset.DataSource = null;
+            cbVaraukset.Items.Clear();
+            asiakkaat.Clear();
+            asiakkaat = LFDB.getAsiakas();
+            cbVaraukset.DataSource = asiakkaat;
+            cbVaraukset.DisplayMember = "AsiakasID";
+            cbVaraukset.ValueMember = "AsiakasID";
         }
         private void btnVarausHae_Click(object sender, EventArgs e)
         {
