@@ -74,7 +74,7 @@ namespace Hotel
                 floaty += 50;
                 Label Loppurivi = new Label("Palveluiden kokonaistuotto: " + loppusumma + "€, alv% " + (loppusumma * 0.24) + "€", 0, floaty, 504, 100, Font.Helvetica, 12, TextAlign.Center);
                 Sivu.Elements.Add(Loppurivi);
-                System.IO.Directory.CreateDirectory(@"C:\ServiceReports\");
+                System.IO.Directory.CreateDirectory(@"C:\CabinReports\");
                 MRaport.Draw(@"C:\\ServiceReports\\ServiceRaport-" + n + "-" + a + "-" + l + ".pdf");
             }
         }
