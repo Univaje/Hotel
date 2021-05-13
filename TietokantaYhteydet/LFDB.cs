@@ -1224,7 +1224,7 @@ namespace Hotel
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
                 string sql = "UPDATE palvelu SET toimintaalue_id = @toimialue , nimi = @nimi , " +
-                    "tyyppi = @tyyppi , kuvaus = '@kuvaus' , hinta = @hinta , alv = @alv WHERE palvelu_id = @palvelu_id";
+                    "tyyppi = @tyyppi , kuvaus = @kuvaus , hinta = @hinta , alv = @alv WHERE palvelu_id = @palvelu_id";
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
                 cmd.Parameters.Add("@palvelu_id", MySqlDbType.Int32).Value = p.PalveluID;
                 cmd.Parameters.Add("@toimialue", MySqlDbType.Int32).Value = p.ToimintaalueID1;

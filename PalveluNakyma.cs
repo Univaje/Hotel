@@ -52,6 +52,7 @@ namespace Hotel
             phinta_tb.Text = muokkaaPalvelu.Hinta.ToString();
             ptyyppi_tb.Text = muokkaaPalvelu.Tyyppi.ToString();
             palv_tb.Text = muokkaaPalvelu.Alv.ToString();
+            ptoimialue_tb.Text = muokkaaPalvelu.ToimintaalueID1.ToString();
 
             PalveluID = muokkaaPalvelu.PalveluID;
             ToimialueID = muokkaaPalvelu.ToimintaalueID1;
