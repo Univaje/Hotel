@@ -76,10 +76,10 @@ namespace Hotel
             this.tpPalvelut = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtPloppu = new System.Windows.Forms.DateTimePicker();
+            this.dtPalku = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbPalvelu = new System.Windows.Forms.ComboBox();
             this.muokkaapalvelua_btn = new System.Windows.Forms.Button();
             this.poistapalvelu_btn = new System.Windows.Forms.Button();
             this.lisää_btn = new System.Windows.Forms.Button();
@@ -642,10 +642,10 @@ namespace Hotel
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtPloppu);
+            this.groupBox1.Controls.Add(this.dtPalku);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.cbPalvelu);
             this.groupBox1.Location = new System.Drawing.Point(1029, 69);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
@@ -665,21 +665,21 @@ namespace Hotel
             this.button8.Text = "Raportti";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker2
+            // dtPloppu
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(15, 235);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(308, 26);
-            this.dateTimePicker2.TabIndex = 3;
+            this.dtPloppu.Location = new System.Drawing.Point(15, 235);
+            this.dtPloppu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtPloppu.Name = "dtPloppu";
+            this.dtPloppu.Size = new System.Drawing.Size(308, 26);
+            this.dtPloppu.TabIndex = 3;
             // 
-            // dateTimePicker1
+            // dtPalku
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(18, 182);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(312, 26);
-            this.dateTimePicker1.TabIndex = 2;
+            this.dtPalku.Location = new System.Drawing.Point(18, 182);
+            this.dtPalku.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtPalku.Name = "dtPalku";
+            this.dtPalku.Size = new System.Drawing.Size(312, 26);
+            this.dtPalku.TabIndex = 2;
             // 
             // label2
             // 
@@ -691,14 +691,14 @@ namespace Hotel
             this.label2.Text = "Valitse palvelu";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // comboBox2
+            // cbPalvelu
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(15, 92);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(322, 28);
-            this.comboBox2.TabIndex = 0;
+            this.cbPalvelu.FormattingEnabled = true;
+            this.cbPalvelu.Location = new System.Drawing.Point(15, 92);
+            this.cbPalvelu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbPalvelu.Name = "cbPalvelu";
+            this.cbPalvelu.Size = new System.Drawing.Size(322, 28);
+            this.cbPalvelu.TabIndex = 0;
             // 
             // muokkaapalvelua_btn
             // 
@@ -1084,10 +1084,10 @@ namespace Hotel
         private System.Windows.Forms.Button btnAsiakasSiirryVaraus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtPloppu;
+        private System.Windows.Forms.DateTimePicker dtPalku;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbPalvelu;
         private System.Windows.Forms.Button muokkaapalvelua_btn;
         private System.Windows.Forms.Button poistapalvelu_btn;
         private System.Windows.Forms.Button lisää_btn;

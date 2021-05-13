@@ -557,7 +557,7 @@ namespace Hotel
         /* Palvelun toiminnot*/
         private void lisääp_btn(object sender, EventArgs e)
         {
-            PalveluNakyma lisaaPalvelu = new PalveluNakyma(palvelut.Count);
+            PalveluNakyma lisaaPalvelu = new PalveluNakyma(this);
             lisaaPalvelu.Text = "Lisaa uusi palvelu";
             lisaaPalvelu.Show();
         }
@@ -567,6 +567,7 @@ namespace Hotel
             
 
             dgv_palvelut.Refresh();
+            palvelut.Clear();
             palvelut = LFDB.getPalvelut();
             dgv_palvelut.DataSource = null;
             dgv_palvelut.DataSource = palvelut;
@@ -593,7 +594,7 @@ namespace Hotel
         private void muokkaapalvelua_btn_Click(object sender, EventArgs e)
         {
             Palvelu muokkaaPalvelu = (Palvelu)dgv_palvelut.CurrentRow.DataBoundItem;
-            PalveluNakyma muokkaaPalvelua = new PalveluNakyma(muokkaaPalvelu);
+            PalveluNakyma muokkaaPalvelua = new PalveluNakyma(muokkaaPalvelu, this);
             muokkaaPalvelua.Text = "Muokkaa palvelua";
             muokkaaPalvelua.Show();
             
@@ -601,7 +602,10 @@ namespace Hotel
 
         private void praportti_btn_Click(object sender, EventArgs e)
         {
-
+            Palvelu p = (Palvelu)cbPalvelu.SelectedItem;
+            DateTime al = dtPalku.Value;
+            DateTime lo = dtPloppu.Value;
+           // PalveluRaportti.Raporting(p.PalveluID, al, lo);
         }
 
         private void label2_Click(object sender, EventArgs e)

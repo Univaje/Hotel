@@ -22,39 +22,46 @@ namespace Hotel
        // private int ToimialueID;
         private Palvelu pali = new Palvelu();
        
+       
 
 
         
-        public PalveluNakyma(int count)
+        public PalveluNakyma( HotelManhattan tullutform)
         {
             InitializeComponent();
             Palvelut = LFDB.getPalvelut();
             Toimialueet = LFDB.GetToimialue();
-            PalveluID = count;
-            //Palvelut = pali.
-
-            
-            
+          
+        lisää_btn.Text = "Lisää";
+            this.Form1 = tullutform;
            
         }
 
-        internal PalveluNakyma(Palvelu uusiPalvelu)
+        internal PalveluNakyma(Palvelu muokkaaPalvelu , HotelManhattan tullutform)
         {
             InitializeComponent();
-           //  p.Text = uusiPalvelu;
-           
-            pkuvaus_tb.Text = uusiPalvelu.Kuvaus;
-            
-           // phinta_tb.Text = uusiPalvelu.Hinta.ToString;
+
+          
+
+            lisää_btn.Text = "Muokkaa";
+            this.Form1 = tullutform;
+
+
+            //  p.Text = uusiPalvelu;
+
+            // pkuvaus_tb.Text = uusiPalvelu.Kuvaus;
+
+            // phinta_tb.Text = uusiPalvelu.Hinta.ToString;
             //  ptyyppi_tb.Text = uusiPalvelu.Tyyppi;
-           //palv_tb.Text = uusiPalvelu.Alv;
+            //palv_tb.Text = uusiPalvelu.Alv;
 
-            PalveluID = uusiPalvelu.PalveluID;
+            // PalveluID = uusiPalvelu.PalveluID;
 
-            uusiPalvelu.Nimi = ppalvelu_tb.Text;
-            uusiPalvelu.Kuvaus = pkuvaus_tb.Text;
+            // uusiPalvelu.Nimi = ppalvelu_tb.Text;
+            //uusiPalvelu.Kuvaus = pkuvaus_tb.Text;
             // uusiPalvelu.Hinta = phinta_tb.Text.ToString;
-           // uusiPalvelu.Tyyppi = ptyyppi_tb.Text;
+            // uusiPalvelu.Tyyppi = ptyyppi_tb.Text;
+
 
         }
 
@@ -70,8 +77,8 @@ namespace Hotel
             else
                 LFDB.UpdatePalvelu(pali);
 
-          
-            PalveluNakyma.ActiveForm.Close();
+
+            this.Hide();
             Form1.UpdatePalveluGrid();
         }
 

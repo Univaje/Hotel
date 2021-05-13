@@ -123,6 +123,7 @@
     <Compile Include="Oliot\Lasku.cs" />
     <Compile Include="Oliot\MokkiRaportti.cs" />
     <Compile Include="Oliot\Palvelu.cs" />
+    <Compile Include="Oliot\PalveluRaportti.cs" />
     <Compile Include="Oliot\PalvelutVaraukseen.cs" />
     <Compile Include="Oliot\Posti.cs" />
     <Compile Include="Oliot\Varaus.cs" />
