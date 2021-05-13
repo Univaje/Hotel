@@ -29,6 +29,7 @@ namespace Hotel
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbUusiAsiakasVarauksessa = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@ namespace Hotel
             this.dtpVarausLoppuu = new System.Windows.Forms.DateTimePicker();
             this.dtpVarausAlkaa = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbPalvelut = new System.Windows.Forms.ListBox();
             this.tbvHenkilomaara = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnvPoistaPalvelu = new System.Windows.Forms.Button();
@@ -67,11 +69,14 @@ namespace Hotel
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnvTallenna = new System.Windows.Forms.Button();
-            this.lbPalvelut = new System.Windows.Forms.ListBox();
+            this.epVirhe = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbUuVaAs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epVirhe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -214,6 +219,15 @@ namespace Hotel
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             // 
+            // lbPalvelut
+            // 
+            this.lbPalvelut.FormattingEnabled = true;
+            this.lbPalvelut.ItemHeight = 16;
+            this.lbPalvelut.Location = new System.Drawing.Point(6, 246);
+            this.lbPalvelut.Name = "lbPalvelut";
+            this.lbPalvelut.Size = new System.Drawing.Size(326, 180);
+            this.lbPalvelut.TabIndex = 101;
+            // 
             // tbvHenkilomaara
             // 
             this.tbvHenkilomaara.Location = new System.Drawing.Point(120, 101);
@@ -307,6 +321,8 @@ namespace Hotel
             this.tbvToimipaikka.Name = "tbvToimipaikka";
             this.tbvToimipaikka.Size = new System.Drawing.Size(345, 22);
             this.tbvToimipaikka.TabIndex = 8;
+            this.tbvToimipaikka.Validating += new System.ComponentModel.CancelEventHandler(this.Validoikentta);
+            this.tbvToimipaikka.Validated += new System.EventHandler(this.Validoitukentta);
             // 
             // tbvPostinumero
             // 
@@ -314,6 +330,10 @@ namespace Hotel
             this.tbvPostinumero.Name = "tbvPostinumero";
             this.tbvPostinumero.Size = new System.Drawing.Size(345, 22);
             this.tbvPostinumero.TabIndex = 7;
+            this.tbvPostinumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbvPostinumero_KeyPress);
+            this.tbvPostinumero.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbvPostinumero_KeyUp);
+            this.tbvPostinumero.Validating += new System.ComponentModel.CancelEventHandler(this.Validoikentta);
+            this.tbvPostinumero.Validated += new System.EventHandler(this.Validoitukentta);
             // 
             // tbvPuhnum
             // 
@@ -321,6 +341,8 @@ namespace Hotel
             this.tbvPuhnum.Name = "tbvPuhnum";
             this.tbvPuhnum.Size = new System.Drawing.Size(345, 22);
             this.tbvPuhnum.TabIndex = 10;
+            this.tbvPuhnum.Validating += new System.ComponentModel.CancelEventHandler(this.Validoikentta);
+            this.tbvPuhnum.Validated += new System.EventHandler(this.Validoitukentta);
             // 
             // tbvSposti
             // 
@@ -328,6 +350,8 @@ namespace Hotel
             this.tbvSposti.Name = "tbvSposti";
             this.tbvSposti.Size = new System.Drawing.Size(345, 22);
             this.tbvSposti.TabIndex = 9;
+            this.tbvSposti.Validating += new System.ComponentModel.CancelEventHandler(this.Validoikentta);
+            this.tbvSposti.Validated += new System.EventHandler(this.Validoitukentta);
             // 
             // tbvOsoite
             // 
@@ -335,6 +359,8 @@ namespace Hotel
             this.tbvOsoite.Name = "tbvOsoite";
             this.tbvOsoite.Size = new System.Drawing.Size(345, 22);
             this.tbvOsoite.TabIndex = 6;
+            this.tbvOsoite.Validating += new System.ComponentModel.CancelEventHandler(this.Validoikentta);
+            this.tbvOsoite.Validated += new System.EventHandler(this.Validoitukentta);
             // 
             // tbvSukunimi
             // 
@@ -342,6 +368,8 @@ namespace Hotel
             this.tbvSukunimi.Name = "tbvSukunimi";
             this.tbvSukunimi.Size = new System.Drawing.Size(345, 22);
             this.tbvSukunimi.TabIndex = 5;
+            this.tbvSukunimi.Validating += new System.ComponentModel.CancelEventHandler(this.Validoikentta);
+            this.tbvSukunimi.Validated += new System.EventHandler(this.Validoitukentta);
             // 
             // tbvEtunimi
             // 
@@ -349,6 +377,8 @@ namespace Hotel
             this.tbvEtunimi.Name = "tbvEtunimi";
             this.tbvEtunimi.Size = new System.Drawing.Size(345, 22);
             this.tbvEtunimi.TabIndex = 4;
+            this.tbvEtunimi.Validating += new System.ComponentModel.CancelEventHandler(this.Validoikentta);
+            this.tbvEtunimi.Validated += new System.EventHandler(this.Validoitukentta);
             // 
             // label13
             // 
@@ -433,14 +463,13 @@ namespace Hotel
             this.btnvTallenna.UseVisualStyleBackColor = true;
             this.btnvTallenna.Click += new System.EventHandler(this.btnvTallenna_Click);
             // 
-            // lbPalvelut
+            // epVirhe
             // 
-            this.lbPalvelut.FormattingEnabled = true;
-            this.lbPalvelut.ItemHeight = 16;
-            this.lbPalvelut.Location = new System.Drawing.Point(6, 246);
-            this.lbPalvelut.Name = "lbPalvelut";
-            this.lbPalvelut.Size = new System.Drawing.Size(326, 180);
-            this.lbPalvelut.TabIndex = 101;
+            this.epVirhe.ContainerControl = this;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // VarausNakyma
             // 
@@ -463,6 +492,8 @@ namespace Hotel
             this.groupBox1.PerformLayout();
             this.gbUuVaAs.ResumeLayout(false);
             this.gbUuVaAs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epVirhe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,5 +539,7 @@ namespace Hotel
         private System.Windows.Forms.TextBox tbvEtunimi;
         private System.Windows.Forms.Button btnvTallenna;
         private System.Windows.Forms.ListBox lbPalvelut;
+        private System.Windows.Forms.ErrorProvider epVirhe;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

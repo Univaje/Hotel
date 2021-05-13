@@ -54,6 +54,9 @@ namespace Hotel
             cbPoistaToimi.Text = "Valitse...";
             tbToimialueMuokkaa.Visible = false;
 
+            cbRpalvelu.DataSource = LFDB.getPalvelut();
+            cbRpalvelu.ValueMember = "nimi";
+
             //Varaukset ja asiakashallinta
             asiakkaat = LFDB.getAsiakas();
             asiakkaatB = convertToBindingAsiakas(asiakkaat);

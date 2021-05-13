@@ -21,6 +21,7 @@ namespace Hotel
         private List<Posti> Lista = new List<Posti>();
         private int VarausIDsi = 0;
         private HotelManhattan Form1;
+        private Posti p = new Posti();
 
         public VarausNakyma(int count, HotelManhattan from1)
         {
@@ -37,6 +38,8 @@ namespace Hotel
             cbVAsiakas.DataSource = asiakkaat;
             cbVAsiakas.DisplayMember = "asiakasID";
             cbVMokki.DataSource = null;
+
+            
 
             dtpVarausAlkaa.MinDate = DateTime.Now;
             dtpVarausLoppuu.MinDate = DateTime.Now;
@@ -115,6 +118,36 @@ namespace Hotel
         }
         private void btnvTallenna_Click(object sender, EventArgs e)
         {
+            if (cbUusiAsiakasVarauksessa.Checked)
+            {
+                try
+                {
+
+                    if (ValidateChildren(ValidationConstraints.Enabled))
+                    {
+                        int i = Lista.FindIndex(item => item.Postinro == tbvPostinumero.Text);
+                        if (i < 0)
+                        {
+                            p.Postinro = tbvPostinumero.Text;
+                            p.Toimipaikka = tbvToimipaikka.Text;
+                            LFDB.setPostinro(p);
+                        }
+                        Saving();
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+                Saving();
+        }
+        private  void Saving()
+        {
 
             Toimialue t = (Toimialue)cbVtoimialue.SelectedItem;
             Asiakas a = (Asiakas)cbVAsiakas.SelectedItem;
@@ -150,119 +183,164 @@ namespace Hotel
             this.Hide();
 
             Form1.UpdateVarausGrid(uusiVaraus.AsiakasID1);
+            
         }
+       
         private Asiakas asiakkaanlisausVarauksenYhteydessa(Asiakas a)
-        {
-            a = new Asiakas();
-            a.AsiakasID = 0;
-            a.Etunimi = tbvEtunimi.Text;
-            a.Sukunimi = tbvSukunimi.Text;
-            a.Lahiosoite = tbvOsoite.Text;
-            a.Postinumero = tbvPostinumero.Text;
-
-            Posti p = new Posti();
-            Lista = p.HaetPostinrot();
-            int i = Lista.FindIndex(item => p.Postinro == tbvPostinumero.Text);
-            if (i <= 0)
             {
-                p.Postinro = tbvPostinumero.Text;
-                p.Toimipaikka = tbvToimipaikka.Text;
-                LFDB.setPostinro(p);
-            }
+                a = new Asiakas();
+                a.AsiakasID = 0;
+                a.Etunimi = tbvEtunimi.Text;
+                a.Sukunimi = tbvSukunimi.Text;
+                a.Lahiosoite = tbvOsoite.Text;
+                a.Postinumero = tbvPostinumero.Text;
 
-            a.Sahkopostiosoite = tbvSposti.Text;
-            a.Puhelinnumero = tbvPuhnum.Text;
-            LFDB.SetAsiakasAlt(a);
-            a.AsiakasID = LFDB.GetLastAsiakasID();
-            return a;
-        }
-        private void TallennaPalvelutVarauseen(int ID)
-        {
-            if (PalveluidenlisVar.Count >= 0)
-            {
-                foreach (PalvelutVaraukseen item in PalveluidenlisVar)
+                Posti p = new Posti();
+                Lista = p.HaetPostinrot();
+                int i = Lista.FindIndex(item => p.Postinro == tbvPostinumero.Text);
+                if (i <= 0)
                 {
-                    item.VarausID = ID;
-                    LFDB.SetVarauksenPalvelut(item);
+                    p.Postinro = tbvPostinumero.Text;
+                    p.Toimipaikka = tbvToimipaikka.Text;
+                    LFDB.setPostinro(p);
+                }
+
+                a.Sahkopostiosoite = tbvSposti.Text;
+                a.Puhelinnumero = tbvPuhnum.Text;
+                LFDB.SetAsiakasAlt(a);
+                a.AsiakasID = LFDB.GetLastAsiakasID();
+                return a;
+            }
+            private void TallennaPalvelutVarauseen(int ID)
+            {
+                if (PalveluidenlisVar.Count >= 0)
+                {
+                    foreach (PalvelutVaraukseen item in PalveluidenlisVar)
+                    {
+                        item.VarausID = ID;
+                        LFDB.SetVarauksenPalvelut(item);
+                    }
+                }
+                tbvHenkilomaara.Text = "1";
+            }
+            private void PaivitaPalvelutVarauseen()
+            {
+                if (PalveluidenlisVar.Count >= 0)
+                {
+                    foreach (PalvelutVaraukseen item in PalveluidenlisVar)
+                    {
+                        LFDB.UpdateVarauksenPalvelut(item);
+                    }
+                }
+                tbvHenkilomaara.Text = "1";
+            }
+            private void btnvPalvelunLisaus_Click(object sender, EventArgs e)
+            {
+                Palvelu p = (Palvelu)cbvPalvelunlisäys.SelectedItem;
+                PalvelutVaraukseen pv = new PalvelutVaraukseen(VarausIDsi, p.PalveluID, int.Parse(tbvHenkilomaara.Text), p.Nimi);
+                int i = PalveluidenlisVar.FindIndex(item => item.PalveluID == pv.PalveluID);
+                if (i < 0)
+                {
+                    if (btnvTallenna.Text.Equals("Muokkaa Varausta"))
+                    {
+                        LFDB.SetVarauksenPalvelut(pv);
+                    }
+                    PalveluidenlisVar.Add(pv);
+                    Refressing();
                 }
             }
-            tbvHenkilomaara.Text = "1";
-        }
-        private void PaivitaPalvelutVarauseen()
-        {
-            if (PalveluidenlisVar.Count >= 0)
+            private void btnvPoistaPalvelu_Click(object sender, EventArgs e)
             {
-                foreach (PalvelutVaraukseen item in PalveluidenlisVar)
-                {
-                    LFDB.UpdateVarauksenPalvelut(item);
-                }
-            }
-            tbvHenkilomaara.Text = "1";
-        }
-        private void btnvPalvelunLisaus_Click(object sender, EventArgs e)
-        {
-            Palvelu p = (Palvelu)cbvPalvelunlisäys.SelectedItem;
-            PalvelutVaraukseen pv = new PalvelutVaraukseen(VarausIDsi, p.PalveluID, int.Parse(tbvHenkilomaara.Text), p.Nimi);
-            int i = PalveluidenlisVar.FindIndex(item => item.PalveluID == pv.PalveluID);
-            if (i < 0)
-            {
+
                 if (btnvTallenna.Text.Equals("Muokkaa Varausta"))
                 {
-                    LFDB.SetVarauksenPalvelut(pv);
+                    LFDB.RemoveVarauksenPalvelut((PalvelutVaraukseen)lbPalvelut.SelectedItem);
                 }
-                PalveluidenlisVar.Add(pv);
+                PalveluidenlisVar.Remove((PalvelutVaraukseen)lbPalvelut.SelectedItem);
+
+
                 Refressing();
             }
-        }
-        private void btnvPoistaPalvelu_Click(object sender, EventArgs e)
-        {
-
-            if (btnvTallenna.Text.Equals("Muokkaa Varausta"))
+            private void Refressing()
             {
-                LFDB.RemoveVarauksenPalvelut((PalvelutVaraukseen)lbPalvelut.SelectedItem);
+                PalvelutVaraukseen p = new PalvelutVaraukseen();
+                lbPalvelut.DataSource = null;
+                lbPalvelut.Items.Clear();
+                lbPalvelut.DataSource = PalveluidenlisVar;
+                lbPalvelut.DisplayMember = "nimi";
+                lbPalvelut.ValueMember = "nimi";
+
             }
-            PalveluidenlisVar.Remove((PalvelutVaraukseen)lbPalvelut.SelectedItem);
+            private void tbHenkilomaara_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+                    e.Handled = true;
+            }
+            private void getInfoVar()
+            {
+                PalveluidenlisVar.Clear();
+                tbvHenkilomaara.Text = "1";
+                Toimialue t = (Toimialue)cbVtoimialue.SelectedItem;
 
+                mokit = LFDB.getMokitToiauleittain(t.ToimintaAlueID);
+                cbVMokki.DataSource = null;
+                cbVMokki.Items.Clear();
+                cbVMokki.DataSource = mokit;
+                cbVMokki.DisplayMember = "Mokkinimi";
+                cbVMokki.ValueMember = "Mokkinimi";
 
-            Refressing();
-        }
-        private void Refressing()
-        {
-            PalvelutVaraukseen p = new PalvelutVaraukseen();
-            lbPalvelut.DataSource = null;
-            lbPalvelut.Items.Clear();
-            lbPalvelut.DataSource = PalveluidenlisVar;
-            lbPalvelut.DisplayMember = "nimi";
-            lbPalvelut.ValueMember = "nimi";
+                Palvelut = LFDB.getPalvelutToimiAlueella(t.ToimintaAlueID);
+                cbvPalvelunlisäys.DataSource = null;
+                cbvPalvelunlisäys.Items.Clear();
+                cbvPalvelunlisäys.DataSource = Palvelut;
+                cbvPalvelunlisäys.DisplayMember = "nimi";
+                cbvPalvelunlisäys.ValueMember = "palveluID";
+            }
 
-        }
-        private void tbHenkilomaara_KeyPress(object sender, KeyPressEventArgs e)
+            private void Validoikentta(object sender, CancelEventArgs e)
+            {
+                TextBox tb = (TextBox)sender;
+                if (tb.Text == "")
+                {
+                    this.epVirhe.SetError(tb, "Pakollinen kenttä!");
+                    e.Cancel = true;
+                }
+            }
+
+            private void Validoitukentta(object sender, EventArgs e)
+            {
+                TextBox tb = (TextBox)sender;
+                epVirhe.SetError(tb, "");
+            }
+
+        private void tbvPostinumero_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
                 e.Handled = true;
+            else if (tbvPostinumero.TextLength >= 5 && e.KeyChar != '\b')
+                e.Handled = true;
         }
-        private void getInfoVar()
+
+        private void tbvPostinumero_KeyUp(object sender, KeyEventArgs e)
         {
-            PalveluidenlisVar.Clear();
-            tbvHenkilomaara.Text = "1";
-            Toimialue t = (Toimialue)cbVtoimialue.SelectedItem;
+            for (int i = 0; i < 5; i++)
+            {
 
 
-            mokit = LFDB.getMokitToiauleittain(t.ToimintaAlueID);
-            cbVMokki.DataSource = null;
-            cbVMokki.Items.Clear();
-            cbVMokki.DataSource = mokit;
-            cbVMokki.DisplayMember = "Mokkinimi";
-            cbVMokki.ValueMember = "Mokkinimi";
+                if (Lista != null && tbvPostinumero.TextLength == i)
+                {
+                    string vertaa = tbvPostinumero.Text;
+                    foreach (Posti p in Lista)
+                    {
 
+                        if (vertaa == p.Postinro.Substring(0, i))
+                        {
+                            tbvToimipaikka.Text = p.Toimipaikka;
+                        }
 
-            Palvelut = LFDB.getPalvelutToimiAlueella(t.ToimintaAlueID);
-            cbvPalvelunlisäys.DataSource = null;
-            cbvPalvelunlisäys.Items.Clear();
-            cbvPalvelunlisäys.DataSource = Palvelut;
-            cbvPalvelunlisäys.DisplayMember = "nimi";
-            cbvPalvelunlisäys.ValueMember = "palveluID";
+                    }
+                }
+            }
         }
-
     }
-}
+    }

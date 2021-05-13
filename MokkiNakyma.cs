@@ -50,27 +50,38 @@ namespace Hotel
 
         public void TallennaMokki_Click(object sender, EventArgs e)
         {
-
-            int i = Lista.FindIndex(item => item.Postinro == tbMposti.Text);
-            if (i < 0)
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                p.Postinro = tbMposti.Text;
-                p.Toimipaikka = tbToimipaikka.Text;
-                LFDB.setPostinro(p);
+                try
+                {
+
+                    int i = Lista.FindIndex(item => item.Postinro == tbMposti.Text);
+                    if (i < 0)
+                    {
+                        p.Postinro = tbMposti.Text;
+                        p.Toimipaikka = tbToimipaikka.Text;
+                        LFDB.setPostinro(p);
+                    }
+                    m = new mokki(Mokkiid, Toimiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(tbMhlomaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
+                    if (btnTallennaMokki.Text.Equals("Lisää"))
+                        LFDB.SetMokki(m);
+                    else
+                        LFDB.UpdateMokki(m);
+
+
+                    this.Hide();
+                    Form1.UpdateMokkiGrid();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
             }
-            m = new mokki(Mokkiid, Toimiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(tbMhlomaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
-            if (btnTallennaMokki.Text.Equals("Lisää"))
-                LFDB.SetMokki(m);
-            else
-                LFDB.UpdateMokki(m);
-
-
-            this.Hide();
-            Form1.UpdateMokkiGrid();
         }
         private void btnPeruutaLisaus_Click(object sender, EventArgs e)
         {
-            MokkiNakyma.ActiveForm.Close();
+            this.Hide();
 
         }
         private void tbMposti_KeyPress(object sender, KeyPressEventArgs e)
@@ -119,8 +130,8 @@ namespace Hotel
         private void tbMhlomaara_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-                if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
-                    e.Handled = true;
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+                e.Handled = true;
 
         }
         private void tbMhlomaara_KeyUp(object sender, KeyEventArgs e)
@@ -131,6 +142,22 @@ namespace Hotel
                 if (maara > 12)
                     tbMhlomaara.Text = "12";
             }
+        }
+
+        private void Validoikentta(object sender, CancelEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "")
+            {
+                this.epVirhe.SetError(tb, "Pakollinen kenttä!");
+                e.Cancel = true;
+            }
+        }
+
+        private void ValidoituKentta(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            epVirhe.SetError(tb, "");
         }
     }
 }
