@@ -269,9 +269,7 @@ namespace Hotel
             cbVaraukset.DataSource = asiakkaatB;
             cbVaraukset.DisplayMember = "AsiakasID";
             cbVaraukset.ValueMember = "AsiakasID";
-        }
-        
-
+        }     
         private void asiakasCountCheck(List<Asiakas> listToCheck)
         {
             if (listToCheck.Count < 1)
@@ -302,7 +300,6 @@ namespace Hotel
                 btnAsiakasSiirryVaraus.Enabled = true;
             }
         }
-
         private void btnAsiakasLisaa_Click(object sender, EventArgs e)
         {
             AsiakasNakyma an = new AsiakasNakyma(this);
@@ -332,8 +329,6 @@ namespace Hotel
         {
             tcHotelli.SelectedTab = tpVaraus;                                   
         }
-
-        
         private void rbtnAsiakasKaikki_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtnAsiakasKaikki.Checked)
@@ -341,12 +336,10 @@ namespace Hotel
                 UpdateGridAsiakas();                                
             }
         }
-
         private void cmbAsiakasToimialue_SelectedIndexChanged(object sender, EventArgs e)
         {
             asiakashakuToimipaikalla();
         }
-
         private void rbtnAsiakasToimi_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtnAsiakasToimi.Checked)
@@ -357,7 +350,6 @@ namespace Hotel
             else
                 cmbAsiakasToimialue.Enabled = false;
         }
-
         private void asiakashakuToimipaikalla()
         {
             asiakkaatSuodatinT.Clear();
@@ -385,7 +377,6 @@ namespace Hotel
             cbVaraukset.DisplayMember = "AsiakasID";
             cbVaraukset.ValueMember = "AsiakasID";
         }
-
         private void rbtnAsiakasHakuNimi_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtnAsiakasHakuNimi.Checked)
@@ -400,7 +391,6 @@ namespace Hotel
         {
             asiakashakuSukunimella();
         }
-
         private void asiakashakuSukunimella()
         {
             asiakkaatSuodatinS.Clear();
@@ -426,14 +416,12 @@ namespace Hotel
             }
             return listToMake;
         }
-        
 
         /* Laskun toiminnot*/
         private void HaelaskutNappi_Click(object sender, EventArgs e)
         {
 
         }
-
         private void PoistaLasku_Click(object sender, EventArgs e)
         {
             Lasku poista = new Lasku();
@@ -443,7 +431,6 @@ namespace Hotel
             dgvLaskut.DataSource = null;
             dgvLaskut.DataSource = Laskut;
         }
-
         private void MuokkaaLAsku_Click(object sender, EventArgs e)
         {
             Lasku oo = new Lasku();
@@ -451,13 +438,11 @@ namespace Hotel
             LaskuNakyma uu = new LaskuNakyma(oo, this);
             uu.ShowDialog();
         }
-
         private void LisaaLasku_Click(object sender, EventArgs e)
         {
             LaskuNakyma uu = new LaskuNakyma(this);
             uu.ShowDialog();
         }
-
         public void UpdateGridLaskut()
         {
            
@@ -468,7 +453,6 @@ namespace Hotel
             
         }
 
-        /* Varausten toiminnot*/
         /* Varausten toiminnot*/
         private void btnUusiVaraus_Click(object sender, EventArgs e)
         {
@@ -496,18 +480,6 @@ namespace Hotel
             VarausNakyma MuokkaaVarausta = new VarausNakyma(VarausM, this);
             MuokkaaVarausta.Text = "Muokkaa Varausta";
             MuokkaaVarausta.Show();
-        }
-        private void HotelManhattan_Activated(object sender, EventArgs e)
-        {
-            /*
-            asiakkaat = LFDB.getAsiakas();
-            dgvAsiakas.DataSource = null;
-            dgvAsiakas.DataSource = asiakkaat;
-
-            cbVaraukset.DataSource = asiakkaat;
-            cbVaraukset.DisplayMember = "AsiakasID";
-            cbVaraukset.ValueMember = "AsiakasID";
-            */
         }
         private void btnPoistaVaraus_Click(object sender, EventArgs e)
         {
@@ -561,7 +533,6 @@ namespace Hotel
             lisaaPalvelu.Text = "Lisaa uusi palvelu";
             lisaaPalvelu.Show();
         }
-
         public void UpdatePalveluGrid()
         {
             
@@ -580,7 +551,6 @@ namespace Hotel
             
 
         }
-
         private void poistapalvelu_btn_Click(object sender, EventArgs e)
         {
             Palvelu poistaPalvelu = new Palvelu();
@@ -590,7 +560,6 @@ namespace Hotel
             dgv_palvelut.DataSource = null;
             dgv_palvelut.DataSource = palvelut;
         }
-
         private void muokkaapalvelua_btn_Click(object sender, EventArgs e)
         {
             Palvelu muokkaaPalvelu = (Palvelu)dgv_palvelut.CurrentRow.DataBoundItem;
@@ -599,7 +568,6 @@ namespace Hotel
             muokkaaPalvelua.Show();
             
         }
-
         private void praportti_btn_Click(object sender, EventArgs e)
         {
             Palvelu p = (Palvelu)cbPalvelu.SelectedItem;
@@ -607,7 +575,6 @@ namespace Hotel
             DateTime lo = dtPloppu.Value;
            // PalveluRaportti.Raporting(p.PalveluID, al, lo);
         }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
