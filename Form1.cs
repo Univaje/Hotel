@@ -601,18 +601,13 @@ namespace Hotel
             muokkaaPalvelua.Show();
             
         }
-        private void praportti_btn_Click(object sender, EventArgs e)
+        private void btnPalveluRaportti_Click(object sender, EventArgs e)
         {
-            Palvelu p = (Palvelu)cbPalvelu.SelectedItem;
-            DateTime al = dtPalku.Value;
-            DateTime lo = dtPloppu.Value;
-           // PalveluRaportti.Raporting(p.PalveluID, al, lo);
+            Palvelu p = (Palvelu)cbRpalvelu.SelectedItem;
+            DateTime a = dtpPRalku.Value;
+            DateTime l = dtpPRloppu.Value;
+            PalveluRaportti.ServiceRaporting(p.PalveluID, a, l);
+            MessageBox.Show("Tiedosto Tallennettiin", "Raportointi", MessageBoxButtons.OK);
         }
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
 }

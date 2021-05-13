@@ -21,6 +21,7 @@ namespace Hotel
         public static List<PalvelutVaraukseen> PalveluidenlisVar = new List<PalvelutVaraukseen>();
         public static List<MokkiRaportti> MokkiRaportit = new List<MokkiRaportti>();
         public static List<Posti> Postinumerot = new List<Posti>();
+        public static List<PalveluRaportti> PalveluRaportit = new List<PalveluRaportti>();
 
         static string myConnectionString = "server=127.0.0.1;uid=root;" +
                 "pwd=Ruutti;database=vn;port=3307";
@@ -1118,9 +1119,44 @@ namespace Hotel
 
             return ID;
         }
-        
+
 
         //Palvelut
+
+        public static List<PalveluRaportti> getPalveluRaportti(int p, DateTime a, DateTime l) // Ei toimi
+        {
+            PalveluRaportit.Clear();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  palveluRaportti WHERE palvelu_id = @palvelu AND vahvistus_pvm > @alku AND vahvistus_pvm < @loppu";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+                Parametreille.Parameters.Add("@palvelu", MySqlDbType.Int32).Value = p;
+                Parametreille.Parameters.Add("@alku", MySqlDbType.DateTime).Value = a;
+                Parametreille.Parameters.Add("@loppu", MySqlDbType.DateTime).Value = l;
+                MySqlDataReader Reader = Parametreille.ExecuteReader();
+                while (Reader.Read())
+                {
+                    PalveluRaportti haeparaportti = new PalveluRaportti(int.Parse(Reader[0].ToString()), Reader[1].ToString(), double.Parse(Reader[2].ToString()), double.Parse(Reader[3].ToString()), int.Parse(Reader[4].ToString()), DateTime.Parse(Reader[5].ToString()), DateTime.Parse(Reader[6].ToString()), DateTime.Parse(Reader[7].ToString()));
+                    PalveluRaportit.Add(haeparaportti);
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return PalveluRaportit;
+        }
         public static void RemovePalvelu(int i)
         {
             palvelut = new List<Palvelu>();
