@@ -581,12 +581,7 @@ namespace Hotel
 
 
         }
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            
-
-        }
+        
         private void poistapalvelu_btn_Click(object sender, EventArgs e)
         {
             Palvelu poistaPalvelu = new Palvelu();
@@ -612,7 +607,12 @@ namespace Hotel
             PalveluRaportti.ServiceRaporting(p.PalveluID, a, l);
             MessageBox.Show("Tiedosto Tallennettiin", "Raportointi", MessageBoxButtons.OK);
         }
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-        
+
+
+        }
+
     }
 }

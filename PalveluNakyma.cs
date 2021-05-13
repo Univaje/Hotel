@@ -21,6 +21,7 @@ namespace Hotel
         private int PalveluID;
        // private int ToimialueID;
         private Palvelu pali = new Palvelu();
+        private int ToimialueID;
        
        
 
@@ -46,6 +47,14 @@ namespace Hotel
             lisää_btn.Text = "Muokkaa";
             this.Form1 = tullutform;
 
+            ppalvelu_tb.Text = muokkaaPalvelu.Nimi;
+            pkuvaus_tb.Text = muokkaaPalvelu.Kuvaus;
+            phinta_tb.Text = muokkaaPalvelu.Hinta.ToString();
+            ptyyppi_tb.Text = muokkaaPalvelu.Tyyppi.ToString();
+            palv_tb.Text = muokkaaPalvelu.Alv.ToString();
+
+            PalveluID = muokkaaPalvelu.PalveluID;
+            ToimialueID = muokkaaPalvelu.ToimintaalueID1;
 
             //  p.Text = uusiPalvelu;
 
