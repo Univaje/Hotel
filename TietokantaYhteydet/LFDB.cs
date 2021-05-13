@@ -643,7 +643,7 @@ namespace Hotel
 
 
         /* Laskujen Tietokanta haut*/
-        public static List<LaskuRaportti> getLaskuTuloste()
+        public static List<LaskuRaportti> getLaskuTuloste(int la)
         {
 
             try
@@ -652,9 +652,10 @@ namespace Hotel
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "SELECT * FROM  lasku ";
-                MySqlCommand cmd = new MySqlCommand(sql, connect);
-                MySqlDataReader Reader = cmd.ExecuteReader();
+                string sql = "SELECT * FROM  lasku WHERE lasku_id = @lasku ";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+                Parametreille.Parameters.Add("@lasku", MySqlDbType.Int32).Value = la;
+                MySqlDataReader Reader = Parametreille.ExecuteReader();
                 while (Reader.Read())
                 {
                     LaskuRaportti haeLaskuRaportit = new LaskuRaportti(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), double.Parse(Reader[2].ToString()), double.Parse(Reader[3].ToString()), int.Parse(Reader[4].ToString()));

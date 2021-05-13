@@ -36,10 +36,10 @@ namespace Hotel.Oliot
             Alv = alv;
             maksettu = Maksettu;
         }
-        internal static void Reportteri()
+        internal static void Reportteri(int la)
         {
             List<LaskuRaportti> Report = new List<LaskuRaportti>();
-            Report = LFDB.getLaskuTuloste();
+            Report = LFDB.getLaskuTuloste(la);
             if (Report.Count > 0)
             {
                 LaskuRaportti Tuloste = Report.ElementAt(0);
@@ -53,7 +53,8 @@ namespace Hotel.Oliot
                 floaty += 20;
                 Label LaskunTiedot = new Label("Lasku numero:" + Tuloste.LaskuID + ", Varauksen numero " + Tuloste.VarausID + ", Laskun summa " + Tuloste.Summa + " € Arvonlisävero " + Tuloste.Alv + " € ", 0, floaty, 504, 100, Font.Helvetica, 16, TextAlign.Center);
                 Sivu.Elements.Add(LaskunTiedot);
-                System.IO.Directory.CreateDirectory(@"C:\\laskupdf\\");
+                System.IO.Directory.CreateDirectory(@"C:\\laskupdf\\");            
+
                 LTuloste.Draw(@"C:\\laskupdf\\Laskupdf.pdf");
 
             }
