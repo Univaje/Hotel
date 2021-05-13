@@ -606,6 +606,40 @@ namespace Hotel
 
         }
 
+        public static int GetLastAsiakasID()
+        {
+            int ID = 0;
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT MAX(asiakas_id) FROM  asiakas ";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    ID = int.Parse(Reader[0].ToString());
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+
+            return ID;
+        }
+        
+
         /* Laskujen Tietokanta haut*/
         public static List<Lasku> getLasku() 
         {
@@ -1051,6 +1085,7 @@ namespace Hotel
 
             return ID;
         }
+        
 
         //Palvelut
         public static void RemovePalvelu(int i)

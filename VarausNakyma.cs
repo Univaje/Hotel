@@ -124,7 +124,7 @@ namespace Hotel
 
             if (cbUusiAsiakasVarauksessa.Checked)
             {
-                asiakkaanlisausVarauksenYhteydessa(a);
+                a = asiakkaanlisausVarauksenYhteydessa(a);
             }
 
             int varausaika = (int)Loppu.Subtract(alku).TotalDays;
@@ -151,7 +151,7 @@ namespace Hotel
 
             Form1.UpdateVarausGrid(uusiVaraus.AsiakasID1);
         }
-        private void asiakkaanlisausVarauksenYhteydessa(Asiakas a)
+        private Asiakas asiakkaanlisausVarauksenYhteydessa(Asiakas a)
         {
             a = new Asiakas();
             a.AsiakasID = 0;
@@ -173,6 +173,8 @@ namespace Hotel
             a.Sahkopostiosoite = tbvSposti.Text;
             a.Puhelinnumero = tbvPuhnum.Text;
             LFDB.SetAsiakasAlt(a);
+            a.AsiakasID = LFDB.GetLastAsiakasID();
+            return a;
         }
         private void TallennaPalvelutVarauseen(int ID)
         {
