@@ -110,6 +110,7 @@ namespace Hotel
             this.toimintaalueTableAdapter = new Hotel.ManhattanProjectTableAdapters.toimintaalueTableAdapter();
             this.mokkiTableAdapter1 = new Hotel.ManhattanProjectTableAdapters.mokkiTableAdapter();
             this.asiakasTableAdapter = new Hotel.ManhattanProjectTableAdapters.asiakasTableAdapter();
+            this.btnNaytäLaskut = new System.Windows.Forms.Button();
             this.tpAsiakas.SuspendLayout();
             this.gbAsiakasSuodatin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakas)).BeginInit();
@@ -143,9 +144,9 @@ namespace Hotel
             this.tpAsiakas.Controls.Add(this.btnAsiakasPoista);
             this.tpAsiakas.Controls.Add(this.dgvAsiakas);
             this.tpAsiakas.Location = new System.Drawing.Point(4, 22);
-            this.tpAsiakas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpAsiakas.Margin = new System.Windows.Forms.Padding(2);
             this.tpAsiakas.Name = "tpAsiakas";
-            this.tpAsiakas.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpAsiakas.Padding = new System.Windows.Forms.Padding(2);
             this.tpAsiakas.Size = new System.Drawing.Size(1212, 587);
             this.tpAsiakas.TabIndex = 1;
             this.tpAsiakas.Text = "Asiakas";
@@ -213,7 +214,7 @@ namespace Hotel
             // 
             this.cmbAsiakasToimialue.FormattingEnabled = true;
             this.cmbAsiakasToimialue.Location = new System.Drawing.Point(17, 86);
-            this.cmbAsiakasToimialue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbAsiakasToimialue.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAsiakasToimialue.Name = "cmbAsiakasToimialue";
             this.cmbAsiakasToimialue.Size = new System.Drawing.Size(162, 21);
             this.cmbAsiakasToimialue.TabIndex = 1;
@@ -222,7 +223,7 @@ namespace Hotel
             // btnAsiakasSiirryVaraus
             // 
             this.btnAsiakasSiirryVaraus.Location = new System.Drawing.Point(748, 278);
-            this.btnAsiakasSiirryVaraus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAsiakasSiirryVaraus.Margin = new System.Windows.Forms.Padding(2);
             this.btnAsiakasSiirryVaraus.Name = "btnAsiakasSiirryVaraus";
             this.btnAsiakasSiirryVaraus.Size = new System.Drawing.Size(162, 37);
             this.btnAsiakasSiirryVaraus.TabIndex = 6;
@@ -233,7 +234,7 @@ namespace Hotel
             // btnAsiakasLisaa
             // 
             this.btnAsiakasLisaa.Location = new System.Drawing.Point(72, 427);
-            this.btnAsiakasLisaa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAsiakasLisaa.Margin = new System.Windows.Forms.Padding(2);
             this.btnAsiakasLisaa.Name = "btnAsiakasLisaa";
             this.btnAsiakasLisaa.Size = new System.Drawing.Size(110, 46);
             this.btnAsiakasLisaa.TabIndex = 5;
@@ -244,7 +245,7 @@ namespace Hotel
             // btnAsiakasMuokkaa
             // 
             this.btnAsiakasMuokkaa.Location = new System.Drawing.Point(308, 427);
-            this.btnAsiakasMuokkaa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAsiakasMuokkaa.Margin = new System.Windows.Forms.Padding(2);
             this.btnAsiakasMuokkaa.Name = "btnAsiakasMuokkaa";
             this.btnAsiakasMuokkaa.Size = new System.Drawing.Size(110, 46);
             this.btnAsiakasMuokkaa.TabIndex = 4;
@@ -255,7 +256,7 @@ namespace Hotel
             // btnAsiakasPoista
             // 
             this.btnAsiakasPoista.Location = new System.Drawing.Point(548, 427);
-            this.btnAsiakasPoista.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAsiakasPoista.Margin = new System.Windows.Forms.Padding(2);
             this.btnAsiakasPoista.Name = "btnAsiakasPoista";
             this.btnAsiakasPoista.Size = new System.Drawing.Size(110, 46);
             this.btnAsiakasPoista.TabIndex = 3;
@@ -270,7 +271,7 @@ namespace Hotel
             this.dgvAsiakas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvAsiakas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAsiakas.Location = new System.Drawing.Point(16, 17);
-            this.dgvAsiakas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvAsiakas.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAsiakas.Name = "dgvAsiakas";
             this.dgvAsiakas.ReadOnly = true;
             this.dgvAsiakas.RowHeadersWidth = 51;
@@ -301,9 +302,9 @@ namespace Hotel
             this.tpMokki.Controls.Add(this.dgvMokit);
             this.tpMokki.Controls.Add(this.tabControl2);
             this.tpMokki.Location = new System.Drawing.Point(4, 22);
-            this.tpMokki.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpMokki.Margin = new System.Windows.Forms.Padding(2);
             this.tpMokki.Name = "tpMokki";
-            this.tpMokki.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpMokki.Padding = new System.Windows.Forms.Padding(2);
             this.tpMokki.Size = new System.Drawing.Size(1212, 587);
             this.tpMokki.TabIndex = 0;
             this.tpMokki.Text = "Mökki";
@@ -315,9 +316,9 @@ namespace Hotel
             this.groupBox2.Controls.Add(this.btnMokkiLisaa);
             this.groupBox2.Controls.Add(this.btnMokkiPoista);
             this.groupBox2.Location = new System.Drawing.Point(7, 472);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(878, 72);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
@@ -327,7 +328,7 @@ namespace Hotel
             this.btnMokkiMuokkaa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnMokkiMuokkaa.Enabled = false;
             this.btnMokkiMuokkaa.Location = new System.Drawing.Point(346, 11);
-            this.btnMokkiMuokkaa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMokkiMuokkaa.Margin = new System.Windows.Forms.Padding(2);
             this.btnMokkiMuokkaa.Name = "btnMokkiMuokkaa";
             this.btnMokkiMuokkaa.Size = new System.Drawing.Size(176, 46);
             this.btnMokkiMuokkaa.TabIndex = 4;
@@ -340,7 +341,7 @@ namespace Hotel
             this.btnMokkiLisaa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnMokkiLisaa.Enabled = false;
             this.btnMokkiLisaa.Location = new System.Drawing.Point(4, 11);
-            this.btnMokkiLisaa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMokkiLisaa.Margin = new System.Windows.Forms.Padding(2);
             this.btnMokkiLisaa.Name = "btnMokkiLisaa";
             this.btnMokkiLisaa.Size = new System.Drawing.Size(156, 47);
             this.btnMokkiLisaa.TabIndex = 2;
@@ -353,7 +354,7 @@ namespace Hotel
             this.btnMokkiPoista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMokkiPoista.Enabled = false;
             this.btnMokkiPoista.Location = new System.Drawing.Point(711, 11);
-            this.btnMokkiPoista.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMokkiPoista.Margin = new System.Windows.Forms.Padding(2);
             this.btnMokkiPoista.Name = "btnMokkiPoista";
             this.btnMokkiPoista.Size = new System.Drawing.Size(163, 48);
             this.btnMokkiPoista.TabIndex = 3;
@@ -370,9 +371,9 @@ namespace Hotel
             this.gbMokkiRaportti.Controls.Add(this.dtbMRalku);
             this.gbMokkiRaportti.Controls.Add(this.cbMRM);
             this.gbMokkiRaportti.Location = new System.Drawing.Point(890, 132);
-            this.gbMokkiRaportti.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbMokkiRaportti.Margin = new System.Windows.Forms.Padding(2);
             this.gbMokkiRaportti.Name = "gbMokkiRaportti";
-            this.gbMokkiRaportti.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbMokkiRaportti.Padding = new System.Windows.Forms.Padding(2);
             this.gbMokkiRaportti.Size = new System.Drawing.Size(328, 258);
             this.gbMokkiRaportti.TabIndex = 6;
             this.gbMokkiRaportti.TabStop = false;
@@ -403,7 +404,7 @@ namespace Hotel
             // 
             this.btnMRaportti.Enabled = false;
             this.btnMRaportti.Location = new System.Drawing.Point(7, 184);
-            this.btnMRaportti.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMRaportti.Margin = new System.Windows.Forms.Padding(2);
             this.btnMRaportti.Name = "btnMRaportti";
             this.btnMRaportti.Size = new System.Drawing.Size(300, 45);
             this.btnMRaportti.TabIndex = 2;
@@ -414,7 +415,7 @@ namespace Hotel
             // dtbMRloppu
             // 
             this.dtbMRloppu.Location = new System.Drawing.Point(6, 141);
-            this.dtbMRloppu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtbMRloppu.Margin = new System.Windows.Forms.Padding(2);
             this.dtbMRloppu.Name = "dtbMRloppu";
             this.dtbMRloppu.Size = new System.Drawing.Size(300, 20);
             this.dtbMRloppu.TabIndex = 1;
@@ -423,7 +424,7 @@ namespace Hotel
             // dtbMRalku
             // 
             this.dtbMRalku.Location = new System.Drawing.Point(7, 106);
-            this.dtbMRalku.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtbMRalku.Margin = new System.Windows.Forms.Padding(2);
             this.dtbMRalku.Name = "dtbMRalku";
             this.dtbMRalku.Size = new System.Drawing.Size(300, 20);
             this.dtbMRalku.TabIndex = 1;
@@ -433,7 +434,7 @@ namespace Hotel
             // 
             this.cbMRM.FormattingEnabled = true;
             this.cbMRM.Location = new System.Drawing.Point(4, 54);
-            this.cbMRM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMRM.Margin = new System.Windows.Forms.Padding(2);
             this.cbMRM.Name = "cbMRM";
             this.cbMRM.Size = new System.Drawing.Size(302, 21);
             this.cbMRM.TabIndex = 0;
@@ -444,7 +445,7 @@ namespace Hotel
             this.dgvMokit.AllowUserToDeleteRows = false;
             this.dgvMokit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMokit.Location = new System.Drawing.Point(7, -3);
-            this.dgvMokit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvMokit.Margin = new System.Windows.Forms.Padding(2);
             this.dgvMokit.Name = "dgvMokit";
             this.dgvMokit.ReadOnly = true;
             this.dgvMokit.RowHeadersWidth = 51;
@@ -457,7 +458,7 @@ namespace Hotel
             this.tabControl2.Controls.Add(this.tabPage3);
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Location = new System.Drawing.Point(326, 258);
-            this.tabControl2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(6, 6);
@@ -466,9 +467,9 @@ namespace Hotel
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(0, 0);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "tabPage3";
@@ -477,9 +478,9 @@ namespace Hotel
             // tabPage4
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage4.Size = new System.Drawing.Size(0, 0);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "tabPage4";
@@ -497,7 +498,7 @@ namespace Hotel
             this.tcHotelli.Controls.Add(this.tpLaskut);
             this.tcHotelli.Controls.Add(this.tpVaraus);
             this.tcHotelli.Location = new System.Drawing.Point(0, 0);
-            this.tcHotelli.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcHotelli.Margin = new System.Windows.Forms.Padding(2);
             this.tcHotelli.Name = "tcHotelli";
             this.tcHotelli.SelectedIndex = 0;
             this.tcHotelli.Size = new System.Drawing.Size(1220, 613);
@@ -508,7 +509,7 @@ namespace Hotel
             this.tpToimialue.Controls.Add(this.gbToimialueet);
             this.tpToimialue.Controls.Add(this.groupBox3);
             this.tpToimialue.Location = new System.Drawing.Point(4, 22);
-            this.tpToimialue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpToimialue.Margin = new System.Windows.Forms.Padding(2);
             this.tpToimialue.Name = "tpToimialue";
             this.tpToimialue.Size = new System.Drawing.Size(1212, 587);
             this.tpToimialue.TabIndex = 4;
@@ -518,9 +519,9 @@ namespace Hotel
             // gbToimialueet
             // 
             this.gbToimialueet.Location = new System.Drawing.Point(2, 4);
-            this.gbToimialueet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbToimialueet.Margin = new System.Windows.Forms.Padding(2);
             this.gbToimialueet.Name = "gbToimialueet";
-            this.gbToimialueet.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbToimialueet.Padding = new System.Windows.Forms.Padding(2);
             this.gbToimialueet.Size = new System.Drawing.Size(874, 803);
             this.gbToimialueet.TabIndex = 1;
             this.gbToimialueet.TabStop = false;
@@ -536,9 +537,9 @@ namespace Hotel
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(882, 4);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(370, 444);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
@@ -547,7 +548,7 @@ namespace Hotel
             // 
             this.btnToimialueMuokkaa.Enabled = false;
             this.btnToimialueMuokkaa.Location = new System.Drawing.Point(26, 288);
-            this.btnToimialueMuokkaa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToimialueMuokkaa.Margin = new System.Windows.Forms.Padding(2);
             this.btnToimialueMuokkaa.Name = "btnToimialueMuokkaa";
             this.btnToimialueMuokkaa.Size = new System.Drawing.Size(324, 50);
             this.btnToimialueMuokkaa.TabIndex = 5;
@@ -558,7 +559,7 @@ namespace Hotel
             // btnLisaaToimialue
             // 
             this.btnLisaaToimialue.Location = new System.Drawing.Point(26, 96);
-            this.btnLisaaToimialue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLisaaToimialue.Margin = new System.Windows.Forms.Padding(2);
             this.btnLisaaToimialue.Name = "btnLisaaToimialue";
             this.btnLisaaToimialue.Size = new System.Drawing.Size(326, 50);
             this.btnLisaaToimialue.TabIndex = 5;
@@ -569,7 +570,7 @@ namespace Hotel
             // tbToimialueMuokkaa
             // 
             this.tbToimialueMuokkaa.Location = new System.Drawing.Point(26, 239);
-            this.tbToimialueMuokkaa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbToimialueMuokkaa.Margin = new System.Windows.Forms.Padding(2);
             this.tbToimialueMuokkaa.Name = "tbToimialueMuokkaa";
             this.tbToimialueMuokkaa.Size = new System.Drawing.Size(325, 20);
             this.tbToimialueMuokkaa.TabIndex = 4;
@@ -578,7 +579,7 @@ namespace Hotel
             // tbLisaaToimi
             // 
             this.tbLisaaToimi.Location = new System.Drawing.Point(26, 60);
-            this.tbLisaaToimi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbLisaaToimi.Margin = new System.Windows.Forms.Padding(2);
             this.tbLisaaToimi.Name = "tbLisaaToimi";
             this.tbLisaaToimi.Size = new System.Drawing.Size(326, 20);
             this.tbLisaaToimi.TabIndex = 4;
@@ -587,7 +588,7 @@ namespace Hotel
             // 
             this.btnToimialuePoista.Enabled = false;
             this.btnToimialuePoista.Location = new System.Drawing.Point(27, 354);
-            this.btnToimialuePoista.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToimialuePoista.Margin = new System.Windows.Forms.Padding(2);
             this.btnToimialuePoista.Name = "btnToimialuePoista";
             this.btnToimialuePoista.Size = new System.Drawing.Size(324, 49);
             this.btnToimialuePoista.TabIndex = 2;
@@ -599,7 +600,7 @@ namespace Hotel
             // 
             this.cbPoistaToimi.FormattingEnabled = true;
             this.cbPoistaToimi.Location = new System.Drawing.Point(26, 198);
-            this.cbPoistaToimi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPoistaToimi.Margin = new System.Windows.Forms.Padding(2);
             this.cbPoistaToimi.Name = "cbPoistaToimi";
             this.cbPoistaToimi.Size = new System.Drawing.Size(325, 21);
             this.cbPoistaToimi.TabIndex = 1;
@@ -633,7 +634,7 @@ namespace Hotel
             this.tpPalvelut.Controls.Add(this.lisää_btn);
             this.tpPalvelut.Controls.Add(this.dgv_palvelut);
             this.tpPalvelut.Location = new System.Drawing.Point(4, 22);
-            this.tpPalvelut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpPalvelut.Margin = new System.Windows.Forms.Padding(2);
             this.tpPalvelut.Name = "tpPalvelut";
             this.tpPalvelut.Size = new System.Drawing.Size(1212, 587);
             this.tpPalvelut.TabIndex = 3;
@@ -648,9 +649,9 @@ namespace Hotel
             this.groupBox1.Controls.Add(this.cbRpalvelu);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(686, 45);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(236, 346);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
@@ -659,7 +660,7 @@ namespace Hotel
             // btnPalveluRaportti
             // 
             this.btnPalveluRaportti.Location = new System.Drawing.Point(47, 210);
-            this.btnPalveluRaportti.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPalveluRaportti.Margin = new System.Windows.Forms.Padding(2);
             this.btnPalveluRaportti.Name = "btnPalveluRaportti";
             this.btnPalveluRaportti.Size = new System.Drawing.Size(146, 67);
             this.btnPalveluRaportti.TabIndex = 8;
@@ -670,7 +671,7 @@ namespace Hotel
             // dtpPRloppu
             // 
             this.dtpPRloppu.Location = new System.Drawing.Point(11, 162);
-            this.dtpPRloppu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpPRloppu.Margin = new System.Windows.Forms.Padding(2);
             this.dtpPRloppu.Name = "dtpPRloppu";
             this.dtpPRloppu.Size = new System.Drawing.Size(207, 20);
             this.dtpPRloppu.TabIndex = 7;
@@ -678,7 +679,7 @@ namespace Hotel
             // dtpPRalku
             // 
             this.dtpPRalku.Location = new System.Drawing.Point(10, 129);
-            this.dtpPRalku.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpPRalku.Margin = new System.Windows.Forms.Padding(2);
             this.dtpPRalku.Name = "dtpPRalku";
             this.dtpPRalku.Size = new System.Drawing.Size(209, 20);
             this.dtpPRalku.TabIndex = 6;
@@ -687,7 +688,7 @@ namespace Hotel
             // 
             this.cbRpalvelu.FormattingEnabled = true;
             this.cbRpalvelu.Location = new System.Drawing.Point(11, 70);
-            this.cbRpalvelu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbRpalvelu.Margin = new System.Windows.Forms.Padding(2);
             this.cbRpalvelu.Name = "cbRpalvelu";
             this.cbRpalvelu.Size = new System.Drawing.Size(216, 21);
             this.cbRpalvelu.TabIndex = 5;
@@ -705,7 +706,7 @@ namespace Hotel
             // muokkaapalvelua_btn
             // 
             this.muokkaapalvelua_btn.Location = new System.Drawing.Point(473, 344);
-            this.muokkaapalvelua_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.muokkaapalvelua_btn.Margin = new System.Windows.Forms.Padding(2);
             this.muokkaapalvelua_btn.Name = "muokkaapalvelua_btn";
             this.muokkaapalvelua_btn.Size = new System.Drawing.Size(158, 47);
             this.muokkaapalvelua_btn.TabIndex = 3;
@@ -716,7 +717,7 @@ namespace Hotel
             // poistapalvelu_btn
             // 
             this.poistapalvelu_btn.Location = new System.Drawing.Point(242, 344);
-            this.poistapalvelu_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.poistapalvelu_btn.Margin = new System.Windows.Forms.Padding(2);
             this.poistapalvelu_btn.Name = "poistapalvelu_btn";
             this.poistapalvelu_btn.Size = new System.Drawing.Size(158, 47);
             this.poistapalvelu_btn.TabIndex = 2;
@@ -727,7 +728,7 @@ namespace Hotel
             // lisää_btn
             // 
             this.lisää_btn.Location = new System.Drawing.Point(14, 344);
-            this.lisää_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lisää_btn.Margin = new System.Windows.Forms.Padding(2);
             this.lisää_btn.Name = "lisää_btn";
             this.lisää_btn.Size = new System.Drawing.Size(158, 47);
             this.lisää_btn.TabIndex = 1;
@@ -739,7 +740,7 @@ namespace Hotel
             // 
             this.dgv_palvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_palvelut.Location = new System.Drawing.Point(14, 15);
-            this.dgv_palvelut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_palvelut.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_palvelut.Name = "dgv_palvelut";
             this.dgv_palvelut.RowHeadersWidth = 51;
             this.dgv_palvelut.RowTemplate.Height = 24;
@@ -749,6 +750,7 @@ namespace Hotel
             // 
             // tpLaskut
             // 
+            this.tpLaskut.Controls.Add(this.btnNaytäLaskut);
             this.tpLaskut.Controls.Add(this.LisaaLasku);
             this.tpLaskut.Controls.Add(this.MuokkaaLAsku);
             this.tpLaskut.Controls.Add(this.PoistaLasku);
@@ -761,7 +763,7 @@ namespace Hotel
             this.tpLaskut.Controls.Add(this.label3);
             this.tpLaskut.Controls.Add(this.dgvLaskut);
             this.tpLaskut.Location = new System.Drawing.Point(4, 22);
-            this.tpLaskut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpLaskut.Margin = new System.Windows.Forms.Padding(2);
             this.tpLaskut.Name = "tpLaskut";
             this.tpLaskut.Size = new System.Drawing.Size(1212, 587);
             this.tpLaskut.TabIndex = 2;
@@ -826,7 +828,7 @@ namespace Hotel
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(713, 238);
-            this.button10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(151, 45);
             this.button10.TabIndex = 7;
@@ -837,7 +839,7 @@ namespace Hotel
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(537, 238);
-            this.button9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(130, 46);
             this.button9.TabIndex = 6;
@@ -869,7 +871,7 @@ namespace Hotel
             // 
             this.dgvLaskut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLaskut.Location = new System.Drawing.Point(0, 0);
-            this.dgvLaskut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvLaskut.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLaskut.Name = "dgvLaskut";
             this.dgvLaskut.RowHeadersWidth = 51;
             this.dgvLaskut.RowTemplate.Height = 24;
@@ -886,9 +888,9 @@ namespace Hotel
             this.tpVaraus.Controls.Add(this.groupBox4);
             this.tpVaraus.Controls.Add(this.dgvVaraus);
             this.tpVaraus.Location = new System.Drawing.Point(4, 22);
-            this.tpVaraus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpVaraus.Margin = new System.Windows.Forms.Padding(2);
             this.tpVaraus.Name = "tpVaraus";
-            this.tpVaraus.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpVaraus.Padding = new System.Windows.Forms.Padding(2);
             this.tpVaraus.Size = new System.Drawing.Size(1212, 587);
             this.tpVaraus.TabIndex = 5;
             this.tpVaraus.Text = "Varaukset";
@@ -897,7 +899,7 @@ namespace Hotel
             // btnVarausHae
             // 
             this.btnVarausHae.Location = new System.Drawing.Point(1062, 119);
-            this.btnVarausHae.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVarausHae.Margin = new System.Windows.Forms.Padding(2);
             this.btnVarausHae.Name = "btnVarausHae";
             this.btnVarausHae.Size = new System.Drawing.Size(178, 37);
             this.btnVarausHae.TabIndex = 12;
@@ -908,7 +910,7 @@ namespace Hotel
             // tbVarausHaku
             // 
             this.tbVarausHaku.Location = new System.Drawing.Point(1062, 97);
-            this.tbVarausHaku.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbVarausHaku.Margin = new System.Windows.Forms.Padding(2);
             this.tbVarausHaku.Name = "tbVarausHaku";
             this.tbVarausHaku.Size = new System.Drawing.Size(180, 20);
             this.tbVarausHaku.TabIndex = 11;
@@ -938,7 +940,7 @@ namespace Hotel
             // 
             this.cbVaraukset.FormattingEnabled = true;
             this.cbVaraukset.Location = new System.Drawing.Point(1062, 37);
-            this.cbVaraukset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbVaraukset.Margin = new System.Windows.Forms.Padding(2);
             this.cbVaraukset.Name = "cbVaraukset";
             this.cbVaraukset.Size = new System.Drawing.Size(180, 21);
             this.cbVaraukset.TabIndex = 6;
@@ -950,9 +952,9 @@ namespace Hotel
             this.groupBox4.Controls.Add(this.btnMuokkaaVarausta);
             this.groupBox4.Controls.Add(this.btnUusiVaraus);
             this.groupBox4.Location = new System.Drawing.Point(4, 463);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(1042, 84);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
@@ -962,7 +964,7 @@ namespace Hotel
             this.btnPoistaVaraus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPoistaVaraus.Location = new System.Drawing.Point(872, 17);
-            this.btnPoistaVaraus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPoistaVaraus.Margin = new System.Windows.Forms.Padding(2);
             this.btnPoistaVaraus.Name = "btnPoistaVaraus";
             this.btnPoistaVaraus.Size = new System.Drawing.Size(158, 54);
             this.btnPoistaVaraus.TabIndex = 3;
@@ -974,7 +976,7 @@ namespace Hotel
             // 
             this.btnMuokkaaVarausta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnMuokkaaVarausta.Location = new System.Drawing.Point(398, 17);
-            this.btnMuokkaaVarausta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMuokkaaVarausta.Margin = new System.Windows.Forms.Padding(2);
             this.btnMuokkaaVarausta.Name = "btnMuokkaaVarausta";
             this.btnMuokkaaVarausta.Size = new System.Drawing.Size(158, 54);
             this.btnMuokkaaVarausta.TabIndex = 2;
@@ -986,7 +988,7 @@ namespace Hotel
             // 
             this.btnUusiVaraus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUusiVaraus.Location = new System.Drawing.Point(4, 16);
-            this.btnUusiVaraus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUusiVaraus.Margin = new System.Windows.Forms.Padding(2);
             this.btnUusiVaraus.Name = "btnUusiVaraus";
             this.btnUusiVaraus.Size = new System.Drawing.Size(158, 54);
             this.btnUusiVaraus.TabIndex = 1;
@@ -998,7 +1000,7 @@ namespace Hotel
             // 
             this.dgvVaraus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVaraus.Location = new System.Drawing.Point(4, 5);
-            this.dgvVaraus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvVaraus.Margin = new System.Windows.Forms.Padding(2);
             this.dgvVaraus.Name = "dgvVaraus";
             this.dgvVaraus.RowHeadersWidth = 51;
             this.dgvVaraus.RowTemplate.Height = 24;
@@ -1017,13 +1019,23 @@ namespace Hotel
             // 
             this.asiakasTableAdapter.ClearBeforeFill = true;
             // 
+            // btnNaytäLaskut
+            // 
+            this.btnNaytäLaskut.Location = new System.Drawing.Point(681, 165);
+            this.btnNaytäLaskut.Name = "btnNaytäLaskut";
+            this.btnNaytäLaskut.Size = new System.Drawing.Size(103, 37);
+            this.btnNaytäLaskut.TabIndex = 14;
+            this.btnNaytäLaskut.Text = "Näytä Laskut";
+            this.btnNaytäLaskut.UseVisualStyleBackColor = true;
+            this.btnNaytäLaskut.Click += new System.EventHandler(this.btnNaytäLaskut_Click);
+            // 
             // HotelManhattan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1231, 619);
             this.Controls.Add(this.tcHotelli);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HotelManhattan";
             this.Text = "Hotel Manhanttan";
             this.Load += new System.EventHandler(this.HotelManhattan_Load);
@@ -1140,6 +1152,7 @@ namespace Hotel
         private System.Windows.Forms.DateTimePicker dtpPRloppu;
         private System.Windows.Forms.DateTimePicker dtpPRalku;
         private System.Windows.Forms.ComboBox cbRpalvelu;
+        private System.Windows.Forms.Button btnNaytäLaskut;
     }
 }
 

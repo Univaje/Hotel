@@ -214,3 +214,45 @@ C:\Users\HammasPillu\Desktop\AMK\ohjelmistotuotanto\Hotel\obj\Debug\Hotel.LaskuN
 C:\Users\negro\Documents\Läksyt\Ohjelmistotuotanto\ManhattanProject\ManhattanProject\Hotel\obj\Debug\Hotel.LaskuNakyma.resources
 C:\Users\artoi\OneDrive\Documents\GitHub\Hotel\obj\Debug\Hotel.LaskuNakyma.resources
 C:\Users\Mira\source\repos\Hotel2\obj\Debug\Hotel.LaskuNakyma.resources
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.csprojAssemblyReference.cache
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.AsiakasNakyma.resources
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.HotelManhattan.resources
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.LaskuNakyma.resources
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.MokkiNakyma.resources
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.PalveluNakyma.resources
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.Properties.Resources.resources
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.VarausNakyma.resources
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.csproj.GenerateResource.cache
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.csproj.CoreCompileInputs.cache
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.exe
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.pdb
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Hotel.exe.config
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Hotel.exe
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Hotel.pdb
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\BouncyCastle.Crypto.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\DynamicPDF.NETFramework40.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Google.Protobuf.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\K4os.Compression.LZ4.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\K4os.Hash.xxHash.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\MySql.Data.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Renci.SshNet.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\System.Buffers.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\System.Memory.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\System.Numerics.Vectors.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Ubiety.Dns.Core.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Zstandard.Net.dll
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\DynamicPDF.NETFramework40.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Google.Protobuf.pdb
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Google.Protobuf.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\K4os.Compression.LZ4.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\K4os.Hash.xxHash.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\MySql.Data.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\Renci.SshNet.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\System.Buffers.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\System.Memory.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\System.Numerics.Vectors.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Opera Downloads\Ohjelmistotuotanto\Projekti\Backup\14.5. Demoaamusta 2\Hotel\obj\Debug\Hotel.csproj.CopyComplete

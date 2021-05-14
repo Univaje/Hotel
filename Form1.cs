@@ -439,7 +439,18 @@ namespace Hotel
         }
         private void HaelaskutNappi_Click(object sender, EventArgs e)
         {
-
+            DateTime a = LaskuPVM1.Value;
+            DateTime l = LaskuPVM2.Value;
+            dgvLaskut.DataSource = null;
+            dgvLaskut.DataSource = Laskut;
+            Lasku.Pvmhaku(a, l);
+        }
+        private void btnNaytäLaskut_Click(object sender, EventArgs e)
+        {
+            dgvLaskut.Refresh();
+            dgvLaskut.DataSource = null;
+            dgvLaskut.DataSource = Laskut;
+            dgvLaskut.Refresh();
         }
 
         private void PoistaLasku_Click(object sender, EventArgs e)
@@ -615,5 +626,6 @@ namespace Hotel
 
         }
 
+        
     }
 }
