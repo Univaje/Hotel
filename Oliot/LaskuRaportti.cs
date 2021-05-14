@@ -55,7 +55,7 @@ namespace Hotel.Oliot
                 Sivu.Elements.Add(LaskunTiedot);
                 System.IO.Directory.CreateDirectory(@"C:\\laskupdf\\");            
 
-                LTuloste.Draw(@"C:\\laskupdf\\Laskupdf" + ""+DateTime.Now+".pdf");
+                LTuloste.Draw(@"C:\\laskupdf\\Laskupdf "+DateTime.Now+".pdf");
 
             }
         }
