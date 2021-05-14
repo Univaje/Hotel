@@ -14,6 +14,9 @@ namespace Hotel
         private double alv;
         private int Maksettu;
 
+        private DateTime vahvistus_pvm;
+        public DateTime VahvistusPVM { get => vahvistus_pvm; set => vahvistus_pvm = value; }
+
         public int LaskuID { get => laskuID; set => laskuID = value; }
         public int VarausID1 { get => VarausID; set => VarausID = value; }
         public double Summa { get => summa; set => summa = value; }
@@ -23,6 +26,22 @@ namespace Hotel
 
         public Lasku()
         {
+        }
+        public Lasku(int laskuID, int varausID1, double summa, double alv, int Maksettu, DateTime vahvistus_pvm)
+        {
+
+            LaskuID = laskuID;
+            VarausID1 = varausID1;
+            Summa = summa;
+            Alv = alv;
+            maksettu = Maksettu;
+            VahvistusPVM = vahvistus_pvm;
+        }
+
+        internal static void Pvmhaku(DateTime a, DateTime l)
+        {
+
+            LFDB.Pvmhaku(a, l);
         }
 
         public Lasku(int laskuID, int varausID1, double summa, double alv, int Maksettu)

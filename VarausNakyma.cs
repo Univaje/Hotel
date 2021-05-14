@@ -147,6 +147,8 @@ namespace Hotel
             else
                 Saving();
         }
+
+        /*
         private  void Saving()
         {
 
@@ -187,6 +189,54 @@ namespace Hotel
             
         }
        
+        */
+
+        private void Saving()
+        {
+
+            Toimialue t = (Toimialue)cbVtoimialue.SelectedItem;
+            Asiakas a = (Asiakas)cbVAsiakas.SelectedItem;
+            mokki m = (mokki)cbVMokki.SelectedItem;
+            DateTime alku = dtpVarausAlkaa.Value;
+            DateTime Loppu = dtpVarausLoppuu.Value;
+
+            if (cbUusiAsiakasVarauksessa.Checked)
+            {
+                a = asiakkaanlisausVarauksenYhteydessa(a);
+            }
+
+            int varausaika = (int)Loppu.Subtract(alku).TotalDays;
+            varausaika++;
+            int ID = 0;
+            DateTime Vahvistus = alku.AddDays(-14);
+            Varaus uusiVaraus = new Varaus(1, a.AsiakasID, m.MokkiID, varausaika, Vahvistus, alku, Loppu);
+            Varaus Onjo = new Varaus();
+            Onjo = LFDB.selectVaraus(m.MokkiID, alku, Loppu);
+
+            if (Onjo == null || uusiVaraus.VarattuAlku < Onjo.VarattuAlku && uusiVaraus.VarattuAlku > Onjo.VarattuLoppu && uusiVaraus.VarattuLoppu < Onjo.VarattuAlku && uusiVaraus.VarattuLoppu > Onjo.VarattuLoppu)
+            {
+
+
+                if (btnvTallenna.Text.Equals("Lisää varaus"))
+                {
+                    LFDB.SetVaraus(uusiVaraus);
+                    ID = LFDB.GetLastVarausID();
+                    VarausIDsi = ID;
+                    TallennaPalvelutVarauseen(ID);
+                }
+                else
+                {
+                    uusiVaraus.VarausID = VarausIDsi;
+                    LFDB.SetMuokattuVaraus(uusiVaraus);
+                    PaivitaPalvelutVarauseen();
+                }
+
+                this.Hide();
+
+                Form1.UpdateVarausGrid(uusiVaraus.AsiakasID1);
+            }
+            else MessageBox.Show("Varaus on jo tälle ajalle olemassa!", "Varaus virhe!", MessageBoxButtons.OK);
+        }
         private Asiakas asiakkaanlisausVarauksenYhteydessa(Asiakas a)
             {
                 a = new Asiakas();

@@ -47,38 +47,39 @@ namespace Hotel
             // 
             // ppalvelu_tb
             // 
-            this.ppalvelu_tb.Location = new System.Drawing.Point(185, 152);
-            this.ppalvelu_tb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ppalvelu_tb.Location = new System.Drawing.Point(123, 99);
+            this.ppalvelu_tb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ppalvelu_tb.Name = "ppalvelu_tb";
-            this.ppalvelu_tb.Size = new System.Drawing.Size(229, 26);
-            this.ppalvelu_tb.TabIndex = 2;
+            this.ppalvelu_tb.Size = new System.Drawing.Size(154, 20);
+            this.ppalvelu_tb.TabIndex = 1;
             this.ppalvelu_tb.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // ptoimialue_tb
             // 
-            this.ptoimialue_tb.Location = new System.Drawing.Point(185, 220);
-            this.ptoimialue_tb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ptoimialue_tb.Location = new System.Drawing.Point(123, 143);
+            this.ptoimialue_tb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ptoimialue_tb.Name = "ptoimialue_tb";
-            this.ptoimialue_tb.Size = new System.Drawing.Size(229, 26);
+            this.ptoimialue_tb.Size = new System.Drawing.Size(154, 20);
             this.ptoimialue_tb.TabIndex = 2;
             // 
             // peruuta_btn
             // 
-            this.peruuta_btn.Location = new System.Drawing.Point(495, 567);
-            this.peruuta_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.peruuta_btn.Location = new System.Drawing.Point(330, 369);
+            this.peruuta_btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.peruuta_btn.Name = "peruuta_btn";
-            this.peruuta_btn.Size = new System.Drawing.Size(255, 80);
-            this.peruuta_btn.TabIndex = 4;
+            this.peruuta_btn.Size = new System.Drawing.Size(170, 52);
+            this.peruuta_btn.TabIndex = 8;
             this.peruuta_btn.Text = "Peruuta";
             this.peruuta_btn.UseVisualStyleBackColor = true;
             this.peruuta_btn.Click += new System.EventHandler(this.peruuta_btn_Click);
             // 
             // lisää_btn
             // 
-            this.lisää_btn.Location = new System.Drawing.Point(495, 461);
+            this.lisää_btn.Location = new System.Drawing.Point(330, 300);
+            this.lisää_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lisää_btn.Name = "lisää_btn";
-            this.lisää_btn.Size = new System.Drawing.Size(255, 80);
-            this.lisää_btn.TabIndex = 5;
+            this.lisää_btn.Size = new System.Drawing.Size(170, 52);
+            this.lisää_btn.TabIndex = 7;
             this.lisää_btn.Text = "Lisää";
             this.lisää_btn.UseVisualStyleBackColor = true;
             this.lisää_btn.Click += new System.EventHandler(this.lisää_btn_Click);
@@ -86,96 +87,102 @@ namespace Hotel
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 223);
+            this.label1.Location = new System.Drawing.Point(32, 145);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Toimialue";
             // 
             // palvelu_lbl
             // 
             this.palvelu_lbl.AutoSize = true;
-            this.palvelu_lbl.Location = new System.Drawing.Point(65, 158);
+            this.palvelu_lbl.Location = new System.Drawing.Point(43, 103);
+            this.palvelu_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.palvelu_lbl.Name = "palvelu_lbl";
-            this.palvelu_lbl.Size = new System.Drawing.Size(59, 20);
+            this.palvelu_lbl.Size = new System.Drawing.Size(42, 13);
             this.palvelu_lbl.TabIndex = 7;
             this.palvelu_lbl.Text = "Palvelu";
             // 
             // palv_tb
             // 
-            this.palv_tb.Location = new System.Drawing.Point(590, 220);
-            this.palv_tb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.palv_tb.Location = new System.Drawing.Point(393, 143);
+            this.palv_tb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.palv_tb.Name = "palv_tb";
-            this.palv_tb.Size = new System.Drawing.Size(112, 26);
-            this.palv_tb.TabIndex = 8;
+            this.palv_tb.Size = new System.Drawing.Size(76, 20);
+            this.palv_tb.TabIndex = 6;
             // 
             // phinta_tb
             // 
-            this.phinta_tb.Location = new System.Drawing.Point(590, 158);
-            this.phinta_tb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.phinta_tb.Location = new System.Drawing.Point(393, 103);
+            this.phinta_tb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.phinta_tb.Name = "phinta_tb";
-            this.phinta_tb.Size = new System.Drawing.Size(112, 26);
-            this.phinta_tb.TabIndex = 9;
+            this.phinta_tb.Size = new System.Drawing.Size(76, 20);
+            this.phinta_tb.TabIndex = 5;
             this.phinta_tb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phinta_tb_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(71, 340);
+            this.label3.Location = new System.Drawing.Point(47, 221);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 20);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "Tyyppi";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(503, 161);
+            this.label4.Location = new System.Drawing.Point(335, 105);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 20);
+            this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 11;
             this.label4.Text = "Hinta";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(63, 411);
+            this.label5.Location = new System.Drawing.Point(42, 267);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 20);
+            this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 12;
             this.label5.Text = "Kuvaus";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(503, 226);
+            this.label6.Location = new System.Drawing.Point(335, 147);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 20);
+            this.label6.Size = new System.Drawing.Size(22, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Alv";
             // 
             // pkuvaus_tb
             // 
-            this.pkuvaus_tb.Location = new System.Drawing.Point(185, 396);
-            this.pkuvaus_tb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pkuvaus_tb.Location = new System.Drawing.Point(123, 257);
+            this.pkuvaus_tb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pkuvaus_tb.Multiline = true;
             this.pkuvaus_tb.Name = "pkuvaus_tb";
-            this.pkuvaus_tb.Size = new System.Drawing.Size(229, 82);
-            this.pkuvaus_tb.TabIndex = 14;
+            this.pkuvaus_tb.Size = new System.Drawing.Size(154, 55);
+            this.pkuvaus_tb.TabIndex = 4;
             // 
             // ptyyppi_tb
             // 
-            this.ptyyppi_tb.Location = new System.Drawing.Point(185, 337);
-            this.ptyyppi_tb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ptyyppi_tb.Location = new System.Drawing.Point(123, 219);
+            this.ptyyppi_tb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ptyyppi_tb.Name = "ptyyppi_tb";
-            this.ptyyppi_tb.Size = new System.Drawing.Size(112, 26);
-            this.ptyyppi_tb.TabIndex = 15;
+            this.ptyyppi_tb.Size = new System.Drawing.Size(76, 20);
+            this.ptyyppi_tb.TabIndex = 3;
             // 
             // PalveluNakyma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 699);
+            this.ClientSize = new System.Drawing.Size(528, 454);
             this.Controls.Add(this.pkuvaus_tb);
             this.Controls.Add(this.ptyyppi_tb);
             this.Controls.Add(this.label6);
@@ -190,7 +197,7 @@ namespace Hotel
             this.Controls.Add(this.peruuta_btn);
             this.Controls.Add(this.ptoimialue_tb);
             this.Controls.Add(this.ppalvelu_tb);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "PalveluNakyma";
             this.Text = "PalveluNakyma";
             this.ResumeLayout(false);

@@ -791,6 +791,40 @@ namespace Hotel
 
         }
 
+        public static List<Lasku> Pvmhaku(DateTime a, DateTime l)
+        {
+            //Laskut.Clear();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM laskuhaku WHERE vahvistus_pvm > @alku AND vahvistus_pvm < @loppu";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+                Parametreille.Parameters.Add("@alku", MySqlDbType.DateTime).Value = a;
+                Parametreille.Parameters.Add("@loppu", MySqlDbType.DateTime).Value = l;
+                MySqlDataReader Reader = Parametreille.ExecuteReader();
+                while (Reader.Read())
+                {
+                    Lasku haeLasku = new Lasku(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), double.Parse(Reader[2].ToString()), double.Parse(Reader[3].ToString()), int.Parse(Reader[4].ToString()), DateTime.Parse(Reader[5].ToString()));
+                    Laskut.Add(haeLasku);
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return Laskut;
+        }
+
 
         /* Varausten Tietokanta haut*/
         public static List<Varaus> getVaraus()
@@ -1247,7 +1281,40 @@ namespace Hotel
                 connect = null;
             }
         }
-       
-        
+
+        public static Varaus selectVaraus(int ID, DateTime Alku, DateTime Loppu)
+        {
+            Varaus ValittuVaraus = null;
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  varaus WHERE varattu_alkupvm > @alku AND varattu_loppupvm < @loppu AND mokki_mokki_id = @ID";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = ID;
+                cmd.Parameters.Add("@alku", MySqlDbType.DateTime).Value = Alku;
+                cmd.Parameters.Add("@loppu", MySqlDbType.DateTime).Value = Loppu;
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    ValittuVaraus = new Varaus(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), int.Parse(Reader[2].ToString()), int.Parse(Reader[3].ToString()), Convert.ToDateTime(Reader[4].ToString()), Convert.ToDateTime(Reader[5].ToString()), Convert.ToDateTime(Reader[6].ToString()));
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return ValittuVaraus;
+        }
+
     }
 }
