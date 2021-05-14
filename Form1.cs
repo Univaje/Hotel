@@ -587,9 +587,10 @@ namespace Hotel
             Palvelu poistaPalvelu = new Palvelu();
             poistaPalvelu = (Palvelu)dgv_palvelut.CurrentRow.DataBoundItem;
             LFDB.RemovePalvelu(poistaPalvelu.PalveluID);
-            palvelut.Remove(poistaPalvelu);
-            dgv_palvelut.DataSource = null;
-            dgv_palvelut.DataSource = palvelut;
+            //palvelut.Remove(poistaPalvelu);
+            //dgv_palvelut.DataSource = null;
+            //dgv_palvelut.DataSource = palvelut;
+            UpdatePalveluGrid();
         }
         private void muokkaapalvelua_btn_Click(object sender, EventArgs e)
         {

@@ -66,7 +66,7 @@ namespace Hotel
             cbVAsiakas.SelectedValue = v.Asiakas_ID;
 
             VarausIDsi = v.Varaus_id;
-            dtpVarausAlkaa.MinDate = v.Varattu_alkupvm;
+            //dtpVarausAlkaa.MinDate = v.Varattu_alkupvm;
             dtpVarausAlkaa.Value = v.Varattu_alkupvm;
             dtpVarausLoppuu.Value = v.Varattu_loppupvm;
             tbvHenkilomaara.Text = "1";
