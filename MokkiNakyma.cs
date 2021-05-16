@@ -20,6 +20,8 @@ namespace Hotel
         private int Mokkiid;
         private int Toimiid;
         private HotelManhattan Form1;
+
+        // Formi luonti kun uusi mökki lisätään. Annteaan formille teksit lisää tallennus tarkistusta varten
         public MokkiNakyma(int count, HotelManhattan Formi1)
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace Hotel
             this.Form1 = Formi1;
 
         }
+        // Formi luonti kun mökkiä muutetaan. Mökin tiedot lisätään teksti kenttiin. Annetaan formille teksi muokkaa tallennus tarkistusta varten
         internal MokkiNakyma(mokki Uusimokki, HotelManhattan Formi1)
         {
             InitializeComponent();
@@ -50,11 +53,13 @@ namespace Hotel
 
         public void TallennaMokki_Click(object sender, EventArgs e)
         {
+
+            // Tarkistetaan että validoitavat kentät täyttävät validoinnin määritelmät
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
                 try
                 {
-
+                    // Varmistetaan löytyykö postinumero tietokannasta. Postinumeron uupuessa se lisätään tietokantaan 
                     int i = Lista.FindIndex(item => item.Postinro == tbMposti.Text);
                     if (i < 0)
                     {
@@ -62,14 +67,16 @@ namespace Hotel
                         p.Toimipaikka = tbToimipaikka.Text;
                         LFDB.setPostinro(p);
                     }
+                   // Luodaan mökki olio ja syötetään se tietokantaan. tähän olisi voinut tehdä tarkistuksen onko mökki jo olemssa kyseisellä toimialueella.
                     m = new mokki(Mokkiid, Toimiid, tbMposti.Text, tbMnimi.Text, tbMosoite.Text, tbMkuvaus.Text, int.Parse(tbMhlomaara.Text), tbMvarustelu.Text, double.Parse(tbMHinta.Text));
+                    //Tarkistetaan formin nimestä onko kyseessä lisäys vai muokkaus ja toimitaan sen mukaisesti
                     if (btnTallennaMokki.Text.Equals("Lisää"))
                         LFDB.SetMokki(m);
                     else
                         LFDB.UpdateMokki(m);
 
-
-                    this.Hide();
+                    // Suljetaan formi ja päivitetään mökkitaulukko pääformilta
+                    this.Close();
                     Form1.UpdateMokkiGrid();
                 }
                 catch (Exception ex)
@@ -81,9 +88,10 @@ namespace Hotel
         }
         private void btnPeruutaLisaus_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
 
         }
+        // Postinumero kenttään hyväksytään vain numerot, poistonappi sekä suurin sallittu pituus on 5 merkkiä
         private void tbMposti_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
@@ -91,6 +99,9 @@ namespace Hotel
             else if (tbMposti.TextLength >= 5 && e.KeyChar != '\b')
                 e.Handled = true;
         }
+
+        // Hinta kenttän oikein syöttö tarkistus. Hyväksytään vain yksi "," merkki sekä vain numerot.
+        // Pilkun jälkeen on mahdollista syöttää vain 2 numeroa.
         private void tbMHinta_KeyPress(object sender, KeyPressEventArgs e)
         {
             string luku = tbMHinta.Text;
@@ -106,6 +117,8 @@ namespace Hotel
             else if (e.KeyChar != ',' && !char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
                 e.Handled = true;
         }
+        // numeron annettua ohjelma tarkistaa tietokannasta haetuista postinumeroista mahdollista jo olemassa olevaa
+        // postitoimipaikkaa kyseiselle postinumerolle. tarkistus tehdään jokaisen numeron jälkeen uudelleen
         private void tbMposti_KeyUp(object sender, KeyEventArgs e)
         {
             for (int i = 0; i < 5; i++)
@@ -127,6 +140,8 @@ namespace Hotel
                 }
             }
         }
+
+        // Henkilömäärä kenttään hyväksytään vain numerot.
         private void tbMhlomaara_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -134,6 +149,8 @@ namespace Hotel
                 e.Handled = true;
 
         }
+
+        // Henkilömäärä kentän maksimi luku on 12 henkilöä
         private void tbMhlomaara_KeyUp(object sender, KeyEventArgs e)
         {
             if (tbMhlomaara.Text != "")
@@ -144,6 +161,7 @@ namespace Hotel
             }
         }
 
+        // Täytettävien kenttien validointi. Validoinnissa huomioidaan ettei kenttä ole tyhjä.
         private void Validoikentta(object sender, CancelEventArgs e)
         {
             TextBox tb = (TextBox)sender;
@@ -153,7 +171,6 @@ namespace Hotel
                 e.Cancel = true;
             }
         }
-
         private void ValidoituKentta(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;

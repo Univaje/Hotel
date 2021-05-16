@@ -41,7 +41,7 @@ namespace Hotel
         internal static void Pvmhaku(DateTime a, DateTime l)
         {
 
-            LFDB.Pvmhaku(a, l);
+          LFDB.Pvmhaku(a, l);
         }
 
         public Lasku(int laskuID, int varausID1, double summa, double alv, int Maksettu)

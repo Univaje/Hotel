@@ -44,7 +44,10 @@ namespace Hotel
         private void HotelManhattan_Load(object sender, EventArgs e)
         {
    
+            // Haetaan tietokannasta tarvittavat tiedot ja syötetään ne niille tarkoitettuihin kenttiin
+
             // Toimialueet ja mökit
+            
             mokit = LFDB.getMokit();
             toimialueet = LFDB.GetToimialue();
             tcHotelli.SelectedTab = tpToimialue;
@@ -58,6 +61,7 @@ namespace Hotel
             cbRpalvelu.ValueMember = "nimi";
 
             //Varaukset ja asiakashallinta
+
             asiakkaat = LFDB.getAsiakas();
             asiakkaatB = convertToBindingAsiakas(asiakkaat);
             cbVaraukset.DataSource = asiakkaatB;
@@ -72,16 +76,22 @@ namespace Hotel
             rbtnAsiakasKaikki.Checked = true;
 
             //Laskut
+
             Laskut = LFDB.getLasku();
             dgvLaskut.DataSource = Laskut;
             
 
             //Palvelut
+
             dgv_palvelut.DataSource = LFDB.getPalvelut();
 
         }
 
         /* Toimialueen toiminnot*/
+
+        // Luodaan nappi toimialueita varten. 
+        // x ja y ovat kordinaatteja nappien paikoille ja niitä lisätään tarvittava määrä
+        // jotta napit eivät muodostu päällekäin
         public void luoNappi()
         {
             gbToimialueet.Controls.Clear();
@@ -117,6 +127,7 @@ namespace Hotel
 
             }
         }
+        // Toimialue napin toiminta. Haetaan toimialueen mökit, syötetään ne datagridiin ja näytetään käyttäjälle kyseinen grid.
         private void ToimialueValinta(object sender, EventArgs e)
         {
             dgvMokit.DataSource = null;
@@ -135,6 +146,8 @@ namespace Hotel
             btnMokkiPoista.Enabled = true;
 
         }
+
+        // Toimialueen muokkausta varten paljastettava kenttä
         private void cbPoistaToimi_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -143,6 +156,8 @@ namespace Hotel
             tbToimialueMuokkaa.Visible = true;
             tbToimialueMuokkaa.Text = cbPoistaToimi.Text;
         }
+
+        // Listää toimialue tietokantaan luo sille nappi ja tuo nappi näkyville.
         private void btnLisaaToimialue_Click(object sender, EventArgs e)
         {
             string uusiToimialue = tbLisaaToimi.Text;
@@ -155,6 +170,8 @@ namespace Hotel
             FormatDisplay();
 
         }
+
+        // paljastetaan piilotetut kentät muokkausta varten. Tuodaan muutokset näkyville
         private void btnToimialueMuokkaa_Click(object sender, EventArgs e)
         {
             t = (Toimialue)cbPoistaToimi.SelectedItem;
@@ -168,6 +185,8 @@ namespace Hotel
             luoNappi();
             FormatDisplay();
         }
+
+        // Kysytään käyttäjältä varmistus, Poistetaan toimialue ja tuodaan muutokset näkyville
         private void btnToimialuePoista_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Haluatko varmasti poistaa Toimialueen?\nHuomioithan ettei toimialuetta voi poistaa jos sillä on mökkejä", "Poisto", MessageBoxButtons.OKCancel);
@@ -186,6 +205,8 @@ namespace Hotel
                 return;
 
         }
+
+        // Combo boxin päivittäminen toimialue välilehdellä
         private void FormatDisplay()
         {
             cbPoistaToimi.DataSource = null;
@@ -199,12 +220,15 @@ namespace Hotel
 
         /* Mokkien toiminnot*/
 
+        // Avataan mökin lisäys formi.
         private void btnMokkiLisaa_Click(object sender, EventArgs e)
         {
             MokkiNakyma LisaaMokki = new MokkiNakyma(currToimAlue, this);
             LisaaMokki.Text = "Lisaa mokki";
             LisaaMokki.Show();
         }
+
+        // Avataan mökin muokkaus formi
         private void btnMokkiMuokkaa_Click(object sender, EventArgs e)
         {
 
@@ -216,6 +240,7 @@ namespace Hotel
             LisaaMokki.ShowDialog();
 
         }
+        // Kysytään käyttäjältä varmistus, poistetaan mökki ja päivitetään datagrid 
         private void btnMokkiPoista_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Haluatko varmasti poistaa mökin?\nHuomioithan ettei mökkiä voi poistaa jos sillä on varauksia", "Poisto", MessageBoxButtons.OKCancel);
@@ -234,6 +259,7 @@ namespace Hotel
                 return;
 
         }
+        // Tuotetaan annetujen päivien väliltä valitulle mökille raportti mökin varaukseista
         private void btnMRaportti_Click(object sender, EventArgs e)
         {
             mokki m = (mokki)cbMRM.SelectedItem;
@@ -243,6 +269,7 @@ namespace Hotel
             MessageBox.Show("Tiedosto Tallennettiin", "Raportointi", MessageBoxButtons.OK);
 
         }
+        // näytetään käyttäjälle loppu pvm valinta sekä mahdollistetaan raportti napin painaminen
         private void dtbMRalku_ValueChanged(object sender, EventArgs e)
         {
             dtbMRloppu.MinDate = dtbMRalku.Value;
@@ -250,6 +277,8 @@ namespace Hotel
             dtbMRloppu.Value = DateTime.Now;
             btnMRaportti.Enabled = true;
         }
+
+        // Päivitetään mökkien datagridview
         public void UpdateMokkiGrid()
         {
             dgvMokit.DataSource = null;
@@ -452,7 +481,6 @@ namespace Hotel
             dgvLaskut.DataSource = Laskut;
             dgvLaskut.Refresh();
         }
-
         private void PoistaLasku_Click(object sender, EventArgs e)
         {
             Lasku poista = new Lasku();
@@ -462,7 +490,6 @@ namespace Hotel
             dgvLaskut.DataSource = null;
             dgvLaskut.DataSource = Laskut;
         }
-
         private void MuokkaaLAsku_Click(object sender, EventArgs e)
         {
             Lasku oo = new Lasku();
@@ -472,7 +499,6 @@ namespace Hotel
             dgvLaskut.DataSource = null;
             dgvLaskut.DataSource = Laskut;
         }
-
         private void LisaaLasku_Click(object sender, EventArgs e)
         {
             LaskuNakyma uu = new LaskuNakyma(this);
@@ -480,7 +506,6 @@ namespace Hotel
             dgvLaskut.DataSource = null;
             dgvLaskut.DataSource = Laskut;
         }
-
         public void UpdateGridLaskut()
         {
 
@@ -493,12 +518,16 @@ namespace Hotel
         }
 
         /* Varausten toiminnot*/
+
+        // avataan varauksen lisäys formi
         private void btnUusiVaraus_Click(object sender, EventArgs e)
         {
             VarausNakyma LisaaVaraus = new VarausNakyma(Varaukset.Count, this);
             LisaaVaraus.Text = "Lisaa Varaus";
             LisaaVaraus.Show();
         }
+
+        //datagridin päivitys combo boxin valinnan mukaan
         private void cbVaraukset_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -513,6 +542,8 @@ namespace Hotel
 
 
         }
+
+        // avataan varauksen muokkaus formi
         private void btnMuokkaaVarausta_Click(object sender, EventArgs e)
         {
             Varaustiedot VarausM = (Varaustiedot)dgvVaraus.CurrentRow.DataBoundItem;
@@ -520,6 +551,8 @@ namespace Hotel
             MuokkaaVarausta.Text = "Muokkaa Varausta";
             MuokkaaVarausta.Show();
         }
+
+        // kysytään varmistus poistetaan varaus ja päivitetään varaus grid
         private void btnPoistaVaraus_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Haluatko varmasti poistaa varaukset?", "Poisto", MessageBoxButtons.OKCancel);
@@ -528,6 +561,14 @@ namespace Hotel
                 Varaustiedot VarausP = (Varaustiedot)dgvVaraus.CurrentRow.DataBoundItem;
                 List<PalvelutVaraukseen> PoistettavatPalvelut = new List<PalvelutVaraukseen>();
                 PoistettavatPalvelut = LFDB.GetVarauksenPalvelut(VarausP.Varaus_id);
+                ////TEHTY KATSELMOINNIN JÄLKEEN///
+                Varaus V = LFDB.getCurrVaraus(VarausP.Varaus_id);
+                if (V.VahvistettuPvm > DateTime.Now)
+                {
+                    int LaskuID = LFDB.getLaskuIDVaraukseen(V.VarausID);
+                    LFDB.RemoveLasku(LaskuID);
+                
+                //////////////////////////////////
                 foreach (PalvelutVaraukseen pv in PoistettavatPalvelut)
                 {
                     LFDB.RemoveVarauksenPalvelut(pv);
@@ -538,10 +579,16 @@ namespace Hotel
                 Asiakas A = (Asiakas)cbVaraukset.SelectedItem;
                 VarauksienTiedot = LFDB.getVarausAsiakkaan(A.AsiakasID);
                 dgvVaraus.DataSource = VarauksienTiedot;
+                }
+                else { 
+                DialogResult poisto = MessageBox.Show("Varausta ei voida poistaa, koska peruutusaika on mennyt umpeen", "Poisto", MessageBoxButtons.OK);
+                }
             }
             else
                 return;
         }
+
+        // päivitetään varaus datagrid view
         public void UpdateVarausGrid(int asiakasID)
         {
 
@@ -558,6 +605,8 @@ namespace Hotel
             cbVaraukset.DisplayMember = "AsiakasID";
             cbVaraukset.ValueMember = "AsiakasID";
         }
+
+        // tarkistetaan onko asiakasta olemassa jos on niin asetetaan se combo boxin valituksi 
         private void btnVarausHae_Click(object sender, EventArgs e)
         {
             int i = asiakkaat.FindIndex(item => item.AsiakasID == int.Parse(tbVarausHaku.Text));
@@ -567,6 +616,8 @@ namespace Hotel
                 cbVaraukset.SelectedValue = int.Parse(tbVarausHaku.Text);
             }
         }
+
+        // Combo boxiin hyväksytään vain lukuja
         private void tbVarausHaku_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
@@ -591,8 +642,7 @@ namespace Hotel
             dgv_palvelut.DataSource = palvelut;
 
 
-        }
-        
+        }     
         private void poistapalvelu_btn_Click(object sender, EventArgs e)
         {
             Palvelu poistaPalvelu = new Palvelu();
@@ -611,6 +661,8 @@ namespace Hotel
             muokkaaPalvelua.Show();
             
         }
+
+        // Tuotetaan annetujen päivien väliltä valitulle palvelulle raportti palvelun varaukseista
         private void btnPalveluRaportti_Click(object sender, EventArgs e)
         {
             Palvelu p = (Palvelu)cbRpalvelu.SelectedItem;
@@ -626,6 +678,7 @@ namespace Hotel
 
         }
 
-        
+        /*TUOTETTU KATSELMOINNIN JÄLKEEN*/
+
     }
 }

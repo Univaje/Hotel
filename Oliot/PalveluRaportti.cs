@@ -43,6 +43,7 @@ namespace Hotel
         public PalveluRaportti()
         {
         }
+        // Palvelu Raportin luonti ceTe.DynamicPDF.coresuit nugettia käyttäen
         internal static void ServiceRaporting(int n, DateTime a, DateTime l)
         {
             List<PalveluRaportti> Raportti = new List<PalveluRaportti>();

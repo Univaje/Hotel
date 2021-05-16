@@ -46,6 +46,7 @@ namespace Hotel.Oliot
             Varattu_loppupvm = varattu_loppupvm;
             Hinta = hinta;
         }
+        // Mökki Raportin luonti ceTe.DynamicPDF.coresuit nugettia käyttäen
         internal static void Raporting(int n, DateTime a, DateTime l)
         {
             List<MokkiRaportti> Raportti = new List<MokkiRaportti>();

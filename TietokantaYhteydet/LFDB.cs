@@ -7,7 +7,7 @@ using System.Globalization;
 namespace Hotel
 {
 
-    class LFDB : LFDBBase
+    class LFDB 
     {
         public static MySqlConnection connect = null;
         public static List<mokki> mokit = new List<mokki>();
@@ -26,8 +26,14 @@ namespace Hotel
         static string myConnectionString = "server=127.0.0.1;uid=root;" +
                 "pwd=Ruutti;database=vn;port=3307";
 
+
+        // Tietokanta hakuja tehdessä tulisi kaikissa käyttää parametreja SQL injektion estämiseksi. 
+        // Projetin ollessa purkkapaketti ei kaikkiin sitä ole tehty ja osa on otettu suoraan muuttujilla.
+
         /* Mokkien Tietokanta haut*/
-        public static List<mokki> getMokit() // toimiva
+
+        // Haetaan kaikki mökit
+        public static List<mokki> getMokit() 
         {
             mokit.Clear();
             try
@@ -58,15 +64,13 @@ namespace Hotel
             }
             return mokit;
         }
+
+        // Syötetään mökki tietokantaan
         public static void SetMokki(mokki m)  
         {
             
             try
-            {
-                NumberFormatInfo provider = new NumberFormatInfo();                    
-                provider.NumberDecimalSeparator = ".";                                
-                provider.NumberGroupSeparator = ",";                                  
-                double temp = Convert.ToDouble(m.Hinta, provider);                
+            {        
 
                 if (connect == null)
                     connect = new MySqlConnection();
@@ -98,7 +102,9 @@ namespace Hotel
             }
 
         }
-        public static List<mokki> getMokitToiauleittain(int i)  // toimiva
+
+        // Haetaan mökit toimialueittain
+        public static List<mokki> getMokitToiauleittain(int i)  
         {
             mokit.Clear();
             try
@@ -129,7 +135,9 @@ namespace Hotel
             }
             return mokit;
         }
-        public static List<mokki> RemoveMokki(int i)  // toimiiko?
+
+        //Poistetaan mökki tietokannasta
+        public static List<mokki> RemoveMokki(int i)  
         {
             mokit = new List<mokki>();
             try
@@ -154,7 +162,9 @@ namespace Hotel
             }
             return mokit;
         }
-        public static void UpdateMokki(mokki m)  // Toimiva
+
+        // Päivitetään mökin tiedot 
+        public static void UpdateMokki(mokki m)  
         {
 
             try
@@ -192,7 +202,9 @@ namespace Hotel
         }
 
         /* Postinumeroiden Tietokanta haut*/
-        public static List<Posti> getPostinro() // toimiiva
+
+        // HAetaan postinumerot
+        public static List<Posti> getPostinro()
         {
             Postinumerot.Clear();
             try
@@ -224,7 +236,9 @@ namespace Hotel
 
             return Postinumerot;
         }
-        public static void setPostinro(Posti p) // toimiiko?
+
+        // Syötetään postinumerot
+        public static void setPostinro(Posti p) 
         {
 
             try
@@ -249,7 +263,9 @@ namespace Hotel
         }
 
         /* Mokkiraporttien Tietokanta haut*/
-        public static List<MokkiRaportti> getMokkiRaportti(int i, DateTime a, DateTime l) // Ei toimi
+
+        // Haetaan mökkiraporttia varten tiedot tietokannasta
+        public static List<MokkiRaportti> getMokkiRaportti(int i, DateTime a, DateTime l) 
         {
 
             try
@@ -285,6 +301,8 @@ namespace Hotel
         }
 
         /* Toimialueiden Tietokanta haut*/
+
+        // Haetaan toimialuuet
         public static List<Toimialue> GetToimialue() 
         {
             toimintaalueet.Clear();
@@ -316,6 +334,8 @@ namespace Hotel
             }
             return toimintaalueet;
         }
+
+        //Asetaan uusi toimialue
         public static void SetToimialue( string s) 
         {
 
@@ -343,6 +363,8 @@ namespace Hotel
             }
 
         }
+
+        // Poistetaan toimialue
         public static void RemoveToimialue(int i) 
         {
             try
@@ -366,6 +388,8 @@ namespace Hotel
             }
 
         }
+
+        // Päivitetään toimialue
         public static void UpdateToimialue(int i, string s) 
         {
 
@@ -607,7 +631,6 @@ namespace Hotel
 
 
         }
-
         public static int GetLastAsiakasID()
         {
             int ID = 0;
@@ -791,62 +814,28 @@ namespace Hotel
 
         }
 
-        public static List<Lasku> Pvmhaku(DateTime a, DateTime l)
-        {
-            //Laskut.Clear();
-            try
-            {
-                if (connect == null)
-                    connect = new MySqlConnection();
-                connect.ConnectionString = myConnectionString;
-                connect.Open();
-                string sql = "SELECT * FROM laskuhaku WHERE vahvistus_pvm > @alku AND vahvistus_pvm < @loppu";
-                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
-                Parametreille.Parameters.Add("@alku", MySqlDbType.DateTime).Value = a;
-                Parametreille.Parameters.Add("@loppu", MySqlDbType.DateTime).Value = l;
-                MySqlDataReader Reader = Parametreille.ExecuteReader();
-                while (Reader.Read())
-                {
-                    Lasku haeLasku = new Lasku(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), double.Parse(Reader[2].ToString()), double.Parse(Reader[3].ToString()), int.Parse(Reader[4].ToString()), DateTime.Parse(Reader[5].ToString()));
-                    Laskut.Add(haeLasku);
-                }
-                Reader.Close();
-
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connect.Close();
-                connect = null;
-            }
-            return Laskut;
-        }
-
 
         /* Varausten Tietokanta haut*/
-        public static List<Varaus> getVaraus()
+
+        // Haetaan tietokannasta valmiina oleva varaus tietylle aikavälille päällekäistestausta varten
+        public static Varaus selectVaraus(int ID, DateTime Alku, DateTime Loppu)
         {
-            Varaukset.Clear();
+            Varaus ValittuVaraus = null;
             try
             {
                 if (connect == null)
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "SELECT * FROM  varaus ";
+                string sql = "SELECT * FROM  varaus WHERE varattu_alkupvm > @alku AND varattu_loppupvm < @loppu AND mokki_mokki_id = @ID" ;
                 MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = ID;
+                cmd.Parameters.Add("@alku", MySqlDbType.DateTime).Value = Alku;
+                cmd.Parameters.Add("@loppu", MySqlDbType.DateTime).Value = Loppu;
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 while (Reader.Read())
                 {
-                    Varaus haeVaraukset = new Varaus(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), int.Parse(Reader[2].ToString()), int.Parse(Reader[3].ToString()), Convert.ToDateTime(Reader[4].ToString()), Convert.ToDateTime(Reader[5].ToString()), Convert.ToDateTime(Reader[6].ToString()));
-
-
-
-
-                    Varaukset.Add(haeVaraukset);
+                    ValittuVaraus = new Varaus(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), int.Parse(Reader[2].ToString()), int.Parse(Reader[3].ToString()), Convert.ToDateTime(Reader[4].ToString()), Convert.ToDateTime(Reader[5].ToString()), Convert.ToDateTime(Reader[6].ToString()));
                 }
                 Reader.Close();
 
@@ -860,9 +849,10 @@ namespace Hotel
                 connect.Close();
                 connect = null;
             }
-            return Varaukset;
+            return ValittuVaraus;
         }
-        public static Varaus getCurrVaraus(int i) 
+
+        public static Varaus getCurrVaraus(int i)
         {
             Varaus ValittuVaraus = null;
             try
@@ -892,6 +882,8 @@ namespace Hotel
             }
             return ValittuVaraus;
         }
+
+        // Asetetaan uus varaus 
         public static void SetVaraus(Varaus v) 
         {
 
@@ -925,6 +917,7 @@ namespace Hotel
             }
 
         }
+        //Päivitetään varausta
         public static void SetMuokattuVaraus(Varaus v)  
         {
 
@@ -958,6 +951,8 @@ namespace Hotel
             }
 
         }
+
+        //Haetaan asiakkaan kaikki varaukset
         public static List<Varaustiedot> getVarausAsiakkaan(int i) 
         {
             VarausienTiedot.Clear();
@@ -989,6 +984,8 @@ namespace Hotel
             }
             return VarausienTiedot;
         }
+
+        // Lisätään uusia palveluita varaukselle
         public static void SetVarauksenPalvelut(PalvelutVaraukseen pv) 
         {
 
@@ -1014,6 +1011,8 @@ namespace Hotel
             }
 
         }
+
+        // päivitetään palveluita varaukselle
         public static void UpdateVarauksenPalvelut(PalvelutVaraukseen pv)  
         {
 
@@ -1041,6 +1040,8 @@ namespace Hotel
             }
 
         }
+
+        // Poistetaan palvelut varaukselta
         public static void RemoveVarauksenPalvelut(PalvelutVaraukseen pv) 
         {
 
@@ -1067,6 +1068,8 @@ namespace Hotel
             }
 
         }
+
+       // Haetaan varauksen kaikki palvelut
         public static List<PalvelutVaraukseen> GetVarauksenPalvelut(int i)  
         {
             PalveluidenlisVar.Clear();
@@ -1097,6 +1100,8 @@ namespace Hotel
             }
             return PalveluidenlisVar;
         }
+
+        // Poistetaan varaus
         public static void RemoveVaraus(int i)
         {
             asiakkaat = new List<Asiakas>();
@@ -1122,6 +1127,8 @@ namespace Hotel
             }
             
         }
+
+        // Haetaan uusimman varauksen id numero
         public static int GetLastVarausID()
         {
             int ID = 0;
@@ -1158,6 +1165,8 @@ namespace Hotel
 
         //Palvelut
 
+
+        // Haetaan tiedot palveluraporttia varten
         public static List<PalveluRaportti> getPalveluRaportti(int p, DateTime a, DateTime l) // Ei toimi
         {
             PalveluRaportit.Clear();
@@ -1282,24 +1291,25 @@ namespace Hotel
             }
         }
 
-        public static Varaus selectVaraus(int ID, DateTime Alku, DateTime Loppu)
+        /*TUOTETTU KATSELMOINNIN JÄLKEEN*/
+
+        public static int getLaskuIDVaraukseen(int la)
         {
-            Varaus ValittuVaraus = null;
+            int L = 0;
             try
             {
                 if (connect == null)
                     connect = new MySqlConnection();
                 connect.ConnectionString = myConnectionString;
                 connect.Open();
-                string sql = "SELECT * FROM  varaus WHERE varattu_alkupvm > @alku AND varattu_loppupvm < @loppu AND mokki_mokki_id = @ID";
-                MySqlCommand cmd = new MySqlCommand(sql, connect);
-                cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = ID;
-                cmd.Parameters.Add("@alku", MySqlDbType.DateTime).Value = Alku;
-                cmd.Parameters.Add("@loppu", MySqlDbType.DateTime).Value = Loppu;
-                MySqlDataReader Reader = cmd.ExecuteReader();
+                string sql = "SELECT lasku_id FROM lasku WHERE varaus_id = @varaus ";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+                Parametreille.Parameters.Add("@varaus", MySqlDbType.Int32).Value = la;
+                MySqlDataReader Reader = Parametreille.ExecuteReader();
                 while (Reader.Read())
                 {
-                    ValittuVaraus = new Varaus(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), int.Parse(Reader[2].ToString()), int.Parse(Reader[3].ToString()), Convert.ToDateTime(Reader[4].ToString()), Convert.ToDateTime(Reader[5].ToString()), Convert.ToDateTime(Reader[6].ToString()));
+                    L = int.Parse(Reader[0].ToString());
+                    
                 }
                 Reader.Close();
 
@@ -1313,8 +1323,137 @@ namespace Hotel
                 connect.Close();
                 connect = null;
             }
-            return ValittuVaraus;
+            return L;
         }
 
+        public static double getPalveluHinta(int pal)
+        {
+            double P = 0;
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT hinta FROM palvelu WHERE palvelu_id = @palvelu ";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+                Parametreille.Parameters.Add("@palvelu", MySqlDbType.Int32).Value = pal;
+                MySqlDataReader Reader = Parametreille.ExecuteReader();
+                while (Reader.Read())
+                {
+                   P = double.Parse(Reader[0].ToString());
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return P;
+        }
+
+        public static void TeeLasku(Lasku L)  
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "INSERT INTO lasku (lasku_id,varaus_id,summa,alv,Maksettu) VALUES (@Lasku , @varaus ,  @hinta ,  @alv , @Maksettu) ";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@Lasku", MySqlDbType.Int32).Value = default;
+                cmd.Parameters.Add("@varaus", MySqlDbType.Int32).Value = L.VarausID1;
+                cmd.Parameters.Add("@hinta", MySqlDbType.Double).Value = L.Summa;
+                cmd.Parameters.Add("@alv", MySqlDbType.Double).Value = L.Alv;
+                cmd.Parameters.Add("@Maksettu", MySqlDbType.Int32).Value = L.maksettu;
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+        }
+
+        public static void paivitaLasku(Lasku L) // laskun muokkaus hommelisysteemi
+        {
+
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "UPDATE lasku SET varaus_id = @varaus_id , summa = @summa , alv = @alv , Maksettu = @maksettu WHERE lasku_id = @lasku_id ";
+                MySqlCommand Parametreille = new MySqlCommand(sql, connect);
+
+                Parametreille.Parameters.Add("@lasku_id", MySqlDbType.Int32).Value = L.LaskuID;
+                Parametreille.Parameters.Add("@varaus_id", MySqlDbType.Int32).Value = L.VarausID1;
+                Parametreille.Parameters.Add("@summa", MySqlDbType.Double).Value = L.Summa;
+                Parametreille.Parameters.Add("@alv", MySqlDbType.Double).Value = L.Alv;
+                Parametreille.Parameters.Add("@maksettu", MySqlDbType.Int32).Value = L.maksettu;
+
+                Parametreille.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+
+
+        }
+
+        public static Lasku HaeLasku(int id)
+        {
+            Lasku L = new Lasku();
+            try
+            {
+                if (connect == null)
+                    connect = new MySqlConnection();
+                connect.ConnectionString = myConnectionString;
+                connect.Open();
+                string sql = "SELECT * FROM  lasku WHERE Lasku_id = @Lasku";
+                MySqlCommand cmd = new MySqlCommand(sql, connect);
+                cmd.Parameters.Add("@Lasku", MySqlDbType.Int32).Value = id;
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                   L = new Lasku(int.Parse(Reader[0].ToString()), int.Parse(Reader[1].ToString()), double.Parse(Reader[2].ToString()), double.Parse(Reader[3].ToString()), int.Parse(Reader[4].ToString()));
+                    
+                }
+                Reader.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connect.Close();
+                connect = null;
+            }
+            return L;
+        }
     }
 }
